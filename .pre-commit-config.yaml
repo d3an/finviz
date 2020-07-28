@@ -1,0 +1,29 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+# See https://github.com/dnephin/pre-commit-golang/commit/4364c9e3047440ab4d0a9a0abe2e136c5d77b867
+
+fail_fast: true
+repos:
+  - repo: git://github.com/dnephin/pre-commit-golang
+    rev: master
+    hooks:
+      - id: go-fmt
+      - id: go-vet
+      - id: go-lint
+      - id: go-imports
+      - id: go-cyclo
+        args: [-over=15]
+      - id: validate-toml
+      - id: no-go-testing
+      - id: golangci-lint
+      - id: go-critic
+      - id: go-unit-tests
+      - id: go-build
+      - id: go-mod-tidy
+  - repo: git://github.com/pre-commit/pre-commit-hooks
+    rev: v0.7.1
+    hooks:
+      - id: check-merge-conflict
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
