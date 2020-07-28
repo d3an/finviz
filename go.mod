@@ -1,4 +1,4 @@
-module finviz
+module github.com/d3an/finviz
 
 go 1.14
 
