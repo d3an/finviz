@@ -14,11 +14,11 @@ const APIURL = "https://finviz.com/screener.ashx"
 
 // ScreenInput represents the data passed to the screen
 type ScreenInput struct {
-	signal        SignalType
-	generalOrder  GeneralOrderType
-	specificOrder SpecificOrderType
-	tickers       []string
-	filters       []FilterInterface
+	Signal        SignalType
+	GeneralOrder  GeneralOrderType
+	SpecificOrder SpecificOrderType
+	Tickers       []string
+	Filters       []FilterInterface
 	// view			ViewType
 	// column		ColumnType
 	// tab			TabType
@@ -92,10 +92,10 @@ func getTickerList(tickers []string) string {
 // GenerateURL consumes valid inputs to the screen and generates a corresponding valid URL
 func GenerateURL(input ScreenInput) string {
 	screenerView := getScreenerView("", "", "")
-	signal := getSignal(input.signal)
-	filterList := getFilterList(input.filters)
-	sortOrder := getSortOrder(input.generalOrder, input.signal, input.specificOrder)
-	tickerList := getTickerList(input.tickers)
+	signal := getSignal(input.Signal)
+	filterList := getFilterList(input.Filters)
+	sortOrder := getSortOrder(input.GeneralOrder, input.Signal, input.SpecificOrder)
+	tickerList := getTickerList(input.Tickers)
 
 	return fmt.Sprintf("%v?%v%v%v%v%v", APIURL, screenerView, signal, filterList, tickerList, sortOrder)
 }
