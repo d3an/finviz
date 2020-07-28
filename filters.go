@@ -23,12 +23,12 @@ const (
 
 // ExchangeFilter is a filter type
 type ExchangeFilter struct {
-	value ExchangeType
+	Value ExchangeType
 }
 
 // GetURLKey returns the filter's url key
 func (e ExchangeFilter) GetURLKey() string {
-	return fmt.Sprintf("exch_%v", e.value)
+	return fmt.Sprintf("exch_%v", e.Value)
 }
 
 // IndexType represents the types of index filters
@@ -42,12 +42,12 @@ const (
 
 // IndexFilter is a filter type
 type IndexFilter struct {
-	value IndexType
+	Value IndexType
 }
 
 // GetURLKey returns the filter's url key
 func (i IndexFilter) GetURLKey() string {
-	return fmt.Sprintf("idx_%v", i.value)
+	return fmt.Sprintf("idx_%v", i.Value)
 }
 
 // SectorType represents the type of sector filters
@@ -70,12 +70,12 @@ const (
 
 // SectorFilter is a filter type
 type SectorFilter struct {
-	value SectorType
+	Value SectorType
 }
 
 // GetURLKey returns the filter's url key
 func (s SectorFilter) GetURLKey() string {
-	return fmt.Sprintf("sec_%v", s.value)
+	return fmt.Sprintf("sec_%v", s.Value)
 }
 
 // IndustryType represents the type of industry filters
@@ -237,12 +237,12 @@ const (
 
 // IndustryFilter is a filter type
 type IndustryFilter struct {
-	value IndustryType
+	Value IndustryType
 }
 
 // GetURLKey returns the filter's url key
 func (i IndustryFilter) GetURLKey() string {
-	return fmt.Sprintf("ind_%v", i.value)
+	return fmt.Sprintf("ind_%v", i.Value)
 }
 
 // CountryType represents the type of country filters
@@ -313,12 +313,12 @@ const (
 
 // CountryFilter is a filter type
 type CountryFilter struct {
-	value CountryType
+	Value CountryType
 }
 
 // GetURLKey returns the filter's url key
 func (c CountryFilter) GetURLKey() string {
-	return fmt.Sprintf("geo_%v", c.value)
+	return fmt.Sprintf("geo_%v", c.Value)
 }
 
 // MarketCapType represents the types of market cap filters
@@ -344,12 +344,12 @@ const (
 
 // MarketCapFilter is a filter type
 type MarketCapFilter struct {
-	value MarketCapType
+	Value MarketCapType
 }
 
 // GetURLKey returns the filter's url key
 func (m MarketCapFilter) GetURLKey() string {
-	return fmt.Sprintf("cap_%v", m.value)
+	return fmt.Sprintf("cap_%v", m.Value)
 }
 
 // DividendYieldType represents the type of dividend yield filters
@@ -375,12 +375,12 @@ const (
 
 // DividendYieldFilter is a filter type
 type DividendYieldFilter struct {
-	value DividendYieldType
+	Value DividendYieldType
 }
 
 // GetURLKey returns the filter's url key
 func (d DividendYieldFilter) GetURLKey() string {
-	return fmt.Sprintf("fa_div_%v", d.value)
+	return fmt.Sprintf("fa_div_%v", d.Value)
 }
 
 // FloatShortType represents the type of short selling filters
@@ -406,12 +406,12 @@ const (
 
 // FloatShortFilter is a filter type
 type FloatShortFilter struct {
-	value FloatShortType
+	Value FloatShortType
 }
 
 // GetURLKey returns the filter's url key
 func (f FloatShortFilter) GetURLKey() string {
-	return fmt.Sprintf("sh_short_%v", f.value)
+	return fmt.Sprintf("sh_short_%v", f.Value)
 }
 
 // RecommendationType represents the type of analyst recommendation filters
@@ -432,12 +432,12 @@ const (
 
 // RecommendationFilter is a filter type
 type RecommendationFilter struct {
-	value RecommendationType
+	Value RecommendationType
 }
 
 // GetURLKey returns the filter's url key
 func (r RecommendationFilter) GetURLKey() string {
-	return fmt.Sprintf("an_recom_%v", r.value)
+	return fmt.Sprintf("an_recom_%v", r.Value)
 }
 
 // OptionShortType represents the type of optionable/shortable filters
@@ -452,12 +452,12 @@ const (
 
 // OptionShortFilter is a filter type
 type OptionShortFilter struct {
-	value OptionShortType
+	Value OptionShortType
 }
 
 // GetURLKey returns the filter's url key
 func (o OptionShortFilter) GetURLKey() string {
-	return fmt.Sprintf("sh_opt_%v", o.value)
+	return fmt.Sprintf("sh_opt_%v", o.Value)
 }
 
 // EarningsDateType represents the type of earnings date filters
@@ -484,12 +484,12 @@ const (
 
 // EarningsDateFilter is a filter type
 type EarningsDateFilter struct {
-	value EarningsDateType
+	Value EarningsDateType
 }
 
 // GetURLKey returns the filter's url key
 func (e EarningsDateFilter) GetURLKey() string {
-	return fmt.Sprintf("earningsdate_%v", e.value)
+	return fmt.Sprintf("earningsdate_%v", e.Value)
 }
 
 // AverageVolumeType represents the type of average volume filters
@@ -519,12 +519,12 @@ const (
 
 // AverageVolumeFilter is a filter type
 type AverageVolumeFilter struct {
-	value AverageVolumeType
+	Value AverageVolumeType
 }
 
 // GetURLKey returns the filter's url key
 func (a AverageVolumeFilter) GetURLKey() string {
-	return fmt.Sprintf("sh_avgvol_%v", a.value)
+	return fmt.Sprintf("sh_avgvol_%v", a.Value)
 }
 
 // RelativeVolumeType represents the type of relative volume filters
@@ -552,12 +552,12 @@ const (
 
 // RelativeVolumeFilter is a filter type
 type RelativeVolumeFilter struct {
-	value RelativeVolumeType
+	Value RelativeVolumeType
 }
 
 // GetURLKey returns the filter's url key
 func (r RelativeVolumeFilter) GetURLKey() string {
-	return fmt.Sprintf("sh_relvol_%v", r.value)
+	return fmt.Sprintf("sh_relvol_%v", r.Value)
 }
 
 // CurrentVolumeType represents the type of current volume filters
@@ -587,12 +587,12 @@ const (
 
 // CurrentVolumeFilter is a filter type
 type CurrentVolumeFilter struct {
-	value CurrentVolumeType
+	Value CurrentVolumeType
 }
 
 // GetURLKey returns the filter's url key
 func (c CurrentVolumeFilter) GetURLKey() string {
-	return fmt.Sprintf("sh_curvol_%v", c.value)
+	return fmt.Sprintf("sh_curvol_%v", c.Value)
 }
 
 // PriceType represents the type of price filters
@@ -643,12 +643,12 @@ const (
 
 // PriceFilter is a filter type
 type PriceFilter struct {
-	value PriceType
+	Value PriceType
 }
 
 // GetURLKey returns the filter's url key
 func (p PriceFilter) GetURLKey() string {
-	return fmt.Sprintf("sh_price_%v", p.value)
+	return fmt.Sprintf("sh_price_%v", p.Value)
 }
 
 // TargetPriceType represents the type of target price filters
@@ -674,12 +674,12 @@ const (
 
 // TargetPriceFilter is a filter type
 type TargetPriceFilter struct {
-	value TargetPriceType
+	Value TargetPriceType
 }
 
 // GetURLKey returns the filter's url key
 func (t TargetPriceFilter) GetURLKey() string {
-	return fmt.Sprintf("targetprice_%v", t.value)
+	return fmt.Sprintf("targetprice_%v", t.Value)
 }
 
 // IPODateType represents the type of IPO Date filters
@@ -706,12 +706,12 @@ const (
 
 // IPODateFilter is a filter type
 type IPODateFilter struct {
-	value IPODateType
+	Value IPODateType
 }
 
 // GetURLKey returns the filter's url key
 func (i IPODateFilter) GetURLKey() string {
-	return fmt.Sprintf("ipodate_%v", i.value)
+	return fmt.Sprintf("ipodate_%v", i.Value)
 }
 
 // SharesOutstandingType represents the type of shares outstanding filters
@@ -739,12 +739,12 @@ const (
 
 // SharesOutstandingFilter is a filter type
 type SharesOutstandingFilter struct {
-	value SharesOutstandingType
+	Value SharesOutstandingType
 }
 
 // GetURLKey returns the filter's url key
 func (s SharesOutstandingFilter) GetURLKey() string {
-	return fmt.Sprintf("sh_outstanding_%v", s.value)
+	return fmt.Sprintf("sh_outstanding_%v", s.Value)
 }
 
 // FloatType represents the type of float filters
@@ -752,12 +752,12 @@ type FloatType = SharesOutstandingType
 
 // FloatFilter is a filter type
 type FloatFilter struct {
-	value FloatType
+	Value FloatType
 }
 
 // GetURLKey returns the filter's url key
 func (f FloatFilter) GetURLKey() string {
-	return fmt.Sprintf("sh_float_%v", f.value)
+	return fmt.Sprintf("sh_float_%v", f.Value)
 }
 
 /***************************************************************************
@@ -796,12 +796,12 @@ const (
 
 // PEFilter is a filter type
 type PEFilter struct {
-	value PEType
+	Value PEType
 }
 
 // GetURLKey returns the filter's url key
 func (p PEFilter) GetURLKey() string {
-	return fmt.Sprintf("fa_pe_%v", p.value)
+	return fmt.Sprintf("fa_pe_%v", p.Value)
 }
 
 // ForwardPEType represents the types of ForwardPE filters
@@ -810,12 +810,12 @@ type ForwardPEType = PEType
 
 // ForwardPEFilter is a filter type
 type ForwardPEFilter struct {
-	value ForwardPEType
+	Value ForwardPEType
 }
 
 // GetURLKey returns the filter's url key
 func (f ForwardPEFilter) GetURLKey() string {
-	return fmt.Sprintf("fa_fpe_%v", f.value)
+	return fmt.Sprintf("fa_fpe_%v", f.Value)
 }
 
 // PEGType represents the types of PEG filters
@@ -835,12 +835,12 @@ const (
 
 // PEGFilter is a filter type
 type PEGFilter struct {
-	value PEGType
+	Value PEGType
 }
 
 // GetURLKey returns the filter's url key
 func (p PEGFilter) GetURLKey() string {
-	return fmt.Sprintf("fa_peg_%v", p.value)
+	return fmt.Sprintf("fa_peg_%v", p.Value)
 }
 
 // PriceSalesType represents the types of price/sales filters
@@ -874,12 +874,12 @@ const (
 
 // PriceSalesFilter is a filter type
 type PriceSalesFilter struct {
-	value PriceSalesType
+	Value PriceSalesType
 }
 
 // GetURLKey returns the filter's url key
 func (p PriceSalesFilter) GetURLKey() string {
-	return fmt.Sprintf("fa_ps_%v", p.value)
+	return fmt.Sprintf("fa_ps_%v", p.Value)
 }
 
 // PriceBookType represents the types of price/book filters
@@ -887,12 +887,12 @@ type PriceBookType = PriceSalesType
 
 // PriceBookFilter is a filter type
 type PriceBookFilter struct {
-	value PriceBookType
+	Value PriceBookType
 }
 
 // GetURLKey returns the filter's url key
 func (p PriceBookFilter) GetURLKey() string {
-	return fmt.Sprintf("fa_pb_%v", p.value)
+	return fmt.Sprintf("fa_pb_%v", p.Value)
 }
 
 // PriceCashType represents the types of price/cash filters
@@ -930,12 +930,12 @@ const (
 
 // PriceCashFilter is a filter type
 type PriceCashFilter struct {
-	value PriceCashType
+	Value PriceCashType
 }
 
 // GetURLKey returns the filter's url key
 func (p PriceCashFilter) GetURLKey() string {
-	return fmt.Sprintf("fa_pc_%v", p.value)
+	return fmt.Sprintf("fa_pc_%v", p.Value)
 }
 
 // PriceFCFType represents the types of price/FCF (free cash flow) filters
@@ -979,12 +979,12 @@ const (
 
 // PriceFCFFilter is a filter type
 type PriceFCFFilter struct {
-	value PriceFCFType
+	Value PriceFCFType
 }
 
 // GetURLKey returns the filter's url key
 func (p PriceFCFFilter) GetURLKey() string {
-	return fmt.Sprintf("fa_pfcf_%v", p.value)
+	return fmt.Sprintf("fa_pfcf_%v", p.Value)
 }
 
 // GrowthType represents the types of growth (%) filters
@@ -1012,72 +1012,72 @@ const (
 
 // EPSGrowthThisYearFilter is a filter type
 type EPSGrowthThisYearFilter struct {
-	value GrowthType
+	Value GrowthType
 }
 
 // GetURLKey returns the filter's url key
 func (e EPSGrowthThisYearFilter) GetURLKey() string {
-	return fmt.Sprintf("fa_epsyoy_%v", e.value)
+	return fmt.Sprintf("fa_epsyoy_%v", e.Value)
 }
 
 // EPSGrowthNextYearFilter is a filter type
 type EPSGrowthNextYearFilter struct {
-	value GrowthType
+	Value GrowthType
 }
 
 // GetURLKey returns the filter's url key
 func (e EPSGrowthNextYearFilter) GetURLKey() string {
-	return fmt.Sprintf("fa_epsyoy1_%v", e.value)
+	return fmt.Sprintf("fa_epsyoy1_%v", e.Value)
 }
 
 // EPSGrowthPast5YearsFilter is a filter type
 type EPSGrowthPast5YearsFilter struct {
-	value GrowthType
+	Value GrowthType
 }
 
 // GetURLKey returns the filter's url key
 func (e EPSGrowthPast5YearsFilter) GetURLKey() string {
-	return fmt.Sprintf("fa_eps5years_%v", e.value)
+	return fmt.Sprintf("fa_eps5years_%v", e.Value)
 }
 
 // EPSGrowthNext5YearsFilter is a filter type
 type EPSGrowthNext5YearsFilter struct {
-	value GrowthType
+	Value GrowthType
 }
 
 // GetURLKey returns the filter's url key
 func (e EPSGrowthNext5YearsFilter) GetURLKey() string {
-	return fmt.Sprintf("fa_estltgrowth_%v", e.value)
+	return fmt.Sprintf("fa_estltgrowth_%v", e.Value)
 }
 
 // SalesGrowthPast5YearsFilter is a filter type
 type SalesGrowthPast5YearsFilter struct {
-	value GrowthType
+	Value GrowthType
 }
 
 // GetURLKey returns the filter's url key
 func (s SalesGrowthPast5YearsFilter) GetURLKey() string {
-	return fmt.Sprintf("fa_sales5years_%v", s.value)
+	return fmt.Sprintf("fa_sales5years_%v", s.Value)
 }
 
 // EPSGrowthQtrOverQtrFilter is a filter type
 type EPSGrowthQtrOverQtrFilter struct {
-	value GrowthType
+	Value GrowthType
 }
 
 // GetURLKey returns the filter's url key
 func (e EPSGrowthQtrOverQtrFilter) GetURLKey() string {
-	return fmt.Sprintf("fa_epsqoq_%v", e.value)
+	return fmt.Sprintf("fa_epsqoq_%v", e.Value)
 }
 
 // SalesGrowthQtrOverQtrFilter is a filter type
 type SalesGrowthQtrOverQtrFilter struct {
-	value GrowthType
+	Value GrowthType
 }
 
 // GetURLKey returns the filter's url key
 func (s SalesGrowthQtrOverQtrFilter) GetURLKey() string {
-	return fmt.Sprintf("fa_salesqoq_%v", s.value)
+	return fmt.Sprintf("fa_salesqoq_%v", s.Value)
 }
 
 // ReturnType represents the types of % return on assets, equity, and investment filters
@@ -1113,32 +1113,32 @@ const (
 
 // ROAFilter is a filter type
 type ROAFilter struct {
-	value ReturnType
+	Value ReturnType
 }
 
 // GetURLKey returns the filter's url key
 func (r ROAFilter) GetURLKey() string {
-	return fmt.Sprintf("fa_roa_%v", r.value)
+	return fmt.Sprintf("fa_roa_%v", r.Value)
 }
 
 // ROEFilter is a filter type
 type ROEFilter struct {
-	value ReturnType
+	Value ReturnType
 }
 
 // GetURLKey returns the filter's url key
 func (r ROEFilter) GetURLKey() string {
-	return fmt.Sprintf("fa_roe_%v", r.value)
+	return fmt.Sprintf("fa_roe_%v", r.Value)
 }
 
 // ROIFilter is a filter type
 type ROIFilter struct {
-	value ReturnType
+	Value ReturnType
 }
 
 // GetURLKey returns the filter's url key
 func (r ROIFilter) GetURLKey() string {
-	return fmt.Sprintf("fa_roi_%v", r.value)
+	return fmt.Sprintf("fa_roi_%v", r.Value)
 }
 
 // AssetRatioType represents the types of asset ratio filters
@@ -1162,22 +1162,22 @@ const (
 
 // CurrentRatioFilter is a filter type
 type CurrentRatioFilter struct {
-	value AssetRatioType
+	Value AssetRatioType
 }
 
 // GetURLKey returns the filter's url key
 func (c CurrentRatioFilter) GetURLKey() string {
-	return fmt.Sprintf("fa_curratio_%v", c.value)
+	return fmt.Sprintf("fa_curratio_%v", c.Value)
 }
 
 // QuickRatioFilter is a filter type
 type QuickRatioFilter struct {
-	value AssetRatioType
+	Value AssetRatioType
 }
 
 // GetURLKey returns the filter's url key
 func (q QuickRatioFilter) GetURLKey() string {
-	return fmt.Sprintf("fa_quickratio_%v", q.value)
+	return fmt.Sprintf("fa_quickratio_%v", q.Value)
 }
 
 // DebtEquityType represents the types of debt/equity filters
@@ -1211,22 +1211,22 @@ const (
 
 // LTDebtEquityFilter is a filter type
 type LTDebtEquityFilter struct {
-	value DebtEquityType
+	Value DebtEquityType
 }
 
 // GetURLKey returns the filter's url key
 func (l LTDebtEquityFilter) GetURLKey() string {
-	return fmt.Sprintf("fa_ltdebteq_%v", l.value)
+	return fmt.Sprintf("fa_ltdebteq_%v", l.Value)
 }
 
 // DebtEquityFilter is a filter type
 type DebtEquityFilter struct {
-	value DebtEquityType
+	Value DebtEquityType
 }
 
 // GetURLKey returns the filter's url key
 func (d DebtEquityFilter) GetURLKey() string {
-	return fmt.Sprintf("fa_debteq_%v", d.value)
+	return fmt.Sprintf("fa_debteq_%v", d.Value)
 }
 
 // GrossMarginType represents the types of gross margin filters
@@ -1277,12 +1277,12 @@ const (
 
 // GrossMarginFilter is a filter type
 type GrossMarginFilter struct {
-	value GrossMarginType
+	Value GrossMarginType
 }
 
 // GetURLKey returns the filter's url key
 func (g GrossMarginFilter) GetURLKey() string {
-	return fmt.Sprintf("fa_grossmargin_%v", g.value)
+	return fmt.Sprintf("fa_grossmargin_%v", g.Value)
 }
 
 // OperatingMarginType represents the types of operating margin filters
@@ -1334,22 +1334,22 @@ const (
 
 // OperatingMarginFilter is a filter type
 type OperatingMarginFilter struct {
-	value OperatingMarginType
+	Value OperatingMarginType
 }
 
 // GetURLKey returns the filter's url key
 func (o OperatingMarginFilter) GetURLKey() string {
-	return fmt.Sprintf("fa_opermargin_%v", o.value)
+	return fmt.Sprintf("fa_opermargin_%v", o.Value)
 }
 
 // NetProfitMarginFilter is a filter type
 type NetProfitMarginFilter struct {
-	value OperatingMarginType
+	Value OperatingMarginType
 }
 
 // GetURLKey returns the filter's url key
 func (n NetProfitMarginFilter) GetURLKey() string {
-	return fmt.Sprintf("fa_netmargin_%v", n.value)
+	return fmt.Sprintf("fa_netmargin_%v", n.Value)
 }
 
 // PayoutRatioType represents the types of payout ratio filters
@@ -1385,12 +1385,12 @@ const (
 
 // PayoutRatioFilter is a filter type
 type PayoutRatioFilter struct {
-	value PayoutRatioType
+	Value PayoutRatioType
 }
 
 // GetURLKey returns the filter's url key
 func (p PayoutRatioFilter) GetURLKey() string {
-	return fmt.Sprintf("fa_payoutratio_%v", p.value)
+	return fmt.Sprintf("fa_payoutratio_%v", p.Value)
 }
 
 // InsiderOwnershipType represents the types of insider ownership filters
@@ -1414,12 +1414,12 @@ const (
 
 // InsiderOwnershipFilter is a filter type
 type InsiderOwnershipFilter struct {
-	value InsiderOwnershipType
+	Value InsiderOwnershipType
 }
 
 // GetURLKey returns the filter's url key
 func (i InsiderOwnershipFilter) GetURLKey() string {
-	return fmt.Sprintf("sh_insiderown_%v", i.value)
+	return fmt.Sprintf("sh_insiderown_%v", i.Value)
 }
 
 // InsiderTransactionsType represents the types of insider transactions filters
@@ -1463,12 +1463,12 @@ const (
 
 // InsiderTransactionsFilter is a filter type
 type InsiderTransactionsFilter struct {
-	value InsiderTransactionsType
+	Value InsiderTransactionsType
 }
 
 // GetURLKey returns the filter's url key
 func (i InsiderTransactionsFilter) GetURLKey() string {
-	return fmt.Sprintf("sh_insidertrans_%v", i.value)
+	return fmt.Sprintf("sh_insidertrans_%v", i.Value)
 }
 
 // InstitutionalOwnershipType represents the types of institutional ownership filters
@@ -1500,12 +1500,12 @@ const (
 
 // InstitutionalOwnershipFilter is a filter type
 type InstitutionalOwnershipFilter struct {
-	value InstitutionalOwnershipType
+	Value InstitutionalOwnershipType
 }
 
 // GetURLKey returns the filter's url key
 func (i InstitutionalOwnershipFilter) GetURLKey() string {
-	return fmt.Sprintf("sh_instown_%v", i.value)
+	return fmt.Sprintf("sh_instown_%v", i.Value)
 }
 
 // InstitutionalTransactionsType represents the types of institutional transactions filters
@@ -1541,12 +1541,12 @@ const (
 
 // InstitutionalTransactionsFilter is a filter type
 type InstitutionalTransactionsFilter struct {
-	value InstitutionalTransactionsType
+	Value InstitutionalTransactionsType
 }
 
 // GetURLKey returns the filter's url key
 func (i InstitutionalTransactionsFilter) GetURLKey() string {
-	return fmt.Sprintf("sh_insttrans_%v", i.value)
+	return fmt.Sprintf("sh_insttrans_%v", i.Value)
 }
 
 /***************************************************************************
@@ -1639,22 +1639,22 @@ const (
 
 // PerformanceFilter is a filter type
 type PerformanceFilter struct {
-	value PerformanceType
+	Value PerformanceType
 }
 
 // GetURLKey returns the filter's url key
 func (p PerformanceFilter) GetURLKey() string {
-	return fmt.Sprintf("ta_perf_%v", p.value)
+	return fmt.Sprintf("ta_perf_%v", p.Value)
 }
 
 // Performance2Filter is a filter type
 type Performance2Filter struct {
-	value PerformanceType
+	Value PerformanceType
 }
 
 // GetURLKey returns the filter's url key
 func (p Performance2Filter) GetURLKey() string {
-	return fmt.Sprintf("ta_perf2_%v", p.value)
+	return fmt.Sprintf("ta_perf2_%v", p.Value)
 }
 
 // VolatilityType represents the types of volatility filters
@@ -1687,12 +1687,12 @@ const (
 
 // VolatilityFilter is a filter type
 type VolatilityFilter struct {
-	value VolatilityType
+	Value VolatilityType
 }
 
 // GetURLKey returns the filter's url key
 func (v VolatilityFilter) GetURLKey() string {
-	return fmt.Sprintf("ta_volatility_%v", v.value)
+	return fmt.Sprintf("ta_volatility_%v", v.Value)
 }
 
 // RSIType represents the types of RSI 14-day filters
@@ -1716,12 +1716,12 @@ const (
 
 // RSIFilter is a filter type
 type RSIFilter struct {
-	value RSIType
+	Value RSIType
 }
 
 // GetURLKey returns the filter's url key
 func (r RSIFilter) GetURLKey() string {
-	return fmt.Sprintf("ta_rsi_%v", r.value)
+	return fmt.Sprintf("ta_rsi_%v", r.Value)
 }
 
 // GapType represents the types of gap filters
@@ -1761,12 +1761,12 @@ const (
 
 // GapFilter is a filter type
 type GapFilter struct {
-	value GapType
+	Value GapType
 }
 
 // GetURLKey returns the filter's url key
 func (g GapFilter) GetURLKey() string {
-	return fmt.Sprintf("ta_gap_%v", g.value)
+	return fmt.Sprintf("ta_gap_%v", g.Value)
 }
 
 // SMA20Type represents the types of 20-Day Simple Moving Average filters
@@ -1803,12 +1803,12 @@ const (
 
 // SMA20Filter is a filter type
 type SMA20Filter struct {
-	value SMA20Type
+	Value SMA20Type
 }
 
 // GetURLKey returns the filter's url key
 func (s SMA20Filter) GetURLKey() string {
-	return fmt.Sprintf("ta_sma20_%v", s.value)
+	return fmt.Sprintf("ta_sma20_%v", s.Value)
 }
 
 // SMA50Type represents the types of 50-Day Simple Moving Average filters
@@ -1845,12 +1845,12 @@ const (
 
 // SMA50Filter is a filter type
 type SMA50Filter struct {
-	value SMA50Type
+	Value SMA50Type
 }
 
 // GetURLKey returns the filter's url key
 func (s SMA50Filter) GetURLKey() string {
-	return fmt.Sprintf("ta_sma50_%v", s.value)
+	return fmt.Sprintf("ta_sma50_%v", s.Value)
 }
 
 // SMA200Type represents the types of 200-Day Simple Moving Average filters
@@ -1896,12 +1896,12 @@ const (
 
 // SMA200Filter is a filter type
 type SMA200Filter struct {
-	value SMA200Type
+	Value SMA200Type
 }
 
 // GetURLKey returns the filter's url key
 func (s SMA200Filter) GetURLKey() string {
-	return fmt.Sprintf("ta_sma200_%v", s.value)
+	return fmt.Sprintf("ta_sma200_%v", s.Value)
 }
 
 // ChangeType represents the types of change (%) filters
@@ -1939,22 +1939,22 @@ const (
 
 // ChangeFilter is a filter type
 type ChangeFilter struct {
-	value ChangeType
+	Value ChangeType
 }
 
 // GetURLKey returns the filter's url key
 func (c ChangeFilter) GetURLKey() string {
-	return fmt.Sprintf("ta_change_%v", c.value)
+	return fmt.Sprintf("ta_change_%v", c.Value)
 }
 
 // ChangeFromOpenFilter is a filter type
 type ChangeFromOpenFilter struct {
-	value ChangeType
+	Value ChangeType
 }
 
 // GetURLKey returns the filter's url key
 func (c ChangeFromOpenFilter) GetURLKey() string {
-	return fmt.Sprintf("ta_changeopen_%v", c.value)
+	return fmt.Sprintf("ta_changeopen_%v", c.Value)
 }
 
 // HighLow20DayType represents the types of 20-day, 50-day high/low filters
@@ -1988,22 +1988,22 @@ const (
 
 // HighLow20DayFilter is a filter type
 type HighLow20DayFilter struct {
-	value HighLow20DayType
+	Value HighLow20DayType
 }
 
 // GetURLKey returns the filter's url key
 func (h HighLow20DayFilter) GetURLKey() string {
-	return fmt.Sprintf("ta_highlow20d_%v", h.value)
+	return fmt.Sprintf("ta_highlow20d_%v", h.Value)
 }
 
 // HighLow50DayFilter is a filter type
 type HighLow50DayFilter struct {
-	value HighLow20DayType
+	Value HighLow20DayType
 }
 
 // GetURLKey returns the filter's url key
 func (h HighLow50DayFilter) GetURLKey() string {
-	return fmt.Sprintf("ta_highlow50d_%v", h.value)
+	return fmt.Sprintf("ta_highlow50d_%v", h.Value)
 }
 
 // HighLow52WeekType represents the types of 52-week high/low filters
@@ -2051,12 +2051,12 @@ const (
 
 // HighLow52WeekFilter is a filter type
 type HighLow52WeekFilter struct {
-	value HighLow52WeekType
+	Value HighLow52WeekType
 }
 
 // GetURLKey returns the filter's url key
 func (h HighLow52WeekFilter) GetURLKey() string {
-	return fmt.Sprintf("ta_highlow52w_%v", h.value)
+	return fmt.Sprintf("ta_highlow52w_%v", h.Value)
 }
 
 // PatternType represents the types of technical pattern filters
@@ -2096,12 +2096,12 @@ const (
 
 // PatternFilter is a filter type
 type PatternFilter struct {
-	value PatternType
+	Value PatternType
 }
 
 // GetURLKey returns the filter's url key
 func (p PatternFilter) GetURLKey() string {
-	return fmt.Sprintf("ta_pattern_%v", p.value)
+	return fmt.Sprintf("ta_pattern_%v", p.Value)
 }
 
 // CandlestickType represents the types of candlestick filters
@@ -2124,12 +2124,12 @@ const (
 
 // CandlestickFilter is a filter type
 type CandlestickFilter struct {
-	value CandlestickType
+	Value CandlestickType
 }
 
 // GetURLKey returns the filter's url key
 func (c CandlestickFilter) GetURLKey() string {
-	return fmt.Sprintf("ta_candlestick_%v", c.value)
+	return fmt.Sprintf("ta_candlestick_%v", c.Value)
 }
 
 // BetaType represents the types of beta filters
@@ -2160,12 +2160,12 @@ const (
 
 // BetaFilter is a filter type
 type BetaFilter struct {
-	value BetaType
+	Value BetaType
 }
 
 // GetURLKey returns the filter's url key
 func (b BetaFilter) GetURLKey() string {
-	return fmt.Sprintf("ta_beta_%v", b.value)
+	return fmt.Sprintf("ta_beta_%v", b.Value)
 }
 
 // AverageTrueRangeType represents the types of average true range (stock volatility) filters
@@ -2201,10 +2201,10 @@ const (
 
 // AverageTrueRangeFilter is a filter type
 type AverageTrueRangeFilter struct {
-	value AverageTrueRangeType
+	Value AverageTrueRangeType
 }
 
 // GetURLKey returns the filter's url key
 func (a AverageTrueRangeFilter) GetURLKey() string {
-	return fmt.Sprintf("ta_averagetruerange_%v", a.value)
+	return fmt.Sprintf("ta_averagetruerange_%v", a.Value)
 }
