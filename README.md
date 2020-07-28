@@ -67,10 +67,12 @@ Technical Filters:
 ### Screen Example
 
 ```go
-import (
-    "fmt"
+package main
 
-    "github.com/d3an/finviz"
+import (
+  "fmt"
+
+  . "github.com/d3an/finviz"
 )
 
 func main() {
@@ -80,21 +82,22 @@ func main() {
     }
 
     input := ScreenInput{
-    	signal: TopGainers,
-    	generalOrder: Ascending,
-    	specificOrder: Ticker,
-    	tickers: nil,
-    	filters: filters,
+        TopGainers,
+        Ascending,
+        Ticker,
+        nil,
+        filters,
     }
 
     client := NewClient()
 
-    dataframe, err := RunScreen(client, input)
+    df, err := RunScreen(client, input)
     if err != nil {
-    	panic(err)
+        panic(err)
     }
 
-    fmt.Println(dataframe)
+    // Print screen results dataframe
+    fmt.Println(df)
 }
 ```
 
@@ -103,6 +106,7 @@ func main() {
 - [ ] Add CLI tools for running screens
 - [ ] Update README.md with more documentation
 - [ ] Add support for non-default views (increase the number of tickers a screen can return)
+- [ ] Review dataframe package and consider migration for greater support
 
 ## Contributing
 
