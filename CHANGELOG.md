@@ -19,4 +19,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 ## [Unreleased]
+### Added
+- `SD-1` Added exhaustive types for filters, sorting, views, and signals.
+Also, added basic screening and scraping functions.
 
+### Improvements
+- `SD-1` Updated the README with more documentation coverage.
