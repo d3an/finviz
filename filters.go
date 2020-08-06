@@ -1,10 +1,13 @@
 package finviz
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // FilterInterface is used to query filters
 type FilterInterface interface {
 	GetURLKey() string
+	SetMultipleValues(options ...interface{}) FilterInterface
 }
 
 /***************************************************************************
@@ -31,6 +34,21 @@ func (e ExchangeFilter) GetURLKey() string {
 	return fmt.Sprintf("exch_%v", e.Value)
 }
 
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (e ExchangeFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	e.Value = ExchangeType(result)
+	return e
+}
+
 // IndexType represents the types of index filters
 type IndexType string
 
@@ -48,6 +66,21 @@ type IndexFilter struct {
 // GetURLKey returns the filter's url key
 func (i IndexFilter) GetURLKey() string {
 	return fmt.Sprintf("idx_%v", i.Value)
+}
+
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (i IndexFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	i.Value = IndexType(result)
+	return i
 }
 
 // SectorType represents the type of sector filters
@@ -76,6 +109,21 @@ type SectorFilter struct {
 // GetURLKey returns the filter's url key
 func (s SectorFilter) GetURLKey() string {
 	return fmt.Sprintf("sec_%v", s.Value)
+}
+
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (s SectorFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	s.Value = SectorType(result)
+	return s
 }
 
 // IndustryType represents the type of industry filters
@@ -245,6 +293,21 @@ func (i IndustryFilter) GetURLKey() string {
 	return fmt.Sprintf("ind_%v", i.Value)
 }
 
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (i IndustryFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	i.Value = IndustryType(result)
+	return i
+}
+
 // CountryType represents the type of country filters
 type CountryType string
 
@@ -321,6 +384,21 @@ func (c CountryFilter) GetURLKey() string {
 	return fmt.Sprintf("geo_%v", c.Value)
 }
 
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (c CountryFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	c.Value = CountryType(result)
+	return c
+}
+
 // MarketCapType represents the types of market cap filters
 type MarketCapType string
 
@@ -350,6 +428,21 @@ type MarketCapFilter struct {
 // GetURLKey returns the filter's url key
 func (m MarketCapFilter) GetURLKey() string {
 	return fmt.Sprintf("cap_%v", m.Value)
+}
+
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (m MarketCapFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	m.Value = MarketCapType(result)
+	return m
 }
 
 // DividendYieldType represents the type of dividend yield filters
@@ -383,6 +476,21 @@ func (d DividendYieldFilter) GetURLKey() string {
 	return fmt.Sprintf("fa_div_%v", d.Value)
 }
 
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (d DividendYieldFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	d.Value = DividendYieldType(result)
+	return d
+}
+
 // FloatShortType represents the type of short selling filters
 type FloatShortType string
 
@@ -414,6 +522,21 @@ func (f FloatShortFilter) GetURLKey() string {
 	return fmt.Sprintf("sh_short_%v", f.Value)
 }
 
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (f FloatShortFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	f.Value = FloatShortType(result)
+	return f
+}
+
 // RecommendationType represents the type of analyst recommendation filters
 type RecommendationType string
 
@@ -440,6 +563,21 @@ func (r RecommendationFilter) GetURLKey() string {
 	return fmt.Sprintf("an_recom_%v", r.Value)
 }
 
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (r RecommendationFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	r.Value = RecommendationType(result)
+	return r
+}
+
 // OptionShortType represents the type of optionable/shortable filters
 type OptionShortType string
 
@@ -458,6 +596,21 @@ type OptionShortFilter struct {
 // GetURLKey returns the filter's url key
 func (o OptionShortFilter) GetURLKey() string {
 	return fmt.Sprintf("sh_opt_%v", o.Value)
+}
+
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (o OptionShortFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	o.Value = OptionShortType(result)
+	return o
 }
 
 // EarningsDateType represents the type of earnings date filters
@@ -490,6 +643,21 @@ type EarningsDateFilter struct {
 // GetURLKey returns the filter's url key
 func (e EarningsDateFilter) GetURLKey() string {
 	return fmt.Sprintf("earningsdate_%v", e.Value)
+}
+
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (e EarningsDateFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	e.Value = EarningsDateType(result)
+	return e
 }
 
 // AverageVolumeType represents the type of average volume filters
@@ -527,6 +695,21 @@ func (a AverageVolumeFilter) GetURLKey() string {
 	return fmt.Sprintf("sh_avgvol_%v", a.Value)
 }
 
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (a AverageVolumeFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	a.Value = AverageVolumeType(result)
+	return a
+}
+
 // RelativeVolumeType represents the type of relative volume filters
 type RelativeVolumeType string
 
@@ -558,6 +741,21 @@ type RelativeVolumeFilter struct {
 // GetURLKey returns the filter's url key
 func (r RelativeVolumeFilter) GetURLKey() string {
 	return fmt.Sprintf("sh_relvol_%v", r.Value)
+}
+
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (r RelativeVolumeFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	r.Value = RelativeVolumeType(result)
+	return r
 }
 
 // CurrentVolumeType represents the type of current volume filters
@@ -593,6 +791,21 @@ type CurrentVolumeFilter struct {
 // GetURLKey returns the filter's url key
 func (c CurrentVolumeFilter) GetURLKey() string {
 	return fmt.Sprintf("sh_curvol_%v", c.Value)
+}
+
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (c CurrentVolumeFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	c.Value = CurrentVolumeType(result)
+	return c
 }
 
 // PriceType represents the type of price filters
@@ -651,6 +864,21 @@ func (p PriceFilter) GetURLKey() string {
 	return fmt.Sprintf("sh_price_%v", p.Value)
 }
 
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (p PriceFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	p.Value = PriceType(result)
+	return p
+}
+
 // TargetPriceType represents the type of target price filters
 type TargetPriceType string
 
@@ -680,6 +908,21 @@ type TargetPriceFilter struct {
 // GetURLKey returns the filter's url key
 func (t TargetPriceFilter) GetURLKey() string {
 	return fmt.Sprintf("targetprice_%v", t.Value)
+}
+
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (t TargetPriceFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	t.Value = TargetPriceType(result)
+	return t
 }
 
 // IPODateType represents the type of IPO Date filters
@@ -712,6 +955,21 @@ type IPODateFilter struct {
 // GetURLKey returns the filter's url key
 func (i IPODateFilter) GetURLKey() string {
 	return fmt.Sprintf("ipodate_%v", i.Value)
+}
+
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (i IPODateFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	i.Value = IPODateType(result)
+	return i
 }
 
 // SharesOutstandingType represents the type of shares outstanding filters
@@ -747,6 +1005,21 @@ func (s SharesOutstandingFilter) GetURLKey() string {
 	return fmt.Sprintf("sh_outstanding_%v", s.Value)
 }
 
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (s SharesOutstandingFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	s.Value = SharesOutstandingType(result)
+	return s
+}
+
 // FloatType represents the type of float filters
 type FloatType = SharesOutstandingType
 
@@ -758,6 +1031,21 @@ type FloatFilter struct {
 // GetURLKey returns the filter's url key
 func (f FloatFilter) GetURLKey() string {
 	return fmt.Sprintf("sh_float_%v", f.Value)
+}
+
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (f FloatFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	f.Value = FloatType(result)
+	return f
 }
 
 /***************************************************************************
@@ -804,6 +1092,21 @@ func (p PEFilter) GetURLKey() string {
 	return fmt.Sprintf("fa_pe_%v", p.Value)
 }
 
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (p PEFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	p.Value = PEType(result)
+	return p
+}
+
 // ForwardPEType represents the types of ForwardPE filters
 // Same categories as PEType, so those will be reused
 type ForwardPEType = PEType
@@ -816,6 +1119,21 @@ type ForwardPEFilter struct {
 // GetURLKey returns the filter's url key
 func (f ForwardPEFilter) GetURLKey() string {
 	return fmt.Sprintf("fa_fpe_%v", f.Value)
+}
+
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (f ForwardPEFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	f.Value = ForwardPEType(result)
+	return f
 }
 
 // PEGType represents the types of PEG filters
@@ -841,6 +1159,21 @@ type PEGFilter struct {
 // GetURLKey returns the filter's url key
 func (p PEGFilter) GetURLKey() string {
 	return fmt.Sprintf("fa_peg_%v", p.Value)
+}
+
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (p PEGFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	p.Value = PEGType(result)
+	return p
 }
 
 // PriceSalesType represents the types of price/sales filters
@@ -882,6 +1215,21 @@ func (p PriceSalesFilter) GetURLKey() string {
 	return fmt.Sprintf("fa_ps_%v", p.Value)
 }
 
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (p PriceSalesFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	p.Value = PriceSalesType(result)
+	return p
+}
+
 // PriceBookType represents the types of price/book filters
 type PriceBookType = PriceSalesType
 
@@ -893,6 +1241,21 @@ type PriceBookFilter struct {
 // GetURLKey returns the filter's url key
 func (p PriceBookFilter) GetURLKey() string {
 	return fmt.Sprintf("fa_pb_%v", p.Value)
+}
+
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (p PriceBookFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	p.Value = PriceBookType(result)
+	return p
 }
 
 // PriceCashType represents the types of price/cash filters
@@ -936,6 +1299,21 @@ type PriceCashFilter struct {
 // GetURLKey returns the filter's url key
 func (p PriceCashFilter) GetURLKey() string {
 	return fmt.Sprintf("fa_pc_%v", p.Value)
+}
+
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (p PriceCashFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	p.Value = PriceCashType(result)
+	return p
 }
 
 // PriceFCFType represents the types of price/FCF (free cash flow) filters
@@ -987,6 +1365,21 @@ func (p PriceFCFFilter) GetURLKey() string {
 	return fmt.Sprintf("fa_pfcf_%v", p.Value)
 }
 
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (p PriceFCFFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	p.Value = PriceFCFType(result)
+	return p
+}
+
 // GrowthType represents the types of growth (%) filters
 type GrowthType string
 
@@ -1020,6 +1413,21 @@ func (e EPSGrowthThisYearFilter) GetURLKey() string {
 	return fmt.Sprintf("fa_epsyoy_%v", e.Value)
 }
 
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (e EPSGrowthThisYearFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	e.Value = GrowthType(result)
+	return e
+}
+
 // EPSGrowthNextYearFilter is a filter type
 type EPSGrowthNextYearFilter struct {
 	Value GrowthType
@@ -1028,6 +1436,21 @@ type EPSGrowthNextYearFilter struct {
 // GetURLKey returns the filter's url key
 func (e EPSGrowthNextYearFilter) GetURLKey() string {
 	return fmt.Sprintf("fa_epsyoy1_%v", e.Value)
+}
+
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (e EPSGrowthNextYearFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	e.Value = GrowthType(result)
+	return e
 }
 
 // EPSGrowthPast5YearsFilter is a filter type
@@ -1040,6 +1463,21 @@ func (e EPSGrowthPast5YearsFilter) GetURLKey() string {
 	return fmt.Sprintf("fa_eps5years_%v", e.Value)
 }
 
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (e EPSGrowthPast5YearsFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	e.Value = GrowthType(result)
+	return e
+}
+
 // EPSGrowthNext5YearsFilter is a filter type
 type EPSGrowthNext5YearsFilter struct {
 	Value GrowthType
@@ -1048,6 +1486,21 @@ type EPSGrowthNext5YearsFilter struct {
 // GetURLKey returns the filter's url key
 func (e EPSGrowthNext5YearsFilter) GetURLKey() string {
 	return fmt.Sprintf("fa_estltgrowth_%v", e.Value)
+}
+
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (e EPSGrowthNext5YearsFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	e.Value = GrowthType(result)
+	return e
 }
 
 // SalesGrowthPast5YearsFilter is a filter type
@@ -1060,6 +1513,21 @@ func (s SalesGrowthPast5YearsFilter) GetURLKey() string {
 	return fmt.Sprintf("fa_sales5years_%v", s.Value)
 }
 
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (s SalesGrowthPast5YearsFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	s.Value = GrowthType(result)
+	return s
+}
+
 // EPSGrowthQtrOverQtrFilter is a filter type
 type EPSGrowthQtrOverQtrFilter struct {
 	Value GrowthType
@@ -1070,6 +1538,21 @@ func (e EPSGrowthQtrOverQtrFilter) GetURLKey() string {
 	return fmt.Sprintf("fa_epsqoq_%v", e.Value)
 }
 
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (e EPSGrowthQtrOverQtrFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	e.Value = GrowthType(result)
+	return e
+}
+
 // SalesGrowthQtrOverQtrFilter is a filter type
 type SalesGrowthQtrOverQtrFilter struct {
 	Value GrowthType
@@ -1078,6 +1561,21 @@ type SalesGrowthQtrOverQtrFilter struct {
 // GetURLKey returns the filter's url key
 func (s SalesGrowthQtrOverQtrFilter) GetURLKey() string {
 	return fmt.Sprintf("fa_salesqoq_%v", s.Value)
+}
+
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (s SalesGrowthQtrOverQtrFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	s.Value = GrowthType(result)
+	return s
 }
 
 // ReturnType represents the types of % return on assets, equity, and investment filters
@@ -1121,6 +1619,21 @@ func (r ROAFilter) GetURLKey() string {
 	return fmt.Sprintf("fa_roa_%v", r.Value)
 }
 
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (r ROAFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	r.Value = ReturnType(result)
+	return r
+}
+
 // ROEFilter is a filter type
 type ROEFilter struct {
 	Value ReturnType
@@ -1131,6 +1644,21 @@ func (r ROEFilter) GetURLKey() string {
 	return fmt.Sprintf("fa_roe_%v", r.Value)
 }
 
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (r ROEFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	r.Value = ReturnType(result)
+	return r
+}
+
 // ROIFilter is a filter type
 type ROIFilter struct {
 	Value ReturnType
@@ -1139,6 +1667,21 @@ type ROIFilter struct {
 // GetURLKey returns the filter's url key
 func (r ROIFilter) GetURLKey() string {
 	return fmt.Sprintf("fa_roi_%v", r.Value)
+}
+
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (r ROIFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	r.Value = ReturnType(result)
+	return r
 }
 
 // AssetRatioType represents the types of asset ratio filters
@@ -1170,6 +1713,21 @@ func (c CurrentRatioFilter) GetURLKey() string {
 	return fmt.Sprintf("fa_curratio_%v", c.Value)
 }
 
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (c CurrentRatioFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	c.Value = AssetRatioType(result)
+	return c
+}
+
 // QuickRatioFilter is a filter type
 type QuickRatioFilter struct {
 	Value AssetRatioType
@@ -1178,6 +1736,21 @@ type QuickRatioFilter struct {
 // GetURLKey returns the filter's url key
 func (q QuickRatioFilter) GetURLKey() string {
 	return fmt.Sprintf("fa_quickratio_%v", q.Value)
+}
+
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (q QuickRatioFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	q.Value = AssetRatioType(result)
+	return q
 }
 
 // DebtEquityType represents the types of debt/equity filters
@@ -1219,6 +1792,21 @@ func (l LTDebtEquityFilter) GetURLKey() string {
 	return fmt.Sprintf("fa_ltdebteq_%v", l.Value)
 }
 
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (l LTDebtEquityFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	l.Value = DebtEquityType(result)
+	return l
+}
+
 // DebtEquityFilter is a filter type
 type DebtEquityFilter struct {
 	Value DebtEquityType
@@ -1227,6 +1815,21 @@ type DebtEquityFilter struct {
 // GetURLKey returns the filter's url key
 func (d DebtEquityFilter) GetURLKey() string {
 	return fmt.Sprintf("fa_debteq_%v", d.Value)
+}
+
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (d DebtEquityFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	d.Value = DebtEquityType(result)
+	return d
 }
 
 // GrossMarginType represents the types of gross margin filters
@@ -1283,6 +1886,21 @@ type GrossMarginFilter struct {
 // GetURLKey returns the filter's url key
 func (g GrossMarginFilter) GetURLKey() string {
 	return fmt.Sprintf("fa_grossmargin_%v", g.Value)
+}
+
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (g GrossMarginFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	g.Value = GrossMarginType(result)
+	return g
 }
 
 // OperatingMarginType represents the types of operating margin filters
@@ -1342,6 +1960,21 @@ func (o OperatingMarginFilter) GetURLKey() string {
 	return fmt.Sprintf("fa_opermargin_%v", o.Value)
 }
 
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (o OperatingMarginFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	o.Value = OperatingMarginType(result)
+	return o
+}
+
 // NetProfitMarginFilter is a filter type
 type NetProfitMarginFilter struct {
 	Value OperatingMarginType
@@ -1350,6 +1983,21 @@ type NetProfitMarginFilter struct {
 // GetURLKey returns the filter's url key
 func (n NetProfitMarginFilter) GetURLKey() string {
 	return fmt.Sprintf("fa_netmargin_%v", n.Value)
+}
+
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (n NetProfitMarginFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	n.Value = OperatingMarginType(result)
+	return n
 }
 
 // PayoutRatioType represents the types of payout ratio filters
@@ -1393,6 +2041,21 @@ func (p PayoutRatioFilter) GetURLKey() string {
 	return fmt.Sprintf("fa_payoutratio_%v", p.Value)
 }
 
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (p PayoutRatioFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	p.Value = PayoutRatioType(result)
+	return p
+}
+
 // InsiderOwnershipType represents the types of insider ownership filters
 type InsiderOwnershipType string
 
@@ -1420,6 +2083,21 @@ type InsiderOwnershipFilter struct {
 // GetURLKey returns the filter's url key
 func (i InsiderOwnershipFilter) GetURLKey() string {
 	return fmt.Sprintf("sh_insiderown_%v", i.Value)
+}
+
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (i InsiderOwnershipFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	i.Value = InsiderOwnershipType(result)
+	return i
 }
 
 // InsiderTransactionsType represents the types of insider transactions filters
@@ -1471,6 +2149,21 @@ func (i InsiderTransactionsFilter) GetURLKey() string {
 	return fmt.Sprintf("sh_insidertrans_%v", i.Value)
 }
 
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (i InsiderTransactionsFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	i.Value = InsiderTransactionsType(result)
+	return i
+}
+
 // InstitutionalOwnershipType represents the types of institutional ownership filters
 type InstitutionalOwnershipType string
 
@@ -1506,6 +2199,21 @@ type InstitutionalOwnershipFilter struct {
 // GetURLKey returns the filter's url key
 func (i InstitutionalOwnershipFilter) GetURLKey() string {
 	return fmt.Sprintf("sh_instown_%v", i.Value)
+}
+
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (i InstitutionalOwnershipFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	i.Value = InstitutionalOwnershipType(result)
+	return i
 }
 
 // InstitutionalTransactionsType represents the types of institutional transactions filters
@@ -1547,6 +2255,21 @@ type InstitutionalTransactionsFilter struct {
 // GetURLKey returns the filter's url key
 func (i InstitutionalTransactionsFilter) GetURLKey() string {
 	return fmt.Sprintf("sh_insttrans_%v", i.Value)
+}
+
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (i InstitutionalTransactionsFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	i.Value = InstitutionalTransactionsType(result)
+	return i
 }
 
 /***************************************************************************
@@ -1647,6 +2370,21 @@ func (p PerformanceFilter) GetURLKey() string {
 	return fmt.Sprintf("ta_perf_%v", p.Value)
 }
 
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (p PerformanceFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	p.Value = PerformanceType(result)
+	return p
+}
+
 // Performance2Filter is a filter type
 type Performance2Filter struct {
 	Value PerformanceType
@@ -1655,6 +2393,21 @@ type Performance2Filter struct {
 // GetURLKey returns the filter's url key
 func (p Performance2Filter) GetURLKey() string {
 	return fmt.Sprintf("ta_perf2_%v", p.Value)
+}
+
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (p Performance2Filter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	p.Value = PerformanceType(result)
+	return p
 }
 
 // VolatilityType represents the types of volatility filters
@@ -1695,6 +2448,21 @@ func (v VolatilityFilter) GetURLKey() string {
 	return fmt.Sprintf("ta_volatility_%v", v.Value)
 }
 
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (v VolatilityFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	v.Value = VolatilityType(result)
+	return v
+}
+
 // RSIType represents the types of RSI 14-day filters
 type RSIType string
 
@@ -1722,6 +2490,21 @@ type RSIFilter struct {
 // GetURLKey returns the filter's url key
 func (r RSIFilter) GetURLKey() string {
 	return fmt.Sprintf("ta_rsi_%v", r.Value)
+}
+
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (r RSIFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	r.Value = RSIType(result)
+	return r
 }
 
 // GapType represents the types of gap filters
@@ -1769,6 +2552,21 @@ func (g GapFilter) GetURLKey() string {
 	return fmt.Sprintf("ta_gap_%v", g.Value)
 }
 
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (g GapFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	g.Value = GapType(result)
+	return g
+}
+
 // SMA20Type represents the types of 20-Day Simple Moving Average filters
 type SMA20Type string
 
@@ -1811,6 +2609,21 @@ func (s SMA20Filter) GetURLKey() string {
 	return fmt.Sprintf("ta_sma20_%v", s.Value)
 }
 
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (s SMA20Filter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	s.Value = SMA20Type(result)
+	return s
+}
+
 // SMA50Type represents the types of 50-Day Simple Moving Average filters
 type SMA50Type string
 
@@ -1851,6 +2664,21 @@ type SMA50Filter struct {
 // GetURLKey returns the filter's url key
 func (s SMA50Filter) GetURLKey() string {
 	return fmt.Sprintf("ta_sma50_%v", s.Value)
+}
+
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (s SMA50Filter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	s.Value = SMA50Type(result)
+	return s
 }
 
 // SMA200Type represents the types of 200-Day Simple Moving Average filters
@@ -1904,6 +2732,21 @@ func (s SMA200Filter) GetURLKey() string {
 	return fmt.Sprintf("ta_sma200_%v", s.Value)
 }
 
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (s SMA200Filter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	s.Value = SMA200Type(result)
+	return s
+}
+
 // ChangeType represents the types of change (%) filters
 type ChangeType string
 
@@ -1947,6 +2790,21 @@ func (c ChangeFilter) GetURLKey() string {
 	return fmt.Sprintf("ta_change_%v", c.Value)
 }
 
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (c ChangeFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	c.Value = ChangeType(result)
+	return c
+}
+
 // ChangeFromOpenFilter is a filter type
 type ChangeFromOpenFilter struct {
 	Value ChangeType
@@ -1955,6 +2813,21 @@ type ChangeFromOpenFilter struct {
 // GetURLKey returns the filter's url key
 func (c ChangeFromOpenFilter) GetURLKey() string {
 	return fmt.Sprintf("ta_changeopen_%v", c.Value)
+}
+
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (c ChangeFromOpenFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	c.Value = ChangeType(result)
+	return c
 }
 
 // HighLow20DayType represents the types of 20-day, 50-day high/low filters
@@ -1996,6 +2869,21 @@ func (h HighLow20DayFilter) GetURLKey() string {
 	return fmt.Sprintf("ta_highlow20d_%v", h.Value)
 }
 
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (h HighLow20DayFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	h.Value = HighLow20DayType(result)
+	return h
+}
+
 // HighLow50DayFilter is a filter type
 type HighLow50DayFilter struct {
 	Value HighLow20DayType
@@ -2004,6 +2892,21 @@ type HighLow50DayFilter struct {
 // GetURLKey returns the filter's url key
 func (h HighLow50DayFilter) GetURLKey() string {
 	return fmt.Sprintf("ta_highlow50d_%v", h.Value)
+}
+
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (h HighLow50DayFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	h.Value = HighLow20DayType(result)
+	return h
 }
 
 // HighLow52WeekType represents the types of 52-week high/low filters
@@ -2059,6 +2962,21 @@ func (h HighLow52WeekFilter) GetURLKey() string {
 	return fmt.Sprintf("ta_highlow52w_%v", h.Value)
 }
 
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (h HighLow52WeekFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	h.Value = HighLow52WeekType(result)
+	return h
+}
+
 // PatternType represents the types of technical pattern filters
 type PatternType string
 
@@ -2104,6 +3022,21 @@ func (p PatternFilter) GetURLKey() string {
 	return fmt.Sprintf("ta_pattern_%v", p.Value)
 }
 
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (p PatternFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	p.Value = PatternType(result)
+	return p
+}
+
 // CandlestickType represents the types of candlestick filters
 type CandlestickType string
 
@@ -2130,6 +3063,21 @@ type CandlestickFilter struct {
 // GetURLKey returns the filter's url key
 func (c CandlestickFilter) GetURLKey() string {
 	return fmt.Sprintf("ta_candlestick_%v", c.Value)
+}
+
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (c CandlestickFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	c.Value = CandlestickType(result)
+	return c
 }
 
 // BetaType represents the types of beta filters
@@ -2166,6 +3114,21 @@ type BetaFilter struct {
 // GetURLKey returns the filter's url key
 func (b BetaFilter) GetURLKey() string {
 	return fmt.Sprintf("ta_beta_%v", b.Value)
+}
+
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (b BetaFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	b.Value = BetaType(result)
+	return b
 }
 
 // AverageTrueRangeType represents the types of average true range (stock volatility) filters
@@ -2207,4 +3170,19 @@ type AverageTrueRangeFilter struct {
 // GetURLKey returns the filter's url key
 func (a AverageTrueRangeFilter) GetURLKey() string {
 	return fmt.Sprintf("ta_averagetruerange_%v", a.Value)
+}
+
+// SetMultipleValues can be used to append several of the same filter types together using the pipe operator
+func (a AverageTrueRangeFilter) SetMultipleValues(options ...interface{}) FilterInterface {
+	optionCount := len(options)
+	if optionCount == 0 {
+		panic("No parameters given.")
+	}
+	result := fmt.Sprintf("%v", options[0])
+
+	for i := 0; i < optionCount; i++ {
+		result = fmt.Sprintf("%v|%v", result, options[i])
+	}
+	a.Value = AverageTrueRangeType(result)
+	return a
 }

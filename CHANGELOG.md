@@ -20,11 +20,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
-- `SD-1` Added exhaustive types for filters, sorting, views, and signals.
-Also, added basic screening and scraping functions.
+- `SD-5` Added `SetMultipleValues` to FilterInterface to allow multiple of the same filters, with | operator.
+
+## [v.1.0.0][2020.07.27]
+### Added
+- `SD-1` Added exhaustive types for filters, sorting, views, and signals. Also, added basic screening and scraping functions.
+- LICENSE.
 
 ### Fixed
-- `SD-2` Updated module name to common package syntax
+- `SD-2` Updated module name to common package syntax.
+- `SD-3` Exported struct fields to fix implicit assignment errors.
 
 ### Improvements
 - `SD-1` Updated the README with more documentation coverage.
+- `SD-4` Corrected the README code sample.
