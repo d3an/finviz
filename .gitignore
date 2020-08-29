@@ -4,3 +4,8 @@
 
 # OS
 .DS_Store
+
+# Staticly generated
+finviz/finviz
+fixtures/*
+test_data/*
