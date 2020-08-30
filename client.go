@@ -15,20 +15,6 @@ import (
 	"time"
 )
 
-// StatusCodeError is the error given if a request's status code is not 200
-type StatusCodeError string
-
-func (err StatusCodeError) Error() string {
-	return string(err)
-}
-
-// NoStocksMatchedQueryError is the error given if a screen returns no results
-type NoStocksMatchedQueryError string
-
-func (err NoStocksMatchedQueryError) Error() string {
-	return string(err)
-}
-
 // NewClient generates a new client instance
 func NewClient() *http.Client {
 	return &http.Client{
