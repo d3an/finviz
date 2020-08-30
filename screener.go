@@ -24,24 +24,16 @@ type ScreenInput struct {
 	SpecificOrder SpecificOrderType
 	Tickers       []string
 	Filters       []FilterInterface
-	// view			ViewType
-	// column		ColumnType
-	// tab			TabType
-	// settings		[]SettingsType
+	View          ViewType
+	CustomColumns []string
 }
 
-func getScreenerView(viewType ViewType, columnType ColumnType, tabType TabType) string {
+func getScreenerView(viewType ViewType) string {
 	if viewType == "" {
 		viewType = "1"
 	}
-	if columnType == "" {
-		columnType = "1"
-	}
-	if tabType == "" {
-		tabType = "1"
-	}
 
-	return fmt.Sprintf("?v=%v%v%v", viewType, columnType, tabType)
+	return fmt.Sprintf("v=%v", viewType)
 }
 
 func getFilterList(filters []FilterInterface) string {
@@ -96,7 +88,7 @@ func getTickerList(tickers []string) string {
 
 // GenerateURL consumes valid inputs to the screen and generates a corresponding valid URL
 func GenerateURL(input ScreenInput) string {
-	screenerView := getScreenerView("", "", "")
+	screenerView := getScreenerView(input.View)
 	signal := getSignal(input.Signal)
 	filterList := getFilterList(input.Filters)
 	sortOrder := getSortOrder(input.GeneralOrder, input.Signal, input.SpecificOrder)
@@ -114,7 +106,7 @@ func RunScreen(c *http.Client, input ScreenInput) (*dataframe.DataFrame, error) 
 		return nil, err
 	}
 
-	df, err := GetStockDataframe(html)
+	df, err := GetStockDataframe(html, input.View)
 	if err != nil {
 		return nil, err
 	}
