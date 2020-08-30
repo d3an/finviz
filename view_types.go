@@ -5,36 +5,98 @@
 
 package finviz
 
-// ViewType represents the general view in which results are displayed
-type ViewType = string
+import "github.com/PuerkitoBio/goquery"
 
-// ColumnType represents the various column sets available for screens
-type ColumnType = string
+// ViewInterface introduces methods to interact with FinViz views
+type ViewInterface interface {
+	Scrape(document *goquery.Document) ([][]string, error)
+	getURLView() string
+}
 
-// TabType represents which tab (filters, settings, or none) is visible on screen
-type TabType = string
+// ViewType handles the ID of each FinViz view
+type ViewType struct {
+	ViewID string
+}
 
-// View Types
-const (
-	// Basic Scraper
-	OverviewView    ViewType = "110"
-	ValuationView   ViewType = "120"
-	OwnershipView   ViewType = "130"
-	PerformanceView ViewType = "140"
-	CustomView      ViewType = "150"
-	FinancialView   ViewType = "160"
-	TechnicalView   ViewType = "170"
+// OverviewView (110)
+type OverviewView struct {
+	ViewType
+}
 
-	ChartsView             ViewType = "210"
-	BasicDefaultView       ViewType = "310"
-	BasicNewsView          ViewType = "320"
-	BasicDescriptionView   ViewType = "330"
-	BasicSnapshotView      ViewType = "340"
-	BasicTAView            ViewType = "350"
-	TickersView            ViewType = "410"
-	BulkTickersDefaultView ViewType = "510"
-	BulkTickersFullView    ViewType = "520"
-)
+// ValuationView (120)
+type ValuationView struct {
+	ViewType
+}
+
+// OwnershipView (130)
+type OwnershipView struct {
+	ViewType
+}
+
+// PerformanceView (140)
+type PerformanceView struct {
+	ViewType
+}
+
+// CustomView (150)
+type CustomView struct {
+	ViewType
+}
+
+// FinancialView (160)
+type FinancialView struct {
+	ViewType
+}
+
+// TechnicalView (170)
+type TechnicalView struct {
+	ViewType
+}
+
+// ChartsView (210)
+type ChartsView struct {
+	ViewType
+}
+
+// BasicView (310)
+type BasicView struct {
+	ViewType
+}
+
+// NewsView (320)
+type NewsView struct {
+	ViewType
+}
+
+// DescriptionView (330)
+type DescriptionView struct {
+	ViewType
+}
+
+// SnapshotView (340)
+type SnapshotView struct {
+	ViewType
+}
+
+// TAView (350)
+type TAView struct {
+	ViewType
+}
+
+// TickersView (410)
+type TickersView struct {
+	ViewType
+}
+
+// BulkView (510)
+type BulkView struct {
+	ViewType
+}
+
+// BulkFullView (520)
+type BulkFullView struct {
+	ViewType
+}
 
 // Handle charts customizations (chart type, tick frequency)
 

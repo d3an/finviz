@@ -78,7 +78,6 @@ func GetFilter(filterQuery string, filterValues ...string) (*Filter, error) {
 	return nil, FilterNotFoundError(fmt.Sprintf("Filter not found. Query: \"%v\"", filterQuery))
 }
 
-/*
 // filterArrayContains returns true if a filter exists in an array of filters and false otherwise
 func filterArrayContains(fs []FilterInterface, f FilterInterface) bool {
 	filterCount := len(fs)
@@ -89,7 +88,6 @@ func filterArrayContains(fs []FilterInterface, f FilterInterface) bool {
 	}
 	return false
 }
-*/
 
 /***************************************************************************
 *****	DESCRIPTIVE   ******************************************************

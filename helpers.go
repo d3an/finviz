@@ -5,7 +5,12 @@
 
 package finviz
 
-/*
+import (
+	"fmt"
+	"github.com/PuerkitoBio/goquery"
+	"strings"
+)
+
 func contains(slice interface{}, value interface{}) bool {
 	switch slice := slice.(type) {
 	case []string:
@@ -16,6 +21,19 @@ func contains(slice interface{}, value interface{}) bool {
 					return true
 				}
 			}
+		case int:
+			return false
+		}
+	case []int:
+		switch value := value.(type) {
+		case int:
+			for _, a := range slice {
+				if a == value {
+					return true
+				}
+			}
+		case string:
+			return false
 		}
 	}
 	return false
@@ -101,35 +119,3 @@ func basicInsiderTradingViewHelper(rootNode *goquery.Selection, headers []string
 	}
 	return headers, rawTickerData
 }
-
-func generateRowsHelper(headers []string, tickerDataSlice []map[string]interface{}) (rows [][]string, err error) {
-	headerCount := len(headers)
-	resultCount := len(tickerDataSlice)
-
-	rows = append(rows, headers)
-	for i := 0; i < resultCount; i++ {
-		var row []string
-
-		for j := 0; j < headerCount; j++ {
-			item := tickerDataSlice[i][headers[j]]
-			switch item := item.(type) {
-			default:
-				return nil, fmt.Errorf("unexpected type for %v: %v -> %v", tickerDataSlice[i]["Ticker"], headers[j], tickerDataSlice[i][headers[j]])
-			case nil:
-				row = append(row, "-")
-			case string:
-				row = append(row, item)
-			case []map[string]string:
-				news, err := json.Marshal(item)
-				if err != nil {
-					return nil, err
-				}
-				row = append(row, string(news))
-			}
-		}
-		rows = append(rows, row)
-	}
-
-	return rows, nil
-}
-*/
