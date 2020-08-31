@@ -6,6 +6,7 @@
 package finviz
 
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/PuerkitoBio/goquery"
 	"strings"
@@ -118,4 +119,35 @@ func basicInsiderTradingViewHelper(rootNode *goquery.Selection, headers []string
 		rawTickerData["Insider Trading"] = insiderTrading
 	}
 	return headers, rawTickerData
+}
+
+func generateRows(headers []string, tickerDataSlice []map[string]interface{}) (rows [][]string, err error) {
+	headerCount := len(headers)
+	resultCount := len(tickerDataSlice)
+
+	rows = append(rows, headers)
+	for i := 0; i < resultCount; i++ {
+		var row []string
+
+		for j := 0; j < headerCount; j++ {
+			item := tickerDataSlice[i][headers[j]]
+			switch item := item.(type) {
+			default:
+				return nil, fmt.Errorf("unexpected type for %v: %v -> %v", tickerDataSlice[i]["Ticker"], headers[j], tickerDataSlice[i][headers[j]])
+			case nil:
+				row = append(row, "-")
+			case string:
+				row = append(row, item)
+			case []map[string]string:
+				news, err := json.Marshal(item)
+				if err != nil {
+					return nil, err
+				}
+				row = append(row, string(news))
+			}
+		}
+		rows = append(rows, row)
+	}
+
+	return rows, nil
 }

@@ -6,19 +6,42 @@
 package finviz
 
 import (
+	"bytes"
 	"fmt"
+	"github.com/PuerkitoBio/goquery"
+	"github.com/corpix/uarand"
 	"github.com/dnaeon/go-vcr/recorder"
 	"github.com/go-gota/gota/dataframe"
+	"io"
 	"io/ioutil"
 	"net/http"
 	"strings"
 	"time"
 )
 
+// HeaderTransport implements a Transport that can have its RoundTripper interface modified
+type HeaderTransport struct {
+	T http.RoundTripper
+}
+
+// RoundTrip implements the RoundTripper interface with a custom user-agent
+func (adt *HeaderTransport) RoundTrip(req *http.Request) (*http.Response, error) {
+	req.Header.Add("User-Agent", uarand.GetRandom())
+	return adt.T.RoundTrip(req)
+}
+
+func addHeaderTransport(t http.RoundTripper) *HeaderTransport {
+	if t == nil {
+		t = http.DefaultTransport
+	}
+	return &HeaderTransport{t}
+}
+
 // NewClient generates a new client instance
 func NewClient() *http.Client {
 	return &http.Client{
-		Timeout: 30 * time.Second,
+		Timeout:   30 * time.Second,
+		Transport: addHeaderTransport(nil),
 	}
 }
 
@@ -26,7 +49,7 @@ func NewClient() *http.Client {
 func newTestingClient(r *recorder.Recorder) *http.Client {
 	return &http.Client{
 		Timeout:   30 * time.Second,
-		Transport: r,
+		Transport: addHeaderTransport(r),
 	}
 }
 
@@ -61,6 +84,41 @@ func MakeGetRequest(c *http.Client, url string) ([]byte, error) {
 	}
 
 	return html, nil
+}
+
+func generateDocument(html interface{}) (doc *goquery.Document, err error) {
+	switch html := html.(type) {
+	default:
+		return nil, fmt.Errorf("HTML object is not of type string or []byte or io.ReadCloser")
+	case string:
+		html = strings.ReplaceAll(html, "\\r", "")
+		html = strings.ReplaceAll(html, "\\n", "")
+		html = strings.ReplaceAll(html, "\\\"", "\"")
+
+		html = strings.Map(func(r rune) rune {
+			if r == '\n' || r == '\t' {
+				return ' '
+			}
+			return r
+		}, html)
+		doc, err = goquery.NewDocumentFromReader(bytes.NewReader([]byte(html)))
+		if err != nil {
+			return nil, err
+		}
+	case []byte:
+		doc, err = goquery.NewDocumentFromReader(bytes.NewReader(html))
+		if err != nil {
+			return nil, err
+		}
+
+	case io.ReadCloser:
+		byteArray, err := ioutil.ReadAll(html)
+		if err != nil {
+			return nil, err
+		}
+		return generateDocument(byteArray)
+	}
+	return doc, nil
 }
 
 // GetStockDataframe consumes an html instance and returns a dataframe of stocks returned
@@ -114,7 +172,7 @@ func GetViewFactory(viewQuery string) (ViewInterface, error) {
 		return &TickersView{ViewType{"410"}}, nil
 	case "bulk":
 		return &BulkView{ViewType{"510"}}, nil
-	case "fullbulk":
+	case "bulkfull":
 		return &BulkFullView{ViewType{"520"}}, nil
 	}
 }

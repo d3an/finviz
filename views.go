@@ -6,8 +6,6 @@
 package finviz
 
 import (
-	"bytes"
-	"encoding/json"
 	"fmt"
 	"github.com/PuerkitoBio/goquery"
 	"strings"
@@ -273,70 +271,4 @@ func (b *BulkFullView) Scrape(doc *goquery.Document) (rows [][]string, err error
 
 	headers := []string{"Ticker", "Change", "Price", "Volume", "Relative Volume", "Chart", "Company", "Industry", "Country", "Market Cap"}
 	return generateRows(headers, tickers)
-}
-
-func generateRows(headers []string, tickerDataSlice []map[string]interface{}) (rows [][]string, err error) {
-	headerCount := len(headers)
-	resultCount := len(tickerDataSlice)
-
-	rows = append(rows, headers)
-	for i := 0; i < resultCount; i++ {
-		var row []string
-
-		for j := 0; j < headerCount; j++ {
-			item := tickerDataSlice[i][headers[j]]
-			switch item := item.(type) {
-			default:
-				return nil, fmt.Errorf("unexpected type for %v: %v -> %v", tickerDataSlice[i]["Ticker"], headers[j], tickerDataSlice[i][headers[j]])
-			case nil:
-				row = append(row, "-")
-			case string:
-				row = append(row, item)
-			case []map[string]string:
-				news, err := json.Marshal(item)
-				if err != nil {
-					return nil, err
-				}
-				row = append(row, string(news))
-			}
-		}
-		rows = append(rows, row)
-	}
-
-	return rows, nil
-}
-
-func generateDocument(html interface{}) (doc *goquery.Document, err error) {
-	switch html := html.(type) {
-	default:
-		return nil, fmt.Errorf("HTML object is not of type string or []byte or io.ReadCloser")
-	case string:
-		html = strings.ReplaceAll(html, "\\r", "")
-		html = strings.ReplaceAll(html, "\\n", "")
-		html = strings.ReplaceAll(html, "\\\"", "\"")
-
-		html = strings.Map(func(r rune) rune {
-			if r == '\n' || r == '\t' {
-				return ' '
-			}
-			return r
-		}, html)
-		doc, err = goquery.NewDocumentFromReader(bytes.NewReader([]byte(html)))
-		if err != nil {
-			return nil, err
-		}
-	case []byte:
-		doc, err = goquery.NewDocumentFromReader(bytes.NewReader(html))
-		if err != nil {
-			return nil, err
-		}
-		/*
-			case io.ReadCloser:
-				byteArray, err := ioutil.ReadAll(html)
-				if err != nil {
-					return nil, err
-				}
-				return generateDocument(byteArray)*/
-	}
-	return doc, nil
 }

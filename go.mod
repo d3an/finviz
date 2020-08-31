@@ -5,6 +5,7 @@ go 1.14
 require (
 	github.com/PuerkitoBio/goquery v1.5.1
 	github.com/andybalholm/cascadia v1.2.0 // indirect
+	github.com/corpix/uarand v0.1.1
 	github.com/dnaeon/go-vcr v1.0.1
 	github.com/go-gota/gota v0.10.1
 	github.com/spf13/cobra v1.0.0
