@@ -46,10 +46,10 @@ func NewClient() *http.Client {
 }
 
 // newTestingClient generates a new testing client instance that uses go-vcr
-func newTestingClient(r *recorder.Recorder) *http.Client {
+func newTestingClient(rec *recorder.Recorder) *http.Client {
 	return &http.Client{
 		Timeout:   30 * time.Second,
-		Transport: addHeaderTransport(r),
+		Transport: addHeaderTransport(rec),
 	}
 }
 

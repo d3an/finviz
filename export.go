@@ -45,8 +45,19 @@ func ExportScreenJSON(df *dataframe.DataFrame, outFileName string) error {
 // PrintFullDataframe prints an entire dataframe to console
 // Derived from https://github.com/go-gota/gota/blob/master/dataframe/dataframe.go until print method is made public
 func PrintFullDataframe(df *dataframe.DataFrame) {
+	nrows, ncols := df.Dims()
+	if df.Err != nil || nrows == 0 || ncols == 0 {
+		return
+	}
+
+	var records [][]string
+	var dfStr string
+	records = df.Records()
+	types := df.Types()
+	typesrow := make([]string, ncols)
+	maxChars := make([]int, ncols+1)
+
 	class := "DataFrame"
-	str := ""
 
 	addRightPadding := func(s string, nchar int) string {
 		if utf8.RuneCountInString(s) < nchar {
@@ -62,34 +73,25 @@ func PrintFullDataframe(df *dataframe.DataFrame) {
 		return s
 	}
 
-	nrows, ncols := df.Dims()
-	if df.Err != nil || nrows == 0 || ncols == 0 {
-		return
-	}
-	var records [][]string
-	records = df.Records()
-
-	str += fmt.Sprintf("[%dx%d] %s\n\n", nrows, ncols, class)
+	dfStr += fmt.Sprintf("[%dx%d] %s\n\n", nrows, ncols, class)
 
 	// Add the row numbers
-	for i := 0; i < df.Nrow()+1; i++ {
-		add := ""
+	for i := 0; i < nrows+1; i++ {
 		if i != 0 {
-			add = strconv.Itoa(i-1) + ":"
+			records[i] = append([]string{fmt.Sprintf("%v:", strconv.Itoa(i-1))}, records[i]...)
+			continue
 		}
-		records[i] = append([]string{add}, records[i]...)
+		records[i] = append([]string{""}, records[i]...)
 	}
-	types := df.Types()
-	typesrow := make([]string, ncols)
+
 	for i := 0; i < ncols; i++ {
 		typesrow[i] = fmt.Sprintf("<%v>", types[i])
 	}
 	typesrow = append([]string{""}, typesrow...)
 	records = append(records, typesrow)
-
-	maxChars := make([]int, df.Ncol()+1)
-	for i := 0; i < len(records); i++ {
-		for j := 0; j < df.Ncol()+1; j++ {
+	recordsLen := len(records)
+	for i := 0; i < recordsLen; i++ {
+		for j := 0; j < ncols+1; j++ {
 			// Escape special characters
 			records[i][j] = strconv.Quote(records[i][j])
 			records[i][j] = records[i][j][1 : len(records[i][j])-1]
@@ -101,16 +103,16 @@ func PrintFullDataframe(df *dataframe.DataFrame) {
 		}
 	}
 	maxCols := len(records[0])
-	for i := 0; i < len(records); i++ {
+	for i := 0; i < recordsLen; i++ {
 		// Add right padding to all elements
 		records[i][0] = addLeftPadding(records[i][0], maxChars[0]+1)
-		for j := 1; j < df.Ncol()+1; j++ {
+		for j := 1; j < ncols+1; j++ {
 			records[i][j] = addRightPadding(records[i][j], maxChars[j])
 		}
 		records[i] = records[i][0:maxCols]
 		// Create the final string
-		str += strings.Join(records[i], " ")
-		str += "\n"
+
+		dfStr += fmt.Sprintf("%v\n", strings.Join(records[i], " "))
 	}
-	fmt.Println(str)
+	fmt.Println(dfStr)
 }

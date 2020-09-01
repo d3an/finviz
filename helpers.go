@@ -12,7 +12,7 @@ import (
 	"strings"
 )
 
-func contains(slice interface{}, value interface{}) bool {
+func contains(slice, value interface{}) bool {
 	switch slice := slice.(type) {
 	case []string:
 		switch value := value.(type) {
@@ -40,7 +40,7 @@ func contains(slice interface{}, value interface{}) bool {
 	return false
 }
 
-func basicDefaultViewHelper(rootNode *goquery.Selection, headers []string, rawTickerData map[string]interface{}) ([]string, map[string]interface{}) {
+func basicDefaultViewHelper(rootNode *goquery.Selection, headers []string, rawTickerData map[string]interface{}) (extraHeaders []string, extraRawTickerData map[string]interface{}) {
 	rootNode.Find(".snapshot-table > tbody").Children().Each(func(j int, childNode *goquery.Selection) {
 		if !contains(headers, childNode.Children().First().Text()) {
 			headers = append(headers, childNode.Children().First().Text())
@@ -55,8 +55,7 @@ func basicDefaultViewHelper(rootNode *goquery.Selection, headers []string, rawTi
 
 	rootNode.Find(".snapshot-table2 > tbody").Children().Each(func(j int, childNode *goquery.Selection) {
 		if !contains(headers, childNode.Children().Eq(0).Text()) && !contains(headers, childNode.Children().Eq(2).Text()) {
-			headers = append(headers, childNode.Children().Eq(0).Text())
-			headers = append(headers, childNode.Children().Eq(2).Text())
+			headers = append(append(headers, childNode.Children().Eq(0).Text()), childNode.Children().Eq(2).Text())
 		}
 		rawTickerData[childNode.Children().Eq(0).Text()] = childNode.Children().Eq(1).Text()
 		rawTickerData[childNode.Children().Eq(2).Text()] = childNode.Children().Eq(3).Text()
@@ -65,7 +64,7 @@ func basicDefaultViewHelper(rootNode *goquery.Selection, headers []string, rawTi
 	return headers, rawTickerData
 }
 
-func basicNewsViewHelper(rootNode *goquery.Selection, headers []string, rawTickerData map[string]interface{}) ([]string, map[string]interface{}) {
+func basicNewsViewHelper(rootNode *goquery.Selection, headers []string, rawTickerData map[string]interface{}) (extraHeaders []string, extraRawTickerData map[string]interface{}) {
 	if !contains(headers, "News") {
 		headers = append(headers, "News")
 	}
@@ -82,7 +81,7 @@ func basicNewsViewHelper(rootNode *goquery.Selection, headers []string, rawTicke
 	return headers, rawTickerData
 }
 
-func basicDescriptionViewHelper(rootNode *goquery.Selection, headers []string, rawTickerData map[string]interface{}) ([]string, map[string]interface{}) {
+func basicDescriptionViewHelper(rootNode *goquery.Selection, headers []string, rawTickerData map[string]interface{}) (extraHeaders []string, extraRawTickerData map[string]interface{}) {
 	if !contains(headers, "Description") {
 		headers = append(headers, "Description")
 	}
@@ -93,7 +92,7 @@ func basicDescriptionViewHelper(rootNode *goquery.Selection, headers []string, r
 	return headers, rawTickerData
 }
 
-func basicInsiderTradingViewHelper(rootNode *goquery.Selection, headers []string, rawTickerData map[string]interface{}) ([]string, map[string]interface{}) {
+func basicInsiderTradingViewHelper(rootNode *goquery.Selection, headers []string, rawTickerData map[string]interface{}) (extraHeaders []string, extraRawTickerData map[string]interface{}) {
 	if !contains(headers, "Insider Trading") {
 		headers = append(headers, "Insider Trading")
 	}

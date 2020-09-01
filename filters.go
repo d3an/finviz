@@ -143,7 +143,6 @@ func IndustryFilter(industryTypes ...IndustryType) *Filter {
 		URLPrefix: "ind",
 	}
 	return filter.SetValues(industryTypes)
-
 }
 
 // CountryFilter returns a reference to a Filter type
@@ -948,7 +947,7 @@ func AverageTrueRangeFilter(averageTrueRangeTypes ...AverageTrueRangeType) *Filt
 }
 
 // CustomFilter returns a reference to a filter based on custom set values
-func CustomFilter(name string, urlPrefix string, supportsMultipleValues bool, supportsCustomRange bool, values ...string) FilterInterface {
+func CustomFilter(name, urlPrefix string, supportsMultipleValues, supportsCustomRange bool, values ...string) FilterInterface {
 	filter := Filter{
 		Name: name,
 		Properties: map[string]bool{

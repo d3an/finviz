@@ -62,7 +62,6 @@ func (n *NewsView) Scrape(doc *goquery.Document) (rows [][]string, err error) {
 		if i%3 == 0 {
 			rawTickerData = make(map[string]interface{})
 			headers, rawTickerData = basicDefaultViewHelper(childNode, headers, rawTickerData)
-
 		} else if i%3 == 1 {
 			headers, rawTickerData = basicNewsViewHelper(childNode, headers, rawTickerData)
 			tickerDataSlice = append(tickerDataSlice, rawTickerData)

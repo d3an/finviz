@@ -85,7 +85,7 @@ var (
 			}
 
 			client := finviz.NewClient()
-			df, err := finviz.RunScreen(client, finviz.ScreenInput{
+			df, err := finviz.RunScreen(client, &finviz.ScreenInput{
 				Signal:        signal,
 				GeneralOrder:  generalOrder,
 				SpecificOrder: specificOrder,

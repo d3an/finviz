@@ -113,7 +113,7 @@ func getTickerList(tickers []string) string {
 }
 
 // GenerateURL consumes valid inputs to the screen and generates a corresponding valid URL
-func GenerateURL(input ScreenInput, view ViewInterface) (string, error) {
+func GenerateURL(input *ScreenInput, view ViewInterface) (string, error) {
 	signal := getSignal(input.Signal)
 	filterList, err := getFilterList(input.Filters)
 	if err != nil {
@@ -131,7 +131,7 @@ func GenerateURL(input ScreenInput, view ViewInterface) (string, error) {
 }
 
 // RunScreen consumes a client and screen input to produce a dataframe of results
-func RunScreen(c *http.Client, input ScreenInput) (*dataframe.DataFrame, error) {
+func RunScreen(c *http.Client, input *ScreenInput) (*dataframe.DataFrame, error) {
 	view, err := GetViewFactory(input.View)
 	if err != nil {
 		return nil, err

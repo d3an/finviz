@@ -16,7 +16,7 @@ func er(msg interface{}) {
 	os.Exit(1)
 }
 
-func extractFilterInput(filterArg string) (string, []string, error) {
+func extractFilterInput(filterArg string) (filterName string, filterValues []string, err error) {
 	firstSplit := strings.Split(filterArg, ":")
 	if splitCount := len(firstSplit); splitCount != 2 {
 		return "", nil, MalformedFilterError(fmt.Sprintf("Filter argument: \"%v\" is not well-formed. Proper form: \"Filter:Value1,Value2\" OR \"filter:value\"", filterArg))

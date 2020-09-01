@@ -211,7 +211,7 @@ func TestViewInterface_Scrape(t *testing.T) {
 
 		client := newTestingClient(r)
 
-		df, err := RunScreen(client, testInput.screenInput)
+		df, err := RunScreen(client, &testInput.screenInput)
 		if err != nil {
 			t.Error(err)
 		}
