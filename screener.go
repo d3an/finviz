@@ -7,6 +7,8 @@ package finviz
 
 import (
 	"fmt"
+	"sort"
+	"strconv"
 
 	"github.com/go-gota/gota/dataframe"
 
@@ -24,31 +26,53 @@ type ScreenInput struct {
 	SpecificOrder SpecificOrderType
 	Tickers       []string
 	Filters       []FilterInterface
-	View          ViewType
+	View          string
 	CustomColumns []string
 }
 
-func getScreenerView(viewType ViewType) string {
-	if viewType == "" {
-		viewType = "1"
+func getCustomColumns(columns []string, view ViewInterface) (string, ViewInterface, error) {
+	columnsLen := len(columns)
+	if columnsLen == 0 {
+		return "", view, nil
 	}
 
-	return fmt.Sprintf("v=%v", viewType)
+	var orderedColumns []string
+	for i := 0; i < columnsLen; i++ {
+		if _, err := strconv.Atoi(columns[i]); err == nil {
+			orderedColumns = append(orderedColumns, columns[i])
+		} else if val, ok := CustomColumnLookup[columns[i]]; ok {
+			orderedColumns = append(orderedColumns, val)
+		} else {
+			return "", view, fmt.Errorf("%v is not a valid custom column", columns[i])
+		}
+	}
+
+	view, _ = GetViewFactory("custom")
+	return fmt.Sprintf("&c=%v", strings.Join(orderedColumns, ",")), view, nil
 }
 
-func getFilterList(filters []FilterInterface) string {
+func getFilterList(filters []FilterInterface) (string, error) {
 	filterSize := len(filters)
 	if filterSize == 0 {
-		return ""
+		return "", nil
 	}
 
+	var validFilters []FilterInterface
 	var filterKeys []string
+
 	for i := 0; i < filterSize; i++ {
+		if filters[i].GetValue() == "" {
+			return "", NoValuesError(fmt.Sprintf("%v filter was initialized without a value.", filters[i].GetName()))
+		}
+		if filterArrayContains(validFilters, filters[i]) {
+			return "", DuplicateFilterError(fmt.Sprintf("%v filter was declared more than once.", filters[i].GetName()))
+		}
+		validFilters = append(validFilters, filters[i])
 		filterKeys = append(filterKeys, filters[i].GetURLKey())
 	}
 
 	filterList := strings.Join(filterKeys, ",")
-	return fmt.Sprintf("&f=%v", filterList)
+	return fmt.Sprintf("&f=%v", filterList), nil
 }
 
 func getSignal(signal SignalType) string {
@@ -59,7 +83,8 @@ func getSignal(signal SignalType) string {
 }
 
 func getSortOrder(generalOrder GeneralOrderType, signal SignalType, specificOrder SpecificOrderType) string {
-	if specificOrder == Signal && signal == "" && generalOrder == Ascending {
+	// To sort by Signal, the Signal field must be non-empty
+	if specificOrder == Signal && signal == "" && generalOrder == "" {
 		return ""
 	} else if specificOrder == Signal && signal == "" {
 		return fmt.Sprintf("&o=%v", generalOrder)
@@ -82,31 +107,48 @@ func getTickerList(tickers []string) string {
 		tickers[i] = strings.ToUpper(tickers[i])
 	}
 
+	sort.Strings(tickers)
 	tickerList := strings.Join(tickers, ",")
 	return fmt.Sprintf("&t=%v", tickerList)
 }
 
 // GenerateURL consumes valid inputs to the screen and generates a corresponding valid URL
-func GenerateURL(input ScreenInput) string {
-	screenerView := getScreenerView(input.View)
+func GenerateURL(input *ScreenInput, view ViewInterface) (string, error) {
 	signal := getSignal(input.Signal)
-	filterList := getFilterList(input.Filters)
+	filterList, err := getFilterList(input.Filters)
+	if err != nil {
+		return "", err
+	}
+
 	sortOrder := getSortOrder(input.GeneralOrder, input.Signal, input.SpecificOrder)
 	tickerList := getTickerList(input.Tickers)
+	customColumns, view, err := getCustomColumns(input.CustomColumns, view)
+	if err != nil {
+		return "", err
+	}
 
-	return fmt.Sprintf("%v?%v%v%v%v%v", APIURL, screenerView, signal, filterList, tickerList, sortOrder)
+	return fmt.Sprintf("%v?%v%v%v%v%v%v", APIURL, view.getURLView(), signal, filterList, tickerList, sortOrder, customColumns), nil
 }
 
 // RunScreen consumes a client and screen input to produce a dataframe of results
-func RunScreen(c *http.Client, input ScreenInput) (*dataframe.DataFrame, error) {
-	url := GenerateURL(input)
+func RunScreen(c *http.Client, input *ScreenInput) (*dataframe.DataFrame, error) {
+	view, err := GetViewFactory(input.View)
+	if err != nil {
+		return nil, err
+	}
+
+	url, err := GenerateURL(input, view)
+	if err != nil {
+		return nil, err
+	}
+	fmt.Println(url)
 
 	html, err := MakeGetRequest(c, url)
 	if err != nil {
 		return nil, err
 	}
 
-	df, err := GetStockDataframe(html, input.View)
+	df, err := GetStockDataframe(html, view)
 	if err != nil {
 		return nil, err
 	}

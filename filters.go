@@ -78,7 +78,6 @@ func GetFilter(filterQuery string, filterValues ...string) (*Filter, error) {
 	return nil, FilterNotFoundError(fmt.Sprintf("Filter not found. Query: \"%v\"", filterQuery))
 }
 
-/*
 // filterArrayContains returns true if a filter exists in an array of filters and false otherwise
 func filterArrayContains(fs []FilterInterface, f FilterInterface) bool {
 	filterCount := len(fs)
@@ -89,7 +88,6 @@ func filterArrayContains(fs []FilterInterface, f FilterInterface) bool {
 	}
 	return false
 }
-*/
 
 /***************************************************************************
 *****	DESCRIPTIVE   ******************************************************
@@ -145,7 +143,6 @@ func IndustryFilter(industryTypes ...IndustryType) *Filter {
 		URLPrefix: "ind",
 	}
 	return filter.SetValues(industryTypes)
-
 }
 
 // CountryFilter returns a reference to a Filter type
@@ -950,7 +947,7 @@ func AverageTrueRangeFilter(averageTrueRangeTypes ...AverageTrueRangeType) *Filt
 }
 
 // CustomFilter returns a reference to a filter based on custom set values
-func CustomFilter(name string, urlPrefix string, supportsMultipleValues bool, supportsCustomRange bool, values ...string) FilterInterface {
+func CustomFilter(name, urlPrefix string, supportsMultipleValues, supportsCustomRange bool, values ...string) FilterInterface {
 	filter := Filter{
 		Name: name,
 		Properties: map[string]bool{

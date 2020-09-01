@@ -47,6 +47,13 @@ func (err FilterNotFoundError) Error() string {
 	return string(err)
 }
 
+// ViewNotFoundError is the error thrown if a query string is not associated with a labelled ViewType
+type ViewNotFoundError string
+
+func (err ViewNotFoundError) Error() string {
+	return string(err)
+}
+
 // StatusCodeError is the error given if a request's status code is not 200
 type StatusCodeError string
 
