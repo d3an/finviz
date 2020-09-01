@@ -11,8 +11,79 @@ import (
 	"strings"
 )
 
-func (v *ViewType) getURLView() string {
+// getURLView generates url components for ViewTypes
+func (v *ViewType) getURLComponent() string {
 	return fmt.Sprintf("v=%v", v.ViewID)
+}
+
+// getURLView generates url components for ChartViewTypes
+// Note: Certain TimeFrames are only supported for specific ChartStyles.
+//       This method assumes ChartStyles and TimeFrames are set correctly.
+//       The Set... methods validate user input for non-default values.
+func (c *ChartViewType) getURLComponent() string {
+	var url string
+	switch c.chartStyle {
+	default:
+		return fmt.Sprintf("v=%v", c.ViewID)
+	case Line:
+		url = fmt.Sprintf("v=%v&ty=l&ta=0", c.ViewID)
+	case Candle:
+		url = fmt.Sprintf("v=%v&ta=0", c.ViewID)
+	}
+
+	switch c.timeFrame {
+	default:
+		return url
+	case Weekly:
+		return fmt.Sprintf("%v&p=w", url)
+	case Monthly:
+		return fmt.Sprintf("%v&p=m", url)
+	case Min30:
+		return fmt.Sprintf("%v&p=i30", url)
+	case Min15:
+		return fmt.Sprintf("%v&p=i15", url)
+	case Min5:
+		return fmt.Sprintf("%v&p=i5", url)
+	case Min1:
+		return fmt.Sprintf("%v&p=i1", url)
+	}
+}
+
+// GetChartStyle gets the ChartStyle for a ChartViewType
+func (c *ChartViewType) GetChartStyle() string {
+	return c.chartStyle
+}
+
+// GetTimeFrame gets the TimeFrame for a ChartViewType
+func (c *ChartViewType) GetTimeFrame() string {
+	return c.timeFrame
+}
+
+// SetChartStyle sets a new ChartStyle for a ChartViewType
+func (c *ChartViewType) SetChartStyle(newChartStyle string) error {
+	if newChartStyle != Technical && newChartStyle != Line && newChartStyle != Candle {
+		return InvalidChartTypeError(fmt.Sprintf("\"%v\" is not a valid ChartType", newChartStyle))
+	} else if (newChartStyle == Technical && c.timeFrame != Daily) ||
+		(newChartStyle == Line && (c.timeFrame == Min15 || c.timeFrame == Min30)) ||
+		(newChartStyle == Candle && c.timeFrame == Min1) {
+		return IncompatibleChartTypeTimeFrameError(fmt.Sprintf("\"%v\" ChartStyle is not compatible with the \"%v\" TimeFrame", newChartStyle, c.timeFrame))
+	}
+	c.chartStyle = newChartStyle
+	return nil
+}
+
+// SetTimeFrame sets a new TimeFrame for a ChartViewType
+// Add check for Elite status to enable intraday TimeFrames
+func (c *ChartViewType) SetTimeFrame(newTimeFrame string) error {
+	if newTimeFrame != Daily && newTimeFrame != Weekly && newTimeFrame != Monthly {
+		return InvalidTimeFrameError(fmt.Sprintf("\"%v\" is not a valid TimeFrame", newTimeFrame))
+	} else if (c.chartStyle == Technical && newTimeFrame != Daily) ||
+		(c.chartStyle == Line && (newTimeFrame == Min15 || newTimeFrame == Min30)) ||
+		(c.chartStyle == Candle && newTimeFrame == Min5) {
+		return IncompatibleChartTypeTimeFrameError(fmt.Sprintf("\"%v\" ChartStyle is not compatible with the \"%v\" TimeFrame", c.chartStyle, newTimeFrame))
+	}
+	c.timeFrame = newTimeFrame
+	return nil
 }
 
 // Scrape scrapes the DefaultView (100 series) html document for the screen's ticker results
@@ -28,6 +99,30 @@ func (v *ViewType) Scrape(doc *goquery.Document) (rows [][]string, err error) {
 	})
 
 	return rows, nil
+}
+
+// Scrape scrapes the ChartsView (210) html document for the screen's ticker results
+func (c *ChartViewType) Scrape(doc *goquery.Document) (rows [][]string, err error) {
+	var tickerDataSlice []map[string]interface{}
+	var headers []string
+
+	doc.Find("#screener-content").Find("tbody").Children().Eq(4).Find("tbody").Find("td").Children().Each(func(i int, spanNode *goquery.Selection) {
+		var rawTickerData = make(map[string]interface{})
+		if titleAttr := spanNode.AttrOr("title", ""); titleAttr != "" {
+			body := strings.Split(strings.Split(strings.Split(titleAttr, "body=[")[2], "]")[0], "<b>")[1]
+			rawTickerData["Company"] = strings.Split(body, "</b>")[0]
+			body = strings.Split(body, "<br>")[1]
+			rawTickerData["Industry"] = strings.Split(body, " | ")[0]
+			rawTickerData["Country"] = strings.Split(body, " | ")[1]
+			rawTickerData["Market Cap"] = strings.Split(body, " | ")[2]
+		}
+		rawTickerData["Ticker"] = strings.Split(strings.Split(spanNode.Find("a").AttrOr("href", ""), "quote.ashx?t=")[1], "&")[0]
+		rawTickerData["Chart"] = spanNode.Find("img").AttrOr("src", "")
+		tickerDataSlice = append(tickerDataSlice, rawTickerData)
+	})
+
+	headers = []string{"Ticker", "Chart", "Company", "Industry", "Country", "Market Cap"}
+	return generateRows(headers, tickerDataSlice)
 }
 
 // Scrape scrapes the BasicView (310) html document for the screen's ticker results

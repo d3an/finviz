@@ -10,12 +10,52 @@ import "github.com/PuerkitoBio/goquery"
 // ViewInterface introduces methods to interact with FinViz views
 type ViewInterface interface {
 	Scrape(document *goquery.Document) ([][]string, error)
-	getURLView() string
+	getURLComponent() string
 }
+
+// ChartViewInterface introduces methods to interact with FinViz views that contain charts
+type ChartViewInterface interface {
+	ViewInterface
+	GetChartStyle() ChartStyle
+	GetTimeFrame() TimeFrame
+	SetChartStyle(string) error
+	SetTimeFrame(string) error
+}
+
+// ChartStyle defines the types of charts available in the FinViz screener
+type ChartStyle = string
+
+// ChartStyle constant definitions
+const (
+	Candle    ChartStyle = "candle"
+	Line      ChartStyle = "line"
+	Technical ChartStyle = "technical"
+)
+
+// TimeFrame defines the period length of charts available in the FinViz screener
+type TimeFrame = string
+
+// TimeFrame constant definitions
+const (
+	Min1    TimeFrame = "1min"
+	Min5    TimeFrame = "5min"
+	Min15   TimeFrame = "15min"
+	Min30   TimeFrame = "30min"
+	Daily   TimeFrame = "daily"
+	Weekly  TimeFrame = "weekly"
+	Monthly TimeFrame = "monthly"
+)
 
 // ViewType handles the ID of each FinViz view
 type ViewType struct {
 	ViewID string
+}
+
+// ChartViewType handles the ID, ChartStyle, and the TimeFrame of each FinViz chart view.
+type ChartViewType struct {
+	ViewID     string
+	chartStyle ChartStyle
+	timeFrame  TimeFrame
 }
 
 // OverviewView (110)
@@ -55,32 +95,32 @@ type TechnicalView struct {
 
 // ChartsView (210)
 type ChartsView struct {
-	ViewType
+	ChartViewType
 }
 
 // BasicView (310)
 type BasicView struct {
-	ViewType
+	ChartViewType
 }
 
 // NewsView (320)
 type NewsView struct {
-	ViewType
+	ChartViewType
 }
 
 // DescriptionView (330)
 type DescriptionView struct {
-	ViewType
+	ChartViewType
 }
 
 // SnapshotView (340)
 type SnapshotView struct {
-	ViewType
+	ChartViewType
 }
 
 // TAView (350)
 type TAView struct {
-	ViewType
+	ChartViewType
 }
 
 // TickersView (410)
