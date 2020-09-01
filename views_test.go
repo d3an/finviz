@@ -225,7 +225,7 @@ func TestViewInterface_Scrape(t *testing.T) {
 		// Check column names
 		receivedColumns := df.Names()
 		for i := 0; i < testInput.nCols; i++ {
-			if df.Names()[i] != testInput.columnNames[i] {
+			if receivedColumns[i] != testInput.columnNames[i] {
 				t.Fail()
 				t.Logf("Expected column named \"%v\", received column named \"%v\"", testInput.columnNames[i], receivedColumns[i])
 			}
