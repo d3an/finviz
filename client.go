@@ -122,15 +122,26 @@ func generateDocument(html interface{}) (doc *goquery.Document, err error) {
 }
 
 // GetStockDataframe consumes an html instance and returns a dataframe of stocks returned
-func GetStockDataframe(html interface{}, view ViewInterface) (*dataframe.DataFrame, error) {
+func GetStockDataframe(html, view interface{}) (*dataframe.DataFrame, error) {
 	doc, err := generateDocument(html)
 	if err != nil {
 		return nil, err
 	}
 
-	results, err := view.Scrape(doc)
-	if err != nil {
-		return nil, err
+	var results [][]string
+	switch view := view.(type) {
+	default:
+		return nil, InvalidViewError("view was not initialized as a ViewInterface or ChartViewInterface")
+	case ChartViewInterface:
+		results, err = view.Scrape(doc)
+		if err != nil {
+			return nil, err
+		}
+	case ViewInterface:
+		results, err = view.Scrape(doc)
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	df := dataframe.LoadRecords(results)
@@ -138,10 +149,10 @@ func GetStockDataframe(html interface{}, view ViewInterface) (*dataframe.DataFra
 }
 
 // GetViewFactory consumes a view query string and returns the associated ViewInterface
-func GetViewFactory(viewQuery string) (ViewInterface, error) {
+func GetViewFactory(viewQuery string) (interface{}, error) {
 	switch strings.ToLower(viewQuery) {
 	default:
-		return &OverviewView{ViewType{"110"}}, ViewNotFoundError(fmt.Sprintf("View \"%v\" not found. ", viewQuery))
+		return &OverviewView{ViewType{"110"}}, InvalidViewError(fmt.Sprintf("view \"%v\" is not supported", viewQuery))
 	case "overview":
 		return &OverviewView{ViewType{"110"}}, nil
 	case "valuation":
@@ -157,17 +168,17 @@ func GetViewFactory(viewQuery string) (ViewInterface, error) {
 	case "technical":
 		return &TechnicalView{ViewType{"170"}}, nil
 	case "charts":
-		return &ChartsView{ViewType{"210"}}, nil
+		return &ChartsView{ChartViewType{"210", Technical, Daily}}, nil
 	case "basic":
-		return &BasicView{ViewType{"310"}}, nil
+		return &BasicView{ChartViewType{"310", Technical, Daily}}, nil
 	case "news":
-		return &NewsView{ViewType{"320"}}, nil
+		return &NewsView{ChartViewType{"320", Technical, Daily}}, nil
 	case "description":
-		return &DescriptionView{ViewType{"330"}}, nil
+		return &DescriptionView{ChartViewType{"330", Technical, Daily}}, nil
 	case "snapshot":
-		return &SnapshotView{ViewType{"340"}}, nil
+		return &SnapshotView{ChartViewType{"340", Technical, Daily}}, nil
 	case "ta":
-		return &TAView{ViewType{"350"}}, nil
+		return &TAView{ChartViewType{"350", Technical, Daily}}, nil
 	case "tickers":
 		return &TickersView{ViewType{"410"}}, nil
 	case "bulk":

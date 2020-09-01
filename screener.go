@@ -21,16 +21,18 @@ const APIURL = "https://finviz.com/screener.ashx"
 
 // ScreenInput represents the data passed to the screen
 type ScreenInput struct {
-	Signal        SignalType
-	GeneralOrder  GeneralOrderType
-	SpecificOrder SpecificOrderType
-	Tickers       []string
-	Filters       []FilterInterface
-	View          string
-	CustomColumns []string
+	Signal           SignalType
+	GeneralOrder     GeneralOrderType
+	SpecificOrder    SpecificOrderType
+	Tickers          []string
+	Filters          []FilterInterface
+	View             string
+	CustomChartStyle string
+	CustomColumns    []string
+	CustomTimeFrame  string
 }
 
-func getCustomColumns(columns []string, view ViewInterface) (string, ViewInterface, error) {
+func getCustomColumnsURLComponent(columns []string, view interface{}) (urlComponent string, viewInterface interface{}, err error) {
 	columnsLen := len(columns)
 	if columnsLen == 0 {
 		return "", view, nil
@@ -51,7 +53,7 @@ func getCustomColumns(columns []string, view ViewInterface) (string, ViewInterfa
 	return fmt.Sprintf("&c=%v", strings.Join(orderedColumns, ",")), view, nil
 }
 
-func getFilterList(filters []FilterInterface) (string, error) {
+func getFilterURLComponent(filters []FilterInterface) (string, error) {
 	filterSize := len(filters)
 	if filterSize == 0 {
 		return "", nil
@@ -75,14 +77,14 @@ func getFilterList(filters []FilterInterface) (string, error) {
 	return fmt.Sprintf("&f=%v", filterList), nil
 }
 
-func getSignal(signal SignalType) string {
+func getSignalURLComponent(signal SignalType) string {
 	if signal == "" {
 		return ""
 	}
 	return fmt.Sprintf("&s=%v", signal)
 }
 
-func getSortOrder(generalOrder GeneralOrderType, signal SignalType, specificOrder SpecificOrderType) string {
+func getSortOrderURLComponent(generalOrder GeneralOrderType, signal SignalType, specificOrder SpecificOrderType) string {
 	// To sort by Signal, the Signal field must be non-empty
 	if specificOrder == Signal && signal == "" && generalOrder == "" {
 		return ""
@@ -97,7 +99,7 @@ func getSortOrder(generalOrder GeneralOrderType, signal SignalType, specificOrde
 	return fmt.Sprintf("&o=%v%v", generalOrder, specificOrder)
 }
 
-func getTickerList(tickers []string) string {
+func getTickerURLComponent(tickers []string) string {
 	tickersSize := len(tickers)
 	if tickersSize == 0 {
 		return ""
@@ -112,22 +114,52 @@ func getTickerList(tickers []string) string {
 	return fmt.Sprintf("&t=%v", tickerList)
 }
 
+// Note: The order of the type switch matters. ChartViewInterface must be before ViewInterface.
+//       This is because ChartViewInterface IS-A ViewInterface.
+func getViewURLComponent(chartStyle, timeFrame string, view interface{}) (string, error) {
+	switch view := view.(type) {
+	default:
+		return "", InvalidViewError("view was not initialized as a ViewInterface or ChartViewInterface")
+	case ChartViewInterface:
+		if chartStyle != "" {
+			err := view.SetChartStyle(chartStyle)
+			if err != nil {
+				return "", err
+			}
+		}
+		if timeFrame != "" {
+			err := view.SetTimeFrame(timeFrame)
+			if err != nil {
+				return "", err
+			}
+		}
+		return view.getURLComponent(), nil
+	case ViewInterface:
+		return view.getURLComponent(), nil
+	}
+}
+
 // GenerateURL consumes valid inputs to the screen and generates a corresponding valid URL
-func GenerateURL(input *ScreenInput, view ViewInterface) (string, error) {
-	signal := getSignal(input.Signal)
-	filterList, err := getFilterList(input.Filters)
+func GenerateURL(input *ScreenInput, view interface{}) (string, error) {
+	signalURLComponent := getSignalURLComponent(input.Signal)
+	filterURLComponent, err := getFilterURLComponent(input.Filters)
 	if err != nil {
 		return "", err
 	}
 
-	sortOrder := getSortOrder(input.GeneralOrder, input.Signal, input.SpecificOrder)
-	tickerList := getTickerList(input.Tickers)
-	customColumns, view, err := getCustomColumns(input.CustomColumns, view)
+	sortOrderURLComponent := getSortOrderURLComponent(input.GeneralOrder, input.Signal, input.SpecificOrder)
+	tickerURLComponent := getTickerURLComponent(input.Tickers)
+	customColumnsURLComponent, view, err := getCustomColumnsURLComponent(input.CustomColumns, view)
 	if err != nil {
 		return "", err
 	}
 
-	return fmt.Sprintf("%v?%v%v%v%v%v%v", APIURL, view.getURLView(), signal, filterList, tickerList, sortOrder, customColumns), nil
+	viewURLComponent, err := getViewURLComponent(input.CustomChartStyle, input.CustomTimeFrame, view)
+	if err != nil {
+		return "", err
+	}
+
+	return fmt.Sprintf("%v?%v%v%v%v%v%v", APIURL, viewURLComponent, signalURLComponent, filterURLComponent, tickerURLComponent, sortOrderURLComponent, customColumnsURLComponent), nil
 }
 
 // RunScreen consumes a client and screen input to produce a dataframe of results

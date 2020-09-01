@@ -10,6 +10,197 @@ import (
 	"testing"
 )
 
+// TestChartViewInterface_SetTimeFrame tests the correctness of the ChartViewInterface.SetTimeFrame method
+func TestChartViewInterface_SetTimeFrame(t *testing.T) {
+	failingTestInputs := []struct {
+		curChartStyle string
+		newTimeFrame  string
+	}{
+		{
+			"technical",
+			"weekly",
+		},
+		{
+			"technical",
+			"",
+		},
+		{
+			"technical",
+			"monthly",
+		},
+		{
+			"technical",
+			"5min",
+		},
+		{
+			"line",
+			"15min",
+		},
+		{
+			"line",
+			"30min",
+		},
+		{
+			"line",
+			"",
+		},
+		{
+			"candle",
+			"1min",
+		},
+		{
+			"candle",
+			"",
+		},
+		// When Elite is supported, these should pass:
+		{
+			"line",
+			"1min",
+		},
+		{
+			"line",
+			"5min",
+		},
+		{
+			"candle",
+			"5min",
+		},
+		{
+			"candle",
+			"15min",
+		},
+		{
+			"candle",
+			"30min",
+		},
+	}
+
+	passingTestInputs := []struct {
+		curChartStyle string
+		newTimeFrame  string
+	}{
+		{
+			"technical",
+			"daily",
+		},
+		{
+			"line",
+			"weekly",
+		},
+		{
+			"candle",
+			"monthly",
+		},
+	}
+
+	for _, testInput := range failingTestInputs {
+		view := ChartsView{ChartViewType{"charts", testInput.curChartStyle, "daily"}}
+		err := view.SetTimeFrame(testInput.newTimeFrame)
+		if err == nil {
+			t.Fail()
+			t.Logf("Expected SetChartStyle to fail when new TimeFrame is \"%v\" and existing ChartStyle is \"%v\"", testInput.newTimeFrame, testInput.curChartStyle)
+		}
+	}
+
+	for _, testInput := range passingTestInputs {
+		view := ChartsView{ChartViewType{"charts", testInput.curChartStyle, "daily"}}
+		err := view.SetTimeFrame(testInput.newTimeFrame)
+		if err != nil {
+			t.Fail()
+			t.Logf("Expected SetTimeFrame to pass when new TimeFrame is \"%v\" and existing ChartStyle is \"%v\"", testInput.newTimeFrame, testInput.curChartStyle)
+		}
+	}
+}
+
+// TestChartViewInterface_SetChartStyle tests the correctness of the ChartViewInterface.SetChartStyle method
+func TestChartViewInterface_SetChartStyle(t *testing.T) {
+	failingTestInputs := []struct {
+		newChartStyle string
+		curTimeFrame  string
+	}{
+		{
+			"invalid",
+			"daily",
+		},
+		{
+			"",
+			"daily",
+		},
+		{
+			"technical",
+			"weekly",
+		},
+		{
+			"line",
+			"15min",
+		},
+		{
+			"line",
+			"30min",
+		},
+		{
+			"candle",
+			"1min",
+		},
+	}
+
+	passingTestInputs := []struct {
+		newChartStyle string
+		curTimeFrame  string
+	}{
+		{
+			"technical",
+			"daily",
+		},
+		{
+			"line",
+			"weekly",
+		},
+		{
+			"candle",
+			"monthly",
+		},
+		{
+			"line",
+			"1min",
+		},
+		{
+			"line",
+			"5min",
+		},
+		{
+			"candle",
+			"5min",
+		},
+		{
+			"candle",
+			"15min",
+		},
+		{
+			"candle",
+			"30min",
+		},
+	}
+
+	for _, testInput := range failingTestInputs {
+		view := ChartsView{ChartViewType{"charts", "technical", testInput.curTimeFrame}}
+		err := view.SetChartStyle(testInput.newChartStyle)
+		if err == nil {
+			t.Fail()
+			t.Logf("Expected SetTimeFrame to fail when new ChartStyle is \"%v\" and existing TimeFrame is \"%v\"", testInput.newChartStyle, testInput.curTimeFrame)
+		}
+	}
+
+	for _, testInput := range passingTestInputs {
+		view := ChartsView{ChartViewType{"charts", "technical", testInput.curTimeFrame}}
+		err := view.SetChartStyle(testInput.newChartStyle)
+		if err != nil {
+			t.Fail()
+			t.Logf("Expected SetTimeFrame to pass when new ChartStyle is \"%v\" and existing TimeFrame is \"%v\"", testInput.newChartStyle, testInput.curTimeFrame)
+		}
+	}
+}
+
 // TestViewInterface_Scrape tests the scrape functions for all supported/available views
 // If FinViz changes their view templates, fixtures must be regenerated
 func TestViewInterface_Scrape(t *testing.T) {
@@ -104,6 +295,45 @@ func TestViewInterface_Scrape(t *testing.T) {
 			[]string{"No.", "Ticker", "Beta", "ATR", "SMA20", "SMA50", "SMA200", "52W High", "52W Low", "RSI", "Price", "Change", "from Open", "Gap", "Volume"},
 			20,
 			15,
+		},
+		{
+			"fixtures/finviz_screener_view_210_technical",
+			ScreenInput{
+				Signal:           AllStocks,
+				GeneralOrder:     Descending,
+				SpecificOrder:    Change,
+				View:             "charts",
+				CustomChartStyle: "technical",
+			},
+			[]string{"Ticker", "Chart", "Company", "Industry", "Country", "Market Cap"},
+			12,
+			6,
+		},
+		{
+			"fixtures/finviz_screener_view_210_line",
+			ScreenInput{
+				Signal:           AllStocks,
+				GeneralOrder:     Descending,
+				SpecificOrder:    Change,
+				View:             "charts",
+				CustomChartStyle: "line",
+			},
+			[]string{"Ticker", "Chart", "Company", "Industry", "Country", "Market Cap"},
+			24,
+			6,
+		},
+		{
+			"fixtures/finviz_screener_view_210_candle",
+			ScreenInput{
+				Signal:           AllStocks,
+				GeneralOrder:     Descending,
+				SpecificOrder:    Change,
+				View:             "charts",
+				CustomChartStyle: "candle",
+			},
+			[]string{"Ticker", "Chart", "Company", "Industry", "Country", "Market Cap"},
+			24,
+			6,
 		},
 		{
 			"fixtures/finviz_screener_view_310",

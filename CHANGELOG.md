@@ -20,7 +20,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
-- `SD-5` Added `SetMultipleValues` to FilterInterface to allow multiple of the same filters, with | operator.
+- `SD-17` Added export functions for csv and json
+- added lookup tables for most types
+- `SD-23` added support for most free views (110, 120, 130, 140, 150, 160, 170, 310, 320, 330, 340, 350, 410, 510, 520)
+- `SD-24` added support for charts view (210)
+- `SD-38` added support for custom chart timeframes
+- `SD-39` added support for custom chart types
+- `SD-22` added unit testing for all `Scrape` functions with `go-vcr`
+- added unit testing for `ChartViewInterface.SetTimeFrame`
+- added unit testing for `ChartViewInterface.SetChartType`
+- `SD-27` added `PrintDataFrame` function to print full DataFrames to console
+- `SD-14` added beta Finviz CLI
+- `SD-28` added properties to filters
+
+### Changed
+- `SD-15` Refactored `filters.go`
+- refactored `screener_view.go`
+- `SD-37` Created `.golangci.yaml` and added `gocognit` support
+
+### Fixed
+- `SD-25` Fixed ordering for bulk views (500 series) with breadth-first iteration
+- `SD-26` Fixed double question mark in URL generation
+- `SD-16` Added random user-agent to requests to bypass 403 HTTP errors
+
+### Removed
+- `SD-37` Removed `gocyclo` from `.pre-commit-config.yaml`
+
+## [v.1.0.1][2020.08.06]
+### Added
+- `SD-5` Added `SetMultipleValues` to `FilterInterface` to allow multiple of the same filters, with `|` operator.
 
 ## [v.1.0.0][2020.07.27]
 ### Added

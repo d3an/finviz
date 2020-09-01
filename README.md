@@ -10,48 +10,39 @@ View the [Wiki](https://github.com/d3an/finviz/wiki) for more extensive document
 
 ### Screen Example
 
-```
+```go
 package main
 
 import (
-  "fmt"
-
   . "github.com/d3an/finviz"
 )
 
 func main() {
     client := NewClient()
-
-    df, err := RunScreen(client, ScreenInput{
+    df, err := RunScreen(client, &ScreenInput{
         Signal: TopGainers,
         GeneralOrder: Descending,
         SpecificOrder: ChangeFromOpen,
     	Filters: []FilterInterface{
-            IndustryFilter{}.SetMultipleValues(WasteManagement, Airlines),
-    	    AverageVolumeFilter{Value: AvgVolOver50K},
-            PriceFilter{Value: PriceOver1},
-    	},
+        	IndustryFilter(WasteManagement, Airlines),
+    	    AverageVolumeFilter(AvgVolOver50K),
+            PriceFilter(PriceOver1),
+        },
+        View: "overview",
     })
     if err != nil {
         panic(err)
     }
 
     // Print screen results dataframe
-    fmt.Println(df)
+    PrintFullDataframe(df)
 }
 ```
-
-## ToDo
-
-- [ ] Add CLI tools for running screens
-- [x] Update README.md with more documentation
-- [x] Add support for multiple of the same filters with `|` operator
-- [ ] Add support for non-default views (increase the number of tickers a screen can return)
-- [ ] Review dataframe package and consider migration for greater support
 
 ## Contributing
 
 You can contribute to this project by reporting bugs, suggesting enhancements, or directly by extending and writing features.
+PLEASE submit any issues that you find with the package. This project is still undergoing heavy development and any insight would be incredibly helpful.
 
 ## Disclaimer
 

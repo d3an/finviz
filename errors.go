@@ -47,10 +47,31 @@ func (err FilterNotFoundError) Error() string {
 	return string(err)
 }
 
-// ViewNotFoundError is the error thrown if a query string is not associated with a labelled ViewType
-type ViewNotFoundError string
+// IncompatibleChartTypeTimeFrameError is the error thrown if a newTimeFrame is not one of valid for the specified chart type
+type IncompatibleChartTypeTimeFrameError string
 
-func (err ViewNotFoundError) Error() string {
+func (err IncompatibleChartTypeTimeFrameError) Error() string {
+	return string(err)
+}
+
+// InvalidChartTypeError is the error thrown if a newChartType is not one of "technical", "line", or "candle"
+type InvalidChartTypeError string
+
+func (err InvalidChartTypeError) Error() string {
+	return string(err)
+}
+
+// InvalidTimeFrameError is the error thrown if a newTimeFrame is not one of valid for the specified chart type
+type InvalidTimeFrameError string
+
+func (err InvalidTimeFrameError) Error() string {
+	return string(err)
+}
+
+// InvalidViewError is the error thrown if a query string is not associated with a labelled ViewType
+type InvalidViewError string
+
+func (err InvalidViewError) Error() string {
 	return string(err)
 }
 
