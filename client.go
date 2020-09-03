@@ -1,33 +1,55 @@
+// Copyright (c) 2020 James Bury. All rights reserved.
+// Project site: https://github.com/d3an/finviz
+// Use of this source code is governed by a MIT-style license that
+// can be found in the LICENSE file for the project.
+
 package finviz
 
 import (
 	"bytes"
 	"fmt"
 	"github.com/PuerkitoBio/goquery"
+	"github.com/corpix/uarand"
+	"github.com/dnaeon/go-vcr/recorder"
 	"github.com/go-gota/gota/dataframe"
+	"io"
 	"io/ioutil"
 	"net/http"
+	"strings"
 	"time"
 )
 
-// StatusCodeError is the error given if a request's status code is not 200
-type StatusCodeError string
-
-func (err StatusCodeError) Error() string {
-	return string(err)
+// HeaderTransport implements a Transport that can have its RoundTripper interface modified
+type HeaderTransport struct {
+	T http.RoundTripper
 }
 
-// NoStocksMatchedQueryError is the error given if a screen returns no results
-type NoStocksMatchedQueryError string
+// RoundTrip implements the RoundTripper interface with a custom user-agent
+func (adt *HeaderTransport) RoundTrip(req *http.Request) (*http.Response, error) {
+	req.Header.Add("User-Agent", uarand.GetRandom())
+	return adt.T.RoundTrip(req)
+}
 
-func (err NoStocksMatchedQueryError) Error() string {
-	return string(err)
+func addHeaderTransport(t http.RoundTripper) *HeaderTransport {
+	if t == nil {
+		t = http.DefaultTransport
+	}
+	return &HeaderTransport{t}
 }
 
 // NewClient generates a new client instance
 func NewClient() *http.Client {
 	return &http.Client{
-		Timeout: 30 * time.Second,
+		Timeout:   30 * time.Second,
+		Transport: addHeaderTransport(nil),
+	}
+}
+
+// newTestingClient generates a new testing client instance that uses go-vcr
+func newTestingClient(rec *recorder.Recorder) *http.Client {
+	return &http.Client{
+		Timeout:   30 * time.Second,
+		Transport: addHeaderTransport(rec),
 	}
 }
 
@@ -64,66 +86,104 @@ func MakeGetRequest(c *http.Client, url string) ([]byte, error) {
 	return html, nil
 }
 
-// ScrapeScreenResults scrapes an HTML document for the screen's ticker results
-func ScrapeScreenResults(doc *goquery.Document) ([][]string, error) {
-	var row []string
-	var rows [][]string
+func generateDocument(html interface{}) (doc *goquery.Document, err error) {
+	switch html := html.(type) {
+	default:
+		return nil, fmt.Errorf("HTML object is not of type string or []byte or io.ReadCloser")
+	case string:
+		html = strings.ReplaceAll(html, "\\r", "")
+		html = strings.ReplaceAll(html, "\\n", "")
+		html = strings.ReplaceAll(html, "\\\"", "\"")
 
-	// Only collects data from the v=111 view (Note: maximum 20 stocks are returned)
-	doc.Find("[bgcolor=\"#d3d3d3\"]").Each(func(i int, tableHTML *goquery.Selection) {
-		tableHTML.Find("tbody").Each(func(j int, tbodyHTML *goquery.Selection) {
-			tbodyHTML.Find("[align=\"center\"]").Each(func(k int, rowHTML *goquery.Selection) {
-				rowHTML.Find("td").Each(func(l int, tableCell *goquery.Selection) {
-					row = append(row, tableCell.Text())
-				})
-				rows = append(rows, row)
-				row = nil
-			})
-			tbodyHTML.Find("[valign=\"top\"]").Each(func(k int, rowHTML *goquery.Selection) {
-				rowHTML.Find("td").Each(func(l int, tableCell *goquery.Selection) {
-					row = append(row, tableCell.Text())
-				})
-				rows = append(rows, row)
-				row = nil
-			})
-		})
-	})
+		html = strings.Map(func(r rune) rune {
+			if r == '\n' || r == '\t' {
+				return ' '
+			}
+			return r
+		}, html)
+		doc, err = goquery.NewDocumentFromReader(bytes.NewReader([]byte(html)))
+		if err != nil {
+			return nil, err
+		}
+	case []byte:
+		doc, err = goquery.NewDocumentFromReader(bytes.NewReader(html))
+		if err != nil {
+			return nil, err
+		}
 
-	// Check if only column titles exist
-	if len(rows) == 1 {
-		return nil, NoStocksMatchedQueryError("The screen returned no tickers. Try diluting your search.")
+	case io.ReadCloser:
+		byteArray, err := ioutil.ReadAll(html)
+		if err != nil {
+			return nil, err
+		}
+		return generateDocument(byteArray)
 	}
-
-	return rows, nil
+	return doc, nil
 }
 
-// GetStockDataframe consumes a byte array of the html request and returns a dataframe of stocks returned
-func GetStockDataframe(html []byte) (*dataframe.DataFrame, error) {
-	doc, err := goquery.NewDocumentFromReader(bytes.NewReader(html))
+// GetStockDataframe consumes an html instance and returns a dataframe of stocks returned
+func GetStockDataframe(html, view interface{}) (*dataframe.DataFrame, error) {
+	doc, err := generateDocument(html)
 	if err != nil {
 		return nil, err
 	}
 
-	rows, err := ScrapeScreenResults(doc)
-	if err != nil {
-		return nil, err
+	var results [][]string
+	switch view := view.(type) {
+	default:
+		return nil, InvalidViewError("view was not initialized as a ViewInterface or ChartViewInterface")
+	case ChartViewInterface:
+		results, err = view.Scrape(doc)
+		if err != nil {
+			return nil, err
+		}
+	case ViewInterface:
+		results, err = view.Scrape(doc)
+		if err != nil {
+			return nil, err
+		}
 	}
 
-	// Declare dataframe for further analysis
-	df := dataframe.LoadRecords(rows)
-
+	df := dataframe.LoadRecords(results)
 	return &df, nil
 }
 
-// GetOrderedTickerList is a helper function for viewing tickers from a screen dataframe
-func GetOrderedTickerList(df *dataframe.DataFrame) []string {
-	var tickers []string
-	column := df.Col("Ticker")
-	colLen := column.Len()
-
-	for i := 0; i < colLen; i++ {
-		tickers = append(tickers, column.Val(i).(string))
+// GetViewFactory consumes a view query string and returns the associated ViewInterface
+func GetViewFactory(viewQuery string) (interface{}, error) {
+	switch strings.ToLower(viewQuery) {
+	default:
+		return &OverviewView{ViewType{"110"}}, InvalidViewError(fmt.Sprintf("view \"%v\" is not supported", viewQuery))
+	case "overview":
+		return &OverviewView{ViewType{"110"}}, nil
+	case "valuation":
+		return &ValuationView{ViewType{"120"}}, nil
+	case "ownership":
+		return &OwnershipView{ViewType{"130"}}, nil
+	case "performance":
+		return &PerformanceView{ViewType{"140"}}, nil
+	case "custom":
+		return &CustomView{ViewType{"150"}}, nil
+	case "financial":
+		return &FinancialView{ViewType{"160"}}, nil
+	case "technical":
+		return &TechnicalView{ViewType{"170"}}, nil
+	case "charts":
+		return &ChartsView{ChartViewType{"210", Technical, Daily}}, nil
+	case "basic":
+		return &BasicView{ChartViewType{"310", Technical, Daily}}, nil
+	case "news":
+		return &NewsView{ChartViewType{"320", Technical, Daily}}, nil
+	case "description":
+		return &DescriptionView{ChartViewType{"330", Technical, Daily}}, nil
+	case "snapshot":
+		return &SnapshotView{ChartViewType{"340", Technical, Daily}}, nil
+	case "ta":
+		return &TAView{ChartViewType{"350", Technical, Daily}}, nil
+	case "tickers":
+		return &TickersView{ViewType{"410"}}, nil
+	case "bulk":
+		return &BulkView{ViewType{"510"}}, nil
+	case "bulkfull":
+		return &BulkFullView{ViewType{"520"}}, nil
 	}
-
-	return tickers
 }
