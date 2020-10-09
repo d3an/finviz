@@ -9,3 +9,6 @@
 finviz/finviz
 fixtures/*
 test_data/*
+
+# Testing
+count.out
