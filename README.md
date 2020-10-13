@@ -1,6 +1,6 @@
 # Go Wrapper for Unofficial FinViz API
 
-**WARNING** This package is undergoing heavy development. Breaking changes may be introduced in upcoming releases.
+**WARNING:** This package is undergoing heavy development. Breaking changes may be introduced in upcoming releases.
 
 ![gopherbadger-tag-do-not-edit](https://img.shields.io/badge/Go%20Coverage-52%25-brightgreen.svg?longCache=true&style=flat)
 
