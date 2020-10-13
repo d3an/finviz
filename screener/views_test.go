@@ -9,6 +9,8 @@ import (
 	"fmt"
 	"github.com/d3an/finviz"
 	"github.com/dnaeon/go-vcr/recorder"
+	"github.com/go-gota/gota/series"
+	"strings"
 	"testing"
 )
 
@@ -566,10 +568,8 @@ func TestScreenerView_GetData(t *testing.T) {
 			t.Error(err)
 		}
 
-		client := finviz.NewTestingClient(r)
-
 		// Scraping Test
-		df, err := GetScreenerData(client, testInput.viewInterfaceType, &testInput.viewArgs)
+		df, err := GetScreenerData(finviz.NewTestingClient(r), testInput.viewInterfaceType, &testInput.viewArgs)
 		if err != nil {
 			t.Errorf("GetData function failed. Error: %v", err)
 		}
@@ -597,6 +597,71 @@ func TestScreenerView_GetData(t *testing.T) {
 
 		if err := r.Stop(); err != nil {
 			t.Error(err)
+		}
+	}
+}
+
+func TestCleanDataFrame(t *testing.T) {
+	testInputs := []struct {
+		cassettePath  string
+		viewArgs      map[string]interface{}
+		viewInterface finviz.ViewInterface
+	}{
+		{
+			"cassettes/custom_screener_view",
+			map[string]interface{}{
+				"signal": UnusualVolume,
+				"filters": []FilterInterface{
+					ExchangeFilter(NYSE),
+				},
+				"tickers":        []string{},
+				"general_order":  Descending,
+				"specific_order": Volume,
+				"custom_columns": []string{"0", "1", "Sector", "2", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "shares Outstanding", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "volume", "68", "69", "IPO Date", "70"},
+			},
+			&CustomScreenerView{},
+		},
+	}
+
+	for _, testInput := range testInputs {
+		r, err := recorder.New(testInput.cassettePath)
+		if err != nil {
+			t.Error(err)
+		}
+
+		// Scraping Test
+		df, err := GetScreenerData(finviz.NewTestingClient(r), testInput.viewInterface, &testInput.viewArgs)
+		if err != nil {
+			t.Errorf("GetData function failed. Error: %v", err)
+		}
+
+		columnNames := df.Names()
+		columnTypes := df.Types()
+		columnCount := len(columnNames)
+
+		for i := 0; i < columnCount; i++ {
+			if val, exists := ColumnTypeLookup[strings.ToLower(columnNames[i])]; exists {
+				switch val {
+				case "int", "bigint", "commaint":
+					if columnTypes[i] != series.Int {
+						t.Fail()
+						t.Logf("Column \"%v\" is not of type Int", columnNames[i])
+					}
+				case "string":
+					if columnTypes[i] != series.String {
+						t.Fail()
+						t.Logf("Column \"%v\" is not of type String", columnNames[i])
+					}
+				case "float", "percent":
+					if columnTypes[i] != series.Float {
+						t.Fail()
+						t.Logf("Column \"%v\" is not of type Float", columnNames[i])
+					}
+				}
+			} else {
+				t.Fail()
+				t.Logf("Column \"%v\" not found", columnNames[i])
+			}
 		}
 	}
 }
