@@ -88,3 +88,10 @@ type NoStocksMatchedQueryError string
 func (err NoStocksMatchedQueryError) Error() string {
 	return string(err)
 }
+
+// MethodNotImplementedError is the error given if a method has not been written yet
+type MethodNotImplementedError string
+
+func (err MethodNotImplementedError) Error() string {
+	return string(err)
+}

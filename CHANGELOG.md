@@ -19,6 +19,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 ## [Unreleased]
+
+## [v.1.1.0][2020.10.13]
+### Added
+- `SD-50` Added coverage badge
+- `SD-45` Added support for News page and CLI subcommand for news
+
+### Changed
+- `SD-54` Restructured views and CLI to support multi-app structure
+- `SD-53` Fixed README.md typo
+
+### Improvements
+- `SD-55` Updated Go version from `1.14.6` to `1.15.2`
+
+## [v.1.0.2][2020.10.08]
 ### Added
 - `SD-17` Added export functions for csv and json
 - added lookup tables for most types

@@ -3,12 +3,15 @@
 // Use of this source code is governed by a MIT-style license that
 // can be found in the LICENSE file for the project.
 
-package finviz
+package screener
 
-import "fmt"
+import (
+	"fmt"
+	"github.com/d3an/finviz"
+)
 
 // SignalType represents the various signals to screen with
-type SignalType string
+type SignalType = string
 
 // Screener Signals
 const (
@@ -133,5 +136,5 @@ func GetSignal(query string) (SignalType, error) {
 		return signal, nil
 	}
 	// Add logic that suggests similar matches
-	return "", SignalNotFoundError(fmt.Sprintf("Signal not found. Query: \"%v\"", query))
+	return "", finviz.SignalNotFoundError(fmt.Sprintf("Signal not found. Query: \"%v\"", query))
 }

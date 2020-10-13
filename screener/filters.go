@@ -3,10 +3,11 @@
 // Use of this source code is governed by a MIT-style license that
 // can be found in the LICENSE file for the project.
 
-package finviz
+package screener
 
 import (
 	"fmt"
+	"github.com/d3an/finviz"
 	"os"
 	"sort"
 	"strings"
@@ -42,11 +43,11 @@ func (a *Filter) SetValues(values []string) *Filter {
 	numValues := len(values)
 
 	if numValues == 0 {
-		fmt.Println(NoValuesError(
+		fmt.Println(finviz.NoValuesError(
 			fmt.Sprintf("%v was initialized without a value.", a.GetName())))
 		os.Exit(1)
 	} else if numValues > 1 && !a.GetProperty("multipleValues") {
-		fmt.Println(MultipleValuesError(
+		fmt.Println(finviz.MultipleValuesError(
 			fmt.Sprintf("%v filter does not support multiple values. Values passed: [%v]", a.GetName(), strings.Join(values, ","))))
 		os.Exit(1)
 	}
@@ -75,7 +76,7 @@ func GetFilter(filterQuery string, filterValues ...string) (*Filter, error) {
 		return filter, nil
 	}
 	// Add logic that suggests similar matches
-	return nil, FilterNotFoundError(fmt.Sprintf("Filter not found. Query: \"%v\"", filterQuery))
+	return nil, finviz.FilterNotFoundError(fmt.Sprintf("Filter not found. Query: \"%v\"", filterQuery))
 }
 
 // filterArrayContains returns true if a filter exists in an array of filters and false otherwise
