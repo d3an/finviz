@@ -1,5 +1,7 @@
 # Go Wrapper for Unofficial FinViz API
 
+**WARNING:** This package is undergoing heavy development. Breaking changes may be introduced in upcoming releases.
+
 ![gopherbadger-tag-do-not-edit](https://img.shields.io/badge/Go%20Coverage-52%25-brightgreen.svg?longCache=true&style=flat)
 
 ## Installation
@@ -89,5 +91,5 @@ PLEASE submit any issues that you find with the package. This project is still u
 
 ## Disclaimer
 
-Using this library to acquire data from Finviz is against their Terms of Service and `robots.txt`.
+Using this library to acquire data from FinViz is against their Terms of Service and `robots.txt`.
 Use it responsibly and at your own risk. This library was built purely for educational purposes.
