@@ -20,7 +20,7 @@ linters-settings:
     min-complexity: 25
   goconst:
     min-len: 2
-    min-occurrences: 2
+    min-occurrences: 3
   gocritic:
     enabled-tags:
       - diagnostic
@@ -34,12 +34,13 @@ linters-settings:
       - octalLiteral
       - whyNoLint
       - wrapperFunc
+      - ptrToRefParam
   # gocyclo:
   #   min-complexity: 15
   # goimports:
   #   local-prefixes: github.com/golangci/golangci-lint
-  golint:
-    min-confidence: 0
+  # golint:
+  #   min-confidence: 100
   # gomnd:
   #   settings:
   #     mnd:
@@ -81,7 +82,6 @@ linters:
     - goconst
     - gocritic
     - gofmt
-    - golint
     - goprintffuncname
     - gosec
     - gosimple
@@ -93,7 +93,6 @@ linters:
     - scopelint
     - staticcheck
     - structcheck
-    - stylecheck
     - typecheck
     - unconvert
     - unparam
@@ -112,6 +111,7 @@ linters:
   # - godox
   # - goerr113
   # - goimports
+  # - golint
   # - gomnd
   # - interfacer
   # - lll
@@ -120,6 +120,7 @@ linters:
   # - nestif
   # - noctx
   # - prealloc
+  # - stylecheck
   # - testpackage
   # - wsl
 

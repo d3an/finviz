@@ -7,11 +7,11 @@ package finviz
 
 import (
 	"bytes"
+	"encoding/json"
 	"fmt"
 	"github.com/PuerkitoBio/goquery"
 	"github.com/corpix/uarand"
 	"github.com/dnaeon/go-vcr/recorder"
-	"github.com/go-gota/gota/dataframe"
 	"io"
 	"io/ioutil"
 	"net/http"
@@ -45,8 +45,8 @@ func NewClient() *http.Client {
 	}
 }
 
-// newTestingClient generates a new testing client instance that uses go-vcr
-func newTestingClient(rec *recorder.Recorder) *http.Client {
+// NewTestingClient generates a new testing client instance that uses go-vcr
+func NewTestingClient(rec *recorder.Recorder) *http.Client {
 	return &http.Client{
 		Timeout:   30 * time.Second,
 		Transport: addHeaderTransport(rec),
@@ -74,7 +74,7 @@ func MakeGetRequest(c *http.Client, url string) ([]byte, error) {
 		if err != nil {
 			return nil, err
 		}
-		return b, StatusCodeError(fmt.Sprintf("Received HTTP response status %v: %v", resp.StatusCode, resp.Status))
+		return b, StatusCodeError(fmt.Sprintf("received HTTP response status %v: %v", resp.StatusCode, resp.Status))
 	}
 
 	// Convert the response body to a string
@@ -86,10 +86,11 @@ func MakeGetRequest(c *http.Client, url string) ([]byte, error) {
 	return html, nil
 }
 
-func generateDocument(html interface{}) (doc *goquery.Document, err error) {
+// GenerateDocument is a helper function for Scraping
+func GenerateDocument(html interface{}) (doc *goquery.Document, err error) {
 	switch html := html.(type) {
 	default:
-		return nil, fmt.Errorf("HTML object is not of type string or []byte or io.ReadCloser")
+		return nil, fmt.Errorf("HTML object type is not one of string, []byte, or io.ReadCloser")
 	case string:
 		html = strings.ReplaceAll(html, "\\r", "")
 		html = strings.ReplaceAll(html, "\\n", "")
@@ -116,74 +117,39 @@ func generateDocument(html interface{}) (doc *goquery.Document, err error) {
 		if err != nil {
 			return nil, err
 		}
-		return generateDocument(byteArray)
+		return GenerateDocument(byteArray)
 	}
 	return doc, nil
 }
 
-// GetStockDataframe consumes an html instance and returns a dataframe of stocks returned
-func GetStockDataframe(html, view interface{}) (*dataframe.DataFrame, error) {
-	doc, err := generateDocument(html)
-	if err != nil {
-		return nil, err
-	}
+// GenerateRows is a helper function for DataFrame construction
+func GenerateRows(headers []string, dataSlice []map[string]interface{}) (rows [][]string, err error) {
+	headerCount := len(headers)
+	resultCount := len(dataSlice)
 
-	var results [][]string
-	switch view := view.(type) {
-	default:
-		return nil, InvalidViewError("view was not initialized as a ViewInterface or ChartViewInterface")
-	case ChartViewInterface:
-		results, err = view.Scrape(doc)
-		if err != nil {
-			return nil, err
+	rows = append(rows, headers)
+	for i := 0; i < resultCount; i++ {
+		var row []string
+
+		for j := 0; j < headerCount; j++ {
+			item := dataSlice[i][headers[j]]
+			switch item := item.(type) {
+			default:
+				return nil, fmt.Errorf("unexpected type for #%v: %v -> %v", i, headers[j], dataSlice[i][headers[j]])
+			case nil:
+				row = append(row, "-")
+			case string:
+				row = append(row, item)
+			case []map[string]string:
+				news, err := json.Marshal(item)
+				if err != nil {
+					return nil, err
+				}
+				row = append(row, string(news))
+			}
 		}
-	case ViewInterface:
-		results, err = view.Scrape(doc)
-		if err != nil {
-			return nil, err
-		}
+		rows = append(rows, row)
 	}
 
-	df := dataframe.LoadRecords(results)
-	return &df, nil
-}
-
-// GetViewFactory consumes a view query string and returns the associated ViewInterface
-func GetViewFactory(viewQuery string) (interface{}, error) {
-	switch strings.ToLower(viewQuery) {
-	default:
-		return &OverviewView{ViewType{"110"}}, InvalidViewError(fmt.Sprintf("view \"%v\" is not supported", viewQuery))
-	case "overview":
-		return &OverviewView{ViewType{"110"}}, nil
-	case "valuation":
-		return &ValuationView{ViewType{"120"}}, nil
-	case "ownership":
-		return &OwnershipView{ViewType{"130"}}, nil
-	case "performance":
-		return &PerformanceView{ViewType{"140"}}, nil
-	case "custom":
-		return &CustomView{ViewType{"150"}}, nil
-	case "financial":
-		return &FinancialView{ViewType{"160"}}, nil
-	case "technical":
-		return &TechnicalView{ViewType{"170"}}, nil
-	case "charts":
-		return &ChartsView{ChartViewType{"210", Technical, Daily}}, nil
-	case "basic":
-		return &BasicView{ChartViewType{"310", Technical, Daily}}, nil
-	case "news":
-		return &NewsView{ChartViewType{"320", Technical, Daily}}, nil
-	case "description":
-		return &DescriptionView{ChartViewType{"330", Technical, Daily}}, nil
-	case "snapshot":
-		return &SnapshotView{ChartViewType{"340", Technical, Daily}}, nil
-	case "ta":
-		return &TAView{ChartViewType{"350", Technical, Daily}}, nil
-	case "tickers":
-		return &TickersView{ViewType{"410"}}, nil
-	case "bulk":
-		return &BulkView{ViewType{"510"}}, nil
-	case "bulkfull":
-		return &BulkFullView{ViewType{"520"}}, nil
-	}
+	return rows, nil
 }
