@@ -3,18 +3,19 @@
 // Use of this source code is governed by a MIT-style license that
 // can be found in the LICENSE file for the project.
 
-package finviz
+package screener
 
 import (
 	"fmt"
+	"github.com/d3an/finviz"
 	"strings"
 )
 
 // GeneralOrderType represents ascending or descending order
-type GeneralOrderType string
+type GeneralOrderType = string
 
 // SpecificOrderType represents a more specific order, typically based on a filter
-type SpecificOrderType string
+type SpecificOrderType = string
 
 // Order of Data
 const (
@@ -186,7 +187,7 @@ func GetSpecificOrder(query string) (SpecificOrderType, error) {
 		return specificOrder, nil
 	}
 	// Add logic that suggests similar matches
-	return "", SpecificOrderNotFoundError(fmt.Sprintf("Specific order not found. Query: \"%v\"", query))
+	return "", finviz.SpecificOrderNotFoundError(fmt.Sprintf("Specific order not found. Query: \"%v\"", query))
 }
 
 // GetGeneralOrder returns the constant of the queried signal

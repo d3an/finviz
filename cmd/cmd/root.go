@@ -6,15 +6,20 @@
 package cmd
 
 import (
+	"fmt"
+	"github.com/d3an/finviz/cmd/cmd/news"
+	"github.com/d3an/finviz/cmd/cmd/screener"
 	"github.com/spf13/cobra"
+	"os"
 )
 
 var rootCmd = &cobra.Command{
 	Use:   "finviz",
-	Short: "FinViz is an unofficial CLI for FinViz.com",
+	Short: "This is an unofficial CLI for FinViz.com",
 	Run: func(cmd *cobra.Command, args []string) {
 		if err := cmd.Help(); err != nil {
-			er(err)
+			fmt.Println("Error: ", err)
+			os.Exit(1)
 		}
 	},
 }
@@ -25,5 +30,6 @@ func Execute() error {
 }
 
 func init() {
-	rootCmd.AddCommand(screenerCmd)
+	rootCmd.AddCommand(screener.ScreenerCmd)
+	rootCmd.AddCommand(news.NewsCmd)
 }

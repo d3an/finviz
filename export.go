@@ -42,9 +42,9 @@ func ExportScreenJSON(df *dataframe.DataFrame, outFileName string) error {
 	return nil
 }
 
-// PrintFullDataframe prints an entire dataframe to console
+// PrintFullDataFrame prints an entire dataframe to console
 // Derived from https://github.com/go-gota/gota/blob/master/dataframe/dataframe.go until print method is made public
-func PrintFullDataframe(df *dataframe.DataFrame) {
+func PrintFullDataFrame(df *dataframe.DataFrame) {
 	nrows, ncols := df.Dims()
 	if df.Err != nil || nrows == 0 || ncols == 0 {
 		return

@@ -3,9 +3,10 @@
 // Use of this source code is governed by a MIT-style license that
 // can be found in the LICENSE file for the project.
 
-package cmd
+package screener
 
 import (
+	. "github.com/d3an/finviz/screener"
 	"strings"
 
 	"github.com/d3an/finviz"
@@ -21,32 +22,33 @@ var (
 	outputJSONArg string
 	viewArg       string
 
-	screenerCmd = &cobra.Command{
+	// ScreenerCmd is the CLI subcommand for the Screener app
+	ScreenerCmd = &cobra.Command{
 		Use:     "screener",
 		Aliases: []string{"screen", "scr"},
-		Short:   "Finviz Stock Screener.",
-		Long: "Finviz Stock Screener searches through large amounts of stock data and returns a list " +
+		Short:   "FinViz Stock Screener.",
+		Long: "FinViz Stock Screener searches through large amounts of stock data and returns a list " +
 			"of stocks that match one or more selected criteria.",
 		Run: func(cmd *cobra.Command, args []string) {
 			var err error
-			var signal finviz.SignalType
-			var generalOrder finviz.GeneralOrderType
-			var specificOrder finviz.SpecificOrderType
-			var filters []finviz.FilterInterface
+			var signal SignalType
+			var generalOrder GeneralOrderType
+			var specificOrder SpecificOrderType
+			var filters []FilterInterface
 
 			// Handle signal
 			if signalArg == "" {
 				signal = ""
 			} else {
-				signal, err = finviz.GetSignal(strings.ToLower(signalArg))
+				signal, err = GetSignal(strings.ToLower(signalArg))
 				if err != nil {
 					er(err)
 				}
 			}
 
 			// Handle general order
-			generalOrder = finviz.GetGeneralOrder(strings.ToLower(orderArg))
-			if generalOrder == finviz.Descending {
+			generalOrder = GetGeneralOrder(strings.ToLower(orderArg))
+			if generalOrder == Descending {
 				orderArg = strings.TrimPrefix(orderArg, "-")
 			}
 
@@ -54,13 +56,11 @@ var (
 			if orderArg == "" {
 				specificOrder = ""
 			} else {
-				specificOrder, err = finviz.GetSpecificOrder(strings.ToLower(orderArg))
+				specificOrder, err = GetSpecificOrder(strings.ToLower(orderArg))
 				if err != nil {
 					er(err)
 				}
 			}
-
-			// Cobra parses tickers directly to slice
 
 			// Handle filters
 			if filterCount := len(filterArgs); filterCount == 0 {
@@ -69,14 +69,14 @@ var (
 				for i := 0; i < filterCount; i++ {
 					var filterQuery string
 					var filterValues []string
-					var filter *finviz.Filter
+					var filter *Filter
 
 					filterQuery, filterValues, err = extractFilterInput(filterArgs[i])
 					if err != nil {
 						er(err)
 					}
 
-					filter, err = finviz.GetFilter(strings.ToLower(filterQuery), filterValues...)
+					filter, err = GetFilter(strings.ToLower(filterQuery), filterValues...)
 					if err != nil {
 						er(err)
 					}
@@ -84,14 +84,19 @@ var (
 				}
 			}
 
+			viewInterface, err := ViewFactory(viewArg)
+			if err != nil {
+				er(err)
+			}
+
 			client := finviz.NewClient()
-			df, err := finviz.RunScreen(client, &finviz.ScreenInput{
-				Signal:        signal,
-				GeneralOrder:  generalOrder,
-				SpecificOrder: specificOrder,
-				Tickers:       tickerArgs,
-				Filters:       filters,
-				View:          viewArg,
+
+			df, err := GetScreenerData(client, viewInterface, &map[string]interface{}{
+				"signal":         signal,
+				"general_order":  generalOrder,
+				"specific_order": specificOrder,
+				"tickers":        tickerArgs,
+				"filters":        filters,
 			})
 			if err != nil {
 				er(err)
@@ -106,7 +111,7 @@ var (
 					er(err)
 				}
 			} else {
-				finviz.PrintFullDataframe(df)
+				finviz.PrintFullDataFrame(df)
 			}
 		},
 	}
@@ -120,11 +125,11 @@ func init() {
 	// -v 510
 	// --output-csv data.csv
 	// --output-json data.json
-	screenerCmd.Flags().StringVarP(&signalArg, "signal", "s", "", "TopGainers")
-	screenerCmd.Flags().StringVarP(&orderArg, "order", "o", "", "DividendYield")
-	screenerCmd.Flags().StringVarP(&viewArg, "view", "v", "110", "510")
-	screenerCmd.Flags().StringSliceVarP(&tickerArgs, "tickers", "t", nil, "AAPL,GS,VIRT")
-	screenerCmd.Flags().StringArrayVarP(&filterArgs, "filter", "f", nil, "Industry:Gold,Airlines,\"Aerospace & Defense\",Airlines")
-	screenerCmd.Flags().StringVar(&outputCSVArg, "output-csv", "", "outputFileName.csv")
-	screenerCmd.Flags().StringVar(&outputJSONArg, "output-json", "", "outputFileName.json")
+	ScreenerCmd.Flags().StringVarP(&signalArg, "signal", "s", "", "TopGainers")
+	ScreenerCmd.Flags().StringVarP(&orderArg, "order", "o", "", "DividendYield")
+	ScreenerCmd.Flags().StringVarP(&viewArg, "view", "v", "110", "510")
+	ScreenerCmd.Flags().StringSliceVarP(&tickerArgs, "tickers", "t", nil, "AAPL,GS,VIRT")
+	ScreenerCmd.Flags().StringArrayVarP(&filterArgs, "filter", "f", nil, "Industry:Gold,Airlines,\"Aerospace & Defense\",Airlines")
+	ScreenerCmd.Flags().StringVar(&outputCSVArg, "output-csv", "", "outputFileName.csv")
+	ScreenerCmd.Flags().StringVar(&outputJSONArg, "output-json", "", "outputFileName.json")
 }

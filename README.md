@@ -1,4 +1,4 @@
-# Unofficial Finviz API
+# Go Wrapper for Unofficial FinViz API
 
 ![gopherbadger-tag-do-not-edit](https://img.shields.io/badge/Go%20Coverage-52%25-brightgreen.svg?longCache=true&style=flat)
 
@@ -8,7 +8,7 @@ Run `go get github.com/d3an/finviz` to install the package.
 
 ## Documentation
 
-View the [Wiki](https://github.com/d3an/finviz/wiki) for more extensive documentation on this package.
+View the [Wiki](https://github.com/d3an/finviz/wiki) for more extensive documentation.
 
 ### Screen Example
 
@@ -17,28 +17,26 @@ package main
 
 import (
   . "github.com/d3an/finviz"
+  . "github.com/d3an/finviz/screener"
 )
 
 func main() {
-    client := NewClient()
-    df, err := RunScreen(client, &ScreenInput{
-        Signal: TopGainers,
-        GeneralOrder: Descending,
-        SpecificOrder: ChangeFromOpen,
-        Filters: []FilterInterface{
-          ExchangeFilter(AMEX, NASDAQ),
+    df, err := GetScreenerData(NewClient(), &PerformanceScreenerView{}, &map[string]interface{}{
+        "signal": TopGainers,
+        "general_order": Descending,
+        "specific_order": ChangeFromOpen,
+        "filters": []FilterInterface{
+          ExchangeFilter(NYSE, NASDAQ),
           AverageVolumeFilter(AvgVolOver50K),
           PriceFilter(PriceOver1),
         },
-        View: "performance",
-
     })
     if err != nil {
         panic(err)
     }
 
     // Print screen results dataframe
-    PrintFullDataframe(df)
+    PrintFullDataFrame(df)
 }
 ```
 
@@ -92,4 +90,4 @@ PLEASE submit any issues that you find with the package. This project is still u
 ## Disclaimer
 
 Using this library to acquire data from Finviz is against their Terms of Service and `robots.txt`.
-Use it responsively and at your own risk. This library was built purely for educational purposes.
+Use it responsibly and at your own risk. This library was built purely for educational purposes.
