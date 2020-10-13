@@ -17,7 +17,7 @@ linters-settings:
   gci:
     local-prefixes: github.com/golangci/golangci-lint
   gocognit:
-    min-complexity: 25
+    min-complexity: 50
   goconst:
     min-len: 2
     min-occurrences: 3
