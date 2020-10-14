@@ -621,6 +621,20 @@ func TestCleanDataFrame(t *testing.T) {
 			},
 			&CustomScreenerView{},
 		},
+		{
+			"cassettes/performance2_screener_view",
+			map[string]interface{}{
+				"signal":         TopGainers,
+				"general_order":  Descending,
+				"specific_order": ChangeFromOpen,
+				"filters": []FilterInterface{
+					ExchangeFilter(NYSE, NASDAQ),
+					AverageVolumeFilter(AvgVolOver50K),
+					PriceFilter(PriceOver1),
+				},
+			},
+			&PerformanceScreenerView{},
+		},
 	}
 
 	for _, testInput := range testInputs {
@@ -663,5 +677,6 @@ func TestCleanDataFrame(t *testing.T) {
 				t.Logf("Column \"%v\" not found", columnNames[i])
 			}
 		}
+		finviz.PrintFullDataFrame(df)
 	}
 }
