@@ -467,11 +467,11 @@ func GetScreenerData(c *http.Client, v finviz.ViewInterface, viewArgs *map[strin
 	}
 
 	df := dataframe.LoadRecords(results)
-	processedDf := CleanScreenerDataFrame(df)
+	processedDf := CleanScreenerDataFrame(&df)
 	return processedDf, nil
 }
 
-func CleanScreenerDataFrame(df dataframe.DataFrame) *dataframe.DataFrame {
+func CleanScreenerDataFrame(df *dataframe.DataFrame) *dataframe.DataFrame {
 	columnNames := df.Names()
 	columnCount := len(columnNames)
 
@@ -481,7 +481,7 @@ func CleanScreenerDataFrame(df dataframe.DataFrame) *dataframe.DataFrame {
 			default:
 				continue
 			case "percent":
-				replaceCol(&df, columnNames[i], series.Float, func(e series.Element) {
+				replaceCol(df, columnNames[i], series.Float, func(e series.Element) {
 					num := strings.Split(e.String(), "%")[0]
 					if percent, _ := strconv.ParseFloat(num, 64); percent != 0 {
 						e.Set(percent / 100.0)
@@ -491,7 +491,7 @@ func CleanScreenerDataFrame(df dataframe.DataFrame) *dataframe.DataFrame {
 				})
 
 			case "float":
-				replaceCol(&df, columnNames[i], series.Float, func(e series.Element) {
+				replaceCol(df, columnNames[i], series.Float, func(e series.Element) {
 					if num, _ := strconv.ParseFloat(e.String(), 64); num != 0 {
 						e.Set(num)
 					} else {
@@ -500,7 +500,7 @@ func CleanScreenerDataFrame(df dataframe.DataFrame) *dataframe.DataFrame {
 				})
 
 			case "bigint":
-				replaceCol(&df, columnNames[i], series.Int, func(e series.Element) {
+				replaceCol(df, columnNames[i], series.Int, func(e series.Element) {
 					stringResult := e.String()
 					multiple := 1.0
 
@@ -523,7 +523,7 @@ func CleanScreenerDataFrame(df dataframe.DataFrame) *dataframe.DataFrame {
 				})
 
 			case "commaint":
-				replaceCol(&df, columnNames[i], series.Int, func(e series.Element) {
+				replaceCol(df, columnNames[i], series.Int, func(e series.Element) {
 					stringResult := strings.Join(strings.Split(e.String(), ","), "")
 
 					if num, _ := strconv.Atoi(stringResult); num != 0 {
@@ -534,7 +534,7 @@ func CleanScreenerDataFrame(df dataframe.DataFrame) *dataframe.DataFrame {
 				})
 
 			case "int":
-				replaceCol(&df, columnNames[i], series.Int, func(e series.Element) {
+				replaceCol(df, columnNames[i], series.Int, func(e series.Element) {
 					if num, _ := strconv.Atoi(e.String()); num != 0 {
 						e.Set(num)
 					} else {
@@ -543,7 +543,7 @@ func CleanScreenerDataFrame(df dataframe.DataFrame) *dataframe.DataFrame {
 				})
 
 			case "string":
-				replaceCol(&df, columnNames[i], series.String, func(e series.Element) {
+				replaceCol(df, columnNames[i], series.String, func(e series.Element) {
 					if e.String() == "-" {
 						e.Set("NaN")
 					}
@@ -552,7 +552,7 @@ func CleanScreenerDataFrame(df dataframe.DataFrame) *dataframe.DataFrame {
 		}
 	}
 
-	return &df
+	return df
 }
 
 func replaceCol(df *dataframe.DataFrame, columnName string, columnType series.Type, mapFunc func(series.Element)) {
