@@ -6,7 +6,7 @@
 package main
 
 import (
-	"github.com/d3an/finviz/cmd/cmd"
+	"github.com/d3an/finviz/finviz/cmd"
 	"os"
 )
 

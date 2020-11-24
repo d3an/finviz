@@ -7,8 +7,8 @@ package cmd
 
 import (
 	"fmt"
-	"github.com/d3an/finviz/cmd/cmd/news"
-	"github.com/d3an/finviz/cmd/cmd/screener"
+	"github.com/d3an/finviz/finviz/cmd/news"
+	"github.com/d3an/finviz/finviz/cmd/screener"
 	"github.com/spf13/cobra"
 	"os"
 )

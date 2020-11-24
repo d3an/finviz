@@ -6,7 +6,6 @@
 package screener
 
 import (
-	"encoding/json"
 	"fmt"
 	"github.com/PuerkitoBio/goquery"
 	"github.com/d3an/finviz"
@@ -42,49 +41,21 @@ const (
 	Monthly TimeFrame = "monthly"
 )
 
-func contains(slice, value interface{}) bool {
-	switch slice := slice.(type) {
-	case []string:
-		switch value := value.(type) {
-		case string:
-			for _, a := range slice {
-				if a == value {
-					return true
-				}
-			}
-		case int:
-			return false
-		}
-	case []int:
-		switch value := value.(type) {
-		case int:
-			for _, a := range slice {
-				if a == value {
-					return true
-				}
-			}
-		case string:
-			return false
-		}
-	}
-	return false
-}
-
 func basicDefaultViewHelper(rootNode *goquery.Selection, headers []string, rawTickerData map[string]interface{}) (extraHeaders []string, extraRawTickerData map[string]interface{}) {
 	rootNode.Find(".snapshot-table > tbody").Children().Each(func(j int, childNode *goquery.Selection) {
-		if !contains(headers, childNode.Children().First().Text()) {
+		if !finviz.Contains(headers, childNode.Children().First().Text()) {
 			headers = append(headers, childNode.Children().First().Text())
 		}
 		rawTickerData[childNode.Children().First().Text()] = childNode.Children().Last().Find("a").Text()
 	})
 
-	if !contains(headers, "Chart") {
+	if !finviz.Contains(headers, "Chart") {
 		headers = append(headers, "Chart")
 	}
 	rawTickerData["Chart"] = rootNode.Find("img").AttrOr("src", "")
 
 	rootNode.Find(".snapshot-table2 > tbody").Children().Each(func(j int, childNode *goquery.Selection) {
-		if !contains(headers, childNode.Children().Eq(0).Text()) && !contains(headers, childNode.Children().Eq(2).Text()) {
+		if !finviz.Contains(headers, childNode.Children().Eq(0).Text()) && !finviz.Contains(headers, childNode.Children().Eq(2).Text()) {
 			headers = append(append(headers, childNode.Children().Eq(0).Text()), childNode.Children().Eq(2).Text())
 		}
 		rawTickerData[childNode.Children().Eq(0).Text()] = childNode.Children().Eq(1).Text()
@@ -95,7 +66,7 @@ func basicDefaultViewHelper(rootNode *goquery.Selection, headers []string, rawTi
 }
 
 func basicNewsViewHelper(rootNode *goquery.Selection, headers []string, rawTickerData map[string]interface{}) (extraHeaders []string, extraRawTickerData map[string]interface{}) {
-	if !contains(headers, "News") {
+	if !finviz.Contains(headers, "News") {
 		headers = append(headers, "News")
 	}
 	var news []map[string]string
@@ -112,7 +83,7 @@ func basicNewsViewHelper(rootNode *goquery.Selection, headers []string, rawTicke
 }
 
 func basicDescriptionViewHelper(rootNode *goquery.Selection, headers []string, rawTickerData map[string]interface{}) (extraHeaders []string, extraRawTickerData map[string]interface{}) {
-	if !contains(headers, "Description") {
+	if !finviz.Contains(headers, "Description") {
 		headers = append(headers, "Description")
 	}
 	description := rootNode.Find(".body-table-profile").Text()
@@ -123,7 +94,7 @@ func basicDescriptionViewHelper(rootNode *goquery.Selection, headers []string, r
 }
 
 func basicInsiderTradingViewHelper(rootNode *goquery.Selection, headers []string, rawTickerData map[string]interface{}) (extraHeaders []string, extraRawTickerData map[string]interface{}) {
-	if !contains(headers, "Insider Trading") {
+	if !finviz.Contains(headers, "Insider Trading") {
 		headers = append(headers, "Insider Trading")
 	}
 	var insiderTrading []map[string]string
@@ -148,37 +119,6 @@ func basicInsiderTradingViewHelper(rootNode *goquery.Selection, headers []string
 		rawTickerData["Insider Trading"] = insiderTrading
 	}
 	return headers, rawTickerData
-}
-
-func generateRows(headers []string, tickerDataSlice []map[string]interface{}) (rows [][]string, err error) {
-	headerCount := len(headers)
-	resultCount := len(tickerDataSlice)
-
-	rows = append(rows, headers)
-	for i := 0; i < resultCount; i++ {
-		var row []string
-
-		for j := 0; j < headerCount; j++ {
-			item := tickerDataSlice[i][headers[j]]
-			switch item := item.(type) {
-			default:
-				return nil, fmt.Errorf("unexpected type for %v: %v -> %v", tickerDataSlice[i]["Ticker"], headers[j], tickerDataSlice[i][headers[j]])
-			case nil:
-				row = append(row, "-")
-			case string:
-				row = append(row, item)
-			case []map[string]string:
-				news, err := json.Marshal(item)
-				if err != nil {
-					return nil, err
-				}
-				row = append(row, string(news))
-			}
-		}
-		rows = append(rows, row)
-	}
-
-	return rows, nil
 }
 
 func getFilterURLComponent(filters interface{}) (string, error) {

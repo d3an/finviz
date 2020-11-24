@@ -135,6 +135,5 @@ func GetSignal(query string) (SignalType, error) {
 	if signal, exists := SignalLookup[query]; exists {
 		return signal, nil
 	}
-	// Add logic that suggests similar matches
 	return "", finviz.SignalNotFoundError(fmt.Sprintf("Signal not found. Query: \"%v\"", query))
 }

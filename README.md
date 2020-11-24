@@ -12,6 +12,8 @@ Portfolio, Insider Trading, Futures, Forex, Crypto, and more services with a [FI
 
 Run `go get github.com/d3an/finviz` to install the package.
 
+Run `go install github.com/d3an/finviz/finviz` to install the CLI.
+
 ## Documentation
 
 View the [Wiki](https://github.com/d3an/finviz/wiki) for more extensive documentation.
