@@ -8,6 +8,7 @@ package cmd
 import (
 	"fmt"
 	"github.com/d3an/finviz/finviz/cmd/news"
+	"github.com/d3an/finviz/finviz/cmd/quote"
 	"github.com/d3an/finviz/finviz/cmd/screener"
 	"github.com/spf13/cobra"
 	"os"
@@ -32,4 +33,5 @@ func Execute() error {
 func init() {
 	rootCmd.AddCommand(screener.ScreenerCmd)
 	rootCmd.AddCommand(news.NewsCmd)
+	rootCmd.AddCommand(quote.QuoteCmd)
 }
