@@ -210,7 +210,6 @@ func TestGetQuoteData(t *testing.T) {
 
 		df, err := quote.GetQuoteData(finviz.NewTestingClient(r), ti.viewArgs)
 		if err != nil {
-			t.Log(err)
 			t.Error(err)
 		}
 
