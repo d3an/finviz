@@ -66,6 +66,12 @@ func (v *QuoteView) Scrape(doc *goquery.Document) (rows [][]string, err error) {
 					rawTickerData[key] = strings.Join(strings.Split(cellNode.Find("small").Text(), " "), ",")
 				} else if key == "52W Range" {
 					rawTickerData[key] = cellNode.Find("small").Text()
+				} else if key == "EPS next Y" {
+					if _, exists := rawTickerData[key]; exists {
+						rawTickerData["EPS growth next Y"] = cellNode.Find("b").Text()
+					} else {
+						rawTickerData[key] = cellNode.Find("b").Text()
+					}
 				} else {
 					rawTickerData[key] = cellNode.Find("b").Text()
 				}
@@ -201,12 +207,12 @@ func (v *QuoteView) MapScrape(doc *goquery.Document) (*map[string]interface{}, e
 					rawTickerData[key] = strings.Join(strings.Split(cellNode.Find("small").Text(), " "), ",")
 				} else if key == "52W Range" {
 					rawTickerData[key] = cellNode.Find("small").Text()
-					/*} else if key == "EPS next Y" {
-					if _, exists := rawTickerData["EPS next Y"]; exists {
+				} else if key == "EPS next Y" {
+					if _, exists := rawTickerData[key]; exists {
 						rawTickerData["EPS growth next Y"] = cellNode.Find("b").Text()
 					} else {
 						rawTickerData[key] = cellNode.Find("b").Text()
-					}*/
+					}
 				} else {
 					rawTickerData[key] = cellNode.Find("b").Text()
 				}

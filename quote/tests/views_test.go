@@ -63,7 +63,7 @@ func TestQuoteView_Scrape(t *testing.T) {
 			&map[string]interface{}{
 				"ticker": "AAPL", // Full column count
 			},
-			82,
+			83,
 			[]string{},
 		},
 		{
@@ -72,7 +72,7 @@ func TestQuoteView_Scrape(t *testing.T) {
 			&map[string]interface{}{
 				"ticker": "ATHE", // No Insider Trading or Analyst Recommendation table
 			},
-			80,
+			81,
 			[]string{"Insider Trading", "Analyst Recommendations"},
 		},
 		{
@@ -81,7 +81,7 @@ func TestQuoteView_Scrape(t *testing.T) {
 			&map[string]interface{}{
 				"ticker": "AEZS", // No Insider Trading table
 			},
-			81,
+			82,
 			[]string{"Insider Trading"},
 		},
 	}
@@ -119,7 +119,7 @@ func TestQuoteView_Scrape(t *testing.T) {
 			assert.NotContains(t, df.Names(), name)
 		}
 
-		assert.Equal(t, df.Ncol(), ti.columnCount)
+		assert.Equal(t, ti.columnCount, df.Ncol())
 
 		if err := r.Stop(); err != nil {
 			t.Error(err)
@@ -181,7 +181,7 @@ func TestQuoteView_MapScrape(t *testing.T) {
 			t.Log(err)
 		}
 
-		assert.Equal(t, 82, len(*resultMap))
+		assert.Equal(t, 83, len(*resultMap))
 	}
 }
 
@@ -189,12 +189,14 @@ func TestGetQuoteData(t *testing.T) {
 	testInputs := []struct {
 		cassettePath string
 		viewArgs     *map[string]interface{}
+		tickerCount  int
 	}{
 		{
 			"cassettes/get_quote_data1",
 			&map[string]interface{}{
 				"tickers": []string{"AAPL", "GOOG", "FB", "NFLX"},
 			},
+			4,
 		},
 	}
 
@@ -205,11 +207,14 @@ func TestGetQuoteData(t *testing.T) {
 		}
 
 		client := finviz.NewTestingClient(r)
-		_, err = quote.GetQuoteData(client, ti.viewArgs)
+		df, err := quote.GetQuoteData(client, ti.viewArgs)
 		if err != nil {
 			t.Log(err)
 			t.Error(err)
 		}
+
+		assert.Equal(t, 83, df.Ncol())
+		assert.Equal(t, ti.tickerCount, df.Nrow())
 
 		if err := r.Stop(); err != nil {
 			t.Error(err)

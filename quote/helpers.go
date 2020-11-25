@@ -83,8 +83,6 @@ func GetQuoteData(client *http.Client, viewArgs *map[string]interface{}) (*dataf
 			return nil, err
 		}
 
-		fmt.Println(url)
-
 		wg.Add(1)
 		go buildQuoteData(&wg, client, url, &c[i])
 		time.Sleep(500 * time.Millisecond)
@@ -94,7 +92,6 @@ func GetQuoteData(client *http.Client, viewArgs *map[string]interface{}) (*dataf
 
 	var results []map[string]interface{}
 	var errors []error
-	var headers []string
 
 	for i := 0; i < tickerCount; i++ {
 		switch j := (<-c[i]).(type) {
@@ -103,22 +100,19 @@ func GetQuoteData(client *http.Client, viewArgs *map[string]interface{}) (*dataf
 		case error:
 			errors = append(errors, j)
 		case *map[string]interface{}:
-			if i == 0 {
-				for key := range *j {
-					headers = append(headers, key)
-				}
-			}
 			results = append(results, *j)
 		}
 	}
 
-	orderedRows, err := finviz.GenerateRows(headers, results)
+	// Put this in a global variable
+	quoteHeaders := []string{"Ticker", "Company", "Industry", "Sector", "Country", "Index", "Market Cap", "Price", "Change", "Volume", "Income", "Sales", "Book/sh", "Cash/sh", "Dividend", "Dividend %", "Employees", "Optionable", "Shortable", "Recom", "P/E", "Forward P/E", "PEG", "P/S", "P/B", "P/C", "P/FCF", "Quick Ratio", "Current Ratio", "Debt/Eq", "LT Debt/Eq", "EPS (ttm)", "EPS next Y", "EPS next Q", "EPS this Y", "EPS growth next Y", "EPS next 5Y", "EPS past 5Y", "Sales past 5Y", "Sales Q/Q", "EPS Q/Q", "Earnings", "Insider Own", "Insider Trans", "Inst Own", "Inst Trans", "ROA", "ROE", "ROI", "Gross Margin", "Oper. Margin", "Profit Margin", "Payout", "Shs Outstand", "Shs Float", "Short Float", "Short Ratio", "Target Price", "52W Range", "52W High", "52W Low", "RSI (14)", "SMA20", "SMA50", "SMA200", "Rel Volume", "Avg Volume", "Perf Week", "Perf Month", "Perf Quarter", "Perf Half Y", "Perf Year", "Perf YTD", "Beta", "ATR", "Volatility (Week)", "Volatility (Month)", "Prev Close", "Chart", "Analyst Recommendations", "News", "Description", "Insider Trading"}
+
+	orderedRows, err := finviz.GenerateRows(quoteHeaders, results)
 	if err != nil {
 		return nil, fmt.Errorf("row generation failed")
 	}
 
 	df := dataframe.LoadRecords(orderedRows)
-	fmt.Println(df)
 
 	if len(errors) > 0 {
 		errMsg := fmt.Errorf("(1) %v", errors[0])
