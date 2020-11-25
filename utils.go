@@ -1,14 +1,21 @@
+// Copyright (c) 2020 James Bury. All rights reserved.
+// Project site: https://github.com/d3an/finviz
+// Use of this source code is governed by a MIT-style license that
+// can be found in the LICENSE file for the project.
+
 package finviz
 
 import (
 	"encoding/json"
 	"fmt"
 	"github.com/go-gota/gota/dataframe"
+	"os"
 	"strconv"
 	"strings"
 	"unicode/utf8"
 )
 
+// Contains is a semi-generic (string/int) function for checking if an item exists within a list
 func Contains(slice, value interface{}) bool {
 	switch slice := slice.(type) {
 	case []string:
@@ -35,6 +42,34 @@ func Contains(slice, value interface{}) bool {
 		}
 	}
 	return false
+}
+
+// ExportScreenCSV generates a csv file of the Finviz screen results
+func ExportScreenCSV(df *dataframe.DataFrame, outFileName string) error {
+	f, err := os.Create(outFileName)
+	if err != nil {
+		return err
+	}
+
+	err = df.WriteCSV(f)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+// ExportScreenJSON generates a json file of the Finviz screen results
+func ExportScreenJSON(df *dataframe.DataFrame, outFileName string) error {
+	f, err := os.Create(outFileName)
+	if err != nil {
+		return err
+	}
+
+	err = df.WriteJSON(f)
+	if err != nil {
+		return err
+	}
+	return nil
 }
 
 // GenerateRows is a helper function for DataFrame construction
