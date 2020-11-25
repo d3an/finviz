@@ -102,14 +102,21 @@ const (
 var SpecificOrderLookup = map[string]SpecificOrderType{
 	"signal":                    Signal,
 	"ticker":                    Ticker,
+	"":                          Ticker,
 	"company":                   Company,
 	"sector":                    Sector,
 	"industry":                  Industry,
 	"country":                   Country,
 	"marketcap":                 MarketCap,
+	"market cap":                MarketCap,
 	"pe":                        PE,
+	"p/e":                       PE,
 	"forwardpe":                 ForwardPE,
+	"forward pe":                ForwardPE,
+	"forward p/e":               ForwardPE,
+	"fwd p/e":                   ForwardPE,
 	"priceearningsgrowth":       PriceEarningsGrowth,
+	"peg":                       PriceEarningsGrowth,
 	"pricesales":                PriceSales,
 	"ps":                        PriceSales,
 	"pricebook":                 PriceBook,
@@ -174,19 +181,22 @@ var SpecificOrderLookup = map[string]SpecificOrderType{
 	"relativevolume":            RelativeVolume,
 	"change":                    Change,
 	"changefromopen":            ChangeFromOpen,
+	"change from open":          ChangeFromOpen,
+	"from open":                 ChangeFromOpen,
 	"gap":                       Gap,
 	"volume":                    Volume,
 	"price":                     Price,
 	"targetprice":               TargetPrice,
+	"target price":              TargetPrice,
 	"ipodate":                   IPODate,
+	"ipo date":                  IPODate,
 }
 
 // GetSpecificOrder returns the constant of the queried signal
 func GetSpecificOrder(query string) (SpecificOrderType, error) {
-	if specificOrder, exists := SpecificOrderLookup[query]; exists {
+	if specificOrder, exists := SpecificOrderLookup[strings.ToLower(query)]; exists {
 		return specificOrder, nil
 	}
-	// Add logic that suggests similar matches
 	return "", finviz.SpecificOrderNotFoundError(fmt.Sprintf("Specific order not found. Query: \"%v\"", query))
 }
 

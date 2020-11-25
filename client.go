@@ -7,7 +7,6 @@ package finviz
 
 import (
 	"bytes"
-	"encoding/json"
 	"fmt"
 	"github.com/PuerkitoBio/goquery"
 	"github.com/corpix/uarand"
@@ -120,36 +119,4 @@ func GenerateDocument(html interface{}) (doc *goquery.Document, err error) {
 		return GenerateDocument(byteArray)
 	}
 	return doc, nil
-}
-
-// GenerateRows is a helper function for DataFrame construction
-func GenerateRows(headers []string, dataSlice []map[string]interface{}) (rows [][]string, err error) {
-	headerCount := len(headers)
-	resultCount := len(dataSlice)
-
-	rows = append(rows, headers)
-	for i := 0; i < resultCount; i++ {
-		var row []string
-
-		for j := 0; j < headerCount; j++ {
-			item := dataSlice[i][headers[j]]
-			switch item := item.(type) {
-			default:
-				return nil, fmt.Errorf("unexpected type for #%v: %v -> %v", i, headers[j], dataSlice[i][headers[j]])
-			case nil:
-				row = append(row, "-")
-			case string:
-				row = append(row, item)
-			case []map[string]string:
-				news, err := json.Marshal(item)
-				if err != nil {
-					return nil, err
-				}
-				row = append(row, string(news))
-			}
-		}
-		rows = append(rows, row)
-	}
-
-	return rows, nil
 }

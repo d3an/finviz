@@ -3,11 +3,12 @@
 // Use of this source code is governed by a MIT-style license that
 // can be found in the LICENSE file for the project.
 
-package news
+package tests
 
 import (
 	"fmt"
 	"github.com/d3an/finviz"
+	"github.com/d3an/finviz/news"
 	"github.com/dnaeon/go-vcr/recorder"
 	"testing"
 )
@@ -18,15 +19,15 @@ func TestNewsView_GenerateURL(t *testing.T) {
 		expectedURL       string
 	}{
 		{
-			&NewsView{},
+			&news.NewsView{},
 			fmt.Sprintf("%v/news.ashx", finviz.APIURL),
 		},
 		{
-			&TimeNewsView{},
+			&news.TimeNewsView{},
 			fmt.Sprintf("%v/news.ashx", finviz.APIURL),
 		},
 		{
-			&SourceNewsView{},
+			&news.SourceNewsView{},
 			fmt.Sprintf("%v/news.ashx?v=2", finviz.APIURL),
 		},
 	}
@@ -49,12 +50,12 @@ func TestNewsView_Scrape(t *testing.T) {
 	}{
 		{
 			"cassettes/source_news_view",
-			&SourceNewsView{},
+			&news.SourceNewsView{},
 			[]string{"Article Date", "Article Title", "Article URL", "Source Name", "Source URL", "News Type"},
 		},
 		{
 			"cassettes/time_news_view",
-			&TimeNewsView{},
+			&news.TimeNewsView{},
 			[]string{"Article Date", "Article Title", "Article URL", "Source Name", "News Type"},
 		},
 	}
@@ -66,7 +67,7 @@ func TestNewsView_Scrape(t *testing.T) {
 		}
 
 		// Scraping test
-		df, err := GetNewsData(finviz.NewTestingClient(r), testInput.viewInterface)
+		df, err := news.GetNewsData(finviz.NewTestingClient(r), testInput.viewInterface)
 		if err != nil {
 			t.Error(err)
 		}

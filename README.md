@@ -1,4 +1,4 @@
-# Go Wrapper for Unofficial FinViz API
+# Unofficial Go API & CLI for FinViz
 
 **WARNING:** This package is undergoing heavy development. Breaking changes may occur in upcoming releases.
 
@@ -11,6 +11,8 @@ Portfolio, Insider Trading, Futures, Forex, Crypto, and more services with a [FI
 ## Installation
 
 Run `go get github.com/d3an/finviz` to install the package.
+
+Run `go install github.com/d3an/finviz/finviz` to install the CLI.
 
 ## Documentation
 

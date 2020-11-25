@@ -274,7 +274,7 @@ func (v *ChartsScreenerView) Scrape(doc *goquery.Document) (rows [][]string, err
 	})
 
 	headers = []string{"Ticker", "Chart", "Company", "Industry", "Country", "Market Cap"}
-	return generateRows(headers, tickerDataSlice)
+	return finviz.GenerateRows(headers, tickerDataSlice)
 }
 
 // BasicScreenerView (310)
@@ -317,7 +317,7 @@ func (v *BasicScreenerView) Scrape(doc *goquery.Document) (rows [][]string, err 
 		tickerDataSlice = append(tickerDataSlice, rawTickerData)
 	})
 
-	return generateRows(headers, tickerDataSlice)
+	return finviz.GenerateRows(headers, tickerDataSlice)
 }
 
 // NewsScreenerView (320)
@@ -365,7 +365,7 @@ func (v *NewsScreenerView) Scrape(doc *goquery.Document) (rows [][]string, err e
 		}
 	})
 
-	return generateRows(headers, tickerDataSlice)
+	return finviz.GenerateRows(headers, tickerDataSlice)
 }
 
 // DescriptionScreenerView (330)
@@ -413,7 +413,7 @@ func (v *DescriptionScreenerView) Scrape(doc *goquery.Document) (rows [][]string
 		}
 	})
 
-	return generateRows(headers, tickerDataSlice)
+	return finviz.GenerateRows(headers, tickerDataSlice)
 }
 
 // SnapshotScreenerView (340)
@@ -471,7 +471,7 @@ func (v *SnapshotScreenerView) Scrape(doc *goquery.Document) (rows [][]string, e
 		}
 	})
 
-	return generateRows(headers, tickerDataSlice)
+	return finviz.GenerateRows(headers, tickerDataSlice)
 }
 
 // TAScreenerView (350)
@@ -514,7 +514,7 @@ func (v *TAScreenerView) Scrape(doc *goquery.Document) (rows [][]string, err err
 		tickerDataSlice = append(tickerDataSlice, rawTickerData)
 	})
 
-	return generateRows(headers, tickerDataSlice)
+	return finviz.GenerateRows(headers, tickerDataSlice)
 }
 
 // TickersScreenerView (410)
@@ -560,7 +560,7 @@ func (v *TickersScreenerView) Scrape(doc *goquery.Document) (rows [][]string, er
 	})
 
 	headers := []string{"Ticker", "Change", "Chart", "Company", "Industry", "Country", "Market Cap"}
-	return generateRows(headers, tickerDataSlice)
+	return finviz.GenerateRows(headers, tickerDataSlice)
 }
 
 // BulkScreenerView (510)
@@ -627,7 +627,7 @@ func (v *BulkScreenerView) Scrape(doc *goquery.Document) (rows [][]string, err e
 	}
 
 	headers := []string{"Ticker", "Change", "Chart", "Company", "Industry", "Country", "Market Cap"}
-	return generateRows(headers, tickers)
+	return finviz.GenerateRows(headers, tickers)
 }
 
 // BulkFullScreenerView (520)
@@ -701,5 +701,5 @@ func (v *BulkFullScreenerView) Scrape(doc *goquery.Document) (rows [][]string, e
 	}
 
 	headers := []string{"Ticker", "Change", "Price", "Volume", "Relative Volume", "Chart", "Company", "Industry", "Country", "Market Cap"}
-	return generateRows(headers, tickers)
+	return finviz.GenerateRows(headers, tickers)
 }
