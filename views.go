@@ -23,7 +23,7 @@ func (v *View) GenerateURL(_ *map[string]interface{}) (string, error) {
 	return APIURL, nil
 }
 
-// Scrape is the default method for FinViz views
+// Scrape scrapes FinViz views to ordered rows (preferred format to init DataFrame)
 func (v *View) Scrape(_ *goquery.Document) ([][]string, error) {
 	return make([][]string, 0), MethodNotImplementedError("Scrape method not implemented")
 }

@@ -6,7 +6,7 @@
 .DS_Store
 
 # Staticly generated
-cmd/finviz
+finviz/finviz
 fixtures/*
 test_data/*
 
