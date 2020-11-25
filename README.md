@@ -1,4 +1,4 @@
-# Go Wrapper for Unofficial FinViz API
+# Unofficial Go API & CLI for FinViz
 
 **WARNING:** This package is undergoing heavy development. Breaking changes may occur in upcoming releases.
 

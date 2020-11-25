@@ -38,10 +38,21 @@ func buildQuoteData(wg *sync.WaitGroup, client *http.Client, url string, c *chan
 	defer wg.Done()
 	defer close(*c)
 
-	html, err := finviz.MakeGetRequest(client, url)
-	if err != nil {
-		*c <- err
-		return
+	var html []byte
+	var err error
+	waitTime := 1 * time.Millisecond
+
+	for {
+		html, err = finviz.MakeGetRequest(client, url)
+		if err == nil {
+			break
+		}
+		time.Sleep(waitTime)
+		waitTime *= 2
+		if waitTime > 10000*time.Millisecond {
+			*c <- err
+			return
+		}
 	}
 
 	doc, err := finviz.GenerateDocument(html)
@@ -83,9 +94,12 @@ func GetQuoteData(client *http.Client, viewArgs *map[string]interface{}) (*dataf
 			return nil, err
 		}
 
+		if client == nil {
+			client = finviz.NewClient()
+		}
+
 		wg.Add(1)
 		go buildQuoteData(&wg, client, url, &c[i])
-		time.Sleep(500 * time.Millisecond)
 	}
 
 	wg.Wait()

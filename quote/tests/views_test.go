@@ -185,6 +185,8 @@ func TestQuoteView_MapScrape(t *testing.T) {
 	}
 }
 
+// Tested retry system with 155 tickers; a couple 403s, but resolved after waiting 1ms. Total time: 1.26s
+// Test not included due to VCR file being too big for GitHub.
 func TestGetQuoteData(t *testing.T) {
 	testInputs := []struct {
 		cassettePath string
@@ -192,9 +194,9 @@ func TestGetQuoteData(t *testing.T) {
 		tickerCount  int
 	}{
 		{
-			"cassettes/get_quote_data1",
+			"cassettes/get_quote_data",
 			&map[string]interface{}{
-				"tickers": []string{"AAPL", "GOOG", "FB", "NFLX"},
+				"tickers": []string{"AAPL", "GOOG", "NFLX", "AMZN"},
 			},
 			4,
 		},
@@ -206,8 +208,7 @@ func TestGetQuoteData(t *testing.T) {
 			t.Error(err)
 		}
 
-		client := finviz.NewTestingClient(r)
-		df, err := quote.GetQuoteData(client, ti.viewArgs)
+		df, err := quote.GetQuoteData(finviz.NewTestingClient(r), ti.viewArgs)
 		if err != nil {
 			t.Log(err)
 			t.Error(err)

@@ -20,6 +20,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+
+## [v.1.0.5][2020.11.25]
+### Added
+- `SD-30` Added concurrent support for the Quote app
+- `SD-30` Added a CLI subcommand `quote` for the Quote app
+
+### Improvements
+- `SD-30` Updated Go version from `1.15.2` to `1.15.3`
+- `SD-30` Refactored directory and cmd structure
+
 ## [v.1.0.4][2020.10.13]
 ### Added
 - `SD-31` Added `CleanScreenerDataFrame` to `GetScreenerData`. Added unit test.
@@ -27,7 +37,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [v.1.0.3][2020.10.13]
 ### Added
 - `SD-50` Added coverage badge
-- `SD-45` Added support for News page and CLI subcommand for news
+- `SD-45` Added support for News app and CLI subcommand for news
 
 ### Changed
 - `SD-54` Restructured views and CLI to support multi-app structure
