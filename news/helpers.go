@@ -7,18 +7,18 @@ package news
 
 import (
 	"github.com/d3an/finviz"
+	"github.com/dnaeon/go-vcr/recorder"
 	"github.com/go-gota/gota/dataframe"
-	"net/http"
 )
 
 // GetNewsData returns a DataFrame containing recent news data
-func GetNewsData(c *http.Client, v finviz.ViewInterface) (*dataframe.DataFrame, error) {
+func GetNewsData(rec *recorder.Recorder, v finviz.ViewInterface) (*dataframe.DataFrame, error) {
 	url, err := v.GenerateURL(nil)
 	if err != nil {
 		return nil, err
 	}
 
-	html, err := finviz.MakeGetRequest(c, url)
+	html, err := finviz.MakeGetRequest(rec, url)
 	if err != nil {
 		return nil, err
 	}

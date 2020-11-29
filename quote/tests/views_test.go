@@ -97,7 +97,7 @@ func TestQuoteView_Scrape(t *testing.T) {
 			t.Error(err)
 		}
 
-		html, err := finviz.MakeGetRequest(finviz.NewTestingClient(r), url)
+		html, err := finviz.MakeGetRequest(r, url)
 		if err != nil {
 			t.Error(err)
 		}
@@ -165,7 +165,7 @@ func TestQuoteView_MapScrape(t *testing.T) {
 			t.Error(err)
 		}
 
-		html, err := finviz.MakeGetRequest(finviz.NewTestingClient(r), url)
+		html, err := finviz.MakeGetRequest(r, url)
 		if err != nil {
 			t.Error(err)
 		}
@@ -208,7 +208,7 @@ func TestGetQuoteData(t *testing.T) {
 			t.Error(err)
 		}
 
-		df, err := quote.GetQuoteData(finviz.NewTestingClient(r), ti.viewArgs)
+		df, err := quote.GetQuoteData(r, ti.viewArgs)
 		if err != nil {
 			t.Error(err)
 		}

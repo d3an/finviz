@@ -67,7 +67,7 @@ func TestNewsView_Scrape(t *testing.T) {
 		}
 
 		// Scraping test
-		df, err := news.GetNewsData(finviz.NewTestingClient(r), testInput.viewInterface)
+		df, err := news.GetNewsData(r, testInput.viewInterface)
 		if err != nil {
 			t.Error(err)
 		}

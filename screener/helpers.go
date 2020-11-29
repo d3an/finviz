@@ -9,9 +9,9 @@ import (
 	"fmt"
 	"github.com/PuerkitoBio/goquery"
 	"github.com/d3an/finviz"
+	"github.com/dnaeon/go-vcr/recorder"
 	"github.com/go-gota/gota/dataframe"
 	"github.com/go-gota/gota/series"
-	"net/http"
 	"sort"
 	"strconv"
 	"strings"
@@ -385,13 +385,13 @@ func getOrderValue(viewArgs *map[string]interface{}) string {
 }
 
 // GetScreenerData returns a DataFrame with screener data results
-func GetScreenerData(c *http.Client, v finviz.ViewInterface, viewArgs *map[string]interface{}) (*dataframe.DataFrame, error) {
+func GetScreenerData(rec *recorder.Recorder, v finviz.ViewInterface, viewArgs *map[string]interface{}) (*dataframe.DataFrame, error) {
 	url, err := v.GenerateURL(viewArgs)
 	if err != nil {
 		return nil, err
 	}
 
-	html, err := finviz.MakeGetRequest(c, url)
+	html, err := finviz.MakeGetRequest(rec, url)
 	if err != nil {
 		return nil, err
 	}

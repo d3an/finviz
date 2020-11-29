@@ -25,7 +25,7 @@ var (
 		Run: func(cmd *cobra.Command, args []string) {
 			var err error
 
-			df, err := quote.GetQuoteData(finviz.NewClient(), &map[string]interface{}{
+			df, err := quote.GetQuoteData(nil, &map[string]interface{}{
 				"tickers": tickerArgs,
 			})
 			if err != nil {

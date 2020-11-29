@@ -29,7 +29,7 @@ import (
 )
 
 func main() {
-    df, err := GetScreenerData(NewClient(), &PerformanceScreenerView{}, &map[string]interface{}{
+    df, err := GetScreenerData(nil, &PerformanceScreenerView{}, &map[string]interface{}{
         "signal": TopGainers,
         "general_order": Descending,
         "specific_order": ChangeFromOpen,
