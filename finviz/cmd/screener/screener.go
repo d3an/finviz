@@ -89,9 +89,7 @@ var (
 				er(err)
 			}
 
-			client := finviz.NewClient()
-
-			df, err := GetScreenerData(client, viewInterface, &map[string]interface{}{
+			df, err := GetScreenerData(nil, viewInterface, &map[string]interface{}{
 				"signal":         signal,
 				"general_order":  generalOrder,
 				"specific_order": specificOrder,

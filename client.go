@@ -36,24 +36,13 @@ func addHeaderTransport(t http.RoundTripper) *HeaderTransport {
 	return &HeaderTransport{t}
 }
 
-// NewClient generates a new client instance
-func NewClient() *http.Client {
-	return &http.Client{
-		Timeout:   30 * time.Second,
-		Transport: addHeaderTransport(nil),
-	}
-}
-
-// NewTestingClient generates a new testing client instance that uses go-vcr
-func NewTestingClient(rec *recorder.Recorder) *http.Client {
-	return &http.Client{
+// MakeGetRequest is used to get a byte array of the screen given a valid URL
+func MakeGetRequest(rec *recorder.Recorder, url string) ([]byte, error) {
+	c := &http.Client{
 		Timeout:   30 * time.Second,
 		Transport: addHeaderTransport(rec),
 	}
-}
 
-// MakeGetRequest is used to get a byte array of the screen given a valid URL
-func MakeGetRequest(c *http.Client, url string) ([]byte, error) {
 	// Set up GET request
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {

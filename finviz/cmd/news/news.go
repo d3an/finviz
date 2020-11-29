@@ -30,7 +30,7 @@ var (
 				er(err)
 			}
 
-			df, err := news.GetNewsData(finviz.NewClient(), viewInterface)
+			df, err := news.GetNewsData(nil, viewInterface)
 			if err != nil {
 				er(err)
 			}

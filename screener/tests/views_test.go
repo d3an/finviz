@@ -587,7 +587,7 @@ func TestScreenerView_GetData(t *testing.T) {
 		}
 
 		// Scraping Test
-		df, err := screener.GetScreenerData(finviz.NewTestingClient(r), ti.viewInterfaceType, &ti.viewArgs)
+		df, err := screener.GetScreenerData(r, ti.viewInterfaceType, &ti.viewArgs)
 		if err != nil {
 			t.Errorf("GetData function failed. Error: %v", err)
 		}
@@ -650,7 +650,7 @@ func TestCleanDataFrame(t *testing.T) {
 		}
 
 		// Scraping Test
-		df, err := screener.GetScreenerData(finviz.NewTestingClient(r), ti.viewInterface, &ti.viewArgs)
+		df, err := screener.GetScreenerData(r, ti.viewInterface, &ti.viewArgs)
 		if err != nil {
 			t.Errorf("GetData function failed. Error: %v", err)
 		}

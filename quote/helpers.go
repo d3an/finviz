@@ -8,8 +8,8 @@ package quote
 import (
 	"fmt"
 	"github.com/d3an/finviz"
+	"github.com/dnaeon/go-vcr/recorder"
 	"github.com/go-gota/gota/dataframe"
-	"net/http"
 	"sync"
 	"time"
 )
@@ -34,7 +34,7 @@ func getTickersSlice(viewArgs *map[string]interface{}) ([]string, error) {
 	return nil, fmt.Errorf("\"tickers\" argument not found")
 }
 
-func buildQuoteData(wg *sync.WaitGroup, client *http.Client, url string, c *chan interface{}) {
+func buildQuoteData(wg *sync.WaitGroup, rec *recorder.Recorder, url string, c *chan interface{}) {
 	defer wg.Done()
 	defer close(*c)
 
@@ -43,7 +43,7 @@ func buildQuoteData(wg *sync.WaitGroup, client *http.Client, url string, c *chan
 	waitTime := 1 * time.Millisecond
 
 	for {
-		html, err = finviz.MakeGetRequest(client, url)
+		html, err = finviz.MakeGetRequest(rec, url)
 		if err == nil {
 			break
 		}
@@ -72,7 +72,7 @@ func buildQuoteData(wg *sync.WaitGroup, client *http.Client, url string, c *chan
 }
 
 // GetQuoteData returns a DataFrame with screener data results
-func GetQuoteData(client *http.Client, viewArgs *map[string]interface{}) (*dataframe.DataFrame, error) {
+func GetQuoteData(rec *recorder.Recorder, viewArgs *map[string]interface{}) (*dataframe.DataFrame, error) {
 	tickers, err := getTickersSlice(viewArgs)
 	if err != nil {
 		return nil, err
@@ -94,12 +94,8 @@ func GetQuoteData(client *http.Client, viewArgs *map[string]interface{}) (*dataf
 			return nil, err
 		}
 
-		if client == nil {
-			client = finviz.NewClient()
-		}
-
 		wg.Add(1)
-		go buildQuoteData(&wg, client, url, &c[i])
+		go buildQuoteData(&wg, rec, url, &c[i])
 	}
 
 	wg.Wait()
