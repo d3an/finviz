@@ -24,7 +24,7 @@ View the [Wiki](https://github.com/d3an/finviz/wiki) for more extensive document
 package main
 
 import (
-  "github.com/d3an/finviz"
+  "github.com/d3an/finviz/utils"
   "github.com/d3an/finviz/screener"
 )
 
@@ -36,7 +36,7 @@ func main() {
         panic(err)
     }
 
-    finviz.PrintFullDataFrame(df)
+    utils.PrintFullDataFrame(df)
 }
 ```
 
