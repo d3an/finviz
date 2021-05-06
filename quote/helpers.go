@@ -5,25 +5,7 @@
 
 package quote
 
-import (
-	"fmt"
-	"github.com/d3an/finviz"
-	"github.com/dnaeon/go-vcr/recorder"
-	"github.com/go-gota/gota/dataframe"
-	"sync"
-	"time"
-)
-
-func getTickerString(viewArgs *map[string]interface{}) (string, error) {
-	if value, exists := (*viewArgs)["ticker"]; exists {
-		if value, ok := value.(string); ok {
-			return value, nil
-		}
-		return "", fmt.Errorf("\"ticker\" argument not of type \"string\"")
-	}
-	return "", fmt.Errorf("\"ticker\" argument not found")
-}
-
+/*
 func getTickersSlice(viewArgs *map[string]interface{}) ([]string, error) {
 	if value, exists := (*viewArgs)["tickers"]; exists {
 		if value, ok := value.([]string); ok {
@@ -117,7 +99,7 @@ func GetQuoteData(rec *recorder.Recorder, viewArgs *map[string]interface{}) (*da
 	// Put this in a global variable
 	quoteHeaders := []string{"Ticker", "Company", "Industry", "Sector", "Country", "Index", "Market Cap", "Price", "Change", "Volume", "Income", "Sales", "Book/sh", "Cash/sh", "Dividend", "Dividend %", "Employees", "Optionable", "Shortable", "Recom", "P/E", "Forward P/E", "PEG", "P/S", "P/B", "P/C", "P/FCF", "Quick Ratio", "Current Ratio", "Debt/Eq", "LT Debt/Eq", "EPS (ttm)", "EPS next Y", "EPS next Q", "EPS this Y", "EPS growth next Y", "EPS next 5Y", "EPS past 5Y", "Sales past 5Y", "Sales Q/Q", "EPS Q/Q", "Earnings", "Insider Own", "Insider Trans", "Inst Own", "Inst Trans", "ROA", "ROE", "ROI", "Gross Margin", "Oper. Margin", "Profit Margin", "Payout", "Shs Outstand", "Shs Float", "Short Float", "Short Ratio", "Target Price", "52W Range", "52W High", "52W Low", "RSI (14)", "SMA20", "SMA50", "SMA200", "Rel Volume", "Avg Volume", "Perf Week", "Perf Month", "Perf Quarter", "Perf Half Y", "Perf Year", "Perf YTD", "Beta", "ATR", "Volatility (Week)", "Volatility (Month)", "Prev Close", "Chart", "Analyst Recommendations", "News", "Description", "Insider Trading"}
 
-	orderedRows, err := finviz.GenerateRows(quoteHeaders, results)
+	orderedRows, err := utils.GenerateRows(quoteHeaders, results)
 	if err != nil {
 		return nil, fmt.Errorf("row generation failed")
 	}
@@ -136,3 +118,4 @@ func GetQuoteData(rec *recorder.Recorder, viewArgs *map[string]interface{}) (*da
 
 	return &df, nil
 }
+*/

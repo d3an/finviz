@@ -6,9 +6,10 @@
 package news
 
 import (
-	"github.com/d3an/finviz"
-	"github.com/d3an/finviz/news"
 	"github.com/spf13/cobra"
+
+	"github.com/d3an/finviz/news"
+	"github.com/d3an/finviz/utils"
 )
 
 var (
@@ -25,26 +26,22 @@ var (
 		Run: func(cmd *cobra.Command, args []string) {
 			var err error
 
-			viewInterface, err := ViewFactory(viewArg)
+			client := news.New(nil)
+			df, err := client.GetNews(viewArg)
 			if err != nil {
-				er(err)
-			}
-
-			df, err := news.GetNewsData(nil, viewInterface)
-			if err != nil {
-				er(err)
+				utils.Err(err)
 			}
 
 			if outputCSVArg != "" {
-				if err := finviz.ExportScreenCSV(df, outputCSVArg); err != nil {
-					er(err)
+				if err := utils.ExportCSV(df, outputCSVArg); err != nil {
+					utils.Err(err)
 				}
 			} else if outputJSONArg != "" {
-				if err := finviz.ExportScreenJSON(df, outputJSONArg); err != nil {
-					er(err)
+				if err := utils.ExportJSON(df, outputJSONArg); err != nil {
+					utils.Err(err)
 				}
 			} else {
-				finviz.PrintFullDataFrame(df)
+				utils.PrintFullDataFrame(df)
 			}
 		},
 	}

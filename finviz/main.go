@@ -6,8 +6,9 @@
 package main
 
 import (
-	"github.com/d3an/finviz/finviz/cmd"
 	"os"
+
+	"github.com/d3an/finviz/finviz/cmd"
 )
 
 func main() {

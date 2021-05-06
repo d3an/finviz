@@ -1,33 +1,168 @@
-// Copyright (c) 2020 James Bury. All rights reserved.
-// Project site: https://github.com/d3an/finviz
-// Use of this source code is governed by a MIT-style license that
-// can be found in the LICENSE file for the project.
-
 package quote
 
-/*
-// QuoteView represents the default view for the Quote app
-type QuoteView struct{}
+import (
+	"fmt"
+	"io/ioutil"
+	"net"
+	"net/http"
+	"strings"
+	"sync"
+	"time"
 
-// GenerateURL consumes valid inputs to the screen and generates a valid URL
-func (v *QuoteView) GenerateURL(viewArgs *map[string]interface{}) (string, error) {
-	n := finviz.View{}
-	url, err := n.GenerateURL(nil)
-	if err != nil {
-		return "", err
-	}
+	"github.com/PuerkitoBio/goquery"
+	"github.com/corpix/uarand"
+	"github.com/dnaeon/go-vcr/recorder"
+	"github.com/go-gota/gota/dataframe"
+	"github.com/pkg/errors"
 
-	// Single Ticker
-	ticker, err := getTickerString(viewArgs)
-	if err != nil {
-		return "", err
-	}
+	"github.com/d3an/finviz"
+	"github.com/d3an/finviz/utils"
+)
 
-	return fmt.Sprintf("%v/quote.ashx?t=%v&ty=c&p=d&b=1", url, strings.ToUpper(ticker)), nil
+const (
+	APIURL = "https://finviz.com/quote.ashx"
+)
+
+var (
+	once     sync.Once
+	instance *Client
+)
+
+type Config struct {
+	userAgent string
+	recorder  *recorder.Recorder
 }
 
-// Scrape scrapes the ticker quote view (quote.ashx) html document for the screen's ticker results
-func (v *QuoteView) Scrape(doc *goquery.Document) (rows [][]string, err error) {
+type Client struct {
+	*http.Client
+	config Config
+}
+
+func New(config *Config) *Client {
+	once.Do(func() {
+		transport := &http.Transport{
+			DialContext: (&net.Dialer{
+				Timeout: 30 * time.Second,
+			}).DialContext,
+			TLSHandshakeTimeout: 30 * time.Second,
+		}
+		client := &http.Client{
+			Timeout:   30 * time.Second,
+			Transport: transport,
+		}
+		if config != nil {
+			instance = &Client{Client: client, config: *config}
+		}
+		instance = &Client{
+			Client: client,
+			config: Config{userAgent: uarand.GetRandom()},
+		}
+	})
+
+	return instance
+}
+
+func (c *Client) Do(req *http.Request) (*http.Response, error) {
+	req.Header.Set("User-Agent", c.config.userAgent)
+	return c.Client.Do(req)
+}
+
+func GenerateURL(ticker string) (string, error) {
+	return fmt.Sprintf("%s?t=%s&ty=c&p=d&b=1", APIURL, strings.ToUpper(ticker)), nil
+}
+
+type response struct {
+	Result *map[string]interface{}
+	Error  error
+}
+
+func (c *Client) GetQuotes(tickers []string) (*dataframe.DataFrame, error) {
+	var wg sync.WaitGroup
+	resultCount := len(tickers)
+	results := make([]chan response, resultCount)
+	for i := range results {
+		results[i] = make(chan response, 1)
+	}
+
+	for i, ticker := range tickers {
+		wg.Add(1)
+		go c.getData(ticker, &wg, &results[i])
+	}
+
+	wg.Wait()
+
+	var scrapeResults []map[string]interface{}
+	for i := 0; i < resultCount; i++ {
+		r := <-results[i]
+		if r.Error != nil {
+			return nil, errors.Wrapf(r.Error, "error received while scraping quote for '%s'", tickers[i])
+		}
+		scrapeResults = append(scrapeResults, *r.Result)
+	}
+
+	return processScrapeResults(scrapeResults)
+}
+
+func processScrapeResults(results []map[string]interface{}) (*dataframe.DataFrame, error) {
+	quoteHeaders := []string{"Ticker", "Company", "Industry", "Sector", "Country", "Index", "Market Cap", "Price", "Change", "Volume", "Income", "Sales", "Book/sh", "Cash/sh", "Dividend", "Dividend %", "Employees", "Optionable", "Shortable", "Recom", "P/E", "Forward P/E", "PEG", "P/S", "P/B", "P/C", "P/FCF", "Quick Ratio", "Current Ratio", "Debt/Eq", "LT Debt/Eq", "EPS (ttm)", "EPS next Y", "EPS next Q", "EPS this Y", "EPS growth next Y", "EPS next 5Y", "EPS past 5Y", "Sales past 5Y", "Sales Q/Q", "EPS Q/Q", "Earnings", "Insider Own", "Insider Trans", "Inst Own", "Inst Trans", "ROA", "ROE", "ROI", "Gross Margin", "Oper. Margin", "Profit Margin", "Payout", "Shs Outstand", "Shs Float", "Short Float", "Short Ratio", "Target Price", "52W Range", "52W High", "52W Low", "RSI (14)", "SMA20", "SMA50", "SMA200", "Rel Volume", "Avg Volume", "Perf Week", "Perf Month", "Perf Quarter", "Perf Half Y", "Perf Year", "Perf YTD", "Beta", "ATR", "Volatility (Week)", "Volatility (Month)", "Prev Close", "Chart", "Analyst Recommendations", "News", "Description", "Insider Trading"}
+	orderedRows, err := utils.GenerateRows(quoteHeaders, results)
+	if err != nil {
+		return nil, fmt.Errorf("error failed to generate rows from quote KVP map")
+	}
+	df := dataframe.LoadRecords(orderedRows)
+	return &df, nil
+}
+
+func (c *Client) getData(ticker string, wg *sync.WaitGroup, result *chan response) {
+	defer wg.Done()
+	defer close(*result)
+
+	url, err := GenerateURL(ticker)
+	if err != nil {
+		*result <- response{Error: err}
+		return
+	}
+
+	req, err := http.NewRequest(http.MethodGet, url, nil)
+	if err != nil {
+		*result <- response{Error: err}
+		return
+	}
+
+	resp, err := c.Do(req)
+	if err != nil {
+		*result <- response{Error: err}
+		return
+	}
+	defer resp.Body.Close()
+
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		*result <- response{Error: err}
+		return
+	}
+
+	if resp.StatusCode != http.StatusOK {
+		*result <- response{Error: fmt.Errorf("error getting url: '%s', status code: '%d', body: '%s'", url, resp.StatusCode, string(body))}
+		return
+	}
+
+	doc, err := finviz.GenerateDocument(body)
+	if err != nil {
+		*result <- response{Error: err}
+		return
+	}
+
+	dict, err := MapScrape(doc)
+	if err != nil {
+		*result <- response{Error: err}
+		return
+	}
+
+	*result <- response{Result: dict}
+}
+
+func Scrape(doc *goquery.Document) ([][]string, error) {
 	basicData := doc.Find("body > table").Eq(2).Find("tbody").Eq(0)
 
 	titleData := basicData.Children().Eq(5).Find("tbody").Eq(0).Children().Eq(1).Find("tbody").Eq(0)
@@ -168,7 +303,7 @@ func (v *QuoteView) Scrape(doc *goquery.Document) (rows [][]string, err error) {
 }
 
 // MapScrape scrapes FinViz views to a KVP map
-func (v *QuoteView) MapScrape(doc *goquery.Document) (*map[string]interface{}, error) {
+func MapScrape(doc *goquery.Document) (*map[string]interface{}, error) {
 	basicData := doc.Find("body > table").Eq(2).Find("tbody").Eq(0)
 
 	titleData := basicData.Children().Eq(5).Find("tbody").Eq(0).Children().Eq(1).Find("tbody").Eq(0)
@@ -308,4 +443,3 @@ func (v *QuoteView) MapScrape(doc *goquery.Document) (*map[string]interface{}, e
 
 	return &rawTickerData, nil
 }
-*/

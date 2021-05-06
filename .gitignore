@@ -9,6 +9,7 @@
 finviz/finviz
 fixtures/*
 test_data/*
+vendor/
 
 # Testing
 count.out

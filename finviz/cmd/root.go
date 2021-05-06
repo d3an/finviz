@@ -7,11 +7,13 @@ package cmd
 
 import (
 	"fmt"
+	"os"
+
+	"github.com/spf13/cobra"
+
 	"github.com/d3an/finviz/finviz/cmd/news"
 	"github.com/d3an/finviz/finviz/cmd/quote"
 	"github.com/d3an/finviz/finviz/cmd/screener"
-	"github.com/spf13/cobra"
-	"os"
 )
 
 var rootCmd = &cobra.Command{

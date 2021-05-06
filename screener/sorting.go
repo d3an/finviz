@@ -7,8 +7,9 @@ package screener
 
 import (
 	"fmt"
-	"github.com/d3an/finviz"
 	"strings"
+
+	"github.com/d3an/finviz/utils"
 )
 
 // GeneralOrderType represents ascending or descending order
@@ -197,7 +198,7 @@ func GetSpecificOrder(query string) (SpecificOrderType, error) {
 	if specificOrder, exists := SpecificOrderLookup[strings.ToLower(query)]; exists {
 		return specificOrder, nil
 	}
-	return "", finviz.SpecificOrderNotFoundError(fmt.Sprintf("Specific order not found. Query: \"%v\"", query))
+	return "", utils.SpecificOrderNotFoundError(fmt.Sprintf("Specific order not found. Query: \"%v\"", query))
 }
 
 // GetGeneralOrder returns the constant of the queried signal

@@ -8,14 +8,17 @@ package finviz
 import (
 	"bytes"
 	"fmt"
-	"github.com/PuerkitoBio/goquery"
-	"github.com/corpix/uarand"
-	"github.com/dnaeon/go-vcr/recorder"
 	"io"
 	"io/ioutil"
 	"net/http"
 	"strings"
 	"time"
+
+	"github.com/PuerkitoBio/goquery"
+	"github.com/corpix/uarand"
+	"github.com/dnaeon/go-vcr/recorder"
+
+	"github.com/d3an/finviz/utils"
 )
 
 // HeaderTransport implements a Transport that can have its RoundTripper interface modified
@@ -43,13 +46,11 @@ func MakeGetRequest(rec *recorder.Recorder, url string) ([]byte, error) {
 		Transport: addHeaderTransport(rec),
 	}
 
-	// Set up GET request
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
 		return nil, err
 	}
 
-	// Make GET request
 	resp, err := c.Do(req)
 	if err != nil {
 		return nil, err
@@ -58,11 +59,11 @@ func MakeGetRequest(rec *recorder.Recorder, url string) ([]byte, error) {
 
 	// Handle unsuccessful GET requests
 	if resp.StatusCode != http.StatusOK {
-		b, err := ioutil.ReadAll(resp.Body)
+		body, err := ioutil.ReadAll(resp.Body)
 		if err != nil {
 			return nil, err
 		}
-		return b, StatusCodeError(fmt.Sprintf("received HTTP response status %v: %v", resp.StatusCode, resp.Status))
+		return body, utils.StatusCodeError(fmt.Sprintf("received HTTP response status %v: %v", resp.StatusCode, resp.Status))
 	}
 
 	// Convert the response body to a string
@@ -78,7 +79,7 @@ func MakeGetRequest(rec *recorder.Recorder, url string) ([]byte, error) {
 func GenerateDocument(html interface{}) (doc *goquery.Document, err error) {
 	switch html := html.(type) {
 	default:
-		return nil, fmt.Errorf("HTML object type is not one of string, []byte, or io.ReadCloser")
+		return nil, fmt.Errorf("HTML object type is not 'string', '[]byte', or 'io.ReadCloser'")
 	case string:
 		html = strings.ReplaceAll(html, "\\r", "")
 		html = strings.ReplaceAll(html, "\\n", "")
