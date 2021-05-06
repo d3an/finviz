@@ -19,7 +19,6 @@ import (
 	"github.com/dnaeon/go-vcr/recorder"
 	"github.com/go-gota/gota/dataframe"
 
-	"github.com/d3an/finviz"
 	"github.com/d3an/finviz/utils"
 )
 
@@ -98,7 +97,7 @@ func (c *Client) GetNews(view string) (*dataframe.DataFrame, error) {
 		return nil, fmt.Errorf("error getting url: '%s', status code: '%d', body: '%s'", url, resp.StatusCode, string(body))
 	}
 
-	doc, err := finviz.GenerateDocument(body)
+	doc, err := utils.GenerateDocument(body)
 	if err != nil {
 		return nil, err
 	}

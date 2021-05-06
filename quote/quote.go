@@ -15,7 +15,6 @@ import (
 	"github.com/go-gota/gota/dataframe"
 	"github.com/pkg/errors"
 
-	"github.com/d3an/finviz"
 	"github.com/d3an/finviz/utils"
 )
 
@@ -147,7 +146,7 @@ func (c *Client) getData(ticker string, wg *sync.WaitGroup, result *chan respons
 		return
 	}
 
-	doc, err := finviz.GenerateDocument(body)
+	doc, err := utils.GenerateDocument(body)
 	if err != nil {
 		*result <- response{Error: err}
 		return
