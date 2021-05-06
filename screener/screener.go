@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"net"
 	"net/http"
+	"strconv"
 	"sync"
 	"time"
 
@@ -17,10 +18,6 @@ import (
 
 	"github.com/d3an/finviz"
 	"github.com/d3an/finviz/utils"
-)
-
-const (
-	APIURL = "https://finviz.com/screener.ashx"
 )
 
 var (
@@ -74,154 +71,45 @@ type scrapeResult struct {
 	Error     error
 }
 
-func generateURL(fargs *finvizArgs) (string, error) {
-	args := fargs.args
-	filters, err := getFiltersValue(args)
-	if err != nil {
-		return "", err
-	}
-
-	var rowParam string
-	if row, ok := args["row"]; ok {
-		rowParam = fmt.Sprintf("&r=%d", row.(int))
-	}
-
-	switch fargs.view {
-	case "overview":
-		return fmt.Sprintf("%s?v=110%v%v%v%v%v", APIURL, getSignalValue(args),
-			filters, getTickersValue(args), getOrderValue(args), rowParam), nil
-	case "valuation":
-		return fmt.Sprintf("%v?v=120%v%v%v%v%v", APIURL, getSignalValue(args),
-			filters, getTickersValue(args), getOrderValue(args), rowParam), nil
-	case "ownership":
-		return fmt.Sprintf("%v?v=130%v%v%v%v%v", APIURL, getSignalValue(args),
-			filters, getTickersValue(args), getOrderValue(args), rowParam), nil
-	case "performance":
-		return fmt.Sprintf("%v?v=140%v%v%v%v%v", APIURL, getSignalValue(args),
-			filters, getTickersValue(args), getOrderValue(args), rowParam), nil
-	case "custom":
-		customColumns, err := getCustomColumnsValue(args)
-		if err != nil {
-			return "", err
-		}
-		return fmt.Sprintf("%v?v=150%v%v%v%v%v%v", APIURL, getSignalValue(args),
-			filters, getTickersValue(args), getOrderValue(args), customColumns, rowParam), nil
-	case "financial":
-		return fmt.Sprintf("%v?v=160%v%v%v%v%v", APIURL, getSignalValue(args),
-			filters, getTickersValue(args), getOrderValue(args), rowParam), nil
-	case "technical":
-		return fmt.Sprintf("%v?v=170%v%v%v%v%v", APIURL, getSignalValue(args),
-			filters, getTickersValue(args), getOrderValue(args), rowParam), nil
-	case "charts":
-		chartStyle, err := getChartStylingValue(args)
-		if err != nil {
-			return "", err
-		}
-		return fmt.Sprintf("%v?v=210%v%v%v%v%v%v", APIURL, getSignalValue(args),
-			filters, getTickersValue(args), getOrderValue(args), chartStyle, rowParam), nil
-	case "basic":
-		chartStyle, err := getChartStylingValue(args)
-		if err != nil {
-			return "", err
-		}
-		return fmt.Sprintf("%v?v=310%v%v%v%v%v%v", APIURL, getSignalValue(args),
-			filters, getTickersValue(args), getOrderValue(args), chartStyle, rowParam), nil
-	case "news":
-		chartStyle, err := getChartStylingValue(args)
-		if err != nil {
-			return "", err
-		}
-		return fmt.Sprintf("%v?v=320%v%v%v%v%v%v", APIURL, getSignalValue(args),
-			filters, getTickersValue(args), getOrderValue(args), chartStyle, rowParam), nil
-	case "description":
-		chartStyle, err := getChartStylingValue(args)
-		if err != nil {
-			return "", err
-		}
-		return fmt.Sprintf("%v?v=330%v%v%v%v%v%v", APIURL, getSignalValue(args),
-			filters, getTickersValue(args), getOrderValue(args), chartStyle, rowParam), nil
-	case "snapshot":
-		chartStyle, err := getChartStylingValue(args)
-		if err != nil {
-			return "", err
-		}
-		return fmt.Sprintf("%v?v=340%v%v%v%v%v%v", APIURL, getSignalValue(args),
-			filters, getTickersValue(args), getOrderValue(args), chartStyle, rowParam), nil
-	case "ta":
-		chartStyle, err := getChartStylingValue(args)
-		if err != nil {
-			return "", err
-		}
-		return fmt.Sprintf("%v?v=350%v%v%v%v%v%v", APIURL, getSignalValue(args),
-			filters, getTickersValue(args), getOrderValue(args), chartStyle, rowParam), nil
-	case "tickers":
-		return fmt.Sprintf("%v?v=410%v%v%v%v%v", APIURL, getSignalValue(args),
-			filters, getTickersValue(args), getOrderValue(args), rowParam), nil
-	case "bulk":
-		return fmt.Sprintf("%v?v=510%v%v%v%v%v", APIURL, getSignalValue(args),
-			filters, getTickersValue(args), getOrderValue(args), rowParam), nil
-	case "bulkfull":
-		return fmt.Sprintf("%v?v=520%v%v%v%v%v", APIURL, getSignalValue(args),
-			filters, getTickersValue(args), getOrderValue(args), rowParam), nil
-	default:
-		return "", fmt.Errorf("error view '%s' not found", fargs.view)
-	}
-}
-
-func scrape(view string, doc *goquery.Document) *scrapeResult {
-	switch view {
-	case "overview", "valuation", "ownership", "performance", "custom", "financial", "technical":
+func scrape(view int, doc *goquery.Document) *scrapeResult {
+	switch view / 10 {
+	case 10, 11, 12, 13, 14, 15, 16, 17:
 		return DefaultScrape(doc)
-	case "charts":
+	case 20, 21:
 		return ChartScrape(doc)
-	case "basic":
+	case 30, 31:
 		return BasicScrape(doc)
-	case "news":
+	case 32:
 		return NewsScrape(doc)
-	case "description":
+	case 33:
 		return DescriptionScrape(doc)
-	case "snapshot":
+	case 34:
 		return SnapshotScrape(doc)
-	case "ta":
+	case 35:
 		return TAScrape(doc)
-	case "tickers":
+	case 40, 41:
 		return TickerScrape(doc)
-	case "bulk":
+	case 50, 51:
 		return BulkScrape(doc)
-	case "bulkfull":
+	case 52:
 		return BulkFullScrape(doc)
 	default:
-		return &scrapeResult{Error: fmt.Errorf("error view '%s' not found", view)}
+		return &scrapeResult{Error: fmt.Errorf("error view '%d' not found", view)}
 	}
 }
 
-type finvizArgs struct {
-	mu   sync.Mutex
-	view string
-	args map[string]interface{}
-}
-
-func (f *finvizArgs) SetRow(maxRows, index int) {
-	f.mu.Lock()
-	f.args["row"] = (maxRows * (index + 1)) + 1
-}
-
-func (c *Client) GetScreenerResults(view string, args map[string]interface{}) (*dataframe.DataFrame, error) {
+func (c *Client) GetScreenerResults(url string) (*dataframe.DataFrame, error) {
 	var wg sync.WaitGroup
 	var results []map[string]interface{}
 
-	fargs := &finvizArgs{view: view, args: args}
-
 	firstLook := make(chan scrapeResult, 1)
 	wg.Add(1)
-
-	fargs.mu.Lock()
-	go c.getData(fargs, &wg, &firstLook)
+	go c.getData(url, &wg, &firstLook)
 	wg.Wait()
 
 	firstPage := <-firstLook
 	if firstPage.Error != nil {
-		return nil, errors.Wrapf(firstPage.Error, "error received while scraping screener '%s'", view)
+		return nil, errors.Wrapf(firstPage.Error, "error received while scraping screener")
 	}
 	results = append(results, firstPage.Results...)
 	pagesLeft := firstPage.PageCount - 1
@@ -237,15 +125,14 @@ func (c *Client) GetScreenerResults(view string, args map[string]interface{}) (*
 
 	for i := 0; i < pagesLeft; i++ {
 		wg.Add(1)
-		fargs.SetRow(maxRows, i)
-		go c.getData(fargs, &wg, &scrapeResults[i])
+		go c.getData(fmt.Sprintf("%s&r=%d", url, (maxRows*(i+1))+1), &wg, &scrapeResults[i])
 	}
 	wg.Wait()
 
 	for i := 0; i < pagesLeft; i++ {
 		page := <-scrapeResults[i]
 		if page.Error != nil {
-			return nil, errors.Wrapf(page.Error, "error received while scraping screener '%s', page '%d'", view, i+2)
+			return nil, errors.Wrapf(page.Error, "error received while scraping screener: page '%d'", i+2)
 		}
 		results = append(results, page.Results...)
 	}
@@ -262,19 +149,17 @@ func processScrapeResults(keys []string, results []map[string]interface{}) (*dat
 	return CleanScreenerDataFrame(&df), nil
 }
 
-func (c *Client) getData(fargs *finvizArgs, wg *sync.WaitGroup, scr *chan scrapeResult) {
+func (c *Client) getData(url string, wg *sync.WaitGroup, scr *chan scrapeResult) {
 	defer wg.Done()
 	defer close(*scr)
 
-	url, err := generateURL(fargs)
-	fargs.mu.Unlock()
+	req, err := http.NewRequest(http.MethodGet, url, nil)
 	if err != nil {
 		*scr <- scrapeResult{Error: err}
 		return
 	}
-	fmt.Println(url)
 
-	req, err := http.NewRequest(http.MethodGet, url, nil)
+	view, err := strconv.ParseInt(req.URL.Query().Get("v"), 10, 64)
 	if err != nil {
 		*scr <- scrapeResult{Error: err}
 		return
@@ -316,7 +201,7 @@ func (c *Client) getData(fargs *finvizArgs, wg *sync.WaitGroup, scr *chan scrape
 		return
 	}
 
-	res := scrape(fargs.view, doc)
+	res := scrape(int(view), doc)
 	if res.Error != nil {
 		*scr <- scrapeResult{Error: res.Error}
 		return
@@ -324,65 +209,3 @@ func (c *Client) getData(fargs *finvizArgs, wg *sync.WaitGroup, scr *chan scrape
 
 	*scr <- *res
 }
-
-/*
-func (c *Client) GetData(view string, args *map[string]interface{}) (*dataframe.DataFrame, error) {
-	url, err := GenerateURL(view, args)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodGet, url, nil)
-	if err != nil {
-		return nil, err
-	}
-
-	resp, err := c.Do(req)
-	if err != nil {
-		return nil, err
-	}
-	defer resp.Body.Close()
-
-	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("error getting url: '%s', status code: '%d', body: '%s'", url, resp.StatusCode, string(body))
-	}
-
-	doc, err := finviz.GenerateDocument(body)
-	if err != nil {
-		return nil, err
-	}
-
-	results, err := Scrape(view, doc)
-	if err != nil {
-		return nil, err
-	}
-
-	df := dataframe.LoadRecords(results)
-	return CleanScreenerDataFrame(&df), nil
-}
-
-func main() {
-	client := New(&Config{userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36"})
-
-	df, err := client.getData("overview", &map[string]interface{}{
-		"signal":         TopGainers,
-		"general_order":  Descending,
-		"specific_order": ChangeFromOpen,
-		"filters": []FilterInterface{
-			ExchangeFilter(NYSE, NASDAQ),
-			AverageVolumeFilter(AvgVolOver50K),
-			PriceFilter(PriceOver1),
-		}})
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
-	}
-
-	fmt.Println(df)
-}
-*/

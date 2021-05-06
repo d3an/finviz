@@ -33,7 +33,7 @@ func Execute() error {
 }
 
 func init() {
-	rootCmd.AddCommand(screener.ScreenerCmd)
-	rootCmd.AddCommand(news.NewsCmd)
-	rootCmd.AddCommand(quote.QuoteCmd)
+	rootCmd.AddCommand(screener.Cmd)
+	rootCmd.AddCommand(news.Cmd)
+	rootCmd.AddCommand(quote.Cmd)
 }
