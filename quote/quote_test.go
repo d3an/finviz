@@ -14,10 +14,8 @@ import (
 
 	"github.com/corpix/uarand"
 	"github.com/dnaeon/go-vcr/recorder"
-	// "github.com/go-gota/gota/dataframe"
 	"github.com/stretchr/testify/require"
 
-	// "github.com/d3an/finviz"
 	"github.com/d3an/finviz/utils"
 )
 

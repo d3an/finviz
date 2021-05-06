@@ -17,8 +17,8 @@ var (
 	outputJSONArg string
 	viewArg       string
 
-	// NewsCmd is the CLI subcommand for FinViz news
-	NewsCmd = &cobra.Command{
+	// Cmd is the CLI subcommand for FinViz news
+	Cmd = &cobra.Command{
 		Use:     "news",
 		Aliases: []string{"ns"},
 		Short:   "FinViz News.",
@@ -51,7 +51,7 @@ func init() {
 	// -v 1
 	// --output-csv data.csv
 	// --output-json data.json
-	NewsCmd.Flags().StringVarP(&viewArg, "view", "v", "1", "2")
-	NewsCmd.Flags().StringVar(&outputCSVArg, "output-csv", "", "outputFileName.csv")
-	NewsCmd.Flags().StringVar(&outputJSONArg, "output-json", "", "outputFileName.json")
+	Cmd.Flags().StringVarP(&viewArg, "view", "v", "1", "2")
+	Cmd.Flags().StringVar(&outputCSVArg, "output-csv", "", "outputFileName.csv")
+	Cmd.Flags().StringVar(&outputJSONArg, "output-json", "", "outputFileName.json")
 }

@@ -17,8 +17,8 @@ var (
 	outputJSONArg string
 	tickerArgs    []string
 
-	// QuoteCmd is the CLI subcommand for FinViz news
-	QuoteCmd = &cobra.Command{
+	// Cmd is the CLI subcommand for FinViz news
+	Cmd = &cobra.Command{
 		Use:     "quote",
 		Aliases: []string{"q"},
 		Short:   "FinViz Quotes.",
@@ -51,7 +51,7 @@ func init() {
 	// -v 1
 	// --output-csv data.csv
 	// --output-json data.json
-	QuoteCmd.Flags().StringSliceVarP(&tickerArgs, "tickers", "t", nil, "AAPL,GS,amzn")
-	QuoteCmd.Flags().StringVar(&outputCSVArg, "output-csv", "", "outputFileName.csv")
-	QuoteCmd.Flags().StringVar(&outputJSONArg, "output-json", "", "outputFileName.json")
+	Cmd.Flags().StringSliceVarP(&tickerArgs, "tickers", "t", nil, "AAPL,GS,amzn")
+	Cmd.Flags().StringVar(&outputCSVArg, "output-csv", "", "outputFileName.csv")
+	Cmd.Flags().StringVar(&outputJSONArg, "output-json", "", "outputFileName.json")
 }
