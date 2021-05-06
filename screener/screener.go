@@ -16,7 +16,6 @@ import (
 	"github.com/go-gota/gota/dataframe"
 	"github.com/pkg/errors"
 
-	"github.com/d3an/finviz"
 	"github.com/d3an/finviz/utils"
 )
 
@@ -195,7 +194,7 @@ func (c *Client) getData(url string, wg *sync.WaitGroup, scr *chan scrapeResult)
 		return
 	}
 
-	doc, err := finviz.GenerateDocument(body)
+	doc, err := utils.GenerateDocument(body)
 	if err != nil {
 		*scr <- scrapeResult{Error: err}
 		return

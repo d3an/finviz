@@ -6,13 +6,17 @@
 package utils
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
+	"io"
+	"io/ioutil"
 	"os"
 	"strconv"
 	"strings"
 	"unicode/utf8"
 
+	"github.com/PuerkitoBio/goquery"
 	"github.com/go-gota/gota/dataframe"
 )
 
@@ -61,6 +65,42 @@ func ExportJSON(df *dataframe.DataFrame, outFileName string) error {
 		return err
 	}
 	return df.WriteJSON(f)
+}
+
+// GenerateDocument is a helper function for Scraping
+func GenerateDocument(html interface{}) (doc *goquery.Document, err error) {
+	switch html := html.(type) {
+	default:
+		return nil, fmt.Errorf("HTML object type is not 'string', '[]byte', or 'io.ReadCloser'")
+	case string:
+		html = strings.ReplaceAll(html, "\\r", "")
+		html = strings.ReplaceAll(html, "\\n", "")
+		html = strings.ReplaceAll(html, "\\\"", "\"")
+
+		html = strings.Map(func(r rune) rune {
+			if r == '\n' || r == '\t' {
+				return ' '
+			}
+			return r
+		}, html)
+		doc, err = goquery.NewDocumentFromReader(bytes.NewReader([]byte(html)))
+		if err != nil {
+			return nil, err
+		}
+	case []byte:
+		doc, err = goquery.NewDocumentFromReader(bytes.NewReader(html))
+		if err != nil {
+			return nil, err
+		}
+
+	case io.ReadCloser:
+		byteArray, err := ioutil.ReadAll(html)
+		if err != nil {
+			return nil, err
+		}
+		return GenerateDocument(byteArray)
+	}
+	return doc, nil
 }
 
 // GenerateRows is a helper function for DataFrame construction
