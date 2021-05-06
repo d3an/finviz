@@ -7,14 +7,15 @@ package screener
 
 import (
 	"fmt"
-	"github.com/PuerkitoBio/goquery"
-	"github.com/d3an/finviz"
-	"github.com/go-gota/gota/dataframe"
-	"github.com/go-gota/gota/series"
-	"net/http"
 	"sort"
 	"strconv"
 	"strings"
+
+	"github.com/PuerkitoBio/goquery"
+	"github.com/go-gota/gota/dataframe"
+	"github.com/go-gota/gota/series"
+
+	"github.com/d3an/finviz/utils"
 )
 
 // ChartStyle defines the types of charts available in the FinViz screener
@@ -43,19 +44,19 @@ const (
 
 func basicDefaultViewHelper(rootNode *goquery.Selection, headers []string, rawTickerData map[string]interface{}) (extraHeaders []string, extraRawTickerData map[string]interface{}) {
 	rootNode.Find(".snapshot-table > tbody").Children().Each(func(j int, childNode *goquery.Selection) {
-		if !finviz.Contains(headers, childNode.Children().First().Text()) {
+		if !utils.Contains(headers, childNode.Children().First().Text()) {
 			headers = append(headers, childNode.Children().First().Text())
 		}
 		rawTickerData[childNode.Children().First().Text()] = childNode.Children().Last().Find("a").Text()
 	})
 
-	if !finviz.Contains(headers, "Chart") {
+	if !utils.Contains(headers, "Chart") {
 		headers = append(headers, "Chart")
 	}
 	rawTickerData["Chart"] = rootNode.Find("img").AttrOr("src", "")
 
 	rootNode.Find(".snapshot-table2 > tbody").Children().Each(func(j int, childNode *goquery.Selection) {
-		if !finviz.Contains(headers, childNode.Children().Eq(0).Text()) && !finviz.Contains(headers, childNode.Children().Eq(2).Text()) {
+		if !utils.Contains(headers, childNode.Children().Eq(0).Text()) && !utils.Contains(headers, childNode.Children().Eq(2).Text()) {
 			headers = append(append(headers, childNode.Children().Eq(0).Text()), childNode.Children().Eq(2).Text())
 		}
 		rawTickerData[childNode.Children().Eq(0).Text()] = childNode.Children().Eq(1).Text()
@@ -66,7 +67,7 @@ func basicDefaultViewHelper(rootNode *goquery.Selection, headers []string, rawTi
 }
 
 func basicNewsViewHelper(rootNode *goquery.Selection, headers []string, rawTickerData map[string]interface{}) (extraHeaders []string, extraRawTickerData map[string]interface{}) {
-	if !finviz.Contains(headers, "News") {
+	if !utils.Contains(headers, "News") {
 		headers = append(headers, "News")
 	}
 	var news []map[string]string
@@ -83,7 +84,7 @@ func basicNewsViewHelper(rootNode *goquery.Selection, headers []string, rawTicke
 }
 
 func basicDescriptionViewHelper(rootNode *goquery.Selection, headers []string, rawTickerData map[string]interface{}) (extraHeaders []string, extraRawTickerData map[string]interface{}) {
-	if !finviz.Contains(headers, "Description") {
+	if !utils.Contains(headers, "Description") {
 		headers = append(headers, "Description")
 	}
 	description := rootNode.Find(".body-table-profile").Text()
@@ -94,7 +95,7 @@ func basicDescriptionViewHelper(rootNode *goquery.Selection, headers []string, r
 }
 
 func basicInsiderTradingViewHelper(rootNode *goquery.Selection, headers []string, rawTickerData map[string]interface{}) (extraHeaders []string, extraRawTickerData map[string]interface{}) {
-	if !finviz.Contains(headers, "Insider Trading") {
+	if !utils.Contains(headers, "Insider Trading") {
 		headers = append(headers, "Insider Trading")
 	}
 	var insiderTrading []map[string]string
@@ -136,10 +137,10 @@ func getFilterURLComponent(filters interface{}) (string, error) {
 
 		for i := 0; i < filterSize; i++ {
 			if filters[i].GetValue() == "" {
-				return "", finviz.NoValuesError(fmt.Sprintf("%v filter was initialized without a value.", filters[i].GetName()))
+				return "", utils.NoValuesError(fmt.Sprintf("%v filter was initialized without a value.", filters[i].GetName()))
 			}
 			if filterArrayContains(validFilters, filters[i]) {
-				return "", finviz.DuplicateFilterError(fmt.Sprintf("%v filter was declared more than once.", filters[i].GetName()))
+				return "", utils.DuplicateFilterError(fmt.Sprintf("%v filter was declared more than once.", filters[i].GetName()))
 			}
 			validFilters = append(validFilters, filters[i])
 			filterKeys = append(filterKeys, filters[i].GetURLKey())
@@ -197,8 +198,8 @@ func getTickerURLComponent(tickers interface{}) string {
 	}
 }
 
-func getSignalValue(viewArgs *map[string]interface{}) string {
-	if value, exists := (*viewArgs)["signal"]; exists {
+func getSignalValue(args map[string]interface{}) string {
+	if value, exists := args["signal"]; exists {
 		return getSignalURLComponent(value)
 	}
 	return ""
@@ -288,9 +289,9 @@ func getChartStylingURLComponent(cs, tf interface{}) (string, error) {
 	}
 }
 
-func getChartStylingValue(viewArgs *map[string]interface{}) (string, error) {
-	csValue, csExists := (*viewArgs)["chart_type"]
-	tfValue, tfExists := (*viewArgs)["timeframe"]
+func getChartStylingValue(args map[string]interface{}) (string, error) {
+	csValue, csExists := args["chart_type"]
+	tfValue, tfExists := args["timeframe"]
 
 	var ct string
 	if csExists {
@@ -334,8 +335,8 @@ func getChartStylingValue(viewArgs *map[string]interface{}) (string, error) {
 	return "", nil
 }
 
-func getCustomColumnsValue(viewArgs *map[string]interface{}) (string, error) {
-	if value, exists := (*viewArgs)["custom_columns"]; exists {
+func getCustomColumnsValue(args map[string]interface{}) (string, error) {
+	if value, exists := args["custom_columns"]; exists {
 		result, err := getCustomColumnsURLComponent(value)
 		if err != nil {
 			return "", err
@@ -345,8 +346,8 @@ func getCustomColumnsValue(viewArgs *map[string]interface{}) (string, error) {
 	return "", nil
 }
 
-func getFiltersValue(viewArgs *map[string]interface{}) (string, error) {
-	if value, exists := (*viewArgs)["filters"]; exists {
+func getFiltersValue(args map[string]interface{}) (string, error) {
+	if value, exists := args["filters"]; exists {
 		result, err := getFilterURLComponent(value)
 		if err != nil {
 			return "", err
@@ -356,26 +357,26 @@ func getFiltersValue(viewArgs *map[string]interface{}) (string, error) {
 	return "", nil
 }
 
-func getTickersValue(viewArgs *map[string]interface{}) string {
-	if value, exists := (*viewArgs)["tickers"]; exists {
+func getTickersValue(args map[string]interface{}) string {
+	if value, exists := args["tickers"]; exists {
 		return getTickerURLComponent(value)
 	}
 	return ""
 }
 
-func getOrderValue(viewArgs *map[string]interface{}) string {
-	generalOrderValue, generalOrderExists := (*viewArgs)["general_order"]
+func getOrderValue(args map[string]interface{}) string {
+	generalOrderValue, generalOrderExists := args["general_order"]
 	if !generalOrderExists {
 		generalOrderValue = ""
 	}
 
-	specificOrderValue, specificOrderExists := (*viewArgs)["specific_order"]
+	specificOrderValue, specificOrderExists := args["specific_order"]
 	if !specificOrderExists {
 		specificOrderValue = ""
 	}
 
 	if generalOrderValue != "" || specificOrderValue != "" {
-		signalValue, signalExists := (*viewArgs)["signal"]
+		signalValue, signalExists := args["signal"]
 		if !signalExists {
 			signalValue = ""
 		}
@@ -384,14 +385,15 @@ func getOrderValue(viewArgs *map[string]interface{}) string {
 	return ""
 }
 
+/*
 // GetScreenerData returns a DataFrame with screener data results
-func GetScreenerData(c *http.Client, v finviz.ViewInterface, viewArgs *map[string]interface{}) (*dataframe.DataFrame, error) {
+func GetScreenerData(rec *recorder.Recorder, v finviz.ViewInterface, viewArgs *map[string]interface{}) (*dataframe.DataFrame, error) {
 	url, err := v.GenerateURL(viewArgs)
 	if err != nil {
 		return nil, err
 	}
 
-	html, err := finviz.MakeGetRequest(c, url)
+	html, err := finviz.MakeGetRequest(rec, url)
 	if err != nil {
 		return nil, err
 	}
@@ -410,6 +412,7 @@ func GetScreenerData(c *http.Client, v finviz.ViewInterface, viewArgs *map[strin
 	processedDf := CleanScreenerDataFrame(&df)
 	return processedDf, nil
 }
+*/
 
 func CleanScreenerDataFrame(df *dataframe.DataFrame) *dataframe.DataFrame {
 	columnNames := df.Names()

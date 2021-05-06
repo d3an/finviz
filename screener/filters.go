@@ -7,10 +7,11 @@ package screener
 
 import (
 	"fmt"
-	"github.com/d3an/finviz"
 	"os"
 	"sort"
 	"strings"
+
+	"github.com/d3an/finviz/utils"
 )
 
 // GetName returns the name of a given filter
@@ -43,11 +44,11 @@ func (a *Filter) SetValues(values []string) *Filter {
 	numValues := len(values)
 
 	if numValues == 0 {
-		fmt.Println(finviz.NoValuesError(
+		fmt.Println(utils.NoValuesError(
 			fmt.Sprintf("%v was initialized without a value.", a.GetName())))
 		os.Exit(1)
 	} else if numValues > 1 && !a.GetProperty("multipleValues") {
-		fmt.Println(finviz.MultipleValuesError(
+		fmt.Println(utils.MultipleValuesError(
 			fmt.Sprintf("%v filter does not support multiple values. Values passed: [%v]", a.GetName(), strings.Join(values, ","))))
 		os.Exit(1)
 	}
@@ -76,7 +77,7 @@ func GetFilter(filterQuery string, filterValues ...string) (*Filter, error) {
 		return filter, nil
 	}
 	// Add logic that suggests similar matches
-	return nil, finviz.FilterNotFoundError(fmt.Sprintf("Filter not found. Query: \"%v\"", filterQuery))
+	return nil, utils.FilterNotFoundError(fmt.Sprintf("Filter not found. Query: \"%v\"", filterQuery))
 }
 
 // filterArrayContains returns true if a filter exists in an array of filters and false otherwise

@@ -6,11 +6,12 @@
 package screener
 
 import (
-	. "github.com/d3an/finviz/screener"
 	"strings"
 
-	"github.com/d3an/finviz"
 	"github.com/spf13/cobra"
+
+	. "github.com/d3an/finviz/screener"
+	"github.com/d3an/finviz/utils"
 )
 
 var (
@@ -42,7 +43,7 @@ var (
 			} else {
 				signal, err = GetSignal(strings.ToLower(signalArg))
 				if err != nil {
-					er(err)
+					utils.Err(err)
 				}
 			}
 
@@ -58,7 +59,7 @@ var (
 			} else {
 				specificOrder, err = GetSpecificOrder(strings.ToLower(orderArg))
 				if err != nil {
-					er(err)
+					utils.Err(err)
 				}
 			}
 
@@ -73,25 +74,20 @@ var (
 
 					filterQuery, filterValues, err = extractFilterInput(filterArgs[i])
 					if err != nil {
-						er(err)
+						utils.Err(err)
 					}
 
 					filter, err = GetFilter(strings.ToLower(filterQuery), filterValues...)
 					if err != nil {
-						er(err)
+						utils.Err(err)
 					}
 					filters = append(filters, filter)
 				}
 			}
 
-			viewInterface, err := ViewFactory(viewArg)
-			if err != nil {
-				er(err)
-			}
+			client := New(nil)
 
-			client := finviz.NewClient()
-
-			df, err := GetScreenerData(client, viewInterface, &map[string]interface{}{
+			df, err := client.GetScreenerResults(viewArg, map[string]interface{}{
 				"signal":         signal,
 				"general_order":  generalOrder,
 				"specific_order": specificOrder,
@@ -99,19 +95,19 @@ var (
 				"filters":        filters,
 			})
 			if err != nil {
-				er(err)
+				utils.Err(err)
 			}
 
 			if outputCSVArg != "" {
-				if err := finviz.ExportScreenCSV(df, outputCSVArg); err != nil {
-					er(err)
+				if err := utils.ExportCSV(df, outputCSVArg); err != nil {
+					utils.Err(err)
 				}
 			} else if outputJSONArg != "" {
-				if err := finviz.ExportScreenJSON(df, outputJSONArg); err != nil {
-					er(err)
+				if err := utils.ExportJSON(df, outputJSONArg); err != nil {
+					utils.Err(err)
 				}
 			} else {
-				finviz.PrintFullDataFrame(df)
+				utils.PrintFullDataFrame(df)
 			}
 		},
 	}

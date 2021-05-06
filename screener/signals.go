@@ -7,7 +7,8 @@ package screener
 
 import (
 	"fmt"
-	"github.com/d3an/finviz"
+
+	"github.com/d3an/finviz/utils"
 )
 
 // SignalType represents the various signals to screen with
@@ -135,5 +136,5 @@ func GetSignal(query string) (SignalType, error) {
 	if signal, exists := SignalLookup[query]; exists {
 		return signal, nil
 	}
-	return "", finviz.SignalNotFoundError(fmt.Sprintf("Signal not found. Query: \"%v\"", query))
+	return "", utils.ErrorSignalNotFound(fmt.Sprintf("Signal not found. Query: \"%v\"", query))
 }
