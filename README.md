@@ -42,7 +42,7 @@ func main() {
 
 ### Output
 
-```command line
+```
 [31x11] DataFrame
 
      No.   Ticker   Company                                         Sector                 Industry                       Country        Market Cap  P/E       Price      Change    Volume
