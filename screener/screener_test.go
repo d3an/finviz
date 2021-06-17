@@ -44,33 +44,18 @@ func newTestClient(config *Config) *Client {
 	}
 }
 
-/*
 func TestGetScreenerResultsLotOfPages(t *testing.T) {
 	values := []struct {
 		cassettePath     string
-		args             map[string]interface{}
-		view             string
-		expectedRowCount int
+		url              string
 		expectedColCount int
 		expectedColNames []string
 	} {
 		{
 			cassettePath: "cassettes/custom_all",
-			args: map[string]interface{}{
-				// "signal": UnusualVolume,
-				"filters": []FilterInterface{
-					// ExchangeFilter(NYSE),
-					// MarketCapFilter(LargeUnder200B),
-				},
-				// "tickers":        []string{},
-				// "general_order":  Descending,
-				// "specific_order": Volume,
-				"custom_columns": []string{"0", "1", "Sector", "2", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "shares Outstanding", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "volume", "68", "69", "IPO Date", "70"},
-			},
-			view: "custom",
-			expectedRowCount: 20,
+			url: "https://finviz.com/screener.ashx?v=150&c=0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70",
 			expectedColCount: 71,
-			expectedColNames: []string{"No.", "Ticker", "Sector", "Company", "Industry", "Country", "Market Cap", "P/E", "Fwd P/E", "PEG", "P/S", "P/B", "P/C", "P/FCF", "Dividend", "Payout Ratio", "EPS", "EPS this Y", "EPS next Y", "EPS past 5Y", "EPS next 5Y", "Sales past 5Y", "EPS Q/Q", "Sales Q/Q", "Outstanding", "Float", "Insider Own", "Insider Trans", "Inst Own", "Inst Trans", "Float Short", "Short Ratio", "ROA", "ROE", "ROI", "Curr R", "Quick R", "LTDebt/Eq", "Debt/Eq", "Gross M", "Oper M", "Profit M", "Perf Week", "Perf Month", "Perf Quart", "Perf Half", "Perf Year", "Perf YTD", "Beta", "ATR", "Volatility W", "Volatility M", "SMA20", "SMA50", "SMA200", "50D High", "50D Low", "52W High", "52W Low", "RSI", "from Open", "Gap", "Recom", "Avg Volume", "Rel Volume", "Price", "Change", "Volume", "Earnings", "Target Price", "IPO Date"},
+			expectedColNames: []string{"No.", "Ticker", "Company", "Sector", "Industry", "Country", "Market Cap", "P/E", "Fwd P/E", "PEG", "P/S", "P/B", "P/C", "P/FCF", "Dividend", "Payout Ratio", "EPS", "EPS this Y", "EPS next Y", "EPS past 5Y", "EPS next 5Y", "Sales past 5Y", "EPS Q/Q", "Sales Q/Q", "Outstanding", "Float", "Insider Own", "Insider Trans", "Inst Own", "Inst Trans", "Float Short", "Short Ratio", "ROA", "ROE", "ROI", "Curr R", "Quick R", "LTDebt/Eq", "Debt/Eq", "Gross M", "Oper M", "Profit M", "Perf Week", "Perf Month", "Perf Quart", "Perf Half", "Perf Year", "Perf YTD", "Beta", "ATR", "Volatility W", "Volatility M", "SMA20", "SMA50", "SMA200", "50D High", "50D Low", "52W High", "52W Low", "RSI", "from Open", "Gap", "Recom", "Avg Volume", "Rel Volume", "Price", "Change", "Volume", "Earnings", "Target Price", "IPO Date"},
 		},
 	}
 
@@ -85,16 +70,14 @@ func TestGetScreenerResultsLotOfPages(t *testing.T) {
 
 			client := newTestClient(&Config{recorder: r, userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36"})
 
-			df, err := client.GetScreenerResults(v.view, v.args)
+			df, err := client.GetScreenerResults(v.url)
 			require.Nil(t, err)
 			utils.PrintFullDataFrame(df)
 			require.Equal(t, v.expectedColCount, df.Ncol())
 			require.Equal(t, v.expectedColNames, df.Names())
-			// require.Equal(t, v.expectedRowCount, df.Nrow())
 		}()
 	}
 }
-*/
 
 func TestGetScreenerResults(t *testing.T) {
 	values := []struct {

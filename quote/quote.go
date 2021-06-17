@@ -86,9 +86,8 @@ func (c *Client) GetQuotes(tickers []string) (*dataframe.DataFrame, error) {
 	for i, ticker := range tickers {
 		wg.Add(1)
 		go c.getData(ticker, &wg, &results[i])
+		wg.Wait()
 	}
-
-	wg.Wait()
 
 	var scrapeResults []map[string]interface{}
 	for i := 0; i < resultCount; i++ {

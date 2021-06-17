@@ -125,8 +125,8 @@ func (c *Client) GetScreenerResults(url string) (*dataframe.DataFrame, error) {
 	for i := 0; i < pagesLeft; i++ {
 		wg.Add(1)
 		go c.getData(fmt.Sprintf("%s&r=%d", url, (maxRows*(i+1))+1), &wg, &scrapeResults[i])
+		wg.Wait()
 	}
-	wg.Wait()
 
 	for i := 0; i < pagesLeft; i++ {
 		page := <-scrapeResults[i]
@@ -188,7 +188,8 @@ func (c *Client) getData(url string, wg *sync.WaitGroup, scr *chan scrapeResult)
 		return nil
 	}, backoff.NewExponentialBackOff(), func(err error, td time.Duration) {
 		fmt.Printf("[ERROR]: %v\n", err)
-		fmt.Printf("[WAIT_IN_SECONDS]: %v\n", td.Seconds())
+		fmt.Printf("[WAIT_IN_SECONDS]: %v\n", 2 * td.Seconds())
+		time.Sleep(td)
 	}); err != nil {
 		*scr <- scrapeResult{Error: err}
 		return
@@ -206,5 +207,6 @@ func (c *Client) getData(url string, wg *sync.WaitGroup, scr *chan scrapeResult)
 		return
 	}
 
+	fmt.Printf("[SUCCESS]: %v\n", url)
 	*scr <- *res
 }
