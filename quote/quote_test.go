@@ -63,6 +63,32 @@ func TestGenerateURL(t *testing.T) {
 	}
 }
 
+func TestFixQuoteIssue(t *testing.T) {
+	values := []struct {
+		ticker       string
+		cassettePath string
+	}{
+		{ticker: "AAPL", cassettePath: "cassettes/issue_aapl"},
+		{ticker: "TSLA", cassettePath: "cassettes/issue_tsla"},
+	}
+
+	for _, v := range values {
+		func() {
+			r, err := recorder.New(v.cassettePath)
+			require.Nil(t, err)
+			defer func() {
+				err = r.Stop()
+				require.Nil(t, err)
+			}()
+			client := newTestClient(&Config{recorder: r, userAgent: uarand.GetRandom()})
+
+			df, err := client.GetQuotes([]string{v.ticker})
+			utils.PrintFullDataFrame(df)
+			require.Nil(t, err)
+		}()
+	}
+}
+
 func TestGetData(t *testing.T) {
 	values := []struct {
 		cassettePath        string
@@ -73,19 +99,19 @@ func TestGetData(t *testing.T) {
 		{ // Full column count
 			cassettePath:        "cassettes/full_quote",
 			ticker:              "AAPL",
-			expectedColCount:    83,
+			expectedColCount:    82,
 			expectedMissingCols: []string{},
 		},
 		{ // No Insider Trading or Analyst Recommendation table
 			cassettePath:        "cassettes/missing_insdr_and_recom",
 			ticker:              "ATHE",
-			expectedColCount:    83,
+			expectedColCount:    82,
 			expectedMissingCols: []string{"Insider Trading", "Analyst Recommendations"},
 		},
 		{ // No Insider Trading table
 			cassettePath:        "cassettes/missing_insdr",
 			ticker:              "AEZS",
-			expectedColCount:    83,
+			expectedColCount:    82,
 			expectedMissingCols: []string{"Insider Trading"},
 		},
 	}

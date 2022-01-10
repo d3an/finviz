@@ -102,7 +102,7 @@ func (c *Client) GetQuotes(tickers []string) (*dataframe.DataFrame, error) {
 }
 
 func processScrapeResults(results []map[string]interface{}) (*dataframe.DataFrame, error) {
-	quoteHeaders := []string{"Ticker", "Company", "Industry", "Sector", "Country", "Index", "Market Cap", "Price", "Change", "Volume", "Income", "Sales", "Book/sh", "Cash/sh", "Dividend", "Dividend %", "Employees", "Optionable", "Shortable", "Recom", "P/E", "Forward P/E", "PEG", "P/S", "P/B", "P/C", "P/FCF", "Quick Ratio", "Current Ratio", "Debt/Eq", "LT Debt/Eq", "EPS (ttm)", "EPS next Y", "EPS next Q", "EPS this Y", "EPS growth next Y", "EPS next 5Y", "EPS past 5Y", "Sales past 5Y", "Sales Q/Q", "EPS Q/Q", "Earnings", "Insider Own", "Insider Trans", "Inst Own", "Inst Trans", "ROA", "ROE", "ROI", "Gross Margin", "Oper. Margin", "Profit Margin", "Payout", "Shs Outstand", "Shs Float", "Short Float", "Short Ratio", "Target Price", "52W Range", "52W High", "52W Low", "RSI (14)", "SMA20", "SMA50", "SMA200", "Rel Volume", "Avg Volume", "Perf Week", "Perf Month", "Perf Quarter", "Perf Half Y", "Perf Year", "Perf YTD", "Beta", "ATR", "Volatility (Week)", "Volatility (Month)", "Prev Close", "Chart", "Analyst Recommendations", "News", "Description", "Insider Trading"}
+	quoteHeaders := []string{"Ticker", "Company", "Industry", "Sector", "Country", "Index", "Market Cap", "Price", "Change", "Volume", "Income", "Sales", "Book/sh", "Cash/sh", "Dividend", "Dividend %", "Employees", "Optionable", "Shortable", "Recom", "P/E", "Forward P/E", "PEG", "P/S", "P/B", "P/C", "P/FCF", "Quick Ratio", "Current Ratio", "Debt/Eq", "LT Debt/Eq", "EPS (ttm)", "EPS next Y", "EPS next Q", "EPS this Y", "EPS growth next Y", "EPS next 5Y", "EPS past 5Y", "Sales past 5Y", "Sales Q/Q", "EPS Q/Q", "Earnings", "Insider Own", "Insider Trans", "Inst Own", "Inst Trans", "ROA", "ROE", "ROI", "Gross Margin", "Oper. Margin", "Profit Margin", "Payout", "Shs Outstand", "Shs Float", "Short Float", "Short Ratio", "Target Price", "52W Range", "52W High", "52W Low", "RSI (14)", "SMA20", "SMA50", "SMA200", "Rel Volume", "Avg Volume", "Perf Week", "Perf Month", "Perf Quarter", "Perf Half Y", "Perf Year", "Perf YTD", "Beta", "ATR", "Volatility (Week)", "Volatility (Month)", "Prev Close", "Analyst Recommendations", "News", "Description", "Insider Trading"}
 	orderedRows, err := utils.GenerateRows(quoteHeaders, results)
 	if err != nil {
 		return nil, fmt.Errorf("error failed to generate rows from quote KVP map")
@@ -121,7 +121,7 @@ func (c *Client) getData(ticker string, wg *sync.WaitGroup, result *chan respons
 		return
 	}
 
-	req, err := http.NewRequest(http.MethodGet, url, nil)
+	req, err := http.NewRequest(http.MethodGet, url, http.NoBody)
 	if err != nil {
 		*result <- response{Error: err}
 		return
@@ -162,50 +162,39 @@ func (c *Client) getData(ticker string, wg *sync.WaitGroup, result *chan respons
 
 // Scrape scrapes FinViz views to a KVP map
 func Scrape(doc *goquery.Document) (*map[string]interface{}, error) {
-	basicData := doc.Find("body > table").Eq(2).Find("tbody").Eq(0)
-
-	titleData := basicData.Children().Eq(5).Find("tbody").Eq(0).Children().Eq(1).Find("tbody").Eq(0)
-	tableData := basicData.Children().Eq(6).Find("tbody").Eq(0)
-
-	extraSection := doc.Find("body > table").Eq(3).Find("tbody").Eq(0).ChildrenFiltered("tr")
-
-	rawTickerData := make(map[string]interface{})
+	data := make(map[string]interface{})
+	doc.Find("tr[class=\"table-dark-row\"] > td").Each(func(column int, row *goquery.Selection) {
+		if column%2 == 0 {
+			switch row.Text() {
+			default:
+				data[row.Text()] = row.Next().Text()
+			case "Index":
+				data["Index"] = strings.Join(strings.Split(row.Next().Text(), " "), ",")
+			case "EPS next Y":
+				if _, exists := data["EPS next Y"]; exists {
+					data["EPS growth next Y"] = row.Next().Text()
+				} else {
+					data["EPS next Y"] = row.Next().Text()
+				}
+			case "Volatility":
+				vols := strings.Split(row.Next().Text(), " ")
+				data["Volatility (Week)"] = vols[0]
+				data["Volatility (Month)"] = vols[1]
+			}
+		}
+	})
 
 	// Title Data
-	rawTickerData["Chart"] = doc.Find("#chart0").Eq(0).AttrOr("src", "")
-	rawTickerData["Ticker"] = doc.Find("#ticker").Eq(0).Text()
-	rawTickerData["Company"] = titleData.Children().Eq(1).Find("b").Eq(0).Text()
-	rawTickerData["Sector"] = titleData.Children().Eq(2).Find("a").Eq(0).Text()
-	rawTickerData["Industry"] = titleData.Children().Eq(2).Find("a").Eq(1).Text()
-	rawTickerData["Country"] = titleData.Children().Eq(2).Find("a").Eq(2).Text()
+	mainSection := doc.Find(".fullview-title > tbody > tr")
+	data["Ticker"] = doc.Find("#ticker").Text()
+	exchange := doc.Find("#ticker").Next().Text()
+	data["Exchange"] = exchange[1 : len(exchange)-1]
+	data["Company"] = mainSection.Eq(1).Text()
+	data["Sector"] = mainSection.Eq(2).Find("a").Eq(0).Text()
+	data["Industry"] = mainSection.Eq(2).Find("a").Eq(1).Text()
+	data["Country"] = mainSection.Eq(2).Find("a").Eq(2).Text()
 
-	// Table Data
-	tableData.Children().Each(func(i int, rowNode *goquery.Selection) {
-		var key string
-		rowNode.Children().Each(func(j int, cellNode *goquery.Selection) {
-			if j%2 == 0 {
-				key = cellNode.Text()
-			} else {
-				if key == "Volatility" {
-					data := strings.Split(cellNode.Find("small").Text(), " ")
-					rawTickerData["Volatility (Week)"] = data[0]
-					rawTickerData["Volatility (Month)"] = data[1]
-				} else if key == "Index" {
-					rawTickerData[key] = strings.Join(strings.Split(cellNode.Find("small").Text(), " "), ",")
-				} else if key == "52W Range" {
-					rawTickerData[key] = cellNode.Find("small").Text()
-				} else if key == "EPS next Y" {
-					if _, exists := rawTickerData[key]; exists {
-						rawTickerData["EPS growth next Y"] = cellNode.Find("b").Text()
-					} else {
-						rawTickerData[key] = cellNode.Find("b").Text()
-					}
-				} else {
-					rawTickerData[key] = cellNode.Find("b").Text()
-				}
-			}
-		})
-	})
+	extraSection := doc.Find("body > table").Eq(2).Find("tbody").Eq(0).ChildrenFiltered("tr")
 
 	// Analyst Recommendations
 	if len(extraSection.Eq(3).Find("#news-table").Nodes) == 0 {
@@ -221,9 +210,9 @@ func Scrape(doc *goquery.Document) (*map[string]interface{}, error) {
 				"Price Target": itemNodes.Eq(4).Text(),
 			})
 		})
-		rawTickerData["Analyst Recommendations"] = analystRecommendations
+		data["Analyst Recommendations"] = analystRecommendations
 	} else {
-		rawTickerData["Analyst Recommendations"] = ""
+		data["Analyst Recommendations"] = ""
 	}
 
 	// News
@@ -253,13 +242,13 @@ func Scrape(doc *goquery.Document) (*map[string]interface{}, error) {
 			"News Gain": newsGain,
 		})
 	})
-	rawTickerData["News"] = news
+	data["News"] = news
 
 	// Description
 	if len(doc.Find(".fullview-profile").Nodes) == 1 {
-		rawTickerData["Description"] = doc.Find(".fullview-profile").Text()
+		data["Description"] = doc.Find(".fullview-profile").Text()
 	} else {
-		rawTickerData["Description"] = ""
+		data["Description"] = ""
 	}
 
 	// Income Statement
@@ -275,10 +264,11 @@ func Scrape(doc *goquery.Document) (*map[string]interface{}, error) {
 	// statement.ashx?t=____&s=CQ
 
 	// Insider Trading
-	insiderData := extraSection.Eq(len(extraSection.Nodes) - 4)
-	if len(insiderData.Find(".body-table").Nodes) > 0 {
+	// insiderData := extraSection.Eq(len(extraSection.Nodes) - 4)
+	insiderData := doc.Find(".insider-sale-row-2")
+	if len(insiderData.Nodes) > 0 {
 		var insiderTrading []map[string]string
-		insiderData.Find("tbody").Eq(0).Children().Each(func(i int, rowNode *goquery.Selection) {
+		insiderData.Parent().Children().Each(func(i int, rowNode *goquery.Selection) {
 			if i != 0 {
 				insiderTrading = append(insiderTrading, map[string]string{
 					"Owner":               rowNode.Children().Eq(0).Find("a").Text(),
@@ -294,10 +284,10 @@ func Scrape(doc *goquery.Document) (*map[string]interface{}, error) {
 				})
 			}
 		})
-		rawTickerData["Insider Trading"] = insiderTrading
+		data["Insider Trading"] = insiderTrading
 	} else {
-		rawTickerData["Insider Trading"] = ""
+		data["Insider Trading"] = ""
 	}
 
-	return &rawTickerData, nil
+	return &data, nil
 }

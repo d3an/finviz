@@ -152,7 +152,7 @@ func (c *Client) getData(url string, wg *sync.WaitGroup, scr *chan scrapeResult)
 	defer wg.Done()
 	defer close(*scr)
 
-	req, err := http.NewRequest(http.MethodGet, url, nil)
+	req, err := http.NewRequest(http.MethodGet, url, http.NoBody)
 	if err != nil {
 		*scr <- scrapeResult{Error: err}
 		return

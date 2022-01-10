@@ -77,7 +77,7 @@ func (c *Client) GetNews(view string) (*dataframe.DataFrame, error) {
 		return nil, err
 	}
 
-	req, err := http.NewRequest(http.MethodGet, url, nil)
+	req, err := http.NewRequest(http.MethodGet, url, http.NoBody)
 	if err != nil {
 		return nil, err
 	}
