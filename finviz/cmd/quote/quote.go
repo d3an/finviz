@@ -27,21 +27,21 @@ var (
 			var err error
 
 			client := quote.New(nil)
-			df, err := client.GetQuotes(tickerArgs)
+			results, err := client.GetQuotes(tickerArgs)
 			if err != nil {
 				utils.Err(err)
 			}
 
 			if outputCSVArg != "" {
-				if err := utils.ExportCSV(df, outputCSVArg); err != nil {
+				if err := utils.ExportCSV(results.Data, outputCSVArg); err != nil {
 					utils.Err(err)
 				}
 			} else if outputJSONArg != "" {
-				if err := utils.ExportJSON(df, outputJSONArg); err != nil {
+				if err := utils.ExportJSON(results.Data, outputJSONArg); err != nil {
 					utils.Err(err)
 				}
 			} else {
-				utils.PrintFullDataFrame(df)
+				utils.PrintFullDataFrame(results.Data)
 			}
 		},
 	}

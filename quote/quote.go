@@ -2,6 +2,7 @@ package quote
 
 import (
 	"fmt"
+	"github.com/cenkalti/backoff/v4"
 	"io/ioutil"
 	"net"
 	"net/http"
@@ -11,11 +12,9 @@ import (
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/corpix/uarand"
+	"github.com/d3an/finviz/utils"
 	"github.com/dnaeon/go-vcr/recorder"
 	"github.com/go-gota/gota/dataframe"
-	"github.com/pkg/errors"
-
-	"github.com/d3an/finviz/utils"
 )
 
 const (
@@ -71,44 +70,67 @@ func GenerateURL(ticker string) (string, error) {
 }
 
 type response struct {
-	Result *map[string]interface{}
+	Result  *map[string]interface{}
+	Warning error
+	Error   error
+}
+
+type Warning struct {
+	Ticker string
 	Error  error
 }
 
-func (c *Client) GetQuotes(tickers []string) (*dataframe.DataFrame, error) {
+type Error struct {
+	Ticker string
+	Error  error
+}
+
+type Results struct {
+	Data     *dataframe.DataFrame
+	Warnings []Warning
+	Errors   []Error
+}
+
+func (c *Client) GetQuotes(tickers []string) (finalResults Results, err error) {
 	var wg sync.WaitGroup
 	resultCount := len(tickers)
-	results := make([]chan response, resultCount)
-	for i := range results {
-		results[i] = make(chan response, 1)
+	rawResults := make([]chan response, resultCount)
+	for i := range rawResults {
+		rawResults[i] = make(chan response, 1)
 	}
 
 	for i, ticker := range tickers {
 		wg.Add(1)
-		go c.getData(ticker, &wg, &results[i])
+		go c.getData(ticker, &wg, &rawResults[i])
 		wg.Wait()
 	}
 
-	var scrapeResults []map[string]interface{}
+	var scrapedResults []map[string]interface{}
 	for i := 0; i < resultCount; i++ {
-		r := <-results[i]
-		if r.Error != nil {
-			return nil, errors.Wrapf(r.Error, "error received while scraping quote for '%s'", tickers[i])
+		r := <-rawResults[i]
+		if r.Warning != nil {
+			finalResults.Warnings = append(finalResults.Warnings, Warning{Ticker: tickers[i], Error: r.Warning})
+			continue
 		}
-		scrapeResults = append(scrapeResults, *r.Result)
+		if r.Error != nil {
+			finalResults.Errors = append(finalResults.Errors, Error{Ticker: tickers[i], Error: r.Error})
+			continue
+		}
+		scrapedResults = append(scrapedResults, *r.Result)
 	}
 
-	return processScrapeResults(scrapeResults)
+	finalResults.Data, err = processScrapeResults(scrapedResults)
+	return
 }
 
 func processScrapeResults(results []map[string]interface{}) (*dataframe.DataFrame, error) {
-	quoteHeaders := []string{"Ticker", "Company", "Industry", "Sector", "Country", "Index", "Market Cap", "Price", "Change", "Volume", "Income", "Sales", "Book/sh", "Cash/sh", "Dividend", "Dividend %", "Employees", "Optionable", "Shortable", "Recom", "P/E", "Forward P/E", "PEG", "P/S", "P/B", "P/C", "P/FCF", "Quick Ratio", "Current Ratio", "Debt/Eq", "LT Debt/Eq", "EPS (ttm)", "EPS next Y", "EPS next Q", "EPS this Y", "EPS growth next Y", "EPS next 5Y", "EPS past 5Y", "Sales past 5Y", "Sales Q/Q", "EPS Q/Q", "Earnings", "Insider Own", "Insider Trans", "Inst Own", "Inst Trans", "ROA", "ROE", "ROI", "Gross Margin", "Oper. Margin", "Profit Margin", "Payout", "Shs Outstand", "Shs Float", "Short Float", "Short Ratio", "Target Price", "52W Range", "52W High", "52W Low", "RSI (14)", "SMA20", "SMA50", "SMA200", "Rel Volume", "Avg Volume", "Perf Week", "Perf Month", "Perf Quarter", "Perf Half Y", "Perf Year", "Perf YTD", "Beta", "ATR", "Volatility (Week)", "Volatility (Month)", "Prev Close", "Analyst Recommendations", "News", "Description", "Insider Trading"}
+	quoteHeaders := []string{"Ticker", "Company", "Industry", "Sector", "Country", "Exchange", "Index", "Market Cap", "Price", "Change", "Volume", "Income", "Sales", "Book/sh", "Cash/sh", "Dividend", "Dividend %", "Employees", "Optionable", "Shortable", "Recom", "P/E", "Forward P/E", "PEG", "P/S", "P/B", "P/C", "P/FCF", "Quick Ratio", "Current Ratio", "Debt/Eq", "LT Debt/Eq", "EPS (ttm)", "EPS next Y", "EPS next Q", "EPS this Y", "EPS growth next Y", "EPS next 5Y", "EPS past 5Y", "Sales past 5Y", "Sales Q/Q", "EPS Q/Q", "Earnings", "Insider Own", "Insider Trans", "Inst Own", "Inst Trans", "ROA", "ROE", "ROI", "Gross Margin", "Oper. Margin", "Profit Margin", "Payout", "Shs Outstand", "Shs Float", "Short Float", "Short Ratio", "Target Price", "52W Range", "52W High", "52W Low", "RSI (14)", "SMA20", "SMA50", "SMA200", "Rel Volume", "Avg Volume", "Perf Week", "Perf Month", "Perf Quarter", "Perf Half Y", "Perf Year", "Perf YTD", "Beta", "ATR", "Volatility (Week)", "Volatility (Month)", "Prev Close", "Analyst Recommendations", "News", "Description", "Insider Trading"}
 	orderedRows, err := utils.GenerateRows(quoteHeaders, results)
 	if err != nil {
 		return nil, fmt.Errorf("error failed to generate rows from quote KVP map")
 	}
 	df := dataframe.LoadRecords(orderedRows)
-	return &df, nil
+	return utils.CleanScreenerDataFrame(&df), nil
 }
 
 func (c *Client) getData(ticker string, wg *sync.WaitGroup, result *chan response) {
@@ -127,21 +149,40 @@ func (c *Client) getData(ticker string, wg *sync.WaitGroup, result *chan respons
 		return
 	}
 
-	resp, err := c.Do(req)
-	if err != nil {
+	var body []byte
+	var warning error
+	if err = backoff.RetryNotify(func() error {
+		resp, err := c.Do(req)
+		if err != nil {
+			return backoff.Permanent(err)
+		}
+		defer resp.Body.Close()
+
+		body, err = ioutil.ReadAll(resp.Body)
+		if err != nil {
+			return backoff.Permanent(err)
+		}
+
+		if resp.StatusCode == http.StatusNotFound {
+			warning = fmt.Errorf("resource not found")
+			return nil
+		} else if resp.StatusCode != http.StatusOK {
+			return fmt.Errorf("failed to get url: '%s', status code: '%d', body: '%s'", url, resp.StatusCode, string(body))
+		}
+
+		if string(body) == "Too many requests." {
+			return fmt.Errorf("request rate limit reached")
+		}
+		return nil
+	}, backoff.NewExponentialBackOff(), func(err error, td time.Duration) {
+		fmt.Printf("[ERROR]: %v\n", err)
+		fmt.Printf("[WAIT_IN_SECONDS]: %v\n", 2*td.Seconds())
+		time.Sleep(td)
+	}); err != nil {
 		*result <- response{Error: err}
 		return
-	}
-	defer resp.Body.Close()
-
-	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		*result <- response{Error: err}
-		return
-	}
-
-	if resp.StatusCode != http.StatusOK {
-		*result <- response{Error: fmt.Errorf("error getting url: '%s', status code: '%d', body: '%s'", url, resp.StatusCode, string(body))}
+	} else if warning != nil {
+		*result <- response{Warning: warning}
 		return
 	}
 
@@ -169,7 +210,11 @@ func Scrape(doc *goquery.Document) (*map[string]interface{}, error) {
 			default:
 				data[row.Text()] = row.Next().Text()
 			case "Index":
-				data["Index"] = strings.Join(strings.Split(row.Next().Text(), " "), ",")
+				if row.Next().Text() == "S&P 500" {
+					data["Index"] = "S&P500"
+				} else {
+					data["Index"] = strings.Join(strings.Split(row.Next().Text(), " "), ",")
+				}
 			case "EPS next Y":
 				if _, exists := data["EPS next Y"]; exists {
 					data["EPS growth next Y"] = row.Next().Text()
