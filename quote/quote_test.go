@@ -82,11 +82,49 @@ func TestFixQuoteIssue(t *testing.T) {
 			}()
 			client := newTestClient(&Config{recorder: r, userAgent: uarand.GetRandom()})
 
-			df, err := client.GetQuotes([]string{v.ticker})
-			utils.PrintFullDataFrame(df)
+			results, err := client.GetQuotes([]string{v.ticker})
 			require.Nil(t, err)
+			require.Nil(t, results.Errors)
+			require.Nil(t, results.Warnings)
+			utils.PrintFullDataFrame(results.Data)
 		}()
 	}
+}
+
+func TestInvalidTickerQuote(t *testing.T) {
+	func() {
+		r, err := recorder.New("cassettes/invalid_ticker_quote")
+		require.Nil(t, err)
+		defer func() {
+			err = r.Stop()
+			require.Nil(t, err)
+		}()
+		client := newTestClient(&Config{recorder: r, userAgent: uarand.GetRandom()})
+
+		results, err := client.GetQuotes([]string{"INVALID"})
+		require.Nil(t, err)
+		require.Nil(t, results.Errors)
+		require.Equal(t, []Warning{{"INVALID", fmt.Errorf("resource not found")}}, results.Warnings)
+		require.Equal(t, 0, results.Data.Nrow())
+	}()
+}
+
+func TestNoQuotes(t *testing.T) {
+	func() {
+		r, err := recorder.New("cassettes/no_quotes")
+		require.Nil(t, err)
+		defer func() {
+			err = r.Stop()
+			require.Nil(t, err)
+		}()
+		client := newTestClient(&Config{recorder: r, userAgent: uarand.GetRandom()})
+
+		results, err := client.GetQuotes([]string{})
+		require.Nil(t, err)
+		require.Nil(t, results.Errors)
+		require.Nil(t, results.Warnings)
+		require.Equal(t, 0, results.Data.Nrow())
+	}()
 }
 
 func TestGetData(t *testing.T) {
@@ -99,19 +137,19 @@ func TestGetData(t *testing.T) {
 		{ // Full column count
 			cassettePath:        "cassettes/full_quote",
 			ticker:              "AAPL",
-			expectedColCount:    82,
+			expectedColCount:    83,
 			expectedMissingCols: []string{},
 		},
 		{ // No Insider Trading or Analyst Recommendation table
 			cassettePath:        "cassettes/missing_insdr_and_recom",
 			ticker:              "ATHE",
-			expectedColCount:    82,
+			expectedColCount:    83,
 			expectedMissingCols: []string{"Insider Trading", "Analyst Recommendations"},
 		},
 		{ // No Insider Trading table
 			cassettePath:        "cassettes/missing_insdr",
 			ticker:              "AEZS",
-			expectedColCount:    82,
+			expectedColCount:    83,
 			expectedMissingCols: []string{"Insider Trading"},
 		},
 	}
@@ -126,12 +164,15 @@ func TestGetData(t *testing.T) {
 			}()
 			client := newTestClient(&Config{recorder: r, userAgent: uarand.GetRandom()})
 
-			df, err := client.GetQuotes([]string{v.ticker})
+			results, err := client.GetQuotes([]string{v.ticker})
 			require.Nil(t, err)
-			require.Equal(t, v.expectedColCount, df.Ncol())
+			require.Nil(t, results.Errors)
+			require.Nil(t, results.Warnings)
+			require.Equal(t, v.expectedColCount, results.Data.Ncol())
 			for name := range v.expectedMissingCols {
-				require.NotContains(t, df.Names(), name)
+				require.NotContains(t, results.Data.Names(), name)
 			}
+			utils.PrintFullDataFrame(results.Data)
 		}()
 	}
 }

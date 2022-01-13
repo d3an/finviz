@@ -145,7 +145,7 @@ func processScrapeResults(keys []string, results []map[string]interface{}) (*dat
 		return nil, errors.Wrap(err, "failed to generate rows from KVP map")
 	}
 	df := dataframe.LoadRecords(rows)
-	return CleanScreenerDataFrame(&df), nil
+	return utils.CleanScreenerDataFrame(&df), nil
 }
 
 func (c *Client) getData(url string, wg *sync.WaitGroup, scr *chan scrapeResult) {
@@ -188,7 +188,7 @@ func (c *Client) getData(url string, wg *sync.WaitGroup, scr *chan scrapeResult)
 		return nil
 	}, backoff.NewExponentialBackOff(), func(err error, td time.Duration) {
 		fmt.Printf("[ERROR]: %v\n", err)
-		fmt.Printf("[WAIT_IN_SECONDS]: %v\n", 2 * td.Seconds())
+		fmt.Printf("[WAIT_IN_SECONDS]: %v\n", 2*td.Seconds())
 		time.Sleep(td)
 	}); err != nil {
 		*scr <- scrapeResult{Error: err}
