@@ -1,4 +1,4 @@
-// Copyright (c) 2020 James Bury. All rights reserved.
+// Copyright (c) 2022 James Bury. All rights reserved.
 // Project site: https://github.com/d3an/finviz
 // Use of this source code is governed by a MIT-style license that
 // can be found in the LICENSE file for the project.
@@ -12,6 +12,7 @@ import (
 	"testing"
 	"time"
 
+	"github.com/corpix/uarand"
 	"github.com/dnaeon/go-vcr/recorder"
 	"github.com/stretchr/testify/require"
 
@@ -62,7 +63,7 @@ func TestGenerateURL(t *testing.T) {
 	}
 }
 
-func TestGetData(t *testing.T) {
+func TestGetNews(t *testing.T) {
 	values := []struct {
 		cassettePath     string
 		view             string
@@ -84,19 +85,20 @@ func TestGetData(t *testing.T) {
 	}
 
 	for _, v := range values {
-		r, err := recorder.New(v.cassettePath)
-		require.Nil(t, err)
-		client := newTestClient(&Config{recorder: r})
+		func() {
+			r, err := recorder.New(v.cassettePath)
+			require.Nil(t, err)
+			defer func() {
+				err = r.Stop()
+				require.Nil(t, err)
+			}()
+			client := newTestClient(&Config{recorder: r, userAgent: uarand.GetRandom()})
 
-		df, err := client.GetNews(v.view)
-		require.Nil(t, err)
-		require.Equal(t, v.expectedColCount, df.Ncol())
-		require.Equal(t, v.expectedColNames, df.Names())
-		require.GreaterOrEqual(t, df.Nrow(), 100, "Expected at least 100 rows")
-
-		err = r.Stop()
-		require.Nil(t, err)
-
-		utils.PrintFullDataFrame(df)
+			df, err := client.GetNews(v.view)
+			require.Nil(t, err)
+			require.Equal(t, v.expectedColCount, df.Ncol())
+			require.Equal(t, v.expectedColNames, df.Names())
+			require.GreaterOrEqual(t, df.Nrow(), 100, "Expected at least 100 rows")
+		}()
 	}
 }

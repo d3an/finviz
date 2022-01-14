@@ -1,4 +1,4 @@
-// Copyright (c) 2020 James Bury. All rights reserved.
+// Copyright (c) 2022 James Bury. All rights reserved.
 // Project site: https://github.com/d3an/finviz
 // Use of this source code is governed by a MIT-style license that
 // can be found in the LICENSE file for the project.
@@ -153,7 +153,7 @@ func ByTimeScrape(doc *goquery.Document) ([][]string, error) {
 				rawNewsData["Article Title"] = newsItem.Children().Eq(2).Children().Eq(0).Text()
 				rawNewsData["Article URL"] = newsItem.Children().Eq(2).Children().Eq(0).AttrOr("href", "")
 				if classes := newsItem.Children().Eq(0).AttrOr("class", ""); classes != "" {
-					if val, exists := NewsSourceAttributeLookup[strings.Split(classes, " ")[1]]; exists {
+					if val, exists := SourceAttributeLookup[strings.Split(classes, " ")[1]]; exists {
 						rawNewsData["Source Name"] = val
 					} else {
 						rawNewsData["Source Name"] = "Unknown"
@@ -214,8 +214,8 @@ func BySourceScrape(doc *goquery.Document) ([][]string, error) {
 	return utils.GenerateRows(headers, newsDataSlice)
 }
 
-// NewsSourceAttributeLookup provides an interface for identifying news sources based on their CSS attributes
-var NewsSourceAttributeLookup = map[string]string{
+// SourceAttributeLookup provides an interface for identifying news sources based on their CSS attributes
+var SourceAttributeLookup = map[string]string{
 	"is-1":   "MarketWatch",
 	"is-2":   "WSJ",
 	"is-3":   "Reuters",
