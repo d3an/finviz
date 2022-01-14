@@ -1,10 +1,10 @@
-# Unofficial Go API & CLI for FinViz
+# Unofficial Go API & CLI for Finviz
 
 **WARNING:** This package is undergoing heavy development. Breaking changes may occur in upcoming releases.
 
 ![gopherbadger-tag-do-not-edit](https://img.shields.io/badge/Go%20Coverage-52%25-brightgreen.svg?longCache=true&style=flat)
 
-[FinViz](https://finviz.com/?a=128493348) aims to provide financial visualizations and data analysis tools.
+[Finviz](https://finviz.com/?a=128493348) aims to provide financial visualizations and data analysis tools.
 The site is well-known for its Screener, but also has other apps such as News, Economics Calendar, Maps, Groups,
 Portfolio, Insider Trading, Futures, Forex, Crypto, and more services with a [FINVIZ*Elite](https://finviz.com/elite.ashx?a=128493348) subscription.
 
