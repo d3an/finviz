@@ -1,3 +1,8 @@
+// Copyright (c) 2022 James Bury. All rights reserved.
+// Project site: https://github.com/d3an/finviz
+// Use of this source code is governed by a MIT-style license that
+// can be found in the LICENSE file for the project.
+
 package screener
 
 import (
@@ -145,7 +150,7 @@ func processScrapeResults(keys []string, results []map[string]interface{}) (*dat
 		return nil, errors.Wrap(err, "failed to generate rows from KVP map")
 	}
 	df := dataframe.LoadRecords(rows)
-	return utils.CleanScreenerDataFrame(&df), nil
+	return utils.CleanFinvizDataFrame(&df), nil
 }
 
 func (c *Client) getData(url string, wg *sync.WaitGroup, scr *chan scrapeResult) {

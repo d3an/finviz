@@ -1,8 +1,12 @@
+// Copyright (c) 2022 James Bury. All rights reserved.
+// Project site: https://github.com/d3an/finviz
+// Use of this source code is governed by a MIT-style license that
+// can be found in the LICENSE file for the project.
+
 package quote
 
 import (
 	"fmt"
-	"github.com/cenkalti/backoff/v4"
 	"io/ioutil"
 	"net"
 	"net/http"
@@ -11,10 +15,12 @@ import (
 	"time"
 
 	"github.com/PuerkitoBio/goquery"
+	"github.com/cenkalti/backoff/v4"
 	"github.com/corpix/uarand"
-	"github.com/d3an/finviz/utils"
 	"github.com/dnaeon/go-vcr/recorder"
 	"github.com/go-gota/gota/dataframe"
+
+	"github.com/d3an/finviz/utils"
 )
 
 const (
@@ -130,7 +136,7 @@ func processScrapeResults(results []map[string]interface{}) (*dataframe.DataFram
 		return nil, fmt.Errorf("error failed to generate rows from quote KVP map")
 	}
 	df := dataframe.LoadRecords(orderedRows)
-	return utils.CleanScreenerDataFrame(&df), nil
+	return utils.CleanFinvizDataFrame(&df), nil
 }
 
 func (c *Client) getData(ticker string, wg *sync.WaitGroup, result *chan response) {

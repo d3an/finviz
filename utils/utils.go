@@ -1,4 +1,4 @@
-// Copyright (c) 2020 James Bury. All rights reserved.
+// Copyright (c) 2022 James Bury. All rights reserved.
 // Project site: https://github.com/d3an/finviz
 // Use of this source code is governed by a MIT-style license that
 // can be found in the LICENSE file for the project.
@@ -120,6 +120,9 @@ func GenerateRows(headers []string, tickerDataSlice []map[string]interface{}) (r
 			case nil:
 				row = append(row, "-")
 			case string:
+				if item == "-" {
+					item = "NaN"
+				}
 				row = append(row, item)
 			case []map[string]string:
 				news, err := json.Marshal(item)
@@ -221,8 +224,8 @@ func replaceCol(df *dataframe.DataFrame, columnName string, columnType series.Ty
 	*df = df.Mutate(s)
 }
 
-// CleanScreenerDataFrame attempts to improve the matching of a DataFrame's column type to the corresponding data
-func CleanScreenerDataFrame(df *dataframe.DataFrame) *dataframe.DataFrame {
+// CleanFinvizDataFrame attempts to improve the matching of a DataFrame's column type to the corresponding data
+func CleanFinvizDataFrame(df *dataframe.DataFrame) *dataframe.DataFrame {
 	columnNames := df.Names()
 	columnCount := len(columnNames)
 

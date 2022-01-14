@@ -9,6 +9,7 @@
 finviz/finviz
 fixtures/*
 test_data/*
+testdata/*
 vendor/
 
 # Testing
