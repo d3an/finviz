@@ -1,0 +1,1572 @@
+---
+version: 1
+interactions:
+- request:
+    body: ""
+    form: {}
+    headers:
+      User-Agent:
+      - ""
+    url: https://finviz.com
+    method: GET
+  response:
+    body: "<!DOCTYPE html>\n<html>\n<head>\n<title>FINVIZ.com - Stock Screener</title>\n<meta
+      charset=\"UTF-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n
+      \                        <meta name=\"viewport\" content=\"width=1024\"><meta
+      name=\"description\" content=\"Stock screener for investors and traders, financial
+      visualizations.\">\n<meta name=\"keywords\" content=\"Stock Screener, Charts,
+      Quotes, Maps, News, Financial Visualizations, Research, Trading Systems\">\n<meta
+      http-equiv=\"imagetoolbar\" content=\"no\">\n<meta http-equiv=\"pragma\" content=\"no-cache\">\n<meta
+      http-equiv=\"cache-control\" content=\"no-cache\">\n<meta http-equiv=\"Expires\"
+      content=\"-1\">\n<meta http-equiv=\"Refresh\" content=\"3600\">\n\r\n            <link
+      rel=\"preload\" href=\"/fonts/lato-v17-latin-ext_latin-regular.woff2\" as=\"font\"
+      crossorigin>\r\n            <link rel=\"preload\" href=\"/fonts/lato-v17-latin-ext_latin-700.woff2\"
+      as=\"font\" crossorigin>\r\n            <link rel=\"preload\" href=\"/fonts/lato-v17-latin-ext_latin-900.woff2\"
+      as=\"font\" crossorigin>\r\n            <link rel=\"preload\" href=\"/fonts/inter-latin.woff2\"
+      as=\"font\" crossorigin>\r\n        <link rel=\"stylesheet\" href=\"/assets/dist/finviz.af571a23.css\"
+      type=\"text/css\">\n<link rel=\"stylesheet\" href=\"/assets/dist/main.d1008753.css\"
+      type=\"text/css\">\n<link rel=\"icon\" type=\"image/png\" href=\"/favicon_2x.png\"
+      sizes=\"32x32\">\n<link rel=\"icon\" type=\"image/png\" href=\"/favicon.png\"
+      sizes=\"16x16\">\n<script type=\"text/javascript\">FinvizSettings = {hasUserPremium:
+      false, name: \"\", chartsDomain: \"https://charts2.finviz.com\", nodeChartsDomain:
+      \"\", hasUserPersistentDrawings: false, hasUserNodeCharts: false, hasUserStickyHeader:
+      false};</script><script src=\"/script/boxover.js?rev=289\" type=\"text/javascript\"></script>\n<script
+      type=\"text/javascript\" src=\"/js/libs/d3-json.js\"></script><script src=\"/script/libs/browser_support.js?rev=289\"
+      type=\"text/javascript\"></script>\r\n            <script type=\"text/javascript\"
+      src=\"/assets/dist/runtime.c25d5694.js\"></script>\r\n            <script type=\"text/javascript\"
+      src=\"/assets/dist/vendors.ebfd3276.js\"></script>\r\n            <script type=\"text/javascript\"
+      src=\"/assets/dist/libs_init.0328e983.js\"></script>\r\n            <script
+      type=\"text/javascript\" src=\"/assets/dist/header.04e2892a.js\"></script>\r\n
+      \       <script src=\"script/ajax.js\" type=\"text/javascript\"></script>\n<script
+      type=\"text/javascript\">var userId=\"-1\";</script>\n<script type=\"text/javascript\">var
+      FinvizIndexVersion=\"4\";</script>\n<link rel=\"prefetch\" href=\"/js/maps/hp.json?rev=289\"
+      as=\"fetch\">\n<script type=\"text/javascript\">var FinvizHomepageRefreshInterval=
+      240;</script>\n\r\n            <script src=\"/js/dfp.min.js\"></script>\r\n
+      \           <script>\r\n                if(window['FinvizLoadIC']) {\r\n                    var
+      s = document.createElement('script');\r\n                    s.type = 'text/javascript';\r\n
+      \                   s.async = true;\r\n                    s.src = 'https://u5.investingchannel.com/static/uat.js';\r\n
+      \                   document.head.appendChild(s);\r\n\r\n                    InvestingChannelQueue
+      = window.InvestingChannelQueue || [];\r\n                    var ic_page;\r\n
+      \                   InvestingChannelQueue.push(function() {\r\n                        ic_page
+      = InvestingChannel.UAT.Run('df0d0d52-cc7f-11e8-82a5-0abbb61c4a6a');\r\n                    });\r\n
+      \               } else {\r\n                    (function() {\r\n                        function
+      ready(fn) {if (document.readyState != 'loading'){fn();}else{document.addEventListener('DOMContentLoaded',
+      fn);} }\r\n                        ready(function() {\r\n                            var
+      banners = ['2', '4', '5', '6', '7'];\r\n                            var banner
+      = banners[Math.floor(Math.random() * banners.length)];\r\n\r\n                            if
+      (banner === '3') {\r\n                                document.getElementById('banner_position').innerHTML
+      = '<iframe src=\"/img/a/' + banner + '/index.html?rev=2\" frameBorder=\"0\"
+      width=\"728\" height=\"90\"></iframe>';\r\n                            } else
+      {\r\n                                document.getElementById('banner_position').innerHTML
+      = '<a href=\"/elite.ashx?utm_source=finviz&utm_medium=banner&utm_campaign='
+      + banner + '\"><img src=\"/img/a/' + banner + '.jpg\"></a>';\r\n                            }\r\n
+      \                           gtag && gtag('event', 'impression', { event_category:
+      'banner', event_label: banner, non_interaction: true });\r\n                        })\r\n
+      \                   })();\r\n                }\r\n            </script></head>\n<body
+      class=\"is-index\" style=\"margin:0\" bgcolor=\"#ffffff\"><div id=\"unsupported-browser\">Your
+      browser is no longer supported. Please, <a href=\"https://browser-update.org/update.html\"
+      target=\"_blank\">upgrade your browser.</a></div>\r\n                <table
+      class=\"header\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"
+      style=\"min-width: 1000px\">\r\n                    <tr valign=\"top\">\r\n
+      \                       <td>\r\n                            <script type=\"text/javascript\">if(document.body.clientWidth>1500){document.write('<table
+      align=\"center\" width=\"1425px\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"
+      style=\"table-layout: fixed; min-width: 1000px\">')}else{document.write('<table
+      align=\"center\" width=\"95%\" style=\"max-width: 1425px; min-width: 1000px;
+      table-layout: fixed\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">')}</script>\r\n
+      \                               <tr>\r\n                                    <td
+      width=\"30%\">\r\n                                        <table width=\"100%\"
+      cellpadding=\"0\" cellspacing=\"0\" border=\"0\">\r\n                                            <tr>\r\n
+      \                                               <td height=\"50\" valign=\"middle\">\r\n
+      \                                                   <a href=\"/\" class=\"logo\"></a>\r\n
+      \                                               </td>\r\n                                            </tr>\r\n
+      \                                           <tr>\r\n                                                <td
+      class=\"search\" id=\"search\" style=\"padding-top: 4px\">\r\n                                                    <form
+      style=\"margin: 0\">\r\n                                                        <input
+      placeholder=\"Search ticker, company or profile\" type=\"text\" value=\"\">\r\n
+      \                                                       <span class=\"fa fa-search\"></span>\r\n
+      \                                                   </form>\r\n                                                </td>\r\n
+      \                                           </tr>\r\n                                        </table>\r\n
+      \                                   </td>\r\n                                    <td
+      valign=\"bottom\" style=\"padding-bottom: 4px\">\r\n                                        <div
+      id=\"microbar_position\" style=\"height: 31px\"></div>\r\n                                    </td>\r\n
+      \                                   <td width=\"728\" align=\"right\" style=\"position:relative;\"><div
+      id=\"banner_position\" style=\"position:absolute;right:0;top:0;overflow:hidden;height:96px\"></div></td>\r\n
+      \                               </tr>\r\n                            </table>\r\n
+      \                       </td>\r\n                    </tr>\r\n                    <tr>\r\n
+      \                       <td width=\"1000\" style=\"font-size:0\">\r\n                            <img
+      src=\"/gfx/nic2x2.gif\" width=\"1000\" style=\"height:1px\" border=\"0\">\r\n
+      \                       </td>\r\n                    </tr>\r\n                </table>\r\n
+      \           <table class=\"navbar\" width=\"100%\" height=\"30\" cellpadding=\"0\"
+      cellspacing=\"0\" border=\"0\">\r\n                <tr>\r\n                    <td
+      height=\"30\">\r\n                        <script type=\"text/javascript\">if(document.body.clientWidth>1500){document.write('<table
+      align=\"center\" width=\"1425px\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"
+      style=\"white-space: nowrap; min-width: 1000px\">')}else{document.write('<table
+      align=\"center\" width=\"95%\" style=\"max-width:1425px;white-space: nowrap;min-width:
+      1000px\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">')}</script>\r\n                            <tr
+      height=\"30\"><td><a class=\"nav-link is-active is-first\" href=\"/\">Home</a></td><td><a
+      class=\"nav-link \" href=\"/news.ashx\">News</a></td><td><a class=\"nav-link
+      \" href=\"/screener.ashx\">Screener</a></td><td><a class=\"nav-link \" href=\"/map.ashx\">Maps</a></td><td><a
+      class=\"nav-link \" href=\"/groups.ashx\">Groups</a></td><td><a class=\"nav-link
+      \" href=\"/portfolio.ashx\">Portfolio</a></td><td><a class=\"nav-link \" href=\"/insidertrading.ashx\">Insider</a></td><td><a
+      class=\"nav-link \" href=\"/futures.ashx\">Futures</a></td><td><a class=\"nav-link
+      \" href=\"/forex.ashx\">Forex</a></td><td><a class=\"nav-link \" href=\"/crypto.ashx\">Crypto</a></td><td><a
+      class=\"nav-link \" href=\"/backtests.ashx\">Backtests</a></td><td><a class=\"nav-link
+      \ is-elite\" href=\"/elite.ashx\">Elite</a></td><td style=\"width: 100%\"></td>\r\n
+      \                               <td class=\"time\" id=\"time\"></td>\r\n                <td>\r\n
+      \                   <a href=\"/help/screener.ashx\" class=\"nav-link is-help\">\r\n
+      \                       <span class=\"fa fa-question-circle\"></span>\r\n                        Help\r\n
+      \                   </a>\r\n                </td>\r\n                <td><a
+      href=\"/login.ashx\" class=\"nav-link sign-in\">Login</a></td>\r\n                <td><a
+      href=\"/register.ashx\" class=\"nav-link sign-up\">Register</a></td>\r\n            \r\n
+      \                           </tr>\r\n                        </table>\r\n                    </td>\r\n
+      \               </tr>\r\n            </table>\r\n        <div class=\"content
+      is-index\"><div class=\"fv-container\"><table width=\"100%\" cellpadding=\"0\"
+      cellspacing=\"0\" border=\"0\">\n<tr>\n<td width=\"100%\" style=\"position:
+      relative\">\n<div id=\"scam-notice\"></div>\n<table width=\"100%\" cellpadding=\"0\"
+      cellspacing=\"0\" border=\"0\">\n<tr>\n<td>\n<table class=\"home_indexes\" width=\"100%\"
+      cellpadding=\"0\" cellspacing=\"0\" border=\"0\">\n<tr><td width=\"5%\" align=\"center\"></td>\n<td
+      align=\"center\" style=\"height: 190px\"><div id=\"dow\"></div></td>\n<td align=\"center\"><div
+      id=\"nasdaq\"></div></td>\n<td align=\"center\"><div id=\"sp500\"></div></td>\n<td
+      width=\"5%\" align=\"center\"></td>\n</tr>\n</table>\n</td>\n</tr>\n</table>\n<div
+      id=\"homepage\">\n<script id=\"js-indices\">window['indices'] = {\"^DJI\":{\"ticker\":\"^DJI\",\"timeframe\":\"i10\",\"volume\":[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],\"date\":[1642107000,1642106400,1642105800,1642105200,1642104600,1642104000,1642103400,1642102800,1642102200,1642101600,1642101000,1642100400,1642099800,1642099200,1642098600,1642098000,1642097400,1642096800,1642096200,1642095600,1642095000,1642094400,1642093800,1642093200,1642092600,1642092000,1642091400,1642090800,1642090200,1642089600,1642089000,1642088400,1642087800,1642087200,1642086600,1642086000,1642085400,1642084800,1642084200],\"open\":[36087.941,36141.238,36202.852,36215.488,36207.801,36299.211,36274.02,36263.031,36310.16,36319.93,36377.379,36374.289,36344.238,36349.07,36361.762,36318.398,36305.73,36284.762,36264.559,36321.34,36298.219,36291.719,36441.609,36496.699,36501.871,36495.172,36488.281,36411.711,36426.309,36415.578,36451.109,36408.5,36433.359,36386.48,36400.18,36424.488,36424,36393.879,36437.59],\"high\":[36120.18,36163.359,36218.211,36215.488,36215.488,36299.211,36310.91,36283.059,36310.16,36327.629,36377.379,36392.52,36374.289,36350.371,36361.762,36368.551,36336.238,36317.07,36285.27,36321.871,36341.172,36313.66,36441.609,36496.699,36508.699,36512.031,36501.422,36488.281,36435.18,36445.301,36451.109,36451.109,36453.449,36433.359,36426.98,36444.969,36457.602,36425.211,36472.289],\"low\":[36047.91,36081.641,36141.07,36173.891,36166.211,36203.73,36255.738,36259.422,36263.031,36310.16,36305.488,36365.871,36329.91,36321.281,36325.762,36318.398,36294.73,36252.039,36242.551,36256.109,36262.238,36247.691,36291.719,36425.211,36489.91,36494.449,36474.629,36408.422,36407.27,36412.711,36360.34,36408.5,36397.828,36386.48,36379.871,36385.922,36397.18,36377.199,36389.328],\"close\":[36113.621,36087.941,36141.238,36202.852,36215.488,36207.801,36299.211,36274.02,36263.031,36310.16,36319.93,36377.379,36374.289,36344.238,36349.07,36361.762,36318.398,36305.73,36284.762,36264.559,36321.34,36298.219,36291.719,36441.609,36496.699,36501.871,36495.172,36488.281,36411.711,36426.309,36415.578,36451.109,36408.5,36433.359,36386.48,36400.18,36424.488,36424,36393.879],\"lastOpen\":null,\"lastHigh\":null,\"lastLow\":null,\"lastClose\":36113.621,\"lastVolume\":null,\"lastDate\":20220113,\"prevClose\":36290.3203125,\"afterClose\":null,\"afterChange\":null,\"relativeVolume\":0.9621994041041406},\"^GSPC\":{\"ticker\":\"^GSPC\",\"timeframe\":\"i10\",\"volume\":[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],\"date\":[1642107000,1642106400,1642105800,1642105200,1642104600,1642104000,1642103400,1642102800,1642102200,1642101600,1642101000,1642100400,1642099800,1642099200,1642098600,1642098000,1642097400,1642096800,1642096200,1642095600,1642095000,1642094400,1642093800,1642093200,1642092600,1642092000,1642091400,1642090800,1642090200,1642089600,1642089000,1642088400,1642087800,1642087200,1642086600,1642086000,1642085400,1642084800,1642084200],\"open\":[4659.96,4667.03,4676.78,4678.44,4678.8,4689.27,4685.64,4684.13,4691.87,4693.55,4703.65,4702.02,4698.27,4698.35,4700.61,4696.79,4697.15,4691.79,4686.84,4697.4,4693.12,4697.2,4717,4724.66,4726.11,4727.94,4724.92,4712.53,4716.18,4715.27,4721.83,4719.7,4726.91,4722.13,4730.91,4739.56,4738.96,4739.95,4739.84],\"high\":[4660.63,4669.62,4678.38,4678.44,4678.8,4689.27,4690.61,4688.33,4691.87,4693.75,4703.86,4705.47,4702.02,4698.5,4700.61,4703.59,4699.56,4699.24,4691.99,4697.67,4700.32,4697.2,4717.15,4724.66,4727.18,4728.9,4728.11,4724.92,4716.18,4718.54,4721.83,4723.17,4728.87,4726.91,4730.91,4740.62,4742.7,4741.84,4741.59],\"low\":[4650.41,4659.38,4666.82,4672.14,4671.66,4676.78,4683.71,4684.08,4684.13,4691.75,4691.5,4700.67,4696.41,4694.27,4694.3,4696.75,4693.6,4686.43,4685.29,4685.24,4687.96,4688.76,4697.2,4714.67,4723.5,4725.99,4722.67,4711.94,4711.29,4714.33,4708.97,4717.9,4719.7,4722.13,4721.91,4730.91,4736.1,4736.04,4734.56],\"close\":[4659.03,4659.96,4667.03,4676.78,4678.44,4678.8,4689.27,4685.64,4684.13,4691.87,4693.55,4703.65,4702.02,4698.27,4698.35,4700.61,4696.79,4697.15,4691.79,4686.84,4697.4,4693.12,4697.2,4717,4724.66,4726.11,4727.94,4724.92,4712.53,4716.18,4715.27,4721.83,4719.7,4726.91,4722.13,4730.91,4739.56,4738.96,4739.95],\"lastOpen\":null,\"lastHigh\":null,\"lastLow\":null,\"lastClose\":4659.03,\"lastVolume\":null,\"lastDate\":20220113,\"prevClose\":4726.35009765625,\"afterClose\":null,\"afterChange\":null,\"relativeVolume\":1.0572369140285078},\"^IXIC\":{\"ticker\":\"^IXIC\",\"timeframe\":\"i10\",\"volume\":[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],\"date\":[1642107000,1642106400,1642105800,1642105200,1642104600,1642104000,1642103400,1642102800,1642102200,1642101600,1642101000,1642100400,1642099800,1642099200,1642098600,1642098000,1642097400,1642096800,1642096200,1642095600,1642095000,1642094400,1642093800,1642093200,1642092600,1642092000,1642091400,1642090800,1642090200,1642089600,1642089000,1642088400,1642087800,1642087200,1642086600,1642086000,1642085400,1642084800,1642084200],\"open\":[14831.935,14853.3,14891.271,14897.56,14904.386,14943.998,14925.38,14927.758,14952.36,14965.507,15005.51,14990.725,14975.99,14972.465,14981.46,14971.82,14982.84,14953.59,14923.91,14965.47,14950.53,14976.15,15067.869,15101.25,15107.77,15124.673,15105.29,15051.186,15065.73,15062.059,15093.62,15101.28,15154.26,15136.386,15195.23,15238.8,15241.288,15249.56,15246.092],\"high\":[14831.935,14861.32,14896.228,14897.65,14904.386,14943.998,14944.1,14941.396,14952.36,14967.14,15005.51,15011.42,14990.972,14977.77,14981.46,14994.24,14983.7,14988.9,14953.59,14965.64,14975.63,14976.15,15067.869,15101.25,15113.32,15126.847,15124.673,15105.29,15065.73,15071.062,15093.62,15111.203,15159.32,15154.26,15195.23,15241.6,15256.801,15252.13,15249.56],\"low\":[14782.24,14829.55,14851.83,14868.255,14871.81,14894.357,14917.94,14922.81,14927.758,14952.36,14957.935,14986.524,14968.68,14964.83,14957.507,14965.77,14962.98,14934.31,14922.93,14923.42,14935.45,14946.62,14976.15,15060.194,15093.36,15107.77,15096.22,15046.652,15039.39,15056.711,15039.64,15088.53,15101.28,15135.49,15136.386,15195.23,15230.53,15233.994,15215.21],\"close\":[14806.812,14831.935,14853.3,14891.271,14897.56,14904.386,14943.998,14925.38,14927.758,14952.36,14965.507,15005.51,14990.725,14975.99,14972.465,14981.46,14971.82,14982.84,14953.59,14923.91,14965.47,14950.53,14976.15,15067.869,15101.25,15107.77,15124.673,15105.29,15051.186,15065.73,15062.059,15093.62,15101.28,15154.26,15136.386,15195.23,15238.8,15241.288,15249.56],\"lastOpen\":null,\"lastHigh\":null,\"lastLow\":null,\"lastClose\":14806.812,\"lastVolume\":null,\"lastDate\":20220113,\"prevClose\":15188.392578125,\"afterClose\":null,\"afterChange\":null,\"relativeVolume\":0.8592603491030751}}</script><table
+      width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">\n<tr>\n<td>\n<table
+      width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" background=\"gfx/mktstats_bg2.png\">\n<tr><td
+      width=\"2%\" align=\"center\"></td>\n<td align=\"center\" valign=\"top\"><div
+      class=\"market-stats\" title=\"cssbody=[tooltip_short_bdy] cssheader=[tooltip_short_hdr]
+      body=[Total <b>Advancing / Declining</b> issues on NYSE, Nasdaq and AMEX] offsetx=[0]
+      offsety=[20] delay=[100]\">\r\n            <div class=\"market-stats_labels\">\r\n
+      \               <div class=\"market-stats_labels_left\"><span>2654</span> Advancing</div>\r\n
+      \               \r\n                <div class=\"market-stats_labels_right\">Declining
+      <span>5588</span></div>\r\n            </div>\r\n            <div class=\"market-stats_bar\">\r\n
+      \               <div class=\"market-stats_bar_left-bar\" style=\"width: 30.9%\"></div>\r\n
+      \               <div class=\"market-stats_bar_right-bar\" style=\"width: 65.0%\"></div>\r\n
+      \               <div class=\"market-stats_bar_left-percent\">30.9%</div>\r\n
+      \               <div class=\"market-stats_bar_right-percent\">65.0%</div>\r\n
+      \           </div>\r\n        </div></td>\n<td align=\"center\" valign=\"top\"><div
+      class=\"market-stats\" title=\"cssbody=[tooltip_short_bdy] cssheader=[tooltip_short_hdr]
+      body=[Total <b>New High / New Low</b> issues on NYSE, Nasdaq and AMEX] offsetx=[0]
+      offsety=[20] delay=[100]\">\r\n            <div class=\"market-stats_labels\">\r\n
+      \               <div class=\"market-stats_labels_left\"><span>335</span> New
+      High</div>\r\n                \r\n                <div class=\"market-stats_labels_right\">New
+      Low <span>463</span></div>\r\n            </div>\r\n            <div class=\"market-stats_bar\">\r\n
+      \               <div class=\"market-stats_bar_left-bar\" style=\"width: 42.0%\"></div>\r\n
+      \               <div class=\"market-stats_bar_right-bar\" style=\"width: 58.0%\"></div>\r\n
+      \               <div class=\"market-stats_bar_left-percent\">42.0%</div>\r\n
+      \               <div class=\"market-stats_bar_right-percent\">58.0%</div>\r\n
+      \           </div>\r\n        </div></td>\n<td align=\"center\" valign=\"top\"><div
+      class=\"market-stats\" title=\"cssbody=[tooltip_short_bdy] cssheader=[tooltip_short_hdr]
+      body=[Total <b>Above SMA50 / Below SMA50</b> issues on NYSE, Nasdaq and AMEX]
+      offsetx=[0] offsety=[20] delay=[100]\">\r\n            <div class=\"market-stats_labels\">\r\n
+      \               <div class=\"market-stats_labels_left\"><span>3231</span> Above</div>\r\n
+      \               SMA50\r\n                <div class=\"market-stats_labels_right\">Below
+      <span>5367</span></div>\r\n            </div>\r\n            <div class=\"market-stats_bar\">\r\n
+      \               <div class=\"market-stats_bar_left-bar\" style=\"width: 37.6%\"></div>\r\n
+      \               <div class=\"market-stats_bar_right-bar\" style=\"width: 62.4%\"></div>\r\n
+      \               <div class=\"market-stats_bar_left-percent\">37.6%</div>\r\n
+      \               <div class=\"market-stats_bar_right-percent\">62.4%</div>\r\n
+      \           </div>\r\n        </div></td>\n<td align=\"center\" valign=\"top\"><div
+      class=\"market-stats\" title=\"cssbody=[tooltip_short_bdy] cssheader=[tooltip_short_hdr]
+      body=[Total <b>Above SMA200 / Below SMA200</b> issues on NYSE, Nasdaq and AMEX]
+      offsetx=[0] offsety=[20] delay=[100]\">\r\n            <div class=\"market-stats_labels\">\r\n
+      \               <div class=\"market-stats_labels_left\"><span>3580</span> Above</div>\r\n
+      \               SMA200\r\n                <div class=\"market-stats_labels_right\">Below
+      <span>5018</span></div>\r\n            </div>\r\n            <div class=\"market-stats_bar\">\r\n
+      \               <div class=\"market-stats_bar_left-bar\" style=\"width: 41.6%\"></div>\r\n
+      \               <div class=\"market-stats_bar_right-bar\" style=\"width: 58.4%\"></div>\r\n
+      \               <div class=\"market-stats_bar_left-percent\">41.6%</div>\r\n
+      \               <div class=\"market-stats_bar_right-percent\">58.4%</div>\r\n
+      \           </div>\r\n        </div></td>\n<td valign=\"top\" align=\"left\"
+      height=\"40\"><div id=\"js-market-sentiment\"></div></td>\n<td width=\"2%\"
+      align=\"center\"></td>\n</tr>\n</table>\n</td>\n</tr>\n<tr>\n<td style=\"padding-top:
+      2px\" align=\"center\">\n<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\"
+      border=\"0\">\n<tr>\n<td width=\"50%\" valign=\"top\">\n<table id=\"signals_1\"
+      width=\"100%\" cellpadding=\"1\" cellspacing=\"0\" class=\"t-home-table\" border=\"0\">\n<tr
+      class=\"t-home-table-top\">\n<td>Ticker</td><td align=\"right\">Last</td><td
+      align=\"right\">Change</td><td align=\"right\">Volume</td><td><img src=\"gfx/nic2x2.gif\"
+      style=\"width:4px;height:2px\" alt=\"\" border=\"0\"></td><td>Signal</td>\n</tr><tr
+      onmouseover=\"this.className='table-light-row-cp-h';\" onmouseout=\"this.className='table-light-cp-row';\"
+      onclick=\"window.location='screener.ashx?v=340&s=ta_topgainers'\">\n<td title=\"cssbody=[tabchrtbdy]
+      cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=SGLY'>&nbsp;<b>Singularity
+      Future Technology Ltd.</b><br>&nbsp;Integrated Freight & Logistics | USA | 89.48M]
+      offsetx=[200] offsety=[-95] delay=[250]\"><a href=\"quote.ashx?t=SGLY\" class=\"tab-link\">SGLY</a></td><td
+      align=\"right\">5.01</td><td align=\"right\" style=\"white-space:nowrap\"><span
+      class=\"is-green\">25.88%</span></td><td align=\"right\">4806327</td><td></td><td
+      title=\"cssbody=[tooltip_short_bdy] cssheader=[tooltip_short_hdr] body=[Stocks
+      with the highest price gain today] offsetx=[10] offsety=[20] delay=[300]\"><a
+      href=\"screener.ashx?v=340&s=ta_topgainers\" class=\"tab-link-nw\">Top Gainers</a></td>\n</tr>\n<tr
+      onmouseover=\"this.className='table-light-row-cp-h';\" onmouseout=\"this.className='table-light-cp-row';\"
+      onclick=\"window.location='screener.ashx?v=340&s=ta_topgainers'\">\n<td title=\"cssbody=[tabchrtbdy]
+      cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=MDVL'>&nbsp;<b>MedAvail Holdings,
+      Inc</b><br>&nbsp;Drug Manufacturers - Specialty & Generic | Canada | 56.79M]
+      offsetx=[200] offsety=[-95] delay=[250]\"><a href=\"quote.ashx?t=MDVL\" class=\"tab-link\">MDVL</a></td><td
+      align=\"right\">1.58</td><td align=\"right\" style=\"white-space:nowrap\"><span
+      class=\"is-green\">24.41%</span></td><td align=\"right\">1723549</td><td></td><td
+      title=\"cssbody=[tooltip_short_bdy] cssheader=[tooltip_short_hdr] body=[Stocks
+      with the highest price gain today] offsetx=[10] offsety=[20] delay=[300]\"><a
+      href=\"screener.ashx?v=340&s=ta_topgainers\" class=\"tab-link-nw\">Top Gainers</a></td>\n</tr>\n<tr
+      onmouseover=\"this.className='table-light-row-cp-h';\" onmouseout=\"this.className='table-light-cp-row';\"
+      onclick=\"window.location='screener.ashx?v=340&s=ta_topgainers'\">\n<td title=\"cssbody=[tabchrtbdy]
+      cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=BBIG'>&nbsp;<b>Vinco Ventures,
+      Inc.</b><br>&nbsp;Leisure | USA | 346.43M] offsetx=[200] offsety=[-95] delay=[250]\"><a
+      href=\"quote.ashx?t=BBIG\" class=\"tab-link\">BBIG</a></td><td align=\"right\">3.53</td><td
+      align=\"right\" style=\"white-space:nowrap\"><span class=\"is-green\">22.57%</span></td><td
+      align=\"right\">143532530</td><td></td><td title=\"cssbody=[tooltip_short_bdy]
+      cssheader=[tooltip_short_hdr] body=[Stocks with the highest price gain today]
+      offsetx=[10] offsety=[20] delay=[300]\"><a href=\"screener.ashx?v=340&s=ta_topgainers\"
+      class=\"tab-link-nw\">Top Gainers</a></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='screener.ashx?v=340&s=ta_topgainers'\">\n<td
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=DAVE'>&nbsp;<b>Dave Inc.</b><br>&nbsp;Software
+      - Application | USA | 1.82B] offsetx=[200] offsety=[-95] delay=[250]\"><a href=\"quote.ashx?t=DAVE\"
+      class=\"tab-link\">DAVE</a></td><td align=\"right\">6.19</td><td align=\"right\"
+      style=\"white-space:nowrap\"><span class=\"is-green\">19.04%</span></td><td
+      align=\"right\">13597805</td><td></td><td title=\"cssbody=[tooltip_short_bdy]
+      cssheader=[tooltip_short_hdr] body=[Stocks with the highest price gain today]
+      offsetx=[10] offsety=[20] delay=[300]\"><a href=\"screener.ashx?v=340&s=ta_topgainers\"
+      class=\"tab-link-nw\">Top Gainers</a></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='screener.ashx?v=340&s=ta_topgainers'\">\n<td
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=GMVD'>&nbsp;<b>G Medical Innovations
+      Holdings Ltd</b><br>&nbsp;Medical Instruments & Supplies | Israel | 41.15M]
+      offsetx=[200] offsety=[-95] delay=[250]\"><a href=\"quote.ashx?t=GMVD\" class=\"tab-link\">GMVD</a></td><td
+      align=\"right\">3.52</td><td align=\"right\" style=\"white-space:nowrap\"><span
+      class=\"is-green\">18.52%</span></td><td align=\"right\">31470043</td><td></td><td
+      title=\"cssbody=[tooltip_short_bdy] cssheader=[tooltip_short_hdr] body=[Stocks
+      with the highest price gain today] offsetx=[10] offsety=[20] delay=[300]\"><a
+      href=\"screener.ashx?v=340&s=ta_topgainers\" class=\"tab-link-nw\">Top Gainers</a></td>\n</tr>\n<tr
+      onmouseover=\"this.className='table-light-row-cp-h';\" onmouseout=\"this.className='table-light-cp-row';\"
+      onclick=\"window.location='screener.ashx?v=340&s=ta_topgainers'\">\n<td title=\"cssbody=[tabchrtbdy]
+      cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=ZKIN'>&nbsp;<b>ZK International
+      Group Co., Ltd.</b><br>&nbsp;Steel | China | 41.88M] offsetx=[200] offsety=[-95]
+      delay=[250]\"><a href=\"quote.ashx?t=ZKIN\" class=\"tab-link\">ZKIN</a></td><td
+      align=\"right\">1.71</td><td align=\"right\" style=\"white-space:nowrap\"><span
+      class=\"is-green\">17.93%</span></td><td align=\"right\">2379209</td><td></td><td
+      title=\"cssbody=[tooltip_short_bdy] cssheader=[tooltip_short_hdr] body=[Stocks
+      with the highest price gain today] offsetx=[10] offsety=[20] delay=[300]\"><a
+      href=\"screener.ashx?v=340&s=ta_topgainers\" class=\"tab-link-nw\">Top Gainers</a></td>\n</tr>\n<tr
+      onmouseover=\"this.className='table-light-row-cp-h';\" onmouseout=\"this.className='table-light-cp-row';\"
+      onclick=\"window.location='screener.ashx?v=340&s=ta_newhigh'\">\n<td title=\"cssbody=[tabchrtbdy]
+      cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=FINW'>&nbsp;<b>FinWise Bancorp</b><br>&nbsp;Banks
+      - Regional | USA | 207.71M] offsetx=[200] offsety=[-95] delay=[250]\"><a href=\"quote.ashx?t=FINW\"
+      class=\"tab-link\">FINW</a></td><td align=\"right\">16.96</td><td align=\"right\"
+      style=\"white-space:nowrap\"><span class=\"is-green\">7.41%</span></td><td align=\"right\">78322</td><td></td><td
+      title=\"cssbody=[tooltip_short_bdy] cssheader=[tooltip_short_hdr] body=[Stocks
+      making new 52 weeks high today] offsetx=[10] offsety=[20] delay=[300]\"><a href=\"screener.ashx?v=340&s=ta_newhigh\"
+      class=\"tab-link-nw\">New High</a></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='screener.ashx?v=340&s=ta_newhigh'\">\n<td
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=MBI'>&nbsp;<b>MBIA Inc.</b><br>&nbsp;Insurance
+      - Specialty | USA | 922.67M] offsetx=[200] offsety=[-95] delay=[250]\"><a href=\"quote.ashx?t=MBI\"
+      class=\"tab-link\">MBI</a></td><td align=\"right\">16.29</td><td align=\"right\"
+      style=\"white-space:nowrap\"><span class=\"is-red\">-2.75%</span></td><td align=\"right\">513843</td><td></td><td
+      title=\"cssbody=[tooltip_short_bdy] cssheader=[tooltip_short_hdr] body=[Stocks
+      making new 52 weeks high today] offsetx=[10] offsety=[20] delay=[300]\"><a href=\"screener.ashx?v=340&s=ta_newhigh\"
+      class=\"tab-link-nw\">New High</a></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='screener.ashx?v=340&s=ta_newhigh'\">\n<td
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=PFHD'>&nbsp;<b>Professional
+      Holding Corp.</b><br>&nbsp;Banks - Regional | USA | 284.31M] offsetx=[200] offsety=[-95]
+      delay=[250]\"><a href=\"quote.ashx?t=PFHD\" class=\"tab-link\">PFHD</a></td><td
+      align=\"right\">21.49</td><td align=\"right\" style=\"white-space:nowrap\"><span
+      class=\"is-green\">3.67%</span></td><td align=\"right\">46422</td><td></td><td
+      title=\"cssbody=[tooltip_short_bdy] cssheader=[tooltip_short_hdr] body=[Stocks
+      making new 52 weeks high today] offsetx=[10] offsety=[20] delay=[300]\"><a href=\"screener.ashx?v=340&s=ta_newhigh\"
+      class=\"tab-link-nw\">New High</a></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='screener.ashx?v=340&s=ta_newhigh'\">\n<td
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=UAN'>&nbsp;<b>CVR Partners,
+      LP</b><br>&nbsp;Agricultural Inputs | USA | 1.00B] offsetx=[200] offsety=[-95]
+      delay=[250]\"><a href=\"quote.ashx?t=UAN\" class=\"tab-link\">UAN</a></td><td
+      align=\"right\">93.99</td><td align=\"right\" style=\"white-space:nowrap\"><span
+      class=\"is-green\">3.31%</span></td><td align=\"right\">140870</td><td></td><td
+      title=\"cssbody=[tooltip_short_bdy] cssheader=[tooltip_short_hdr] body=[Stocks
+      making new 52 weeks high today] offsetx=[10] offsety=[20] delay=[300]\"><a href=\"screener.ashx?v=340&s=ta_newhigh\"
+      class=\"tab-link-nw\">New High</a></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='screener.ashx?v=210&s=ta_overbought'\">\n<td
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=BPMP'>&nbsp;<b>BP Midstream
+      Partners LP</b><br>&nbsp;Oil & Gas Midstream | USA | 1.83B] offsetx=[200] offsety=[-95]
+      delay=[250]\"><a href=\"quote.ashx?t=BPMP\" class=\"tab-link\">BPMP</a></td><td
+      align=\"right\">17.96</td><td align=\"right\" style=\"white-space:nowrap\"><span
+      class=\"is-red\">-0.11%</span></td><td align=\"right\">1279172</td><td></td><td
+      title=\"cssbody=[tooltip_short_bdy] cssheader=[tooltip_short_hdr] body=[Stocks
+      with extreme price increase over past two weeks,<br>calculated by RSI(14) indicator]
+      offsetx=[10] offsety=[20] delay=[300]\"><a href=\"screener.ashx?v=210&s=ta_overbought\"
+      class=\"tab-link-nw\">Overbought</a></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='screener.ashx?v=210&s=ta_overbought'\">\n<td
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=SBR'>&nbsp;<b>Sabine Royalty
+      Trust</b><br>&nbsp;Oil & Gas E&P | USA | 690.61M] offsetx=[200] offsety=[-95]
+      delay=[250]\"><a href=\"quote.ashx?t=SBR\" class=\"tab-link\">SBR</a></td><td
+      align=\"right\">52.20</td><td align=\"right\" style=\"white-space:nowrap\"><span
+      class=\"is-green\">3.26%</span></td><td align=\"right\">124583</td><td></td><td
+      title=\"cssbody=[tooltip_short_bdy] cssheader=[tooltip_short_hdr] body=[Stocks
+      with extreme price increase over past two weeks,<br>calculated by RSI(14) indicator]
+      offsetx=[10] offsety=[20] delay=[300]\"><a href=\"screener.ashx?v=210&s=ta_overbought\"
+      class=\"tab-link-nw\">Overbought</a></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='screener.ashx?v=320&s=ta_unusualvolume'\">\n<td
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=CPI'>&nbsp;<b>IQ Real Return
+      ETF</b><br>&nbsp;Exchange Traded Fund | USA | -] offsetx=[200] offsety=[-95]
+      delay=[250]\"><a href=\"quote.ashx?t=CPI\" class=\"tab-link\">CPI</a></td><td
+      align=\"right\">27.49</td><td align=\"right\" style=\"white-space:nowrap\"><span
+      class=\"is-red\">-0.16%</span></td><td align=\"right\">1104541</td><td></td><td
+      title=\"cssbody=[tooltip_short_bdy] cssheader=[tooltip_short_hdr] body=[Stocks
+      with unusually high volume today] offsetx=[10] offsety=[20] delay=[300]\"><a
+      href=\"screener.ashx?v=320&s=ta_unusualvolume\" class=\"tab-link-nw\">Unusual
+      Volume</a></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='screener.ashx?v=320&s=ta_unusualvolume'\">\n<td
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=DAVE'>&nbsp;<b>Dave Inc.</b><br>&nbsp;Software
+      - Application | USA | 1.82B] offsetx=[200] offsety=[-95] delay=[250]\"><a href=\"quote.ashx?t=DAVE\"
+      class=\"tab-link\">DAVE</a></td><td align=\"right\">6.19</td><td align=\"right\"
+      style=\"white-space:nowrap\"><span class=\"is-green\">19.04%</span></td><td
+      align=\"right\">13597805</td><td></td><td title=\"cssbody=[tooltip_short_bdy]
+      cssheader=[tooltip_short_hdr] body=[Stocks with unusually high volume today]
+      offsetx=[10] offsety=[20] delay=[300]\"><a href=\"screener.ashx?v=320&s=ta_unusualvolume\"
+      class=\"tab-link-nw\">Unusual Volume</a></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='screener.ashx?v=320&s=ta_unusualvolume'\">\n<td
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=RMTI'>&nbsp;<b>Rockwell Medical,
+      Inc.</b><br>&nbsp;Drug Manufacturers - Specialty & Generic | USA | 41.83M] offsetx=[200]
+      offsety=[-95] delay=[250]\"><a href=\"quote.ashx?t=RMTI\" class=\"tab-link\">RMTI</a></td><td
+      align=\"right\">0.47</td><td align=\"right\" style=\"white-space:nowrap\"><span
+      class=\"is-green\">17.44%</span></td><td align=\"right\">64052660</td><td></td><td
+      title=\"cssbody=[tooltip_short_bdy] cssheader=[tooltip_short_hdr] body=[Stocks
+      with unusually high volume today] offsetx=[10] offsety=[20] delay=[300]\"><a
+      href=\"screener.ashx?v=320&s=ta_unusualvolume\" class=\"tab-link-nw\">Unusual
+      Volume</a></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='screener.ashx?v=320&s=ta_unusualvolume'\">\n<td
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=GMVD'>&nbsp;<b>G Medical Innovations
+      Holdings Ltd</b><br>&nbsp;Medical Instruments & Supplies | Israel | 41.15M]
+      offsetx=[200] offsety=[-95] delay=[250]\"><a href=\"quote.ashx?t=GMVD\" class=\"tab-link\">GMVD</a></td><td
+      align=\"right\">3.52</td><td align=\"right\" style=\"white-space:nowrap\"><span
+      class=\"is-green\">18.52%</span></td><td align=\"right\">31470043</td><td></td><td
+      title=\"cssbody=[tooltip_short_bdy] cssheader=[tooltip_short_hdr] body=[Stocks
+      with unusually high volume today] offsetx=[10] offsety=[20] delay=[300]\"><a
+      href=\"screener.ashx?v=320&s=ta_unusualvolume\" class=\"tab-link-nw\">Unusual
+      Volume</a></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='screener.ashx?v=340&s=n_upgrades'\">\n<td
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=BAND'>&nbsp;<b>Bandwidth Inc.</b><br>&nbsp;Software
+      - Infrastructure | USA | 1.73B] offsetx=[200] offsety=[-95] delay=[250]\"><a
+      href=\"quote.ashx?t=BAND\" class=\"tab-link\">BAND</a></td><td align=\"right\">66.98</td><td
+      align=\"right\" style=\"white-space:nowrap\"><span class=\"is-green\">1.75%</span></td><td
+      align=\"right\">898947</td><td></td><td title=\"cssbody=[tooltip_short_bdy]
+      cssheader=[tooltip_short_hdr] body=[Stocks upgraded by analyst today] offsetx=[10]
+      offsety=[20] delay=[300]\"><a href=\"screener.ashx?v=340&s=n_upgrades\" class=\"tab-link-nw\">Upgrades</a></td>\n</tr>\n<tr
+      onmouseover=\"this.className='table-light-row-cp-h';\" onmouseout=\"this.className='table-light-cp-row';\"
+      onclick=\"window.location='screener.ashx?v=340&s=n_earningsbefore'\">\n<td title=\"cssbody=[tabchrtbdy]
+      cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=BMRA'>&nbsp;<b>Biomerica, Inc.</b><br>&nbsp;Diagnostics
+      & Research | USA | 54.04M] offsetx=[200] offsety=[-95] delay=[250]\"><a href=\"quote.ashx?t=BMRA\"
+      class=\"tab-link\">BMRA</a></td><td align=\"right\">4.16</td><td align=\"right\"
+      style=\"white-space:nowrap\"><span class=\"is-red\">-7.56%</span></td><td align=\"right\">234254</td><td></td><td
+      title=\"cssbody=[tooltip_short_bdy] cssheader=[tooltip_short_hdr] body=[Companies
+      reporting earnings today, before market open] offsetx=[10] offsety=[20] delay=[300]\"><a
+      href=\"screener.ashx?v=340&s=n_earningsbefore\" class=\"tab-link-nw\">Earnings
+      Before</a></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='screener.ashx?v=340&s=it_latestbuys'\">\n<td
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=TRDA'>&nbsp;<b>Entrada Therapeutics,
+      Inc.</b><br>&nbsp;Biotechnology | USA | 278.02M] offsetx=[200] offsety=[-95]
+      delay=[250]\"><a href=\"quote.ashx?t=TRDA\" class=\"tab-link\">TRDA</a></td><td
+      align=\"right\">8.61</td><td align=\"right\" style=\"white-space:nowrap\"><span
+      class=\"is-red\">-11.24%</span></td><td align=\"right\">75051</td><td></td><td
+      title=\"cssbody=[tooltip_short_bdy] cssheader=[tooltip_short_hdr] body=[Stocks
+      with recent insider buying] offsetx=[10] offsety=[20] delay=[300]\"><a href=\"screener.ashx?v=340&s=it_latestbuys\"
+      class=\"tab-link-nw\">Insider Buying</a></td>\n</tr>\n</table>\n</td>\n<td><img
+      src=\"gfx/nic2x2.gif\" style=\"width:16px;height:2px\" alt=\"\" border=\"0\"></td>\n<td
+      width=\"50%\" valign=\"top\">\n<table id=\"signals_2\" width=\"100%\" cellpadding=\"1\"
+      cellspacing=\"0\" class=\"t-home-table\" border=\"0\">\n<tr class=\"t-home-table-top\">\n<td>Ticker</td><td
+      align=\"right\">Last</td><td align=\"right\">Change</td><td align=\"right\">Volume</td><td><img
+      src=\"gfx/nic2x2.gif\" style=\"width:4px;height:2px\" alt=\"\" border=\"0\"></td><td>Signal</td>\n</tr><tr
+      onmouseover=\"this.className='table-light-row-cp-h';\" onmouseout=\"this.className='table-light-cp-row';\"
+      onclick=\"window.location='screener.ashx?v=340&s=ta_toplosers'\">\n<td title=\"cssbody=[tabchrtbdy]
+      cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=VYNE'>&nbsp;<b>VYNE Therapeutics
+      Inc.</b><br>&nbsp;Biotechnology | USA | 42.05M] offsetx=[200] offsety=[-95]
+      delay=[250]\"><a href=\"quote.ashx?t=VYNE\" class=\"tab-link\">VYNE</a></td><td
+      align=\"right\">0.79</td><td align=\"right\" style=\"white-space:nowrap\"><span
+      class=\"is-red\">-21.45%</span></td><td align=\"right\">16121776</td><td></td><td
+      title=\"cssbody=[tooltip_short_bdy] cssheader=[tooltip_short_hdr] body=[Stocks
+      with the highest price loss today] offsetx=[10] offsety=[20] delay=[300]\"><a
+      href=\"screener.ashx?v=340&s=ta_toplosers\" class=\"tab-link-nw\">Top Losers</a></td>\n</tr>\n<tr
+      onmouseover=\"this.className='table-light-row-cp-h';\" onmouseout=\"this.className='table-light-cp-row';\"
+      onclick=\"window.location='screener.ashx?v=340&s=ta_toplosers'\">\n<td title=\"cssbody=[tabchrtbdy]
+      cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=VINE'>&nbsp;<b>Fresh Vine Wine,
+      Inc.</b><br>&nbsp;Beverages - Wineries & Distilleries | USA | 67.71M] offsetx=[200]
+      offsety=[-95] delay=[250]\"><a href=\"quote.ashx?t=VINE\" class=\"tab-link\">VINE</a></td><td
+      align=\"right\">5.55</td><td align=\"right\" style=\"white-space:nowrap\"><span
+      class=\"is-red\">-20.49%</span></td><td align=\"right\">1043306</td><td></td><td
+      title=\"cssbody=[tooltip_short_bdy] cssheader=[tooltip_short_hdr] body=[Stocks
+      with the highest price loss today] offsetx=[10] offsety=[20] delay=[300]\"><a
+      href=\"screener.ashx?v=340&s=ta_toplosers\" class=\"tab-link-nw\">Top Losers</a></td>\n</tr>\n<tr
+      onmouseover=\"this.className='table-light-row-cp-h';\" onmouseout=\"this.className='table-light-cp-row';\"
+      onclick=\"window.location='screener.ashx?v=340&s=ta_toplosers'\">\n<td title=\"cssbody=[tabchrtbdy]
+      cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=SPCE'>&nbsp;<b>Virgin Galactic
+      Holdings, Inc.</b><br>&nbsp;Aerospace & Defense | USA | 2.45B] offsetx=[200]
+      offsety=[-95] delay=[250]\"><a href=\"quote.ashx?t=SPCE\" class=\"tab-link\">SPCE</a></td><td
+      align=\"right\">10.03</td><td align=\"right\" style=\"white-space:nowrap\"><span
+      class=\"is-red\">-18.92%</span></td><td align=\"right\">70005564</td><td></td><td
+      title=\"cssbody=[tooltip_short_bdy] cssheader=[tooltip_short_hdr] body=[Stocks
+      with the highest price loss today] offsetx=[10] offsety=[20] delay=[300]\"><a
+      href=\"screener.ashx?v=340&s=ta_toplosers\" class=\"tab-link-nw\">Top Losers</a></td>\n</tr>\n<tr
+      onmouseover=\"this.className='table-light-row-cp-h';\" onmouseout=\"this.className='table-light-cp-row';\"
+      onclick=\"window.location='screener.ashx?v=340&s=ta_toplosers'\">\n<td title=\"cssbody=[tabchrtbdy]
+      cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=KYMR'>&nbsp;<b>Kymera Therapeutics,
+      Inc.</b><br>&nbsp;Biotechnology | USA | 2.30B] offsetx=[200] offsety=[-95] delay=[250]\"><a
+      href=\"quote.ashx?t=KYMR\" class=\"tab-link\">KYMR</a></td><td align=\"right\">42.68</td><td
+      align=\"right\" style=\"white-space:nowrap\"><span class=\"is-red\">-15.90%</span></td><td
+      align=\"right\">647595</td><td></td><td title=\"cssbody=[tooltip_short_bdy]
+      cssheader=[tooltip_short_hdr] body=[Stocks with the highest price loss today]
+      offsetx=[10] offsety=[20] delay=[300]\"><a href=\"screener.ashx?v=340&s=ta_toplosers\"
+      class=\"tab-link-nw\">Top Losers</a></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='screener.ashx?v=340&s=ta_toplosers'\">\n<td
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=PIK'>&nbsp;<b>Kidpik Corp.</b><br>&nbsp;Internet
+      Retail | USA | 46.93M] offsetx=[200] offsety=[-95] delay=[250]\"><a href=\"quote.ashx?t=PIK\"
+      class=\"tab-link\">PIK</a></td><td align=\"right\">6.16</td><td align=\"right\"
+      style=\"white-space:nowrap\"><span class=\"is-red\">-15.62%</span></td><td align=\"right\">2667774</td><td></td><td
+      title=\"cssbody=[tooltip_short_bdy] cssheader=[tooltip_short_hdr] body=[Stocks
+      with the highest price loss today] offsetx=[10] offsety=[20] delay=[300]\"><a
+      href=\"screener.ashx?v=340&s=ta_toplosers\" class=\"tab-link-nw\">Top Losers</a></td>\n</tr>\n<tr
+      onmouseover=\"this.className='table-light-row-cp-h';\" onmouseout=\"this.className='table-light-cp-row';\"
+      onclick=\"window.location='screener.ashx?v=340&s=ta_toplosers'\">\n<td title=\"cssbody=[tabchrtbdy]
+      cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=NXGL'>&nbsp;<b>NEXGEL, Inc.</b><br>&nbsp;Medical
+      Instruments & Supplies | USA | 15.42M] offsetx=[200] offsety=[-95] delay=[250]\"><a
+      href=\"quote.ashx?t=NXGL\" class=\"tab-link\">NXGL</a></td><td align=\"right\">2.77</td><td
+      align=\"right\" style=\"white-space:nowrap\"><span class=\"is-red\">-15.55%</span></td><td
+      align=\"right\">478172</td><td></td><td title=\"cssbody=[tooltip_short_bdy]
+      cssheader=[tooltip_short_hdr] body=[Stocks with the highest price loss today]
+      offsetx=[10] offsety=[20] delay=[300]\"><a href=\"screener.ashx?v=340&s=ta_toplosers\"
+      class=\"tab-link-nw\">Top Losers</a></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='screener.ashx?v=340&s=ta_newlow'\">\n<td
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=DNLI'>&nbsp;<b>Denali Therapeutics
+      Inc.</b><br>&nbsp;Biotechnology | USA | 4.37B] offsetx=[200] offsety=[-95] delay=[250]\"><a
+      href=\"quote.ashx?t=DNLI\" class=\"tab-link\">DNLI</a></td><td align=\"right\">33.86</td><td
+      align=\"right\" style=\"white-space:nowrap\"><span class=\"is-red\">-12.17%</span></td><td
+      align=\"right\">3518082</td><td></td><td title=\"cssbody=[tooltip_short_bdy]
+      cssheader=[tooltip_short_hdr] body=[Stocks making new 52 weeks low today] offsetx=[10]
+      offsety=[20] delay=[300]\"><a href=\"screener.ashx?v=340&s=ta_newlow\" class=\"tab-link-nw\">New
+      Low</a></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='screener.ashx?v=340&s=ta_newlow'\">\n<td
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=PSHG'>&nbsp;<b>Performance
+      Shipping Inc.</b><br>&nbsp;Marine Shipping | Greece | 15.42M] offsetx=[200]
+      offsety=[-95] delay=[250]\"><a href=\"quote.ashx?t=PSHG\" class=\"tab-link\">PSHG</a></td><td
+      align=\"right\">3.26</td><td align=\"right\" style=\"white-space:nowrap\"><span
+      class=\"is-red\">-7.39%</span></td><td align=\"right\">56535</td><td></td><td
+      title=\"cssbody=[tooltip_short_bdy] cssheader=[tooltip_short_hdr] body=[Stocks
+      making new 52 weeks low today] offsetx=[10] offsety=[20] delay=[300]\"><a href=\"screener.ashx?v=340&s=ta_newlow\"
+      class=\"tab-link-nw\">New Low</a></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='screener.ashx?v=340&s=ta_newlow'\">\n<td
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=CLNN'>&nbsp;<b>Clene Inc.</b><br>&nbsp;Biotechnology
+      | USA | 191.07M] offsetx=[200] offsety=[-95] delay=[250]\"><a href=\"quote.ashx?t=CLNN\"
+      class=\"tab-link\">CLNN</a></td><td align=\"right\">3.01</td><td align=\"right\"
+      style=\"white-space:nowrap\"><span class=\"is-red\">-15.21%</span></td><td align=\"right\">362948</td><td></td><td
+      title=\"cssbody=[tooltip_short_bdy] cssheader=[tooltip_short_hdr] body=[Stocks
+      making new 52 weeks low today] offsetx=[10] offsety=[20] delay=[300]\"><a href=\"screener.ashx?v=340&s=ta_newlow\"
+      class=\"tab-link-nw\">New Low</a></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='screener.ashx?v=340&s=ta_newlow'\">\n<td
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=NAKD'>&nbsp;<b>Cenntro Electric
+      Group Limited</b><br>&nbsp;Apparel Manufacturing | Australia | 177.47M] offsetx=[200]
+      offsety=[-95] delay=[250]\"><a href=\"quote.ashx?t=NAKD\" class=\"tab-link\">NAKD</a></td><td
+      align=\"right\">2.61</td><td align=\"right\" style=\"white-space:nowrap\"><span
+      class=\"is-red\">-14.98%</span></td><td align=\"right\">14985035</td><td></td><td
+      title=\"cssbody=[tooltip_short_bdy] cssheader=[tooltip_short_hdr] body=[Stocks
+      making new 52 weeks low today] offsetx=[10] offsety=[20] delay=[300]\"><a href=\"screener.ashx?v=340&s=ta_newlow\"
+      class=\"tab-link-nw\">New Low</a></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='screener.ashx?v=210&s=ta_oversold'\">\n<td
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=SKIL'>&nbsp;<b>Skillsoft Corp.</b><br>&nbsp;Education
+      & Training Services | USA | 1.03B] offsetx=[200] offsety=[-95] delay=[250]\"><a
+      href=\"quote.ashx?t=SKIL\" class=\"tab-link\">SKIL</a></td><td align=\"right\">7.66</td><td
+      align=\"right\" style=\"white-space:nowrap\"><span class=\"is-red\">-6.01%</span></td><td
+      align=\"right\">620610</td><td></td><td title=\"cssbody=[tooltip_short_bdy]
+      cssheader=[tooltip_short_hdr] body=[Stocks with extreme price decrease over
+      past two weeks,<br>calculated by RSI(14) indicator] offsetx=[10] offsety=[20]
+      delay=[300]\"><a href=\"screener.ashx?v=210&s=ta_oversold\" class=\"tab-link-nw\">Oversold</a></td>\n</tr>\n<tr
+      onmouseover=\"this.className='table-light-row-cp-h';\" onmouseout=\"this.className='table-light-cp-row';\"
+      onclick=\"window.location='screener.ashx?v=210&s=ta_oversold'\">\n<td title=\"cssbody=[tabchrtbdy]
+      cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=ALGS'>&nbsp;<b>Aligos Therapeutics,
+      Inc.</b><br>&nbsp;Biotechnology | USA | 166.60M] offsetx=[200] offsety=[-95]
+      delay=[250]\"><a href=\"quote.ashx?t=ALGS\" class=\"tab-link\">ALGS</a></td><td
+      align=\"right\">3.33</td><td align=\"right\" style=\"white-space:nowrap\"><span
+      class=\"is-red\">-11.44%</span></td><td align=\"right\">934819</td><td></td><td
+      title=\"cssbody=[tooltip_short_bdy] cssheader=[tooltip_short_hdr] body=[Stocks
+      with extreme price decrease over past two weeks,<br>calculated by RSI(14) indicator]
+      offsetx=[10] offsety=[20] delay=[300]\"><a href=\"screener.ashx?v=210&s=ta_oversold\"
+      class=\"tab-link-nw\">Oversold</a></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='screener.ashx?v=320&s=ta_mostvolatile'\">\n<td
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=DAVE'>&nbsp;<b>Dave Inc.</b><br>&nbsp;Software
+      - Application | USA | 1.82B] offsetx=[200] offsety=[-95] delay=[250]\"><a href=\"quote.ashx?t=DAVE\"
+      class=\"tab-link\">DAVE</a></td><td align=\"right\">6.19</td><td align=\"right\"
+      style=\"white-space:nowrap\"><span class=\"is-green\">19.04%</span></td><td
+      align=\"right\">13597805</td><td></td><td title=\"cssbody=[tooltip_short_bdy]
+      cssheader=[tooltip_short_hdr] body=[Stocks with the widest high/low trading
+      range today] offsetx=[10] offsety=[20] delay=[300]\"><a href=\"screener.ashx?v=320&s=ta_mostvolatile\"
+      class=\"tab-link-nw\">Most Volatile</a></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='screener.ashx?v=320&s=ta_mostvolatile'\">\n<td
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=MDVL'>&nbsp;<b>MedAvail Holdings,
+      Inc</b><br>&nbsp;Drug Manufacturers - Specialty & Generic | Canada | 56.79M]
+      offsetx=[200] offsety=[-95] delay=[250]\"><a href=\"quote.ashx?t=MDVL\" class=\"tab-link\">MDVL</a></td><td
+      align=\"right\">1.58</td><td align=\"right\" style=\"white-space:nowrap\"><span
+      class=\"is-green\">24.41%</span></td><td align=\"right\">1723549</td><td></td><td
+      title=\"cssbody=[tooltip_short_bdy] cssheader=[tooltip_short_hdr] body=[Stocks
+      with the widest high/low trading range today] offsetx=[10] offsety=[20] delay=[300]\"><a
+      href=\"screener.ashx?v=320&s=ta_mostvolatile\" class=\"tab-link-nw\">Most Volatile</a></td>\n</tr>\n<tr
+      onmouseover=\"this.className='table-light-row-cp-h';\" onmouseout=\"this.className='table-light-cp-row';\"
+      onclick=\"window.location='screener.ashx?v=320&s=ta_mostactive'\">\n<td title=\"cssbody=[tabchrtbdy]
+      cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=F'>&nbsp;<b>Ford Motor Company</b><br>&nbsp;Auto
+      Manufacturers | USA | 100.07B] offsetx=[200] offsety=[-95] delay=[250]\"><a
+      href=\"quote.ashx?t=F\" class=\"tab-link\">F</a></td><td align=\"right\">25.02</td><td
+      align=\"right\" style=\"white-space:nowrap\"><span class=\"is-green\">2.25%</span></td><td
+      align=\"right\">183748217</td><td></td><td title=\"cssbody=[tooltip_short_bdy]
+      cssheader=[tooltip_short_hdr] body=[Stocks with highest trading volume today]
+      offsetx=[10] offsety=[20] delay=[300]\"><a href=\"screener.ashx?v=320&s=ta_mostactive\"
+      class=\"tab-link-nw\">Most Active</a></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='screener.ashx?v=320&s=ta_mostactive'\">\n<td
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=BBIG'>&nbsp;<b>Vinco Ventures,
+      Inc.</b><br>&nbsp;Leisure | USA | 346.43M] offsetx=[200] offsety=[-95] delay=[250]\"><a
+      href=\"quote.ashx?t=BBIG\" class=\"tab-link\">BBIG</a></td><td align=\"right\">3.53</td><td
+      align=\"right\" style=\"white-space:nowrap\"><span class=\"is-green\">22.57%</span></td><td
+      align=\"right\">143532530</td><td></td><td title=\"cssbody=[tooltip_short_bdy]
+      cssheader=[tooltip_short_hdr] body=[Stocks with highest trading volume today]
+      offsetx=[10] offsety=[20] delay=[300]\"><a href=\"screener.ashx?v=320&s=ta_mostactive\"
+      class=\"tab-link-nw\">Most Active</a></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='screener.ashx?v=340&s=n_downgrades'\">\n<td
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=TWOU'>&nbsp;<b>2U, Inc.</b><br>&nbsp;Education
+      & Training Services | USA | 1.23B] offsetx=[200] offsety=[-95] delay=[250]\"><a
+      href=\"quote.ashx?t=TWOU\" class=\"tab-link\">TWOU</a></td><td align=\"right\">16.40</td><td
+      align=\"right\" style=\"white-space:nowrap\"><span class=\"is-red\">-7.50%</span></td><td
+      align=\"right\">1680688</td><td></td><td title=\"cssbody=[tooltip_short_bdy]
+      cssheader=[tooltip_short_hdr] body=[Stocks downgraded by analyst today] offsetx=[10]
+      offsety=[20] delay=[300]\"><a href=\"screener.ashx?v=340&s=n_downgrades\" class=\"tab-link-nw\">Downgrades</a></td>\n</tr>\n<tr
+      onmouseover=\"this.className='table-light-row-cp-h';\" onmouseout=\"this.className='table-light-cp-row';\"
+      onclick=\"window.location='screener.ashx?v=340&s=n_earningsafter'\">\n<td title=\"cssbody=[tabchrtbdy]
+      cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=GAME'>&nbsp;<b>Engine Gaming
+      and Media, Inc.</b><br>&nbsp;Electronic Gaming & Multimedia | Canada | 58.34M]
+      offsetx=[200] offsety=[-95] delay=[250]\"><a href=\"quote.ashx?t=GAME\" class=\"tab-link\">GAME</a></td><td
+      align=\"right\">3.25</td><td align=\"right\" style=\"white-space:nowrap\"><span
+      class=\"is-green\">1.25%</span></td><td align=\"right\">292718</td><td></td><td
+      title=\"cssbody=[tooltip_short_bdy] cssheader=[tooltip_short_hdr] body=[Companies
+      reporting earnings today, after market close] offsetx=[10] offsety=[20] delay=[300]\"><a
+      href=\"screener.ashx?v=340&s=n_earningsafter\" class=\"tab-link-nw\">Earnings
+      After</a></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='screener.ashx?v=340&s=it_latestsales'\">\n<td
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=ADAP'>&nbsp;<b>Adaptimmune
+      Therapeutics plc</b><br>&nbsp;Biotechnology | United Kingdom | 539.82M] offsetx=[200]
+      offsety=[-95] delay=[250]\"><a href=\"quote.ashx?t=ADAP\" class=\"tab-link\">ADAP</a></td><td
+      align=\"right\">3.36</td><td align=\"right\" style=\"white-space:nowrap\"><span
+      class=\"is-red\">-1.75%</span></td><td align=\"right\">524766</td><td></td><td
+      title=\"cssbody=[tooltip_short_bdy] cssheader=[tooltip_short_hdr] body=[Stocks
+      with recent insider selling] offsetx=[10] offsety=[20] delay=[300]\"><a href=\"screener.ashx?v=340&s=it_latestsales\"
+      class=\"tab-link-nw\">Insider Selling</a></td>\n</tr>\n</table>\n</td>\n<td><img
+      src=\"gfx/nic2x2.gif\" style=\"width:16px;height:2px\" alt=\"\" border=\"0\"></td>\n<td
+      align=\"right\" valign=\"top\"><a href=\"map.ashx?t=sec\" id=\"treemap-small\"
+      style=\"display: inline-block; width: 401px; height: 301px;\"></a></td>\n</tr>\n</table>\n</td>\n</tr>\n</table>\n</div>\n<div
+      id=\"homepage_bottom\">\n<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\"
+      border=\"0\">\n<tr>\n<td style=\"font-size: 0; line-height: 0\"><img src=\"gfx/nic2x2.gif\"
+      style=\"width:10px;height:12px\" alt=\"\" border=\"0\"></td>\n</tr>\n<tr>\n<td
+      align=\"center\">\n<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\"
+      border=\"0\">\n<tr>\n<td width=\"100%\" valign=\"top\">\n<table width=\"100%\"
+      border=\"0\" cellpadding=\"0\" cellspacing=\"0\">\n<tr>\n<td width=\"50%\" valign=\"top\">\n<table
+      class=\"t-home-table\" width=\"100%\" cellpadding=\"1\" cellspacing=\"0\" border=\"0\">\n<tr
+      class=\"t-home-table-top\">\n<td colspan=\"4\">Tickers</td><td width=\"15\"
+      align=\"left\"><img src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\" style=\"width:14px;height:2px\"></td><td>
+      Signal</td>\n</tr><tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='screener.ashx?v=210&s=ta_p_tlsupport'\">\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=VO&ta=1'>&nbsp;<b>Vanguard
+      Mid-Cap Index Fund ETF Shares</b><br>&nbsp;Exchange Traded Fund | USA | -] offsetx=[20]
+      offsety=[-280] delay=[250]\"><a href=\"quote.ashx?t=VO\" class=\"tab-link\">VO</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=FMF&ta=1'>&nbsp;<b>First Trust
+      Managed Futures Strategy Fund</b><br>&nbsp;Exchange Traded Fund | USA | -] offsetx=[20]
+      offsety=[-280] delay=[250]\"><a href=\"quote.ashx?t=FMF\" class=\"tab-link\">FMF</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=SDPI&ta=1'>&nbsp;<b>Superior
+      Drilling Products, Inc.</b><br>&nbsp;Oil & Gas Equipment & Services | USA |
+      21.88M] offsetx=[20] offsety=[-280] delay=[250]\"><a href=\"quote.ashx?t=SDPI\"
+      class=\"tab-link\">SDPI</a></td>\n<td title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr]
+      body=[<img referrerPolicy='no-referrer-when-downgrade' src='https://charts2.finviz.com/chart.ashx?s=m&t=SMCP&ta=1'>&nbsp;<b>AlphaMark
+      Actively Managed Small Cap ETF</b><br>&nbsp;Exchange Traded Fund | USA | -]
+      offsetx=[20] offsety=[-280] delay=[250]\"><a href=\"quote.ashx?t=SMCP\" class=\"tab-link\">SMCP</a></td>\n<td><img
+      src=\"gfx/home/pat_icons/3_tl_support.gif\" width=\"14\" height=\"12\" style=\"vertical-align:
+      text-top\" alt=\"\" border=\"0\"></td>\n<td title=\"cssbody=[tooltip_short_bdy]
+      cssheader=[tooltip_short_hdr] body=[Stocks with the current price near strong
+      trendline support] offsetx=[10] offsety=[20] delay=[300]\"><a href=\"screener.ashx?v=210&s=ta_p_tlsupport\"
+      class=\"tab-link-nw\"><span class=\"signal-big-screen\">Trendline</span><span
+      class=\"signal-small-screen\">TL</span> Support</a></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='screener.ashx?v=210&s=ta_p_tlresistance'\">\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=EQL&ta=1'>&nbsp;<b>ALPS Equal
+      Sector Weight ETF</b><br>&nbsp;Exchange Traded Fund | USA | -] offsetx=[20]
+      offsety=[-280] delay=[250]\"><a href=\"quote.ashx?t=EQL\" class=\"tab-link\">EQL</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=MP&ta=1'>&nbsp;<b>MP Materials
+      Corp.</b><br>&nbsp;Other Industrial Metals & Mining | USA | 8.12B] offsetx=[20]
+      offsety=[-280] delay=[250]\"><a href=\"quote.ashx?t=MP\" class=\"tab-link\">MP</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=O&ta=1'>&nbsp;<b>Realty Income
+      Corporation</b><br>&nbsp;REIT - Retail | USA | 40.57B] offsetx=[20] offsety=[-280]
+      delay=[250]\"><a href=\"quote.ashx?t=O\" class=\"tab-link\">O</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=VIG&ta=1'>&nbsp;<b>Vanguard
+      Dividend Appreciation Index Fund ETF Shares</b><br>&nbsp;Exchange Traded Fund
+      | USA | -] offsetx=[20] offsety=[-280] delay=[250]\"><a href=\"quote.ashx?t=VIG\"
+      class=\"tab-link\">VIG</a></td>\n<td><img src=\"gfx/home/pat_icons/2_tl_resist.gif\"
+      width=\"14\" height=\"12\" style=\"vertical-align: text-top\" alt=\"\" border=\"0\"></td>\n<td
+      title=\"cssbody=[tooltip_short_bdy] cssheader=[tooltip_short_hdr] body=[Stocks
+      with the current price near strong trendline resistance] offsetx=[10] offsety=[20]
+      delay=[300]\"><a href=\"screener.ashx?v=210&s=ta_p_tlresistance\" class=\"tab-link-nw\"><span
+      class=\"signal-big-screen\">Trendline</span><span class=\"signal-small-screen\">TL</span>
+      Resistance</a></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='screener.ashx?v=210&s=ta_p_horizontal'\">\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=UWM&ta=1'>&nbsp;<b>ProShares
+      Ultra Russell2000</b><br>&nbsp;Exchange Traded Fund | USA | -] offsetx=[20]
+      offsety=[-280] delay=[250]\"><a href=\"quote.ashx?t=UWM\" class=\"tab-link\">UWM</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=TRU&ta=1'>&nbsp;<b>TransUnion</b><br>&nbsp;Consulting
+      Services | USA | 22.08B] offsetx=[20] offsety=[-280] delay=[250]\"><a href=\"quote.ashx?t=TRU\"
+      class=\"tab-link\">TRU</a></td>\n<td title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr]
+      body=[<img referrerPolicy='no-referrer-when-downgrade' src='https://charts2.finviz.com/chart.ashx?s=m&t=WIW&ta=1'>&nbsp;<b>Western
+      Asset Inflation-Linked Opportunities & Income Fund</b><br>&nbsp;Closed-End Fund
+      - Debt | USA | 797.23M] offsetx=[20] offsety=[-280] delay=[250]\"><a href=\"quote.ashx?t=WIW\"
+      class=\"tab-link\">WIW</a></td>\n<td title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr]
+      body=[<img referrerPolicy='no-referrer-when-downgrade' src='https://charts2.finviz.com/chart.ashx?s=m&t=BMI&ta=1'>&nbsp;<b>Badger
+      Meter, Inc.</b><br>&nbsp;Electrical Equipment & Parts | USA | 2.88B] offsetx=[20]
+      offsety=[-280] delay=[250]\"><a href=\"quote.ashx?t=BMI\" class=\"tab-link\">BMI</a></td>\n<td><img
+      src=\"gfx/home/pat_icons/1_horiz_sr.gif\" width=\"14\" height=\"12\" style=\"vertical-align:
+      text-top\" alt=\"\" border=\"0\"></td>\n<td title=\"cssbody=[tooltip_short_bdy]
+      cssheader=[tooltip_short_hdr] body=[Stocks with the current price near strong
+      horizontal support/resistance] offsetx=[10] offsety=[20] delay=[300]\"><a href=\"screener.ashx?v=210&s=ta_p_horizontal\"
+      class=\"tab-link-nw\">Horizontal S/R</a></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='screener.ashx?v=210&s=ta_p_wedgeup'\">\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=SPLG&ta=1'>&nbsp;<b>SPDR Portfolio
+      S&P 500 ETF</b><br>&nbsp;Exchange Traded Fund | USA | -] offsetx=[20] offsety=[-280]
+      delay=[250]\"><a href=\"quote.ashx?t=SPLG\" class=\"tab-link\">SPLG</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=UPRO&ta=1'>&nbsp;<b>ProShares
+      UltraPro S&P500</b><br>&nbsp;Exchange Traded Fund | USA | -] offsetx=[20] offsety=[-280]
+      delay=[250]\"><a href=\"quote.ashx?t=UPRO\" class=\"tab-link\">UPRO</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=SPY&ta=1'>&nbsp;<b>SPDR S&P
+      500 ETF Trust</b><br>&nbsp;Exchange Traded Fund | USA | -] offsetx=[20] offsety=[-280]
+      delay=[250]\"><a href=\"quote.ashx?t=SPY\" class=\"tab-link\">SPY</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=IVV&ta=1'>&nbsp;<b>iShares
+      Core S&P 500 ETF</b><br>&nbsp;Exchange Traded Fund | USA | -] offsetx=[20] offsety=[-280]
+      delay=[250]\"><a href=\"quote.ashx?t=IVV\" class=\"tab-link\">IVV</a></td>\n<td><img
+      src=\"gfx/home/pat_icons/4_wedge_up.gif\" width=\"14\" height=\"12\" style=\"vertical-align:
+      text-top\" alt=\"\" border=\"0\"></td>\n<td title=\"cssbody=[tooltip_short_bdy]
+      cssheader=[tooltip_short_hdr] body=[Stocks with the current price near strong
+      wedge-up pattern] offsetx=[10] offsety=[20] delay=[300]\"><a href=\"screener.ashx?v=210&s=ta_p_wedgeup\"
+      class=\"tab-link-nw\">Wedge Up</a></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='screener.ashx?v=210&s=ta_p_wedge'\">\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=JSTC&ta=1'>&nbsp;<b>Tidal ETF
+      Trust - Adasina Social Justice All Cap Global ETF</b><br>&nbsp;Exchange Traded
+      Fund | USA | -] offsetx=[20] offsety=[-280] delay=[250]\"><a href=\"quote.ashx?t=JSTC\"
+      class=\"tab-link\">JSTC</a></td>\n<td title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr]
+      body=[<img referrerPolicy='no-referrer-when-downgrade' src='https://charts2.finviz.com/chart.ashx?s=m&t=RC&ta=1'>&nbsp;<b>Ready
+      Capital Corporation</b><br>&nbsp;REIT - Mortgage | USA | 1.14B] offsetx=[20]
+      offsety=[-280] delay=[250]\"><a href=\"quote.ashx?t=RC\" class=\"tab-link\">RC</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=EXG&ta=1'>&nbsp;<b>Eaton Vance
+      Tax-Managed Global Diversified Equity Income Fund</b><br>&nbsp;Closed-End Fund
+      - Foreign | USA | 3.24B] offsetx=[20] offsety=[-280] delay=[250]\"><a href=\"quote.ashx?t=EXG\"
+      class=\"tab-link\">EXG</a></td>\n<td title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr]
+      body=[<img referrerPolicy='no-referrer-when-downgrade' src='https://charts2.finviz.com/chart.ashx?s=m&t=MTR&ta=1'>&nbsp;<b>Mesa
+      Royalty Trust</b><br>&nbsp;Oil & Gas E&P | USA | 12.56M] offsetx=[20] offsety=[-280]
+      delay=[250]\"><a href=\"quote.ashx?t=MTR\" class=\"tab-link\">MTR</a></td>\n<td><img
+      src=\"gfx/home/pat_icons/8_wedge.gif\" width=\"14\" height=\"12\" style=\"vertical-align:
+      text-top\" alt=\"\" border=\"0\"></td>\n<td title=\"cssbody=[tooltip_short_bdy]
+      cssheader=[tooltip_short_hdr] body=[Stocks with the current price near strong
+      wedge pattern] offsetx=[10] offsety=[20] delay=[300]\"><a href=\"screener.ashx?v=210&s=ta_p_wedge\"
+      class=\"tab-link-nw\">Wedge</a></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='screener.ashx?v=210&s=ta_p_wedgedown'\">\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=TLSA&ta=1'>&nbsp;<b>Tiziana
+      Life Sciences PLC</b><br>&nbsp;Biotechnology | United Kingdom | 16.48M] offsetx=[20]
+      offsety=[-280] delay=[250]\"><a href=\"quote.ashx?t=TLSA\" class=\"tab-link\">TLSA</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=IHD&ta=1'>&nbsp;<b>Voya Emerging
+      Markets High Dividend Equity Fund</b><br>&nbsp;Asset Management | USA | 138.42M]
+      offsetx=[20] offsety=[-280] delay=[250]\"><a href=\"quote.ashx?t=IHD\" class=\"tab-link\">IHD</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=WYY&ta=1'>&nbsp;<b>WidePoint
+      Corporation</b><br>&nbsp;Information Technology Services | USA | 36.05M] offsetx=[20]
+      offsety=[-280] delay=[250]\"><a href=\"quote.ashx?t=WYY\" class=\"tab-link\">WYY</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=AESC&ta=1'>&nbsp;<b>The AES
+      Corporation</b><br>&nbsp;Utilities - Diversified | USA | -] offsetx=[20] offsety=[-280]
+      delay=[250]\"><a href=\"quote.ashx?t=AESC\" class=\"tab-link\">AESC</a></td>\n<td><img
+      src=\"gfx/home/pat_icons/5_wedge_down.gif\" width=\"14\" height=\"12\" style=\"vertical-align:
+      text-top\" alt=\"\" border=\"0\"></td>\n<td title=\"cssbody=[tooltip_short_bdy]
+      cssheader=[tooltip_short_hdr] body=[Stocks with the current price near strong
+      wedge-down pattern] offsetx=[10] offsety=[20] delay=[300]\"><a href=\"screener.ashx?v=210&s=ta_p_wedgedown\"
+      class=\"tab-link-nw\">Wedge Down</a></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='screener.ashx?v=210&s=ta_p_wedgeresistance'\">\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=CGW&ta=1'>&nbsp;<b>Invesco
+      S&P Global Water Index ETF</b><br>&nbsp;Exchange Traded Fund | USA | -] offsetx=[20]
+      offsety=[-280] delay=[250]\"><a href=\"quote.ashx?t=CGW\" class=\"tab-link\">CGW</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=ULTA&ta=1'>&nbsp;<b>Ulta Beauty,
+      Inc.</b><br>&nbsp;Specialty Retail | USA | 20.73B] offsetx=[20] offsety=[-280]
+      delay=[250]\"><a href=\"quote.ashx?t=ULTA\" class=\"tab-link\">ULTA</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=CHSCP&ta=1'>&nbsp;<b>CHS Inc.</b><br>&nbsp;Farm
+      Products | USA | 381.42M] offsetx=[20] offsety=[-280] delay=[250]\"><a href=\"quote.ashx?t=CHSCP\"
+      class=\"tab-link\">CHSCP</a></td>\n<td title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr]
+      body=[<img referrerPolicy='no-referrer-when-downgrade' src='https://charts2.finviz.com/chart.ashx?s=m&t=PMGMU&ta=1'>&nbsp;<b>Priveterra
+      Acquisition Corp.</b><br>&nbsp;Shell Companies | USA | -] offsetx=[20] offsety=[-280]
+      delay=[250]\"><a href=\"quote.ashx?t=PMGMU\" class=\"tab-link\">PMGMU</a></td>\n<td><img
+      src=\"gfx/home/pat_icons/6_triangle_ascen.gif\" width=\"14\" height=\"12\" style=\"vertical-align:
+      text-top\" alt=\"\" border=\"0\"></td>\n<td title=\"cssbody=[tooltip_short_bdy]
+      cssheader=[tooltip_short_hdr] body=[Stocks with the current price near strong
+      ascending triangle pattern] offsetx=[10] offsety=[20] delay=[300]\"><a href=\"screener.ashx?v=210&s=ta_p_wedgeresistance\"
+      class=\"tab-link-nw\">Triangle <span class=\"signal-big-screen\">Ascending</span><span
+      class=\"signal-small-screen\">Asc.</span></a></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='screener.ashx?v=210&s=ta_p_wedgesupport'\">\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=FSSIU&ta=1'>&nbsp;<b>Fortistar
+      Sustainable Solutions Corp.</b><br>&nbsp;Shell Companies | USA | -] offsetx=[20]
+      offsety=[-280] delay=[250]\"><a href=\"quote.ashx?t=FSSIU\" class=\"tab-link\">FSSIU</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=FLEE&ta=1'>&nbsp;<b>Franklin
+      Templeton ETF Trust - Franklin FTSE Europe ETF</b><br>&nbsp;Exchange Traded
+      Fund | USA | -] offsetx=[20] offsety=[-280] delay=[250]\"><a href=\"quote.ashx?t=FLEE\"
+      class=\"tab-link\">FLEE</a></td>\n<td title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr]
+      body=[<img referrerPolicy='no-referrer-when-downgrade' src='https://charts2.finviz.com/chart.ashx?s=m&t=COOLU&ta=1'>&nbsp;<b>Corner
+      Growth Acquisition Corp.</b><br>&nbsp;Shell Companies | USA | -] offsetx=[20]
+      offsety=[-280] delay=[250]\"><a href=\"quote.ashx?t=COOLU\" class=\"tab-link\">COOLU</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=BEKE&ta=1'>&nbsp;<b>KE Holdings
+      Inc</b><br>&nbsp;Real Estate Services | China | 22.78B] offsetx=[20] offsety=[-280]
+      delay=[250]\"><a href=\"quote.ashx?t=BEKE\" class=\"tab-link\">BEKE</a></td>\n<td><img
+      src=\"gfx/home/pat_icons/7_triangle_descen.gif\" width=\"14\" height=\"12\"
+      style=\"vertical-align: text-top\" alt=\"\" border=\"0\"></td>\n<td title=\"cssbody=[tooltip_short_bdy]
+      cssheader=[tooltip_short_hdr] body=[Stocks with the current price near strong
+      descending triangle pattern] offsetx=[10] offsety=[20] delay=[300]\"><a href=\"screener.ashx?v=210&s=ta_p_wedgesupport\"
+      class=\"tab-link-nw\">Triangle <span class=\"signal-big-screen\">Descending</span><span
+      class=\"signal-small-screen\">Desc.</span></a></td>\n</tr>\n</table>\n</td>\n<td><img
+      src=\"gfx/nic2x2.gif\" style=\"width:16px;height:2px\" alt=\"\" border=\"0\"></td>\n<td
+      width=\"50%\" valign=\"top\">\n<table class=\"t-home-table\" width=\"100%\"
+      cellpadding=\"1\" cellspacing=\"0\" border=\"0\">\n<tr class=\"t-home-table-top\">\n<td
+      colspan=\"4\">Tickers</td><td width=\"15\" align=\"left\"><img src=\"gfx/nic2x2.gif\"
+      alt=\"\" border=\"0\" style=\"width:14px;height:2px\"></td><td> Signal</td>\n</tr><tr
+      onmouseover=\"this.className='table-light-row-cp-h';\" onmouseout=\"this.className='table-light-cp-row';\"
+      onclick=\"window.location='screener.ashx?v=210&s=ta_p_channelup'\">\n<td title=\"cssbody=[tabchrtbdy-ta]
+      cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=FTLS&ta=1'>&nbsp;<b>First Trust
+      Long/Short Equity ETF</b><br>&nbsp;Exchange Traded Fund | USA | -] offsetx=[20]
+      offsety=[-280] delay=[250]\"><a href=\"quote.ashx?t=FTLS\" class=\"tab-link\">FTLS</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=OLP&ta=1'>&nbsp;<b>One Liberty
+      Properties, Inc.</b><br>&nbsp;REIT - Diversified | USA | 709.27M] offsetx=[20]
+      offsety=[-280] delay=[250]\"><a href=\"quote.ashx?t=OLP\" class=\"tab-link\">OLP</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=CR&ta=1'>&nbsp;<b>Crane Co.</b><br>&nbsp;Specialty
+      Industrial Machinery | USA | 6.18B] offsetx=[20] offsety=[-280] delay=[250]\"><a
+      href=\"quote.ashx?t=CR\" class=\"tab-link\">CR</a></td>\n<td title=\"cssbody=[tabchrtbdy-ta]
+      cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=LFEQ&ta=1'>&nbsp;<b>VanEck
+      Vectors Long/Flat Trend ETF</b><br>&nbsp;Exchange Traded Fund | USA | -] offsetx=[20]
+      offsety=[-280] delay=[250]\"><a href=\"quote.ashx?t=LFEQ\" class=\"tab-link\">LFEQ</a></td>\n<td><img
+      src=\"gfx/home/pat_icons/9_channel_up.gif\" width=\"14\" height=\"12\" style=\"vertical-align:
+      text-top\" alt=\"\" border=\"0\"></td>\n<td title=\"cssbody=[tooltip_short_bdy]
+      cssheader=[tooltip_short_hdr] body=[Stocks with the current price near strong
+      channel-up pattern] offsetx=[10] offsety=[20] delay=[300]\"><a href=\"screener.ashx?v=210&s=ta_p_channelup\"
+      class=\"tab-link-nw\">Channel Up</a></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='screener.ashx?v=210&s=ta_p_channel'\">\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=SMCP&ta=1'>&nbsp;<b>AlphaMark
+      Actively Managed Small Cap ETF</b><br>&nbsp;Exchange Traded Fund | USA | -]
+      offsetx=[20] offsety=[-280] delay=[250]\"><a href=\"quote.ashx?t=SMCP\" class=\"tab-link\">SMCP</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=BBEU&ta=1'>&nbsp;<b>JPMorgan
+      BetaBuilders Europe ETF</b><br>&nbsp;Exchange Traded Fund | USA | -] offsetx=[20]
+      offsety=[-280] delay=[250]\"><a href=\"quote.ashx?t=BBEU\" class=\"tab-link\">BBEU</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=RAPT&ta=1'>&nbsp;<b>RAPT Therapeutics,
+      Inc.</b><br>&nbsp;Biotechnology | USA | 896.79M] offsetx=[20] offsety=[-280]
+      delay=[250]\"><a href=\"quote.ashx?t=RAPT\" class=\"tab-link\">RAPT</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=OPCH&ta=1'>&nbsp;<b>Option
+      Care Health, Inc.</b><br>&nbsp;Medical Care Facilities | USA | 4.60B] offsetx=[20]
+      offsety=[-280] delay=[250]\"><a href=\"quote.ashx?t=OPCH\" class=\"tab-link\">OPCH</a></td>\n<td><img
+      src=\"gfx/home/pat_icons/11_channel.gif\" width=\"14\" height=\"12\" style=\"vertical-align:
+      text-top\" alt=\"\" border=\"0\"></td>\n<td title=\"cssbody=[tooltip_short_bdy]
+      cssheader=[tooltip_short_hdr] body=[Stocks with the current price near strong
+      channel] offsetx=[10] offsety=[20] delay=[300]\"><a href=\"screener.ashx?v=210&s=ta_p_channel\"
+      class=\"tab-link-nw\">Channel</a></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='screener.ashx?v=210&s=ta_p_channeldown'\">\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=MDGS&ta=1'>&nbsp;<b>Medigus
+      Ltd.</b><br>&nbsp;Medical Devices | Israel | 25.69M] offsetx=[20] offsety=[-280]
+      delay=[250]\"><a href=\"quote.ashx?t=MDGS\" class=\"tab-link\">MDGS</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=ENIC&ta=1'>&nbsp;<b>Enel Chile
+      S.A.</b><br>&nbsp;Utilities - Regulated Electric | Chile | 2.74B] offsetx=[20]
+      offsety=[-280] delay=[250]\"><a href=\"quote.ashx?t=ENIC\" class=\"tab-link\">ENIC</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=APDN&ta=1'>&nbsp;<b>Applied
+      DNA Sciences, Inc.</b><br>&nbsp;Security & Protection Services | USA | 30.48M]
+      offsetx=[20] offsety=[-280] delay=[250]\"><a href=\"quote.ashx?t=APDN\" class=\"tab-link\">APDN</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=LEJU&ta=1'>&nbsp;<b>Leju Holdings
+      Limited</b><br>&nbsp;Real Estate Services | China | 115.92M] offsetx=[20] offsety=[-280]
+      delay=[250]\"><a href=\"quote.ashx?t=LEJU\" class=\"tab-link\">LEJU</a></td>\n<td><img
+      src=\"gfx/home/pat_icons/10_channel_down.gif\" width=\"14\" height=\"12\" style=\"vertical-align:
+      text-top\" alt=\"\" border=\"0\"></td>\n<td title=\"cssbody=[tooltip_short_bdy]
+      cssheader=[tooltip_short_hdr] body=[Stocks with the current price near strong
+      channel-down pattern] offsetx=[10] offsety=[20] delay=[300]\"><a href=\"screener.ashx?v=210&s=ta_p_channeldown\"
+      class=\"tab-link-nw\">Channel Down</a></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='screener.ashx?v=210&s=ta_p_doubletop'\">\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=DWPP&ta=1'>&nbsp;<b>First Trust
+      Dorsey Wright People's Portfolio ETF</b><br>&nbsp;Exchange Traded Fund | USA
+      | -] offsetx=[20] offsety=[-280] delay=[250]\"><a href=\"quote.ashx?t=DWPP\"
+      class=\"tab-link\">DWPP</a></td>\n<td title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr]
+      body=[<img referrerPolicy='no-referrer-when-downgrade' src='https://charts2.finviz.com/chart.ashx?s=m&t=SEAS&ta=1'>&nbsp;<b>SeaWorld
+      Entertainment, Inc.</b><br>&nbsp;Leisure | USA | 5.03B] offsetx=[20] offsety=[-280]
+      delay=[250]\"><a href=\"quote.ashx?t=SEAS\" class=\"tab-link\">SEAS</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=NOC&ta=1'>&nbsp;<b>Northrop
+      Grumman Corporation</b><br>&nbsp;Aerospace & Defense | USA | 62.54B] offsetx=[20]
+      offsety=[-280] delay=[250]\"><a href=\"quote.ashx?t=NOC\" class=\"tab-link\">NOC</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=TCTL&ta=1'>&nbsp;<b>ETF Series
+      Solutions - Premise Capital Diversified Tactical ETF</b><br>&nbsp;Exchange Traded
+      Fund | USA | -] offsetx=[20] offsety=[-280] delay=[250]\"><a href=\"quote.ashx?t=TCTL\"
+      class=\"tab-link\">TCTL</a></td>\n<td><img src=\"gfx/home/pat_icons/12_dtop.gif\"
+      width=\"14\" height=\"12\" style=\"vertical-align: text-top\" alt=\"\" border=\"0\"></td>\n<td
+      title=\"cssbody=[tooltip_short_bdy] cssheader=[tooltip_short_hdr] body=[Stocks
+      with strong double-top pattern] offsetx=[10] offsety=[20] delay=[300]\"><a href=\"screener.ashx?v=210&s=ta_p_doubletop\"
+      class=\"tab-link-nw\">Double Top</a></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='screener.ashx?v=210&s=ta_p_multipletop'\">\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=PIN&ta=1'>&nbsp;<b>Invesco
+      India ETF</b><br>&nbsp;Exchange Traded Fund | USA | -] offsetx=[20] offsety=[-280]
+      delay=[250]\"><a href=\"quote.ashx?t=PIN\" class=\"tab-link\">PIN</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=RVI&ta=1'>&nbsp;<b>Retail Value
+      Inc.</b><br>&nbsp;REIT - Retail | USA | 134.32M] offsetx=[20] offsety=[-280]
+      delay=[250]\"><a href=\"quote.ashx?t=RVI\" class=\"tab-link\">RVI</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=MS&ta=1'>&nbsp;<b>Morgan Stanley</b><br>&nbsp;Capital
+      Markets | USA | 182.90B] offsetx=[20] offsety=[-280] delay=[250]\"><a href=\"quote.ashx?t=MS\"
+      class=\"tab-link\">MS</a></td>\n<td title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr]
+      body=[<img referrerPolicy='no-referrer-when-downgrade' src='https://charts2.finviz.com/chart.ashx?s=m&t=CYBE&ta=1'>&nbsp;<b>CyberOptics
+      Corporation</b><br>&nbsp;Scientific & Technical Instruments | USA | 319.01M]
+      offsetx=[20] offsety=[-280] delay=[250]\"><a href=\"quote.ashx?t=CYBE\" class=\"tab-link\">CYBE</a></td>\n<td><img
+      src=\"gfx/home/pat_icons/14_mtop.gif\" width=\"14\" height=\"12\" style=\"vertical-align:
+      text-top\" alt=\"\" border=\"0\"></td>\n<td title=\"cssbody=[tooltip_short_bdy]
+      cssheader=[tooltip_short_hdr] body=[Stocks with strong multiple-top pattern]
+      offsetx=[10] offsety=[20] delay=[300]\"><a href=\"screener.ashx?v=210&s=ta_p_multipletop\"
+      class=\"tab-link-nw\">Multiple Top</a></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='screener.ashx?v=210&s=ta_p_doublebottom'\">\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=SFIG&ta=1'>&nbsp;<b>WisdomTree
+      Trust - WisdomTree U.S. Short-Term Corporate Bond Fund</b><br>&nbsp;Exchange
+      Traded Fund | USA | -] offsetx=[20] offsety=[-280] delay=[250]\"><a href=\"quote.ashx?t=SFIG\"
+      class=\"tab-link\">SFIG</a></td>\n<td title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr]
+      body=[<img referrerPolicy='no-referrer-when-downgrade' src='https://charts2.finviz.com/chart.ashx?s=m&t=SMDD&ta=1'>&nbsp;<b>ProShares
+      UltraPro Short MidCap400</b><br>&nbsp;Exchange Traded Fund | USA | -] offsetx=[20]
+      offsety=[-280] delay=[250]\"><a href=\"quote.ashx?t=SMDD\" class=\"tab-link\">SMDD</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=BIOC&ta=1'>&nbsp;<b>Biocept,
+      Inc.</b><br>&nbsp;Diagnostics & Research | USA | 55.45M] offsetx=[20] offsety=[-280]
+      delay=[250]\"><a href=\"quote.ashx?t=BIOC\" class=\"tab-link\">BIOC</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=ISHG&ta=1'>&nbsp;<b>iShares
+      1-3 Year International Treasury Bond ETF</b><br>&nbsp;Exchange Traded Fund |
+      USA | -] offsetx=[20] offsety=[-280] delay=[250]\"><a href=\"quote.ashx?t=ISHG\"
+      class=\"tab-link\">ISHG</a></td>\n<td><img src=\"gfx/home/pat_icons/13_dbot.gif\"
+      width=\"14\" height=\"12\" style=\"vertical-align: text-top\" alt=\"\" border=\"0\"></td>\n<td
+      title=\"cssbody=[tooltip_short_bdy] cssheader=[tooltip_short_hdr] body=[Stocks
+      with strong double-bottom pattern] offsetx=[10] offsety=[20] delay=[300]\"><a
+      href=\"screener.ashx?v=210&s=ta_p_doublebottom\" class=\"tab-link-nw\">Double
+      Bottom</a></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='screener.ashx?v=210&s=ta_p_multiplebottom'\">\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=ACEVU&ta=1'>&nbsp;<b>ACE Convergence
+      Acquisition Corp.</b><br>&nbsp;Shell Companies | USA | -] offsetx=[20] offsety=[-280]
+      delay=[250]\"><a href=\"quote.ashx?t=ACEVU\" class=\"tab-link\">ACEVU</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=WOOF&ta=1'>&nbsp;<b>Petco Health
+      and Wellness Company, Inc.</b><br>&nbsp;Specialty Retail | USA | 5.76B] offsetx=[20]
+      offsety=[-280] delay=[250]\"><a href=\"quote.ashx?t=WOOF\" class=\"tab-link\">WOOF</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=TARA&ta=1'>&nbsp;<b>Protara
+      Therapeutics, Inc.</b><br>&nbsp;Biotechnology | USA | 70.28M] offsetx=[20] offsety=[-280]
+      delay=[250]\"><a href=\"quote.ashx?t=TARA\" class=\"tab-link\">TARA</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=CAT&ta=1'>&nbsp;<b>Caterpillar
+      Inc.</b><br>&nbsp;Farm & Heavy Construction Machinery | USA | 121.59B] offsetx=[20]
+      offsety=[-280] delay=[250]\"><a href=\"quote.ashx?t=CAT\" class=\"tab-link\">CAT</a></td>\n<td><img
+      src=\"gfx/home/pat_icons/15_mbot.gif\" width=\"14\" height=\"12\" style=\"vertical-align:
+      text-top\" alt=\"\" border=\"0\"></td>\n<td title=\"cssbody=[tooltip_short_bdy]
+      cssheader=[tooltip_short_hdr] body=[Stocks with strong multiple-bottom pattern]
+      offsetx=[10] offsety=[20] delay=[300]\"><a href=\"screener.ashx?v=210&s=ta_p_multiplebottom\"
+      class=\"tab-link-nw\">Multiple Bottom</a></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='screener.ashx?v=210&s=ta_p_headandshoulders'\">\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=UUUU&ta=1'>&nbsp;<b>Energy
+      Fuels Inc.</b><br>&nbsp;Uranium | USA | 1.13B] offsetx=[20] offsety=[-280] delay=[250]\"><a
+      href=\"quote.ashx?t=UUUU\" class=\"tab-link\">UUUU</a></td>\n<td title=\"cssbody=[tabchrtbdy-ta]
+      cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=UI&ta=1'>&nbsp;<b>Ubiquiti
+      Inc.</b><br>&nbsp;Communication Equipment | USA | 18.76B] offsetx=[20] offsety=[-280]
+      delay=[250]\"><a href=\"quote.ashx?t=UI\" class=\"tab-link\">UI</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=OTEX&ta=1'>&nbsp;<b>Open Text
+      Corporation</b><br>&nbsp;Software - Application | Canada | 12.62B] offsetx=[20]
+      offsety=[-280] delay=[250]\"><a href=\"quote.ashx?t=OTEX\" class=\"tab-link\">OTEX</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy-ta] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=LSXMK&ta=1'>&nbsp;<b>The Liberty
+      SiriusXM Group</b><br>&nbsp;Broadcasting | USA | 11.04B] offsetx=[20] offsety=[-280]
+      delay=[250]\"><a href=\"quote.ashx?t=LSXMK\" class=\"tab-link\">LSXMK</a></td>\n<td><img
+      src=\"gfx/home/pat_icons/16_hs.gif\" width=\"14\" height=\"12\" style=\"vertical-align:
+      text-top\" alt=\"\" border=\"0\"></td>\n<td title=\"cssbody=[tooltip_short_bdy]
+      cssheader=[tooltip_short_hdr] body=[Stocks with strong head & shoulders pattern]
+      offsetx=[10] offsety=[20] delay=[300]\"><a href=\"screener.ashx?v=210&s=ta_p_headandshoulders\"
+      class=\"tab-link-nw\">Head&Shoulders</a></td>\n</tr>\n</table>\n</td>\n</tr>\n<tr>\n<td
+      style=\"font-size: 0; line-height: 0\" width=\"100%\" colspan=\"3\"><img src=\"gfx/nic2x2.gif\"
+      alt=\"\" style=\"width:12px;height:12px\" border=\"0\"></td></tr>\n<tr>\n<td
+      width=\"100%\" colspan=\"3\">\n<table class=\"t-home-table\" border=\"0\" cellpadding=\"1\"
+      cellspacing=\"0\" width=\"100%\">\n<tr class=\"t-home-table-top\">\n<td></td>\n<td
+      align=\"center\">Time</td>\n<td align=\"center\">Headlines</td>\n</tr>\n<tr
+      class=\"nn-home-first\" onmouseover=\"this.className='nn-h';\" onmouseout=\"this.className='nn-home-first';\"
+      onclick=\"window.open('https://finance.yahoo.com/news/biden-sarah-bloom-raskin-fed-regulator-021317027.html','_blank');return
+      false;\"><td width=\"18\" class=\"news_source_icon is-4\"></td>\n<td width=\"70\"
+      class=\"nn-date\" align=\"center\">09:39PM</td><td title=\"cssbody=[nn_tooltip_bdy]
+      cssheader=[nn_tooltip_hdr] body=[<table width=400><tr><td class='tooltip_tab'>Biden
+      picks Raskin for top Fed regulator role and two governors</td></tr></table>]
+      delay=[100]\"><a href=\"https://finance.yahoo.com/news/biden-sarah-bloom-raskin-fed-regulator-021317027.html\"
+      target=\"_blank\" class=\"nn-tab-link\">Biden picks Raskin for top Fed regulator
+      role and two governors</a></td></tr><tr class=\"nn-home\" onmouseover=\"this.className='nn-h';\"
+      onmouseout=\"this.className='nn-home';\" onclick=\"window.open('https://www.bloomberg.com/news/articles/2022-01-13/asia-stocks-to-drop-as-fed-hawks-spur-nasdaq-rout-markets-wrap','_blank');return
+      false;\"><td width=\"18\" class=\"news_source_icon is-7\"></td>\n<td width=\"70\"
+      class=\"nn-date\" align=\"center\">09:03PM</td><td title=\"cssbody=[nn_tooltip_bdy]
+      cssheader=[nn_tooltip_hdr] body=[<table width=400><tr><td class='tooltip_tab'>Asia
+      Stocks Decline as Fed Hawks Spur Tech Rout: Markets Wrap</td></tr></table>]
+      delay=[100]\"><a href=\"https://www.bloomberg.com/news/articles/2022-01-13/asia-stocks-to-drop-as-fed-hawks-spur-nasdaq-rout-markets-wrap\"
+      target=\"_blank\" class=\"nn-tab-link\">Asia Stocks Decline as Fed Hawks Spur
+      Tech Rout: Markets Wrap</a></td></tr><tr class=\"nn-home\" onmouseover=\"this.className='nn-h';\"
+      onmouseout=\"this.className='nn-home';\" onclick=\"window.open('https://www.marketwatch.com/story/worried-about-a-bubble-why-you-should-overweight-u-s-equities-this-year-according-to-goldman-sachs-11642117373','_blank');return
+      false;\"><td width=\"18\" class=\"news_source_icon is-1\"></td>\n<td width=\"70\"
+      class=\"nn-date\" align=\"center\">08:02PM</td><td title=\"cssbody=[nn_tooltip_bdy]
+      cssheader=[nn_tooltip_hdr] body=[<table width=400><tr><td class='tooltip_tab'>Worried
+      about a bubble? Why you should overweight U.S. equities this year, according
+      to Goldman Sachs</td></tr></table>] delay=[100]\"><a href=\"https://www.marketwatch.com/story/worried-about-a-bubble-why-you-should-overweight-u-s-equities-this-year-according-to-goldman-sachs-11642117373\"
+      target=\"_blank\" class=\"nn-tab-link\">Worried about a bubble? Why you should
+      overweight U.S. equities this year, according to Goldman Sachs</a></td></tr><tr
+      class=\"nn-home\" onmouseover=\"this.className='nn-h';\" onmouseout=\"this.className='nn-home';\"
+      onclick=\"window.open('https://www.reuters.com/world/us/futures-muted-ahead-data-delta-air-rises-strong-earnings-2022-01-13/','_blank');return
+      false;\"><td width=\"18\" class=\"news_source_icon is-3\"></td>\n<td width=\"70\"
+      class=\"nn-date\" align=\"center\">07:49PM</td><td title=\"cssbody=[nn_tooltip_bdy]
+      cssheader=[nn_tooltip_hdr] body=[<table width=400><tr><td class='tooltip_tab'>Wall
+      St closes down, Fed speakers put rate hikes in focus</td></tr></table>] delay=[100]\"><a
+      href=\"https://www.reuters.com/world/us/futures-muted-ahead-data-delta-air-rises-strong-earnings-2022-01-13/\"
+      target=\"_blank\" class=\"nn-tab-link\">Wall St closes down, Fed speakers put
+      rate hikes in focus</a></td></tr><tr class=\"nn-home\" onmouseover=\"this.className='nn-h';\"
+      onmouseout=\"this.className='nn-home';\" onclick=\"window.open('https://www.wsj.com/articles/global-stock-markets-dow-update-01-13-2022-11642063037','_blank');return
+      false;\"><td width=\"18\" class=\"news_source_icon is-2\"></td>\n<td width=\"70\"
+      class=\"nn-date\" align=\"center\">04:26PM</td><td title=\"cssbody=[nn_tooltip_bdy]
+      cssheader=[nn_tooltip_hdr] body=[<table width=400><tr><td class='tooltip_tab'>Tech
+      Stocks Drag Down S&P 500, Nasdaq Composite</td></tr></table>] delay=[100]\"><a
+      href=\"https://www.wsj.com/articles/global-stock-markets-dow-update-01-13-2022-11642063037\"
+      target=\"_blank\" class=\"nn-tab-link\">Tech Stocks Drag Down S&P 500, Nasdaq
+      Composite</a></td></tr></table></td>\n</tr>\n</table>\n</td>\n<td><img src=\"gfx/nic2x2.gif\"
+      style=\"width:16px;height:2px\" alt=\"\" border=\"0\"></td>\n<td width=\"400\"
+      valign=\"top\">\n<table width=\"400\" class=\"t-home-table\" border=\"0\" cellpadding=\"0\"
+      cellspacing=\"0\">\n<tr>\n<td valign=\"top\">\n<table width=\"100%\" class=\"t-home-table\"
+      border=\"0\" cellpadding=\"1\" cellspacing=\"0\">\n<tr class=\"t-home-table-top\"
+      id=\"major-news\"><td colspan=\"2\"><a href=\"screener.ashx?v=320&s=n_majornews\"
+      class=\"tab-link\"><b>Major news</b></a></td></tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h'\"
+      onmouseout=\"this.className='table-light-row-cp'\"><td><a href=\"quote.ashx?t=MSFT\"
+      class=\"tab-link-nw\" title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img
+      referrerPolicy='no-referrer-when-downgrade' src='https://charts2.finviz.com/chart.ashx?s=m&t=MSFT'>&nbsp;<b>Microsoft
+      Corporation</b><br>&nbsp;Software - Infrastructure | USA | 2287.27B] offsetx=[-300]
+      offsety=[-240] delay=[250]\">MSFT</a></td><td align=\"right\" style=\"white-space:nowrap;\">
+      <small><span style=\"color:#aa0000;\">-4.23%</span></small></td></tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h'\"
+      onmouseout=\"this.className='table-light-row-cp'\"><td><a href=\"quote.ashx?t=AAPL\"
+      class=\"tab-link-nw\" title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img
+      referrerPolicy='no-referrer-when-downgrade' src='https://charts2.finviz.com/chart.ashx?s=m&t=AAPL'>&nbsp;<b>Apple
+      Inc.</b><br>&nbsp;Consumer Electronics | USA | 2822.23B] offsetx=[-300] offsety=[-240]
+      delay=[250]\">AAPL</a></td><td align=\"right\" style=\"white-space:nowrap;\">
+      <small><span style=\"color:#aa0000;\">-1.90%</span></small></td></tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h'\"
+      onmouseout=\"this.className='table-light-row-cp'\"><td><a href=\"quote.ashx?t=TSLA\"
+      class=\"tab-link-nw\" title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img
+      referrerPolicy='no-referrer-when-downgrade' src='https://charts2.finviz.com/chart.ashx?s=m&t=TSLA'>&nbsp;<b>Tesla,
+      Inc.</b><br>&nbsp;Auto Manufacturers | USA | 1035.95B] offsetx=[-300] offsety=[-240]
+      delay=[250]\">TSLA</a></td><td align=\"right\" style=\"white-space:nowrap;\">
+      <small><span style=\"color:#aa0000;background:#ffeeee\">-6.75%</span></small></td></tr>\n<tr
+      onmouseover=\"this.className='table-light-row-cp-h'\" onmouseout=\"this.className='table-light-row-cp'\"><td><a
+      href=\"quote.ashx?t=AMZN\" class=\"tab-link-nw\" title=\"cssbody=[tabchrtbdy]
+      cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=AMZN'>&nbsp;<b>Amazon.com,
+      Inc.</b><br>&nbsp;Internet Retail | USA | 1642.22B] offsetx=[-300] offsety=[-240]
+      delay=[250]\">AMZN</a></td><td align=\"right\" style=\"white-space:nowrap;\">
+      <small><span style=\"color:#aa0000;\">-2.42%</span></small></td></tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h'\"
+      onmouseout=\"this.className='table-light-row-cp'\"><td><a href=\"quote.ashx?t=DAL\"
+      class=\"tab-link-nw\" title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img
+      referrerPolicy='no-referrer-when-downgrade' src='https://charts2.finviz.com/chart.ashx?s=m&t=DAL'>&nbsp;<b>Delta
+      Air Lines, Inc.</b><br>&nbsp;Airlines | USA | 25.65B] offsetx=[-300] offsety=[-240]
+      delay=[250]\">DAL</a></td><td align=\"right\" style=\"white-space:nowrap;\">
+      <small><span style=\"color:#008800;\">+2.12%</span></small></td></tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h'\"
+      onmouseout=\"this.className='table-light-row-cp'\"><td><a href=\"quote.ashx?t=FB\"
+      class=\"tab-link-nw\" title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img
+      referrerPolicy='no-referrer-when-downgrade' src='https://charts2.finviz.com/chart.ashx?s=m&t=FB'>&nbsp;<b>Meta
+      Platforms, Inc.</b><br>&nbsp;Internet Content & Information | USA | 910.02B]
+      offsetx=[-300] offsety=[-240] delay=[250]\">FB</a></td><td align=\"right\" style=\"white-space:nowrap;\">
+      <small><span style=\"color:#aa0000;\">-2.03%</span></small></td></tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h'\"
+      onmouseout=\"this.className='table-light-row-cp'\"><td><a href=\"quote.ashx?t=F\"
+      class=\"tab-link-nw\" title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img
+      referrerPolicy='no-referrer-when-downgrade' src='https://charts2.finviz.com/chart.ashx?s=m&t=F'>&nbsp;<b>Ford
+      Motor Company</b><br>&nbsp;Auto Manufacturers | USA | 100.07B] offsetx=[-300]
+      offsety=[-240] delay=[250]\">F</a></td><td align=\"right\" style=\"white-space:nowrap;\">
+      <small><span style=\"color:#008800;\">+2.25%</span></small></td></tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h'\"
+      onmouseout=\"this.className='table-light-row-cp'\"><td><a href=\"quote.ashx?t=GOOG\"
+      class=\"tab-link-nw\" title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img
+      referrerPolicy='no-referrer-when-downgrade' src='https://charts2.finviz.com/chart.ashx?s=m&t=GOOG'>&nbsp;<b>Alphabet
+      Inc.</b><br>&nbsp;Internet Content & Information | USA | 1910.17B] offsetx=[-300]
+      offsety=[-240] delay=[250]\">GOOG</a></td><td align=\"right\" style=\"white-space:nowrap;\">
+      <small><span style=\"color:#aa0000;\">-1.78%</span></small></td></tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h'\"
+      onmouseout=\"this.className='table-light-row-cp'\"><td><a href=\"quote.ashx?t=GOOGL\"
+      class=\"tab-link-nw\" title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img
+      referrerPolicy='no-referrer-when-downgrade' src='https://charts2.finviz.com/chart.ashx?s=m&t=GOOGL'>&nbsp;<b>Alphabet
+      Inc.</b><br>&nbsp;Internet Content & Information | USA | 1848.33B] offsetx=[-300]
+      offsety=[-240] delay=[250]\">GOOGL</a></td><td align=\"right\" style=\"white-space:nowrap;\">
+      <small><span style=\"color:#aa0000;\">-2.01%</span></small></td></tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h'\"
+      onmouseout=\"this.className='table-light-row-cp'\"><td><a href=\"quote.ashx?t=GS\"
+      class=\"tab-link-nw\" title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img
+      referrerPolicy='no-referrer-when-downgrade' src='https://charts2.finviz.com/chart.ashx?s=m&t=GS'>&nbsp;<b>The
+      Goldman Sachs Group, Inc.</b><br>&nbsp;Capital Markets | USA | 130.64B] offsetx=[-300]
+      offsety=[-240] delay=[250]\">GS</a></td><td align=\"right\" style=\"white-space:nowrap;\">
+      <small><span style=\"color:#008800;\">+0.13%</span></small></td></tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h'\"
+      onmouseout=\"this.className='table-light-row-cp'\"><td><a href=\"quote.ashx?t=BA\"
+      class=\"tab-link-nw\" title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img
+      referrerPolicy='no-referrer-when-downgrade' src='https://charts2.finviz.com/chart.ashx?s=m&t=BA'>&nbsp;<b>The
+      Boeing Company</b><br>&nbsp;Aerospace & Defense | USA | 129.04B] offsetx=[-300]
+      offsety=[-240] delay=[250]\">BA</a></td><td align=\"right\" style=\"white-space:nowrap;\">
+      <small><span style=\"color:#008800;\">+2.97%</span></small></td></tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h'\"
+      onmouseout=\"this.className='table-light-row-cp'\"><td><a href=\"quote.ashx?t=AMD\"
+      class=\"tab-link-nw\" title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img
+      referrerPolicy='no-referrer-when-downgrade' src='https://charts2.finviz.com/chart.ashx?s=m&t=AMD'>&nbsp;<b>Advanced
+      Micro Devices, Inc.</b><br>&nbsp;Semiconductors | USA | 165.44B] offsetx=[-300]
+      offsety=[-240] delay=[250]\">AMD</a></td><td align=\"right\" style=\"white-space:nowrap;\">
+      <small><span style=\"color:#aa0000;\">-3.44%</span></small></td></tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h'\"
+      onmouseout=\"this.className='table-light-row-cp'\"><td><a href=\"quote.ashx?t=NVDA\"
+      class=\"tab-link-nw\" title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img
+      referrerPolicy='no-referrer-when-downgrade' src='https://charts2.finviz.com/chart.ashx?s=m&t=NVDA'>&nbsp;<b>NVIDIA
+      Corporation</b><br>&nbsp;Semiconductors | USA | 687.08B] offsetx=[-300] offsety=[-240]
+      delay=[250]\">NVDA</a></td><td align=\"right\" style=\"white-space:nowrap;\">
+      <small><span style=\"color:#aa0000;background:#ffeeee\">-5.09%</span></small></td></tr>\n<tr
+      onmouseover=\"this.className='table-light-row-cp-h'\" onmouseout=\"this.className='table-light-row-cp'\"><td><a
+      href=\"quote.ashx?t=NAVI\" class=\"tab-link-nw\" title=\"cssbody=[tabchrtbdy]
+      cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=NAVI'>&nbsp;<b>Navient Corporation</b><br>&nbsp;Credit
+      Services | USA | 3.48B] offsetx=[-300] offsety=[-240] delay=[250]\">NAVI</a></td><td
+      align=\"right\" style=\"white-space:nowrap;\"> <small><span style=\"color:#008800;\">+0.37%</span></small></td></tr>\n<tr
+      onmouseover=\"this.className='table-light-row-cp-h'\" onmouseout=\"this.className='table-light-row-cp'\"><td><a
+      href=\"quote.ashx?t=C\" class=\"tab-link-nw\" title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr]
+      body=[<img referrerPolicy='no-referrer-when-downgrade' src='https://charts2.finviz.com/chart.ashx?s=m&t=C'>&nbsp;<b>Citigroup
+      Inc.</b><br>&nbsp;Banks - Diversified | USA | 132.71B] offsetx=[-300] offsety=[-240]
+      delay=[250]\">C</a></td><td align=\"right\" style=\"white-space:nowrap;\"> <small><span
+      style=\"color:#008800;\">+0.74%</span></small></td></tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h'\"
+      onmouseout=\"this.className='table-light-row-cp'\"><td><a href=\"quote.ashx?t=JPM\"
+      class=\"tab-link-nw\" title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img
+      referrerPolicy='no-referrer-when-downgrade' src='https://charts2.finviz.com/chart.ashx?s=m&t=JPM'>&nbsp;<b>JPMorgan
+      Chase & Co.</b><br>&nbsp;Banks - Diversified | USA | 492.29B] offsetx=[-300]
+      offsety=[-240] delay=[250]\">JPM</a></td><td align=\"right\" style=\"white-space:nowrap;\">
+      <small><span style=\"color:#aa0000;\">-0.12%</span></small></td></tr>\n</table>\n<td
+      width=\"6.5\">&nbsp;</td>\n<td width=\"300\" valign=\"top\" align=\"right\"
+      style=\"background-image:url('gfx/banner_rec_bg.gif');background-repeat:no-repeat;\"></td>\n</tr>\n</table>\n</td>\n</tr>\n</table>\n</td>\n</tr>\n<tr>\n<td
+      style=\"font-size: 0; line-height: 0\"><img src=\"gfx/nic2x2.gif\" style=\"width:10px;height:10px\"
+      alt=\"\" border=\"0\"></td>\n</tr>\n<tr>\n<td align=\"center\">\n<table width=\"100%\"
+      cellpadding=\"0\" cellspacing=\"0\" border=\"0\">\n<tr>\n<td valign=\"top\">\n<table
+      class=\"calendar\" border=\"0\" cellpadding=\"1\" cellspacing=\"0\" width=\"100%\">\n<tr
+      class=\"t-home-table-top\">\n<td width=\"8%\" align=\"right\">Date</td>\n<td
+      width=\"10%\" align=\"right\">Time</td>\n<td width=\"2%\" align=\"center\"><img
+      src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\" style=\"width:2px;height:2px\"></td>\n<td
+      width=\"22%\" align=\"left\">Release</td>\n<td width=\"8%\" align=\"left\">Impact</td>\n<td
+      width=\"8%\" align=\"left\">For</td>\n<td width=\"8%\" align=\"right\">Actual</td>\n<td
+      width=\"8%\" align=\"right\">Expected</td>\n<td width=\"8%\" align=\"right\">Prior</td>\n<td
+      width=\"2%\"><img src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\" style=\"width:2px;height:2px\"></td>\n</tr>\n<tr
+      class=\"table-light-cp-row\" onclick=\"window.location='calendar.ashx'\">\n<td
+      align=\"right\">Jan 13</td>\n<td align=\"right\">8:30 AM</td>\n<td align=\"center\"
+      width=\"10\"><img src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\" style=\"width:2px;height:2px;\"></td>\n<td
+      align=\"left\">Initial Claims</td>\n<td align=\"left\"><img src=\"gfx/calendar/impact_2.gif\"
+      width=\"10\" height=\"10\" alt=\"\" border=\"0\"></td>\n<td align=\"left\">01/08</td>\n<td
+      align=\"right\"><span style=\"color:#aa0000;\">230K</span></td>\n<td align=\"right\">202K</td>\n<td
+      align=\"right\">207K</td>\n<td><img src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\"
+      style=\"width:2px;height:2px;\"></td>\n</tr>\n<tr class=\"table-light-cp-row\"
+      onclick=\"window.location='calendar.ashx'\">\n<td align=\"right\">Jan 13</td>\n<td
+      align=\"right\">8:30 AM</td>\n<td align=\"center\" width=\"10\"><img src=\"gfx/nic2x2.gif\"
+      alt=\"\" border=\"0\" style=\"width:2px;height:2px;\"></td>\n<td align=\"left\">Continuing
+      Claims</td>\n<td align=\"left\"><img src=\"gfx/calendar/impact_2.gif\" width=\"10\"
+      height=\"10\" alt=\"\" border=\"0\"></td>\n<td align=\"left\">01/01</td>\n<td
+      align=\"right\">1.559M</td>\n<td align=\"right\">NA</td>\n<td align=\"right\">1.753M</td>\n<td><img
+      src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\" style=\"width:2px;height:2px;\"></td>\n</tr>\n<tr
+      class=\"table-light-cp-row\" onclick=\"window.location='calendar.ashx'\">\n<td
+      align=\"right\">Jan 13</td>\n<td align=\"right\">8:30 AM</td>\n<td align=\"center\"
+      width=\"10\"><img src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\" style=\"width:2px;height:2px;\"></td>\n<td
+      align=\"left\">PPI</td>\n<td align=\"left\"><img src=\"gfx/calendar/impact_3.gif\"
+      width=\"10\" height=\"10\" alt=\"\" border=\"0\"></td>\n<td align=\"left\">Dec</td>\n<td
+      align=\"right\"><span style=\"color:#008800;\">0.2%</span></td>\n<td align=\"right\">0.4%</td>\n<td
+      align=\"right\">1.0%</td>\n<td><img src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\"
+      style=\"width:2px;height:2px;\"></td>\n</tr>\n<tr class=\"table-light-cp-row\"
+      onclick=\"window.location='calendar.ashx'\">\n<td align=\"right\">Jan 13</td>\n<td
+      align=\"right\">8:30 AM</td>\n<td align=\"center\" width=\"10\"><img src=\"gfx/nic2x2.gif\"
+      alt=\"\" border=\"0\" style=\"width:2px;height:2px;\"></td>\n<td align=\"left\">Core
+      PPI</td>\n<td align=\"left\"><img src=\"gfx/calendar/impact_3.gif\" width=\"10\"
+      height=\"10\" alt=\"\" border=\"0\"></td>\n<td align=\"left\">Dec</td>\n<td
+      align=\"right\"><span style=\"color:#aa0000;\">0.5%</span></td>\n<td align=\"right\">0.4%</td>\n<td
+      align=\"right\">0.9%</td>\n<td><img src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\"
+      style=\"width:2px;height:2px;\"></td>\n</tr>\n<tr class=\"table-light-cp-row\"
+      onclick=\"window.location='calendar.ashx'\">\n<td align=\"right\">Jan 13</td>\n<td
+      align=\"right\">10:30 AM</td>\n<td align=\"center\" width=\"10\"><img src=\"gfx/nic2x2.gif\"
+      alt=\"\" border=\"0\" style=\"width:2px;height:2px;\"></td>\n<td align=\"left\">EIA
+      Natural Gas Inventories</td>\n<td align=\"left\"><img src=\"gfx/calendar/impact_1.gif\"
+      width=\"10\" height=\"10\" alt=\"\" border=\"0\"></td>\n<td align=\"left\">01/08</td>\n<td
+      align=\"right\">-179 bcf</td>\n<td align=\"right\">NA</td>\n<td align=\"right\">-31
+      bcf</td>\n<td><img src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\" style=\"width:2px;height:2px;\"></td>\n</tr>\n</table>\n</td>\n<td
+      width=\"16\"><img src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\" style=\"width:16px;height:2px\"></td>\n<td
+      width=\"400\" class=\"t-home-table\" valign=\"top\" bgcolor=\"#f3f3f3\">\n<table
+      class=\"t-home-table\" border=\"0\" cellpadding=\"1\" cellspacing=\"0\" width=\"100%\">\n<tr
+      class=\"t-home-table-top\">\n<td width=\"18%\"align=\"center\">Date</td>\n<td><img
+      src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\" style=\"width:4px;height:2px\"></td>\n<td
+      colspan=\"8\" width=\"78%\">Earnings release</td>\n<td width=\"2%\"><img src=\"gfx/nic2x2.gif\"
+      alt=\"\" border=\"0\" style=\"width:16px;height:2px\"></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='';\" onclick=\"window.location='screener.ashx?v=161&f=earningsdate_yesterdayafter&o=-marketcap'\">\n<td
+      valign=\"top\" align=\"center\" title=\"After Market Close\">Jan 12/a</td>\n<td></td><td
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=KBH'>&nbsp;<b>KB Home</b><br>&nbsp;Residential
+      Construction | USA | 4.55B] offsetx=[-300] offsety=[-260] delay=[250]\"><a href=\"quote.ashx?t=KBH\"
+      class=\"tab-link\">KBH</a></td>\n<td title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr]
+      body=[<img referrerPolicy='no-referrer-when-downgrade' src='https://charts2.finviz.com/chart.ashx?s=m&t=ETWO'>&nbsp;<b>E2open
+      Parent Holdings, Inc.</b><br>&nbsp;Software - Infrastructure | USA | 2.56B]
+      offsetx=[-300] offsety=[-260] delay=[250]\"><a href=\"quote.ashx?t=ETWO\" class=\"tab-link\">ETWO</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=GHG'>&nbsp;<b>GreenTree Hospitality
+      Group Ltd.</b><br>&nbsp;Lodging | China | 752.41M] offsetx=[-300] offsety=[-260]
+      delay=[250]\"><a href=\"quote.ashx?t=GHG\" class=\"tab-link\">GHG</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=BBCP'>&nbsp;<b>Concrete Pumping
+      Holdings, Inc.</b><br>&nbsp;Engineering & Construction | USA | 517.89M] offsetx=[-300]
+      offsety=[-260] delay=[250]\"><a href=\"quote.ashx?t=BBCP\" class=\"tab-link\">BBCP</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=VOLT'>&nbsp;<b>Volt Information
+      Sciences, Inc.</b><br>&nbsp;Staffing & Employment Services | USA | 77.41M] offsetx=[-300]
+      offsety=[-260] delay=[250]\"><a href=\"quote.ashx?t=VOLT\" class=\"tab-link\">VOLT</a></td>\n<td>&nbsp;&nbsp;&nbsp;</td><td>&nbsp;&nbsp;&nbsp;</td><td>&nbsp;&nbsp;&nbsp;</td><td></td></tr><tr
+      onmouseover=\"this.className='table-light-row-cp-h';\" onmouseout=\"this.className='';\"
+      onclick=\"window.location='screener.ashx?v=161&f=earningsdate_todaybefore&o=-marketcap'\">\n<td
+      valign=\"top\" align=\"center\" title=\"Before Market Open\">Jan 13/b</td>\n<td></td><td
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=TSM'>&nbsp;<b>Taiwan Semiconductor
+      Manufacturing Company Limited</b><br>&nbsp;Semiconductors | Taiwan | 681.71B]
+      offsetx=[-300] offsety=[-260] delay=[250]\"><a href=\"quote.ashx?t=TSM\" class=\"tab-link\">TSM</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=DAL'>&nbsp;<b>Delta Air Lines,
+      Inc.</b><br>&nbsp;Airlines | USA | 25.65B] offsetx=[-300] offsety=[-260] delay=[250]\"><a
+      href=\"quote.ashx?t=DAL\" class=\"tab-link\">DAL</a></td>\n<td title=\"cssbody=[tabchrtbdy]
+      cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=TC'>&nbsp;<b>TuanChe Limited</b><br>&nbsp;Internet
+      Content & Information | China | 54.47M] offsetx=[-300] offsety=[-260] delay=[250]\"><a
+      href=\"quote.ashx?t=TC\" class=\"tab-link\">TC</a></td>\n<td title=\"cssbody=[tabchrtbdy]
+      cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=BMRA'>&nbsp;<b>Biomerica, Inc.</b><br>&nbsp;Diagnostics
+      & Research | USA | 54.04M] offsetx=[-300] offsety=[-260] delay=[250]\"><a href=\"quote.ashx?t=BMRA\"
+      class=\"tab-link\">BMRA</a></td>\n<td>&nbsp;&nbsp;&nbsp;</td><td>&nbsp;&nbsp;&nbsp;</td><td>&nbsp;&nbsp;&nbsp;</td><td>&nbsp;&nbsp;&nbsp;</td><td></td></tr><tr
+      onmouseover=\"this.className='table-light-row-cp-h';\" onmouseout=\"this.className='';\"
+      onclick=\"window.location='screener.ashx?v=161&f=earningsdate_todayafter&o=-marketcap'\">\n<td
+      valign=\"top\" align=\"center\" title=\"After Market Close\">Jan 13/a</td>\n<td></td><td
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=WAFD'>&nbsp;<b>Washington Federal,
+      Inc.</b><br>&nbsp;Banks - Regional | USA | 2.38B] offsetx=[-300] offsety=[-260]
+      delay=[250]\"><a href=\"quote.ashx?t=WAFD\" class=\"tab-link\">WAFD</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=GAME'>&nbsp;<b>Engine Gaming
+      and Media, Inc.</b><br>&nbsp;Electronic Gaming & Multimedia | Canada | 58.34M]
+      offsetx=[-300] offsety=[-260] delay=[250]\"><a href=\"quote.ashx?t=GAME\" class=\"tab-link\">GAME</a></td>\n<td>&nbsp;&nbsp;&nbsp;</td><td>&nbsp;&nbsp;&nbsp;</td><td>&nbsp;&nbsp;&nbsp;</td><td>&nbsp;&nbsp;&nbsp;</td><td>&nbsp;&nbsp;&nbsp;</td><td>&nbsp;&nbsp;&nbsp;</td><td></td></tr><tr
+      onmouseover=\"this.className='table-light-row-cp-h';\" onmouseout=\"this.className='';\"
+      onclick=\"window.location='screener.ashx?v=161&f=earningsdate_thisweek&o=-marketcap'\">\n<td
+      valign=\"top\" align=\"center\" title=\"\">Jan 14</td>\n<td></td><td title=\"cssbody=[tabchrtbdy]
+      cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=JPM'>&nbsp;<b>JPMorgan Chase
+      & Co.</b><br>&nbsp;Banks - Diversified | USA | 492.29B] offsetx=[-300] offsety=[-260]
+      delay=[250]\"><a href=\"quote.ashx?t=JPM\" class=\"tab-link\">JPM</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=WFC'>&nbsp;<b>Wells Fargo &
+      Company</b><br>&nbsp;Banks - Diversified | USA | 218.64B] offsetx=[-300] offsety=[-260]
+      delay=[250]\"><a href=\"quote.ashx?t=WFC\" class=\"tab-link\">WFC</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=C'>&nbsp;<b>Citigroup Inc.</b><br>&nbsp;Banks
+      - Diversified | USA | 132.71B] offsetx=[-300] offsety=[-260] delay=[250]\"><a
+      href=\"quote.ashx?t=C\" class=\"tab-link\">C</a></td>\n<td title=\"cssbody=[tabchrtbdy]
+      cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=BLK'>&nbsp;<b>BlackRock, Inc.</b><br>&nbsp;Asset
+      Management | USA | 132.28B] offsetx=[-300] offsety=[-260] delay=[250]\"><a href=\"quote.ashx?t=BLK\"
+      class=\"tab-link\">BLK</a></td>\n<td title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr]
+      body=[<img referrerPolicy='no-referrer-when-downgrade' src='https://charts2.finviz.com/chart.ashx?s=m&t=FRC'>&nbsp;<b>First
+      Republic Bank</b><br>&nbsp;Banks - Regional | USA | 35.70B] offsetx=[-300] offsety=[-260]
+      delay=[250]\"><a href=\"quote.ashx?t=FRC\" class=\"tab-link\">FRC</a></td>\n<td>&nbsp;&nbsp;&nbsp;</td><td>&nbsp;&nbsp;&nbsp;</td><td>&nbsp;&nbsp;&nbsp;</td><td></td></tr><tr
+      onmouseover=\"this.className='table-light-row-cp-h';\" onmouseout=\"this.className='';\"
+      onclick=\"window.location='screener.ashx?v=161&f=earningsdate_thisweek&o=-marketcap'\">\n<td
+      valign=\"top\" align=\"center\" title=\"\">Jan 18</td>\n<td></td><td title=\"cssbody=[tabchrtbdy]
+      cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=SCHW'>&nbsp;<b>The Charles
+      Schwab Corporation</b><br>&nbsp;Capital Markets | USA | 174.62B] offsetx=[-300]
+      offsety=[-260] delay=[250]\"><a href=\"quote.ashx?t=SCHW\" class=\"tab-link\">SCHW</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=GS'>&nbsp;<b>The Goldman Sachs
+      Group, Inc.</b><br>&nbsp;Capital Markets | USA | 130.64B] offsetx=[-300] offsety=[-260]
+      delay=[250]\"><a href=\"quote.ashx?t=GS\" class=\"tab-link\">GS</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=PNC'>&nbsp;<b>The PNC Financial
+      Services Group, Inc.</b><br>&nbsp;Banks - Regional | USA | 94.35B] offsetx=[-300]
+      offsety=[-260] delay=[250]\"><a href=\"quote.ashx?t=PNC\" class=\"tab-link\">PNC</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=TFC'>&nbsp;<b>Truist Financial
+      Corporation</b><br>&nbsp;Banks - Regional | USA | 87.73B] offsetx=[-300] offsety=[-260]
+      delay=[250]\"><a href=\"quote.ashx?t=TFC\" class=\"tab-link\">TFC</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=BK'>&nbsp;<b>The Bank of New
+      York Mellon Corporation</b><br>&nbsp;Asset Management | USA | 51.69B] offsetx=[-300]
+      offsety=[-260] delay=[250]\"><a href=\"quote.ashx?t=BK\" class=\"tab-link\">BK</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=IBKR'>&nbsp;<b>Interactive
+      Brokers Group, Inc.</b><br>&nbsp;Capital Markets | USA | 32.12B] offsetx=[-300]
+      offsety=[-260] delay=[250]\"><a href=\"quote.ashx?t=IBKR\" class=\"tab-link\">IBKR</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=JBHT'>&nbsp;<b>J.B. Hunt Transport
+      Services, Inc.</b><br>&nbsp;Integrated Freight & Logistics | USA | 21.64B] offsetx=[-300]
+      offsety=[-260] delay=[250]\"><a href=\"quote.ashx?t=JBHT\" class=\"tab-link\">JBHT</a></td>\n<td
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=CNXC'>&nbsp;<b>Concentrix Corporation</b><br>&nbsp;Information
+      Technology Services | USA | 9.65B] offsetx=[-300] offsety=[-260] delay=[250]\"><a
+      href=\"quote.ashx?t=CNXC\" class=\"tab-link\">CNXC</a></td>\n<td></td></tr></table>\n</td>\n</tr>\n</table>\n</td>\n</tr>\n<tr>\n<td
+      style=\"font-size: 0; line-height: 0\"><img src=\"gfx/nic2x2.gif\" style=\"width:10px;height:12px\"
+      alt=\"\" border=\"0\"></td>\n</tr>\n<tr>\n<td align=\"center\">\n<table border=\"0\"
+      cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">\n<tr>\n<td valign=\"top\">\n<table
+      class=\"insider\" border=\"0\" cellpadding=\"1\" cellspacing=\"0\" width=\"100%\">\n<tr
+      class=\"t-home-table-top\">\n<td align=\"left\">Ticker</td>\n<td align=\"left\">Latest
+      Insider Trading</td>\n<td align=\"left\">Relationship</td>\n<td align=\"left\">Date</td>\n<td
+      align=\"center\">Transaction</td>\n<td align=\"right\">Cost</td>\n<td align=\"right\">#Shares</td>\n<td
+      align=\"right\">Value($)</td>\n</tr>\n<tr class=\"insider-option-row\" onmouseover=\"this.className='insider-light-row-cp-h'\"
+      onmouseout=\"this.className='insider-option-row'\" onclick=\"window.location='insidertrading.ashx'\"
+      valign=\"top\"><td title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img
+      referrerPolicy='no-referrer-when-downgrade' src='https://charts2.finviz.com/chart.ashx?s=m&t=INGN'>&nbsp;<b>Inogen,
+      Inc.</b><br>&nbsp;Medical Devices | USA | 721.99M] offsetx=[20] offsety=[-240]
+      delay=[300]\"><a href=\"quote.ashx?t=INGN\" class=\"tab-link\">INGN</a></td><td><a
+      href=\"insidertrading.ashx?oc=1292280&tc=7\" class=\"tab-link-nw\">McFarland
+      Loren L</td><td style=\"white-space:nowrap\">Director</td><td style=\"white-space:nowrap\">Jan
+      11</td><td align=\"center\">Option Exercise</td><td align=\"right\">8.37</td><td
+      align=\"right\">2,083</td><td align=\"right\">17,435</td></tr><tr class=\"insider-sale-row-1\"
+      onmouseover=\"this.className='insider-light-row-cp-h'\" onmouseout=\"this.className='insider-sale-row-1'\"
+      onclick=\"window.location='insidertrading.ashx'\" valign=\"top\"><td title=\"cssbody=[tabchrtbdy]
+      cssheader=[tabchrthdr] body=[<img referrerPolicy='no-referrer-when-downgrade'
+      src='https://charts2.finviz.com/chart.ashx?s=m&t=ADAP'>&nbsp;<b>Adaptimmune
+      Therapeutics plc</b><br>&nbsp;Biotechnology | United Kingdom | 539.82M] offsetx=[20]
+      offsety=[-240] delay=[300]\"><a href=\"quote.ashx?t=ADAP\" class=\"tab-link\">ADAP</a></td><td><a
+      href=\"insidertrading.ashx?oc=1291937&tc=7\" class=\"tab-link-nw\">Bertrand
+      William C J</td><td style=\"white-space:nowrap\">Chief Operating</td><td style=\"white-space:nowrap\">Jan
+      11</td><td align=\"center\">Sale</td><td align=\"right\">3.56</td><td align=\"right\">3,770</td><td
+      align=\"right\">13,409</td></tr><tr class=\"insider-sale-row-1\" onmouseover=\"this.className='insider-light-row-cp-h'\"
+      onmouseout=\"this.className='insider-sale-row-1'\" onclick=\"window.location='insidertrading.ashx'\"
+      valign=\"top\"><td title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img
+      referrerPolicy='no-referrer-when-downgrade' src='https://charts2.finviz.com/chart.ashx?s=m&t=ADAP'>&nbsp;<b>Adaptimmune
+      Therapeutics plc</b><br>&nbsp;Biotechnology | United Kingdom | 539.82M] offsetx=[20]
+      offsety=[-240] delay=[300]\"><a href=\"quote.ashx?t=ADAP\" class=\"tab-link\">ADAP</a></td><td><a
+      href=\"insidertrading.ashx?oc=1291937&tc=7\" class=\"tab-link-nw\">Bertrand
+      William C J</td><td style=\"white-space:nowrap\">Chief Operating</td><td style=\"white-space:nowrap\">Jan
+      12</td><td align=\"center\">Sale</td><td align=\"right\">3.54</td><td align=\"right\">2,248</td><td
+      align=\"right\">7,967</td></tr><tr class=\"insider-sale-row-1\" onmouseover=\"this.className='insider-light-row-cp-h'\"
+      onmouseout=\"this.className='insider-sale-row-1'\" onclick=\"window.location='insidertrading.ashx'\"
+      valign=\"top\"><td title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img
+      referrerPolicy='no-referrer-when-downgrade' src='https://charts2.finviz.com/chart.ashx?s=m&t=ADAP'>&nbsp;<b>Adaptimmune
+      Therapeutics plc</b><br>&nbsp;Biotechnology | United Kingdom | 539.82M] offsetx=[20]
+      offsety=[-240] delay=[300]\"><a href=\"quote.ashx?t=ADAP\" class=\"tab-link\">ADAP</a></td><td><a
+      href=\"insidertrading.ashx?oc=1784487&tc=7\" class=\"tab-link-nw\">Lunger John</td><td
+      style=\"white-space:nowrap\">Chief Patient S</td><td style=\"white-space:nowrap\">Jan
+      11</td><td align=\"center\">Sale</td><td align=\"right\">3.56</td><td align=\"right\">3,770</td><td
+      align=\"right\">13,409</td></tr><tr class=\"insider-sale-row-1\" onmouseover=\"this.className='insider-light-row-cp-h'\"
+      onmouseout=\"this.className='insider-sale-row-1'\" onclick=\"window.location='insidertrading.ashx'\"
+      valign=\"top\"><td title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img
+      referrerPolicy='no-referrer-when-downgrade' src='https://charts2.finviz.com/chart.ashx?s=m&t=ADAP'>&nbsp;<b>Adaptimmune
+      Therapeutics plc</b><br>&nbsp;Biotechnology | United Kingdom | 539.82M] offsetx=[20]
+      offsety=[-240] delay=[300]\"><a href=\"quote.ashx?t=ADAP\" class=\"tab-link\">ADAP</a></td><td><a
+      href=\"insidertrading.ashx?oc=1784487&tc=7\" class=\"tab-link-nw\">Lunger John</td><td
+      style=\"white-space:nowrap\">Chief Patient S</td><td style=\"white-space:nowrap\">Jan
+      12</td><td align=\"center\">Sale</td><td align=\"right\">3.54</td><td align=\"right\">1,076</td><td
+      align=\"right\">3,813</td></tr><tr class=\"insider-sale-row-1\" onmouseover=\"this.className='insider-light-row-cp-h'\"
+      onmouseout=\"this.className='insider-sale-row-1'\" onclick=\"window.location='insidertrading.ashx'\"
+      valign=\"top\"><td title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img
+      referrerPolicy='no-referrer-when-downgrade' src='https://charts2.finviz.com/chart.ashx?s=m&t=ADAP'>&nbsp;<b>Adaptimmune
+      Therapeutics plc</b><br>&nbsp;Biotechnology | United Kingdom | 539.82M] offsetx=[20]
+      offsety=[-240] delay=[300]\"><a href=\"quote.ashx?t=ADAP\" class=\"tab-link\">ADAP</a></td><td><a
+      href=\"insidertrading.ashx?oc=1798117&tc=7\" class=\"tab-link-nw\">Norry Elliot</td><td
+      style=\"white-space:nowrap\">Chief Medical O</td><td style=\"white-space:nowrap\">Jan
+      11</td><td align=\"center\">Sale</td><td align=\"right\">3.56</td><td align=\"right\">3,770</td><td
+      align=\"right\">13,409</td></tr></table>\n</td>\n<td width=\"16\"><img src=\"gfx/nic2x2.gif\"
+      alt=\"\" border=\"0\" style=\"width:16px;height:2px\"></td>\n<td class=\"t-home-table\"
+      valign=\"top\" width=\"400\">\n<table class=\"insider\" border=\"0\" cellpadding=\"1\"
+      cellspacing=\"0\" width=\"100%\">\n<tr class=\"t-home-table-top\">\n<td align=\"left\">Ticker</td>\n<td
+      align=\"left\">Top Insider Trading</td>\n<td align=\"left\">Date</td>\n<td align=\"center\">Transaction</td>\n<td
+      align=\"right\">Value($)</td>\n</tr>\n<tr class=\"insider-buy-row-2\" onmouseover=\"this.className='insider-light-row-cp-h'\"
+      onmouseout=\"this.className='insider-buy-row-2'\" onclick=\"window.location='insidertrading.ashx?or=-10&tv=100000&tc=1&o=-transactionValue'\"
+      valign=\"top\"><td title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img
+      referrerPolicy='no-referrer-when-downgrade' src='https://charts2.finviz.com/chart.ashx?s=m&t=ASAN'>&nbsp;<b>Asana,
+      Inc.</b><br>&nbsp;Software - Application | USA | 11.41B] offsetx=[-300] offsety=[-260]
+      delay=[300]\"><a href=\"quote.ashx?t=ASAN\" class=\"tab-link\">ASAN</a></td><td><a
+      href=\"insidertrading.ashx?oc=1549917&tc=7\" class=\"tab-link-nw\">Moskovitz
+      Dustin A.</td><td>Jan 07</td><td align=\"center\">Buy</td><td align=\"right\">31,018,860</td></tr><tr
+      class=\"insider-buy-row-2\" onmouseover=\"this.className='insider-light-row-cp-h'\"
+      onmouseout=\"this.className='insider-buy-row-2'\" onclick=\"window.location='insidertrading.ashx?or=-10&tv=100000&tc=1&o=-transactionValue'\"
+      valign=\"top\"><td title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img
+      referrerPolicy='no-referrer-when-downgrade' src='https://charts2.finviz.com/chart.ashx?s=m&t=ASAN'>&nbsp;<b>Asana,
+      Inc.</b><br>&nbsp;Software - Application | USA | 11.41B] offsetx=[-300] offsety=[-260]
+      delay=[300]\"><a href=\"quote.ashx?t=ASAN\" class=\"tab-link\">ASAN</a></td><td><a
+      href=\"insidertrading.ashx?oc=1549917&tc=7\" class=\"tab-link-nw\">Moskovitz
+      Dustin A.</td><td>Jan 06</td><td align=\"center\">Buy</td><td align=\"right\">30,759,097</td></tr><tr
+      class=\"insider-buy-row-2\" onmouseover=\"this.className='insider-light-row-cp-h'\"
+      onmouseout=\"this.className='insider-buy-row-2'\" onclick=\"window.location='insidertrading.ashx?or=-10&tv=100000&tc=1&o=-transactionValue'\"
+      valign=\"top\"><td title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img
+      referrerPolicy='no-referrer-when-downgrade' src='https://charts2.finviz.com/chart.ashx?s=m&t=ASAN'>&nbsp;<b>Asana,
+      Inc.</b><br>&nbsp;Software - Application | USA | 11.41B] offsetx=[-300] offsety=[-260]
+      delay=[300]\"><a href=\"quote.ashx?t=ASAN\" class=\"tab-link\">ASAN</a></td><td><a
+      href=\"insidertrading.ashx?oc=1549917&tc=7\" class=\"tab-link-nw\">Moskovitz
+      Dustin A.</td><td>Jan 04</td><td align=\"center\">Buy</td><td align=\"right\">17,110,151</td></tr><tr
+      class=\"insider-sale-row-2\" onmouseover=\"this.className='insider-light-row-cp-h'\"
+      onmouseout=\"this.className='insider-sale-row-2'\" onclick=\"window.location='insidertrading.ashx?or=-10&tv=100000&tc=2&o=-transactionValue'\"
+      valign=\"top\"><td title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img
+      referrerPolicy='no-referrer-when-downgrade' src='https://charts2.finviz.com/chart.ashx?s=m&t=WDAY'>&nbsp;<b>Workday,
+      Inc.</b><br>&nbsp;Software - Application | USA | 62.45B] offsetx=[-300] offsety=[-260]
+      delay=[300]\"><a href=\"quote.ashx?t=WDAY\" class=\"tab-link\">WDAY</a></td><td><a
+      href=\"insidertrading.ashx?oc=938071&tc=7\" class=\"tab-link-nw\">DUFFIELD DAVID
+      A</td><td>Jan 04</td><td align=\"center\">Sale</td><td align=\"right\">75,009,641</td></tr><tr
+      class=\"insider-sale-row-2\" onmouseover=\"this.className='insider-light-row-cp-h'\"
+      onmouseout=\"this.className='insider-sale-row-2'\" onclick=\"window.location='insidertrading.ashx?or=-10&tv=100000&tc=2&o=-transactionValue'\"
+      valign=\"top\"><td title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img
+      referrerPolicy='no-referrer-when-downgrade' src='https://charts2.finviz.com/chart.ashx?s=m&t=GOOG'>&nbsp;<b>Alphabet
+      Inc.</b><br>&nbsp;Internet Content & Information | USA | 1910.17B] offsetx=[-300]
+      offsety=[-260] delay=[300]\"><a href=\"quote.ashx?t=GOOG\" class=\"tab-link\">GOOG</a></td><td><a
+      href=\"insidertrading.ashx?oc=1295032&tc=7\" class=\"tab-link-nw\">Brin Sergey</td><td>Jan
+      12</td><td align=\"center\">Sale</td><td align=\"right\">39,429,434</td></tr><tr
+      class=\"insider-sale-row-2\" onmouseover=\"this.className='insider-light-row-cp-h'\"
+      onmouseout=\"this.className='insider-sale-row-2'\" onclick=\"window.location='insidertrading.ashx?or=-10&tv=100000&tc=2&o=-transactionValue'\"
+      valign=\"top\"><td title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img
+      referrerPolicy='no-referrer-when-downgrade' src='https://charts2.finviz.com/chart.ashx?s=m&t=GOOG'>&nbsp;<b>Alphabet
+      Inc.</b><br>&nbsp;Internet Content & Information | USA | 1910.17B] offsetx=[-300]
+      offsety=[-260] delay=[300]\"><a href=\"quote.ashx?t=GOOG\" class=\"tab-link\">GOOG</a></td><td><a
+      href=\"insidertrading.ashx?oc=1295032&tc=7\" class=\"tab-link-nw\">Brin Sergey</td><td>Jan
+      12</td><td align=\"center\">Sale</td><td align=\"right\">39,341,201</td></tr></table>\n</td>\n</tr>\n</table>\n</td>\n</tr>\n<tr>\n<td
+      style=\"font-size: 0; line-height: 0\"><img src=\"gfx/nic2x2.gif\" style=\"width:10px;height:4px\"
+      alt=\"\" border=\"0\"></td>\n</tr>\n<tr>\n<td align=\"center\">\n<table width=\"100%\"
+      cellpadding=\"2\" cellspacing=\"0\" border=\"0\">\n<tr>\n<td width=\"400\">\n<table
+      width=\"100%\" cellpadding=\"1\" cellspacing=\"0\" class=\"t-home-table\" border=\"0\">\n<tr>\n<td><b>Futures</b></td>\n<td
+      width=\"90\" align=\"right\">Last</td>\n<td width=\"90\" align=\"right\">Change</td>\n<td
+      width=\"90\" align=\"right\">Change %</td>\n<td rowspan=\"10\"><img src=\"gfx/nic2x2.gif\"
+      style=\"width:10px;height:5px\" alt=\"\"></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='futures_charts.ashx?t=CL'\"
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/fut_image.ashx?cl_m5_s.png&rev=637777067832830550'>]
+      offsetx=[0] offsety=[-220] delay=[0]\">\n<td><a href=\"futures_charts.ashx?t=CL\"
+      class=\"tab-link\">Crude Oil</a></td>\n<td align=\"right\"><span style=\"color:#aa0000;\">81.71</span></td>\n<td
+      align=\"right\"><span style=\"color:#aa0000;\">-0.41</span></td>\n<td align=\"right\"><span
+      style=\"color:#aa0000;\">-0.50%</span></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='futures_charts.ashx?t=NG'\"
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/fut_image.ashx?ng_m5_s.png&rev=637777067832830550'>]
+      offsetx=[0] offsety=[-220] delay=[0]\">\n<td><a href=\"futures_charts.ashx?t=NG\"
+      class=\"tab-link\">Natural Gas</a></td>\n<td align=\"right\"><span style=\"color:#008800;\">4.2860</span></td>\n<td
+      align=\"right\"><span style=\"color:#008800;\">+0.0160</span></td>\n<td align=\"right\"><span
+      style=\"color:#008800;\">+0.37%</span></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='futures_charts.ashx?t=GC'\"
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/fut_image.ashx?gc_m5_s.png&rev=637777067832830550'>]
+      offsetx=[0] offsety=[-220] delay=[0]\">\n<td><a href=\"futures_charts.ashx?t=GC\"
+      class=\"tab-link\">Gold</a></td>\n<td align=\"right\"><span style=\"color:#008800;\">1824.80</span></td>\n<td
+      align=\"right\"><span style=\"color:#008800;\">+3.40</span></td>\n<td align=\"right\"><span
+      style=\"color:#008800;\">+0.19%</span></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='futures_charts.ashx?t=YM'\"
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/fut_image.ashx?ym_m5_s.png&rev=637777067832830550'>]
+      offsetx=[0] offsety=[-220] delay=[0]\">\n<td><a href=\"futures_charts.ashx?t=YM\"
+      class=\"tab-link\">Dow</a></td>\n<td align=\"right\"><span style=\"color:#aa0000;\">35960.00</span></td>\n<td
+      align=\"right\"><span style=\"color:#aa0000;\">-29.00</span></td>\n<td align=\"right\"><span
+      style=\"color:#aa0000;\">-0.08%</span></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='futures_charts.ashx?t=ES'\"
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/fut_image.ashx?es_m5_s.png&rev=637777067832830550'>]
+      offsetx=[0] offsety=[-220] delay=[0]\">\n<td><a href=\"futures_charts.ashx?t=ES\"
+      class=\"tab-link\">S&P 500</a></td>\n<td align=\"right\"><span style=\"color:#aa0000;\">4642.75</span></td>\n<td
+      align=\"right\"><span style=\"color:#aa0000;\">-9.25</span></td>\n<td align=\"right\"><span
+      style=\"color:#aa0000;\">-0.20%</span></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='futures_charts.ashx?t=NQ'\"
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='/fut_image.ashx?nq_m5_s.png&rev=637777067832830550'>]
+      offsetx=[0] offsety=[-220] delay=[0]\">\n<td><a href=\"futures_charts.ashx?t=NQ\"
+      class=\"tab-link\">Nasdaq 100</a></td>\n<td align=\"right\"><span style=\"color:#aa0000;\">15433.75</span></td>\n<td
+      align=\"right\"><span style=\"color:#aa0000;\">-56.50</span></td>\n<td align=\"right\"><span
+      style=\"color:#aa0000;\">-0.36%</span></td>\n</tr>\n</table>\n</td>\n<td align=\"center\"
+      valign=\"middle\"><br>\n<span class=\"gt-title\">First Time Here?</span><br>\n<a
+      href=\"help/guided-tour.ashx\" class=\"gt-button\"></a>\n</td>\n<td width=\"400\">\n<table
+      width=\"100%\" cellpadding=\"1\" cellspacing=\"0\" class=\"t-home-table\" border=\"0\">\n<tr>\n<td><b>Forex
+      & Bonds</b></td>\n<td width=\"90\" align=\"right\">Last</td>\n<td width=\"90\"
+      align=\"right\">Change</td>\n<td width=\"90\" align=\"right\">Change %</td>\n<td
+      rowspan=\"10\"><img src=\"gfx/nic2x2.gif\" style=\"width:10px;height:5px\" alt=\"\"></td>\n</tr>\n<tr
+      onmouseover=\"this.className='table-light-row-cp-h';\" onmouseout=\"this.className='table-light-cp-row';\"
+      onclick=\"window.location='forex_charts.ashx?t=EURUSD'\" title=\"cssbody=[tabchrtbdy]
+      cssheader=[tabchrthdr] body=[<img src='fx_image.ashx?eurusd_m5_s.png&rev=637777067832830550'>]
+      offsetx=[-300] offsety=[-220] delay=[0]\">\n<td><a href=\"forex_charts.ashx?t=EURUSD\"
+      class=\"tab-link\">EUR/USD</a></td>\n<td align=\"right\"><span style=\"color:#008800;\">1.1465</span></td>\n<td
+      align=\"right\"><span style=\"color:#008800;\">+0.0010</span></td>\n<td align=\"right\"><span
+      style=\"color:#008800;\">+0.09%</span></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='forex_charts.ashx?t=USDJPY'\"
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='fx_image.ashx?usdjpy_m5_s.png&rev=637777067832830550'>]
+      offsetx=[-300] offsety=[-220] delay=[0]\">\n<td><a href=\"forex_charts.ashx?t=USDJPY\"
+      class=\"tab-link\">USD/JPY</a></td>\n<td align=\"right\"><span style=\"color:#aa0000;\">113.77</span></td>\n<td
+      align=\"right\"><span style=\"color:#aa0000;\">-0.41</span></td>\n<td align=\"right\"><span
+      style=\"color:#aa0000;\">-0.36%</span></td>\n</tr>\n<tr onmouseover=\"this.className='table-light-row-cp-h';\"
+      onmouseout=\"this.className='table-light-cp-row';\" onclick=\"window.location='forex_charts.ashx?t=GBPUSD'\"
+      title=\"cssbody=[tabchrtbdy] cssheader=[tabchrthdr] body=[<img src='fx_image.ashx?gbpusd_m5_s.png&rev=637777067832830550'>]
+      offsetx=[-300] offsety=[-220] delay=[0]\">\n<td><a href=\"forex_charts.ashx?t=GBPUSD\"
+      class=\"tab-link\">GBP/USD</a></td>\n<td align=\"right\"><span style=\"color:#008800;\">1.3720</span></td>\n<td
+      align=\"right\"><span style=\"color:#008800;\">+0.0018</span></td>\n<td align=\"right\"><span
+      style=\"color:#008800;\">+0.13%</span></td>\n</tr>\n<tr>\n<td>5-Year Treasury</td>\n<td
+      align=\"right\"><span style=\"color:#aa0000;\">1.481</span></td>\n<td align=\"right\"><span
+      style=\"color:#aa0000;\">-0.012</span></td>\n<td align=\"right\"><span style=\"color:#aa0000;\">-0.80%</span></td>\n</tr>\n<tr>\n<td>10-Year
+      Treasury</td>\n<td align=\"right\"><span style=\"color:#aa0000;\">1.711</span></td>\n<td
+      align=\"right\"><span style=\"color:#aa0000;\">-0.014</span></td>\n<td align=\"right\"><span
+      style=\"color:#aa0000;\">-0.81%</span></td>\n</tr>\n<tr>\n<td>30-Year Treasury</td>\n<td
+      align=\"right\"><span style=\"color:#aa0000;\">2.055</span></td>\n<td align=\"right\"><span
+      style=\"color:#aa0000;\">-0.019</span></td>\n<td align=\"right\"><span style=\"color:#aa0000;\">-0.92%</span></td>\n</tr>\n</table>\n</td>\n</tr>\n</table>\n</td>\n</tr>\n</table>\n</div>\n\r\n
+      \           <script type=\"text/javascript\" src=\"/assets/dist-charts/vendors.6bc1e571.js\"></script>\r\n
+      \           <script type=\"text/javascript\" src=\"/assets/dist-charts/main.75eaab72.js\"></script>\r\n
+      \       <script type=\"text/javascript\" src=\"/assets/dist/home.f682b185.js\"
+      ></script>\n\r\n            <script type=\"text/javascript\" src=\"/js/libs/d3.js\"></script>\r\n
+      \           <script type=\"text/javascript\" src=\"/js/libs/hammer.min.js\"></script>\r\n
+      \           <script type=\"text/javascript\" src=\"/assets/dist/map.5d0f7f0d.js\"></script>\r\n\r\n
+      \           <script type=\"text/javascript\">\r\n                var perfDataSec
+      = {\"nodes\":{\"CF\":-3.417,\"CTVA\":0.082,\"FMC\":2.023,\"MOS\":-0.716,\"MLM\":-2.764,\"VMC\":-1.878,\"EMN\":2.913,\"DD\":0.346,\"DOW\":1.147,\"CE\":0.359,\"APD\":-1.822,\"FCX\":-1.653,\"NEM\":-0.325,\"LYB\":1.482,\"PPG\":0.22,\"SHW\":-1.306,\"ECL\":-1.417,\"IFF\":-0.144,\"LIN\":-2.309,\"ALB\":-2.423,\"NUE\":-1.743,\"OMC\":2.455,\"IPG\":0.795,\"FOX\":1.712,\"FOXA\":1.985,\"NWS\":1.444,\"NWSA\":1.548,\"TTWO\":-0.788,\"EA\":-1.253,\"ATVI\":-0.988,\"CHTR\":0.831,\"CMCSA\":0.648,\"DIS\":-1.496,\"DISCA\":1.91,\"DISCK\":1.61,\"DISH\":-0.192,\"VIAC\":3.489,\"NFLX\":-3.354,\"LYV\":-0.114,\"MTCH\":-0.709,\"TWTR\":-3.851,\"FB\":-2.034,\"GOOG\":-1.777,\"GOOGL\":-2.011,\"LUMN\":-7.675,\"TMUS\":-0.659,\"VZ\":0.131,\"T\":1.323,\"RL\":2.017,\"PVH\":1.505,\"VFC\":0.599,\"UA\":-1.138,\"UAA\":-1.48,\"HBI\":3.003,\"GPS\":3.831,\"TJX\":-1.09,\"ROST\":-0.673,\"KMX\":-1.501,\"GM\":1.213,\"F\":2.248,\"TSLA\":-6.749,\"LKQ\":-0.347,\"APTV\":-0.763,\"BWA\":4.264,\"NKE\":-1.721,\"MHK\":-0.181,\"WHR\":0.67,\"LEG\":0.958,\"FBHS\":-0.897,\"LOW\":-0.008,\"HD\":-0.621,\"ETSY\":-6.324,\"EBAY\":-1.617,\"AMZN\":-2.417,\"HAS\":-0.672,\"POOL\":-1.088,\"MAR\":-0.212,\"HLT\":-0.067,\"TPR\":1.764,\"WRK\":2.717,\"PKG\":2.351,\"SEE\":1.956,\"IP\":1.67,\"AMCR\":1.153,\"BLL\":0.088,\"ROL\":-1.092,\"PHM\":3.471,\"NVR\":2.246,\"DHI\":0.332,\"LEN\":0.556,\"CZR\":-3.627,\"LVS\":-3.312,\"MGM\":-1.228,\"PENN\":-3.605,\"WYNN\":-1.83,\"YUM\":-0.263,\"SBUX\":-1.415,\"MCD\":0.188,\"DPZ\":-1.128,\"DRI\":0.787,\"CMG\":-3.001,\"BBWI\":-2.233,\"BBY\":-0.078,\"AZO\":-0.218,\"AAP\":1.596,\"GPC\":0.079,\"ORLY\":0.606,\"TSCO\":0.821,\"ULTA\":-1.564,\"NCLH\":4.005,\"RCL\":1.495,\"EXPE\":2.102,\"BKNG\":0.939,\"CCL\":2.645,\"TAP\":3.499,\"PEP\":0.161,\"MNST\":0.415,\"KO\":0.595,\"BF-B\":0.194,\"STZ\":-0.439,\"MDLZ\":0.401,\"HSY\":0.46,\"COST\":-1.696,\"DLTR\":-2.023,\"DG\":-2.423,\"TGT\":0.606,\"WMT\":1.415,\"TSN\":2.711,\"ADM\":0.682,\"SYY\":2.852,\"KR\":4.964,\"KMB\":-0.14,\"EL\":-3.233,\"CL\":-0.398,\"CLX\":0.527,\"CHD\":0.673,\"NWL\":1.067,\"PG\":-0.453,\"SJM\":1.541,\"LW\":0.305,\"MKC\":0.147,\"CAG\":2.475,\"CPB\":1.482,\"GIS\":0.834,\"K\":0.693,\"KHC\":0.938,\"HRL\":0.979,\"MO\":1.657,\"PM\":0.651,\"PXD\":1.166,\"MRO\":-0.748,\"OXY\":-1.727,\"HES\":-1.059,\"EOG\":-0.749,\"DVN\":-0.521,\"FANG\":-0.393,\"COP\":-0.924,\"APA\":-1.715,\"BKR\":-1.721,\"FTI\":-1.295,\"HAL\":1.786,\"SLB\":-0.768,\"XOM\":-0.717,\"CVX\":-0.416,\"KMI\":-0.453,\"WMB\":-0.925,\"OKE\":-1.36,\"PSX\":0.556,\"MPC\":0.055,\"VLO\":-1.197,\"CTRA\":-3.106,\"BLK\":-1.981,\"BEN\":-0.541,\"BK\":0.157,\"AMP\":-0.268,\"IVZ\":0.243,\"TROW\":-1.947,\"NTRS\":0.362,\"STT\":0.106,\"WFC\":-0.709,\"JPM\":-0.125,\"BAC\":-0.205,\"C\":0.743,\"CFG\":0.888,\"CMA\":0.427,\"KEY\":1.136,\"FRC\":-3.638,\"FITB\":0.691,\"HBAN\":1.404,\"TFC\":0.663,\"USB\":1.12,\"ZION\":-0.214,\"SIVB\":-3.542,\"RF\":1.009,\"PNC\":0.676,\"PBCT\":2.269,\"MTB\":2.05,\"MKTX\":-2.006,\"MS\":-0.485,\"SCHW\":-1.519,\"RJF\":-1.095,\"GS\":0.126,\"DFS\":1.252,\"COF\":1.625,\"AXP\":-0.676,\"SYF\":0.877,\"PYPL\":-3.307,\"MA\":0.602,\"V\":-0.329,\"WU\":0.819,\"MCO\":-2.765,\"MSCI\":-4.591,\"NDAQ\":-3.115,\"SPGI\":-2.584,\"CME\":-1.083,\"CBOE\":-3.387,\"ICE\":-2.937,\"HIG\":0.124,\"BRK-B\":0.272,\"AIG\":0.815,\"PFG\":0.078,\"PRU\":0.666,\"MET\":0.399,\"AFL\":0.142,\"LNC\":-0.055,\"GL\":-0.086,\"L\":0.507,\"ALL\":0.299,\"CB\":-0.147,\"CINF\":1.775,\"PGR\":-0.537,\"WRB\":0.854,\"TRV\":0.049,\"RE\":0.558,\"AIZ\":-0.719,\"AJG\":-1.979,\"BRO\":-1.224,\"AON\":-2.527,\"MMC\":-1.455,\"WLTW\":0.0,\"VRTX\":0.195,\"TECH\":-7.164,\"MRNA\":-5.707,\"REGN\":-2.428,\"INCY\":0.041,\"IDXX\":-3.684,\"ILMN\":-3.353,\"IQV\":-3.366,\"LH\":-1.761,\"DXCM\":-7.056,\"A\":-2.903,\"CRL\":-2.226,\"DGX\":-1.448,\"DHR\":-4.677,\"PKI\":-1.794,\"MTD\":-3.586,\"TMO\":-3.888,\"WAT\":-1.71,\"MRK\":0.148,\"OGN\":0.889,\"PFE\":-1.959,\"ABBV\":-2.746,\"AMGN\":-0.393,\"BMY\":-0.339,\"BIIB\":5.028,\"GILD\":-0.512,\"LLY\":-2.442,\"JNJ\":-0.607,\"CTLT\":-4.68,\"VTRS\":-0.989,\"ZTS\":-2.73,\"CERN\":-0.011,\"CI\":0.741,\"CNC\":-0.548,\"CVS\":-0.416,\"ANTM\":-1.107,\"HUM\":-0.428,\"UNH\":-1.328,\"UHS\":3.052,\"HCA\":2.05,\"DVA\":1.416,\"EW\":-1.472,\"BIO\":-4.56,\"BSX\":0.36,\"ABMD\":-2.739,\"ABT\":-3.044,\"ALGN\":-2.723,\"ZBH\":1.983,\"SYK\":-0.052,\"MDT\":-0.156,\"MCK\":0.047,\"ABC\":-0.604,\"CAH\":1.084,\"HSIC\":0.09,\"HOLX\":-3.022,\"ISRG\":-3.079,\"COO\":-1.086,\"BAX\":-0.636,\"BDX\":0.68,\"STE\":-2.826,\"RMD\":3.084,\"XRAY\":-1.442,\"WST\":-5.106,\"TFX\":-1.434,\"WBA\":0.519,\"TXT\":0.299,\"RTX\":0.538,\"TDG\":-1.213,\"NOC\":0.526,\"BA\":2.966,\"HII\":-0.786,\"LMT\":1.074,\"LHX\":1.14,\"GD\":-0.264,\"LUV\":1.283,\"AAL\":4.541,\"ALK\":2.539,\"DAL\":2.118,\"UAL\":3.502,\"MAS\":-0.263,\"CARR\":-1.509,\"AVY\":-0.625,\"INFO\":-2.538,\"EFX\":-2.632,\"NLSN\":0.486,\"VRSK\":-2.064,\"PWR\":-2.597,\"J\":1.413,\"JCI\":-1.999,\"CAT\":2.068,\"DE\":1.1,\"PCAR\":3.004,\"FAST\":0.613,\"GWW\":-0.249,\"FDX\":0.57,\"EXPD\":-1.086,\"JBHT\":0.685,\"CHRW\":1.025,\"UPS\":-0.355,\"UNP\":0.251,\"WAB\":1.763,\"NSC\":0.652,\"CSX\":0.273,\"URI\":1.283,\"ALLE\":-1.144,\"CTAS\":-0.362,\"CPRT\":-1.514,\"GPN\":0.343,\"GNRC\":-2.715,\"GE\":0.215,\"ETN\":-0.163,\"EMR\":0.371,\"ITW\":0.313,\"IEX\":-0.317,\"IR\":-0.767,\"HON\":0.541,\"HWM\":1.386,\"CMI\":1.865,\"DOV\":-0.502,\"AME\":0.313,\"AOS\":-1.238,\"TT\":-3.708,\"XYL\":-1.515,\"OTIS\":-1.369,\"MMM\":0.892,\"PH\":0.824,\"PNR\":-1.322,\"ROK\":-1.519,\"ROP\":-1.89,\"PAYX\":-1.286,\"RHI\":1.152,\"ADP\":-1.151,\"SNA\":0.731,\"SWK\":1.254,\"ODFL\":-1.995,\"RSG\":-0.895,\"WM\":-1.242,\"CBRE\":-0.751,\"WELL\":1.622,\"VTR\":2.084,\"PEAK\":0.806,\"HST\":0.781,\"EXR\":-2.409,\"DRE\":0.017,\"PSA\":-0.83,\"PLD\":-0.059,\"VNO\":2.749,\"DLR\":-0.837,\"ARE\":-0.048,\"BXP\":1.773,\"AVB\":0.14,\"EQR\":0.539,\"ESS\":-0.381,\"UDR\":0.119,\"MAA\":1.006,\"O\":-0.237,\"REG\":0.785,\"SPG\":0.655,\"FRT\":0.877,\"KIM\":0.438,\"IRM\":-2.267,\"EQIX\":-2.137,\"AMT\":-1.523,\"CCI\":-1.077,\"SBAC\":-1.279,\"WY\":1.486,\"ZBRA\":-2.348,\"MSI\":-2.317,\"CSCO\":-0.998,\"HPE\":1.983,\"JNPR\":-0.029,\"HPQ\":-0.744,\"ANET\":-1.39,\"NTAP\":0.824,\"STX\":-2.111,\"WDC\":-0.045,\"AAPL\":-1.903,\"APH\":-1.231,\"GLW\":-0.21,\"TEL\":-0.672,\"FLT\":1.047,\"FIS\":-0.06,\"FISV\":0.406,\"EPAM\":-5.339,\"DXC\":1.822,\"IBM\":0.876,\"IT\":-3.467,\"JKHY\":-2.158,\"LDOS\":2.973,\"BR\":-4.084,\"ACN\":-4.194,\"CTSH\":-0.988,\"CDW\":-1.697,\"KEYS\":-1.991,\"FTV\":-0.298,\"GRMN\":0.114,\"TRMB\":-4.068,\"TDY\":-1.284,\"TER\":-2.855,\"KLAC\":-2.853,\"LRCX\":0.066,\"IPGP\":-2.709,\"AMAT\":-1.485,\"AMD\":-3.441,\"ADI\":-2.285,\"AVGO\":-3.989,\"INTC\":-1.435,\"TXN\":-1.011,\"XLNX\":-3.305,\"SWKS\":-2.236,\"QCOM\":-1.357,\"QRVO\":-3.985,\"NVDA\":-5.086,\"NXPI\":-3.126,\"MU\":0.536,\"MCHP\":-1.807,\"PAYC\":-4.334,\"NOW\":-9.092,\"PTC\":-4.04,\"TYL\":-4.699,\"INTU\":-4.216,\"ADSK\":-3.498,\"ANSS\":-4.882,\"CDAY\":-5.213,\"CDNS\":-4.125,\"CRM\":-3.868,\"CTXS\":-2.066,\"AKAM\":-1.052,\"ADBE\":-2.906,\"FFIV\":-1.373,\"FTNT\":-4.024,\"VRSN\":-3.522,\"SNPS\":-3.272,\"NLOK\":0.075,\"ORCL\":-0.589,\"MSFT\":-4.232,\"ENPH\":-3.879,\"ETR\":1.282,\"EXC\":0.893,\"FE\":0.435,\"AES\":-0.683,\"D\":0.542,\"PEG\":0.394,\"SRE\":0.485,\"NRG\":-1.04,\"NEE\":-0.223,\"SO\":0.841,\"PPL\":0.134,\"PNW\":1.867,\"WEC\":1.651,\"XEL\":0.627,\"DTE\":0.52,\"DUK\":0.511,\"CMS\":0.39,\"AEE\":1.311,\"AEP\":0.631,\"EVRG\":0.105,\"ES\":0.663,\"EIX\":-0.559,\"ED\":0.902,\"LNT\":0.848,\"ATO\":1.718,\"CNP\":0.474,\"NI\":1.36,\"AWK\":-0.644},\"additional\":{},\"version\":1};\r\n
+      \               var perfDataGeo = null;\r\n                var cacheBuster =
+      289;\r\n\r\n                if (typeof FinvizInitIndexMaps !== 'undefined')
+      {\r\n                    FinvizInitIndexMaps({\r\n                      perfDataSec:
+      perfDataSec,\r\n                      perfDataGeo: perfDataGeo,\r\n                      cacheBuster:
+      cacheBuster,\r\n                    })\r\n                }\r\n            </script><div
+      id=\"rectangle_position\" style=\"position:absolute;right:0;display:none;\"></div></table></div></div>\r\n
+      \           <div class=\"footer\" style=\"margin-top: 20px\">\r\n                <div
+      class=\"footer_links\">\r\n                    <a class=\"tab-link\" href=\"/affiliate.ashx\">affiliate</a>\r\n
+      \                   <span class=\"footer_dot\"> • </span>\r\n                    <a
+      class=\"tab-link\" href=\"/advertise.ashx\">advertise</a>\r\n                    <span
+      class=\"footer_dot\"> • </span>\r\n                    <a class=\"tab-link\"
+      href=\"/contact.ashx\">contact</a>\r\n                    <span class=\"footer_dot\">
+      • </span>\r\n                    <a class=\"tab-link\" href=\"/privacy.ashx\">privacy</a>\r\n
+      \                   <span class=\"footer_dot\"> • </span>\r\n                    <a
+      class=\"tab-link\" href=\"/help/screener.ashx\">help</a><br><a class=\"tab-link\"
+      href=\"/do_not_sell.ashx\">Do not sell my personal information</a>\r\n                </div>\r\n
+      \               <span class=\"copyright\">Quotes delayed 15 minutes for NASDAQ,
+      and 20 minutes for NYSE and AMEX.</span>\r\n                <br>\r\n                Copyright
+      © 2007-2022 FINVIZ.com. All Rights Reserved.</span>\r\n            </div><script
+      type=\"text/javascript\">SearchFocus();</script>\r\n            <script async
+      src=\"https://www.googletagmanager.com/gtag/js?id=UA-3261808-1\"></script>\r\n
+      \           <script>\r\n              window.dataLayer = window.dataLayer ||
+      [];\r\n              function gtag(){dataLayer.push(arguments);}\r\n              gtag('js',
+      new Date());\r\n\r\n              gtag('set', {'dimension1': 'NotLoggedIn'});\r\n
+      \             gtag('set', {'dimension3': window.devicePixelRatio || 'unknown'});\r\n\r\n
+      \             gtag('config', 'UA-3261808-1', { sample_rate: 10, send_page_view:
+      false });\r\n              \r\n\r\n              gtag('event', 'page_view',
+      { page_location: location.href, page_path: location.pathname, page_title: document.title
+      });\r\n            </script>\r\n        <script type=\"text/javascript\">\n_qoptions={qacct:\"p-c2W8esUZ6Q8oA\"};\n</script>\n<script
+      type=\"text/javascript\" src=\"https://secure.quantserve.com/quant.js\"></script>\n<noscript>\n<img
+      src=\"https://pixel.quantserve.com/pixel/p-c2W8esUZ6Q8oA.gif\" style=\"display:
+      none;\" border=\"0\" height=\"1\" width=\"1\" alt=\"Quantcast\"/>\n</noscript>\n<div
+      id=\"rectangle\" style=\"position:absolute;display:none\"></div>\n\r\n                <script
+      type=\"text/javascript\">\r\n                    (function() {\r\n                        var
+      element = document.getElementById('major-news');\r\n                        var
+      top = 0;\r\n                        while(element && element.style.position
+      !== 'relative') {\r\n                            top += element.offsetTop;\r\n
+      \                           element = element.offsetParent;\r\n                        }\r\n
+      \                       var rectangle = document.getElementById('rectangle_position');\r\n
+      \                       rectangle.style.top = top + 'px';\r\n                        rectangle.style.display
+      = 'block';\r\n                    })();\r\n                </script>\r\n            <div
+      id=\"modal-elite-ad\" class=\"modal-elite-ad\">\r\n                            <div
+      id=\"modal-elite-ad_content\" class=\"modal-elite-ad_content\">\r\n\t\t\t                    <button
+      id=\"modal-elite-ad-close\" type=\"button\" class=\"modal-elite-ad_close\">×</button>\r\n\r\n
+      \                               <!--<div id=\"modal-elite-ad-content-0\" style=\"display:
+      none\">\r\n\t\t\t                        <h2>Ever heard of Finviz*Elite?</h2>\r\n
+      \                                   <p>\r\n                                        Our
+      premium service offers you real-time quotes, advanced visualizations, technical
+      studies, and much more.<br>\r\n                                        Become
+      Elite and make informed financial decisions.\r\n                                    </p>\r\n
+      \                                   <a href=\"/elite.ashx?utm_source=finviz&utm_medium=banner&utm_campaign=modal-0\"
+      id=\"modal-elite-ad-btn-0\" class=\"\" target=\"_blank\">Find out more</a>\r\n
+      \                               </div>-->\r\n\r\n                                <div
+      id=\"modal-elite-ad-content-1\" style=\"display: block\">\r\n\t\t\t                        <h2>Upgrade
+      your FINVIZ experience</h2>\r\n                                    <p>\r\n                                        Join
+      thousands of traders who make more informed decisions with&nbsp;our&nbsp;premium
+      features.\r\n                                        Real-time quotes, advanced&nbsp;visualizations,
+      backtesting, and much more.\r\n                                    </p>\r\n
+      \                                   <a href=\"/elite.ashx?utm_source=finviz&utm_medium=banner&utm_campaign=modal-1\"
+      id=\"modal-elite-ad-btn-1\" class=\"modal-elite_button\" target=\"_blank\">Learn
+      more about FINVIZ*Elite</a>\r\n                                </div>\r\n                            </div>\r\n
+      \                        </div><script src=\"/js/pv.js?rev=289\" async></script><script
+      defer src=\"https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194\"
+      integrity=\"sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==\"
+      data-cf-beacon='{\"rayId\":\"6cd37ed84d711879\",\"token\":\"e53f08f6c9e04bfd9760701085ec93b4\",\"version\":\"2021.12.0\",\"si\":100}'
+      crossorigin=\"anonymous\"></script>\n</body>\n</html>\n"
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400, h3-28=":443"; ma=86400, h3-27=":443";
+        ma=86400
+      Cf-Cache-Status:
+      - DYNAMIC
+      Cf-Ray:
+      - 6cd37ed84d711879-EWR
+      Content-Type:
+      - text/html; charset=utf-8
+      Date:
+      - Fri, 14 Jan 2022 02:39:43 GMT
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Request-Context:
+      - appId=cid-v1:bdd405ef-7a83-4f9a-9228-0107d7f4bc90
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - preventRedirectLoop=false; expires=Thu, 13 Jan 2022 02:39:43 GMT; domain=.finviz.com;
+        path=/
+      Vary:
+      - Accept-Encoding
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Powered-By:
+      - ASP.NET
+      - ARR/3.0
+      - ASP.NET
+    status: 200 OK
+    code: 200
+    duration: ""

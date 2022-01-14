@@ -18,7 +18,7 @@ var (
 
 	// Cmd is the CLI subcommand for FinViz news
 	Cmd = &cobra.Command{
-		Use:     "news",
+		Use:     "calendar",
 		Aliases: []string{"cal", "ec"},
 		Short:   "Finviz Economic Calendar.",
 		Long:    "Finviz Economic Calendar returns this week's Economic Calendar.",
