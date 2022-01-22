@@ -24,17 +24,17 @@ interactions:
       as=\"font\" crossorigin>\r\n        <link rel=\"stylesheet\" href=\"/assets/dist/finviz_old.b6b95b29.css\"
       type=\"text/css\">\n<link rel=\"icon\" type=\"image/png\" href=\"/favicon_2x.png\"
       sizes=\"32x32\">\n<link rel=\"icon\" type=\"image/png\" href=\"/favicon.png\"
-      sizes=\"16x16\">\n<script src=\"/script/boxover.js?rev=289\" type=\"text/javascript\"></script>\n<script
+      sizes=\"16x16\">\n<script src=\"/script/vendor/boxover.js?rev=291\" type=\"text/javascript\"></script>\n<script
       type=\"text/javascript\">FinvizSettings = {hasUserPremium: false, name: \"\",
-      chartsDomain: \"https://charts2.finviz.com\", nodeChartsDomain: \"\", hasUserPersistentDrawings:
-      false, hasUserNodeCharts: false, hasUserStickyHeader: false};</script><script
-      type=\"text/javascript\" src=\"/js/libs/d3-json.js?rev=289\"></script><script
-      src=\"/script/libs/browser_support.js?rev=289\" type=\"text/javascript\"></script>\r\n
-      \           <script type=\"text/javascript\" src=\"/assets/dist/runtime.c25d5694.js\"></script>\r\n
-      \           <script type=\"text/javascript\" src=\"/assets/dist/vendors.ebfd3276.js\"></script>\r\n
-      \           <script type=\"text/javascript\" src=\"/assets/dist/libs_init.0328e983.js\"></script>\r\n
-      \           <script type=\"text/javascript\" src=\"/assets/dist/header.04e2892a.js\"></script>\r\n
-      \       \r\n            <script src=\"/js/dfp.min.js\"></script>\r\n            <script>\r\n
+      chartsDomain: \"https://charts2.finviz.com\", nodeChartsDomain: \"https://charts2-node.finviz.com\",
+      hasUserPersistentDrawings: false, hasUserNodeCharts: false, hasUserStickyHeader:
+      false};</script><script type=\"text/javascript\" src=\"/script/vendor/d3-json.js?rev=291\"></script><script
+      src=\"/script/browser_support.js?rev=291\" type=\"text/javascript\"></script>\r\n
+      \           <script type=\"text/javascript\" src=\"/assets/dist/runtime.c7ab9164.js\"></script>\r\n
+      \           <script type=\"text/javascript\" src=\"/assets/dist/vendors.9a2eb478.js\"></script>\r\n
+      \           <script type=\"text/javascript\" src=\"/assets/dist/libs_init.7e7e28b2.js\"></script>\r\n
+      \           <script type=\"text/javascript\" src=\"/assets/dist/header.c1fa7c33.js\"></script>\r\n
+      \       \r\n            <script src=\"/script/dfp.min.js\"></script>\r\n            <script>\r\n
       \               if(window['FinvizLoadIC']) {\r\n                    var s =
       document.createElement('script');\r\n                    s.type = 'text/javascript';\r\n
       \                   s.async = true;\r\n                    s.src = 'https://u5.investingchannel.com/static/uat.js';\r\n
@@ -122,37 +122,45 @@ interactions:
       width=\"100%\" class=\"calendar\" align=\"center\">\n<h1 class=\"calendar-title\">Economic
       Calendar</h1>\n<table class=\"calendar\" border=\"0\" cellpadding=\"1\" cellspacing=\"0\"
       width=\"100%\">\n<tr class=\"calendar-header\">\n<td width=\"10%\" align=\"right\"><b>Mon</b>
-      Jan 10</td>\n<td width=\"2%\" align=\"center\"><img src=\"gfx/nic2x2.gif\" alt=\"\"
+      Jan 17</td>\n<td width=\"2%\" align=\"center\"><img src=\"gfx/nic2x2.gif\" alt=\"\"
       border=\"0\" height=\"2\" width=\"2\"></td>\n<td width=\"20%\" align=\"left\">Release</td>\n<td
       width=\"10%\" align=\"left\">Impact</td>\n<td width=\"5%\" align=\"left\">For</td>\n<td
       width=\"10%\" align=\"right\">Actual</td>\n<td width=\"10%\" align=\"right\">Expected</td>\n<td
       width=\"10%\" align=\"right\">Prior</td>\n<td width=\"3%\"><img src=\"gfx/nic2x2.gif\"
-      alt=\"\" border=\"0\" height=\"2\" width=\"2\"></td>\n</tr>\n<tr>\n<td align=\"right\">10:00
-      AM</td>\n<td align=\"center\" width=\"10\"><img src=\"gfx/nic2x2.gif\" alt=\"\"
-      border=\"0\" height=\"2\" width=\"2\"></td>\n<td align=\"left\">Wholesale Inventories</td>\n<td
-      align=\"left\"><img src=\"gfx/calendar/impact_1.gif\" width=\"10\" height=\"10\"
-      alt=\"\" border=\"0\"></td>\n<td align=\"left\">Nov</td>\n<td align=\"right\"><span
-      style=\"color:#008800;\">1.4%</span></td>\n<td align=\"right\">1.2%</td>\n<td
-      align=\"right\">2.5%</td>\n<td><img src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\"
-      height=\"2\" width=\"2\"></td>\n</tr>\n</table><img src=\"gfx/nic2x2.gif\" width=\"10\"
-      height=\"20\" alt=\"\" border=\"0\"><br>\n<table class=\"calendar\" border=\"0\"
-      cellpadding=\"1\" cellspacing=\"0\" width=\"100%\">\n<tr class=\"calendar-header\">\n<td
-      width=\"10%\" align=\"right\"><b>Tue</b> Jan 11</td>\n<td width=\"2%\" align=\"center\"><img
+      alt=\"\" border=\"0\" height=\"2\" width=\"2\"></td>\n</tr>\n<tr>\n<td></td>\n<td></td>\n<td
+      align=\"left\" colspan=\"6\">No economic releases</td>\n<td><img src=\"gfx/nic2x2.gif\"
+      alt=\"\" border=\"0\" height=\"2\" width=\"2\"></td>\n</tr></table><img src=\"gfx/nic2x2.gif\"
+      width=\"10\" height=\"20\" alt=\"\" border=\"0\"><br>\n<table class=\"calendar\"
+      border=\"0\" cellpadding=\"1\" cellspacing=\"0\" width=\"100%\">\n<tr class=\"calendar-header\">\n<td
+      width=\"10%\" align=\"right\"><b>Tue</b> Jan 18</td>\n<td width=\"2%\" align=\"center\"><img
       src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\" height=\"2\" width=\"2\"></td>\n<td
       width=\"20%\" align=\"left\">Release</td>\n<td width=\"10%\" align=\"left\">Impact</td>\n<td
       width=\"5%\" align=\"left\">For</td>\n<td width=\"10%\" align=\"right\">Actual</td>\n<td
       width=\"10%\" align=\"right\">Expected</td>\n<td width=\"10%\" align=\"right\">Prior</td>\n<td
       width=\"3%\"><img src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\" height=\"2\"
-      width=\"2\"></td>\n</tr>\n<tr>\n<td align=\"right\">6:00 AM</td>\n<td align=\"center\"
+      width=\"2\"></td>\n</tr>\n<tr>\n<td align=\"right\">8:30 AM</td>\n<td align=\"center\"
       width=\"10\"><img src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\" height=\"2\"
-      width=\"2\"></td>\n<td align=\"left\">NFIB Small Business Optimism</td>\n<td
+      width=\"2\"></td>\n<td align=\"left\">Empire State Manufacturing</td>\n<td align=\"left\"><img
+      src=\"gfx/calendar/impact_1.gif\" width=\"10\" height=\"10\" alt=\"\" border=\"0\"></td>\n<td
+      align=\"left\">Jan</td>\n<td align=\"right\"><span style=\"color:#aa0000;\">-0.7</span></td>\n<td
+      align=\"right\">25.0</td>\n<td align=\"right\">31.9</td>\n<td><img src=\"gfx/nic2x2.gif\"
+      alt=\"\" border=\"0\" height=\"2\" width=\"2\"></td>\n</tr>\n<tr>\n<td align=\"right\">10:00
+      AM</td>\n<td align=\"center\" width=\"10\"><img src=\"gfx/nic2x2.gif\" alt=\"\"
+      border=\"0\" height=\"2\" width=\"2\"></td>\n<td align=\"left\">NAHB Housing
+      Market Index</td>\n<td align=\"left\"><img src=\"gfx/calendar/impact_1.gif\"
+      width=\"10\" height=\"10\" alt=\"\" border=\"0\"></td>\n<td align=\"left\">Jan</td>\n<td
+      align=\"right\"><span style=\"color:#aa0000;\">83</span></td>\n<td align=\"right\">84</td>\n<td
+      align=\"right\">84</td>\n<td><img src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\"
+      height=\"2\" width=\"2\"></td>\n</tr>\n<tr>\n<td align=\"right\">4:00 PM</td>\n<td
+      align=\"center\" width=\"10\"><img src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\"
+      height=\"2\" width=\"2\"></td>\n<td align=\"left\">Net Long-Term TIC Flows</td>\n<td
       align=\"left\"><img src=\"gfx/calendar/impact_1.gif\" width=\"10\" height=\"10\"
-      alt=\"\" border=\"0\"></td>\n<td align=\"left\">Dec</td>\n<td align=\"right\">98.9</td>\n<td
-      align=\"right\">NA</td>\n<td align=\"right\">98.4</td>\n<td><img src=\"gfx/nic2x2.gif\"
+      alt=\"\" border=\"0\"></td>\n<td align=\"left\">Nov</td>\n<td align=\"right\">$137.4B</td>\n<td
+      align=\"right\">NA</td>\n<td align=\"right\">$7.1B</td>\n<td><img src=\"gfx/nic2x2.gif\"
       alt=\"\" border=\"0\" height=\"2\" width=\"2\"></td>\n</tr>\n</table><img src=\"gfx/nic2x2.gif\"
       width=\"10\" height=\"20\" alt=\"\" border=\"0\"><br>\n<table class=\"calendar\"
       border=\"0\" cellpadding=\"1\" cellspacing=\"0\" width=\"100%\">\n<tr class=\"calendar-header\">\n<td
-      width=\"10%\" align=\"right\"><b>Wed</b> Jan 12</td>\n<td width=\"2%\" align=\"center\"><img
+      width=\"10%\" align=\"right\"><b>Wed</b> Jan 19</td>\n<td width=\"2%\" align=\"center\"><img
       src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\" height=\"2\" width=\"2\"></td>\n<td
       width=\"20%\" align=\"left\">Release</td>\n<td width=\"10%\" align=\"left\">Impact</td>\n<td
       width=\"5%\" align=\"left\">For</td>\n<td width=\"10%\" align=\"right\">Actual</td>\n<td
@@ -162,154 +170,84 @@ interactions:
       width=\"10\"><img src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\" height=\"2\"
       width=\"2\"></td>\n<td align=\"left\">MBA Mortgage Applications Index</td>\n<td
       align=\"left\"><img src=\"gfx/calendar/impact_1.gif\" width=\"10\" height=\"10\"
-      alt=\"\" border=\"0\"></td>\n<td align=\"left\">01/08</td>\n<td align=\"right\">1.4%</td>\n<td
-      align=\"right\">NA</td>\n<td align=\"right\">-5.6%</td>\n<td><img src=\"gfx/nic2x2.gif\"
+      alt=\"\" border=\"0\"></td>\n<td align=\"left\">01/15</td>\n<td align=\"right\">2.3%</td>\n<td
+      align=\"right\">NA</td>\n<td align=\"right\">1.4%</td>\n<td><img src=\"gfx/nic2x2.gif\"
       alt=\"\" border=\"0\" height=\"2\" width=\"2\"></td>\n</tr>\n<tr>\n<td align=\"right\">8:30
       AM</td>\n<td align=\"center\" width=\"10\"><img src=\"gfx/nic2x2.gif\" alt=\"\"
-      border=\"0\" height=\"2\" width=\"2\"></td>\n<td align=\"left\">CPI</td>\n<td
-      align=\"left\"><img src=\"gfx/calendar/impact_3.gif\" width=\"10\" height=\"10\"
-      alt=\"\" border=\"0\"></td>\n<td align=\"left\">Dec</td>\n<td align=\"right\"><span
-      style=\"color:#aa0000;\">0.5%</span></td>\n<td align=\"right\">0.4%</td>\n<td
-      align=\"right\">0.8%</td>\n<td><img src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\"
-      height=\"2\" width=\"2\"></td>\n</tr>\n<tr>\n<td align=\"right\">8:30 AM</td>\n<td
-      align=\"center\" width=\"10\"><img src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\"
-      height=\"2\" width=\"2\"></td>\n<td align=\"left\">Core CPI</td>\n<td align=\"left\"><img
-      src=\"gfx/calendar/impact_3.gif\" width=\"10\" height=\"10\" alt=\"\" border=\"0\"></td>\n<td
-      align=\"left\">Dec</td>\n<td align=\"right\"><span style=\"color:#aa0000;\">0.6%</span></td>\n<td
-      align=\"right\">0.5%</td>\n<td align=\"right\">0.5%</td>\n<td><img src=\"gfx/nic2x2.gif\"
-      alt=\"\" border=\"0\" height=\"2\" width=\"2\"></td>\n</tr>\n<tr>\n<td align=\"right\">10:30
-      AM</td>\n<td align=\"center\" width=\"10\"><img src=\"gfx/nic2x2.gif\" alt=\"\"
-      border=\"0\" height=\"2\" width=\"2\"></td>\n<td align=\"left\">EIA Crude Oil
-      Inventories</td>\n<td align=\"left\"><img src=\"gfx/calendar/impact_3.gif\"
-      width=\"10\" height=\"10\" alt=\"\" border=\"0\"></td>\n<td align=\"left\">01/08</td>\n<td
-      align=\"right\">-4.55M</td>\n<td align=\"right\">NA</td>\n<td align=\"right\">-2.14M</td>\n<td><img
-      src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\" height=\"2\" width=\"2\"></td>\n</tr>\n<tr>\n<td
-      align=\"right\">2:00 PM</td>\n<td align=\"center\" width=\"10\"><img src=\"gfx/nic2x2.gif\"
-      alt=\"\" border=\"0\" height=\"2\" width=\"2\"></td>\n<td align=\"left\">Fed
-      Beige Book</td>\n<td align=\"left\"><img src=\"gfx/calendar/impact_2.gif\" width=\"10\"
-      height=\"10\" alt=\"\" border=\"0\"></td>\n<td align=\"left\">Jan</td>\n<td
-      align=\"right\">NA</td>\n<td align=\"right\">NA</td>\n<td align=\"right\">NA</td>\n<td><img
-      src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\" height=\"2\" width=\"2\"></td>\n</tr>\n<tr>\n<td
-      align=\"right\">2:00 PM</td>\n<td align=\"center\" width=\"10\"><img src=\"gfx/nic2x2.gif\"
-      alt=\"\" border=\"0\" height=\"2\" width=\"2\"></td>\n<td align=\"left\">Treasury
-      Budget</td>\n<td align=\"left\"><img src=\"gfx/calendar/impact_1.gif\" width=\"10\"
-      height=\"10\" alt=\"\" border=\"0\"></td>\n<td align=\"left\">Dec</td>\n<td
-      align=\"right\">-$21.3B</td>\n<td align=\"right\">NA</td>\n<td align=\"right\">-$143.6B</td>\n<td><img
-      src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\" height=\"2\" width=\"2\"></td>\n</tr>\n</table><img
-      src=\"gfx/nic2x2.gif\" width=\"10\" height=\"20\" alt=\"\" border=\"0\"><br>\n<table
-      class=\"calendar\" border=\"0\" cellpadding=\"1\" cellspacing=\"0\" width=\"100%\">\n<tr
-      class=\"calendar-header\">\n<td width=\"10%\" align=\"right\"><b>Thu</b> Jan
-      13</td>\n<td width=\"2%\" align=\"center\"><img src=\"gfx/nic2x2.gif\" alt=\"\"
-      border=\"0\" height=\"2\" width=\"2\"></td>\n<td width=\"20%\" align=\"left\">Release</td>\n<td
-      width=\"10%\" align=\"left\">Impact</td>\n<td width=\"5%\" align=\"left\">For</td>\n<td
-      width=\"10%\" align=\"right\">Actual</td>\n<td width=\"10%\" align=\"right\">Expected</td>\n<td
-      width=\"10%\" align=\"right\">Prior</td>\n<td width=\"3%\"><img src=\"gfx/nic2x2.gif\"
-      alt=\"\" border=\"0\" height=\"2\" width=\"2\"></td>\n</tr>\n<tr>\n<td align=\"right\">8:30
-      AM</td>\n<td align=\"center\" width=\"10\"><img src=\"gfx/nic2x2.gif\" alt=\"\"
-      border=\"0\" height=\"2\" width=\"2\"></td>\n<td align=\"left\">Initial Claims</td>\n<td
+      border=\"0\" height=\"2\" width=\"2\"></td>\n<td align=\"left\">Housing Starts</td>\n<td
       align=\"left\"><img src=\"gfx/calendar/impact_2.gif\" width=\"10\" height=\"10\"
-      alt=\"\" border=\"0\"></td>\n<td align=\"left\">01/08</td>\n<td align=\"right\"><span
-      style=\"color:#aa0000;\">230K</span></td>\n<td align=\"right\">202K</td>\n<td
-      align=\"right\">207K</td>\n<td><img src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\"
-      height=\"2\" width=\"2\"></td>\n</tr>\n<tr>\n<td align=\"right\">8:30 AM</td>\n<td
-      align=\"center\" width=\"10\"><img src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\"
-      height=\"2\" width=\"2\"></td>\n<td align=\"left\">Continuing Claims</td>\n<td
-      align=\"left\"><img src=\"gfx/calendar/impact_2.gif\" width=\"10\" height=\"10\"
-      alt=\"\" border=\"0\"></td>\n<td align=\"left\">01/01</td>\n<td align=\"right\">1.559M</td>\n<td
-      align=\"right\">NA</td>\n<td align=\"right\">1.753M</td>\n<td><img src=\"gfx/nic2x2.gif\"
-      alt=\"\" border=\"0\" height=\"2\" width=\"2\"></td>\n</tr>\n<tr>\n<td align=\"right\">8:30
-      AM</td>\n<td align=\"center\" width=\"10\"><img src=\"gfx/nic2x2.gif\" alt=\"\"
-      border=\"0\" height=\"2\" width=\"2\"></td>\n<td align=\"left\">PPI</td>\n<td
-      align=\"left\"><img src=\"gfx/calendar/impact_3.gif\" width=\"10\" height=\"10\"
       alt=\"\" border=\"0\"></td>\n<td align=\"left\">Dec</td>\n<td align=\"right\"><span
-      style=\"color:#008800;\">0.2%</span></td>\n<td align=\"right\">0.4%</td>\n<td
-      align=\"right\">1.0%</td>\n<td><img src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\"
+      style=\"color:#008800;\">1702K</span></td>\n<td align=\"right\">1650K</td>\n<td
+      align=\"right\">1678K</td>\n<td><img src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\"
       height=\"2\" width=\"2\"></td>\n</tr>\n<tr>\n<td align=\"right\">8:30 AM</td>\n<td
       align=\"center\" width=\"10\"><img src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\"
-      height=\"2\" width=\"2\"></td>\n<td align=\"left\">Core PPI</td>\n<td align=\"left\"><img
-      src=\"gfx/calendar/impact_3.gif\" width=\"10\" height=\"10\" alt=\"\" border=\"0\"></td>\n<td
-      align=\"left\">Dec</td>\n<td align=\"right\"><span style=\"color:#aa0000;\">0.5%</span></td>\n<td
-      align=\"right\">0.4%</td>\n<td align=\"right\">0.9%</td>\n<td><img src=\"gfx/nic2x2.gif\"
-      alt=\"\" border=\"0\" height=\"2\" width=\"2\"></td>\n</tr>\n<tr>\n<td align=\"right\">10:30
-      AM</td>\n<td align=\"center\" width=\"10\"><img src=\"gfx/nic2x2.gif\" alt=\"\"
-      border=\"0\" height=\"2\" width=\"2\"></td>\n<td align=\"left\">EIA Natural
-      Gas Inventories</td>\n<td align=\"left\"><img src=\"gfx/calendar/impact_1.gif\"
-      width=\"10\" height=\"10\" alt=\"\" border=\"0\"></td>\n<td align=\"left\">01/08</td>\n<td
-      align=\"right\">-179 bcf</td>\n<td align=\"right\">NA</td>\n<td align=\"right\">-31
-      bcf</td>\n<td><img src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\" height=\"2\"
-      width=\"2\"></td>\n</tr>\n</table><img src=\"gfx/nic2x2.gif\" width=\"10\" height=\"20\"
-      alt=\"\" border=\"0\"><br>\n<table class=\"calendar\" border=\"0\" cellpadding=\"1\"
-      cellspacing=\"0\" width=\"100%\">\n<tr class=\"calendar-header\">\n<td width=\"10%\"
-      align=\"right\"><b>Fri</b> Jan 14</td>\n<td width=\"2%\" align=\"center\"><img
+      height=\"2\" width=\"2\"></td>\n<td align=\"left\">Building Permits</td>\n<td
+      align=\"left\"><img src=\"gfx/calendar/impact_2.gif\" width=\"10\" height=\"10\"
+      alt=\"\" border=\"0\"></td>\n<td align=\"left\">Dec</td>\n<td align=\"right\"><span
+      style=\"color:#008800;\">1873K</span></td>\n<td align=\"right\">1702K</td>\n<td
+      align=\"right\">1717K</td>\n<td><img src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\"
+      height=\"2\" width=\"2\"></td>\n</tr>\n</table><img src=\"gfx/nic2x2.gif\" width=\"10\"
+      height=\"20\" alt=\"\" border=\"0\"><br>\n<table class=\"calendar\" border=\"0\"
+      cellpadding=\"1\" cellspacing=\"0\" width=\"100%\">\n<tr class=\"calendar-header\">\n<td
+      width=\"10%\" align=\"right\"><b>Thu</b> Jan 20</td>\n<td width=\"2%\" align=\"center\"><img
       src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\" height=\"2\" width=\"2\"></td>\n<td
       width=\"20%\" align=\"left\">Release</td>\n<td width=\"10%\" align=\"left\">Impact</td>\n<td
       width=\"5%\" align=\"left\">For</td>\n<td width=\"10%\" align=\"right\">Actual</td>\n<td
       width=\"10%\" align=\"right\">Expected</td>\n<td width=\"10%\" align=\"right\">Prior</td>\n<td
       width=\"3%\"><img src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\" height=\"2\"
-      width=\"2\"></td>\n</tr>\n<tr class=\"calendar-now\">\n<td align=\"right\">8:30
-      AM</td>\n<td align=\"center\" width=\"10\"><img src=\"gfx/nic2x2.gif\" alt=\"\"
-      border=\"0\" height=\"2\" width=\"2\"></td>\n<td align=\"left\">Retail Sales</td>\n<td
-      align=\"left\"><img src=\"gfx/calendar/impact_2.gif\" width=\"10\" height=\"10\"
-      alt=\"\" border=\"0\"></td>\n<td align=\"left\">Dec</td>\n<td align=\"right\">-</td>\n<td
-      align=\"right\">0.0%</td>\n<td align=\"right\">0.3%</td>\n<td><img src=\"gfx/nic2x2.gif\"
-      alt=\"\" border=\"0\" height=\"2\" width=\"2\"></td>\n</tr>\n<tr class=\"calendar-future\">\n<td
-      align=\"right\">8:30 AM</td>\n<td align=\"center\" width=\"10\"><img src=\"gfx/nic2x2.gif\"
-      alt=\"\" border=\"0\" height=\"2\" width=\"2\"></td>\n<td align=\"left\">Retail
-      Sales ex-auto</td>\n<td align=\"left\"><img src=\"gfx/calendar/impact_3.gif\"
-      width=\"10\" height=\"10\" alt=\"\" border=\"0\"></td>\n<td align=\"left\">Dec</td>\n<td
-      align=\"right\">-</td>\n<td align=\"right\">0.2%</td>\n<td align=\"right\">0.3%</td>\n<td><img
-      src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\" height=\"2\" width=\"2\"></td>\n</tr>\n<tr
-      class=\"calendar-future\">\n<td align=\"right\">8:30 AM</td>\n<td align=\"center\"
+      width=\"2\"></td>\n</tr>\n<tr>\n<td align=\"right\">8:30 AM</td>\n<td align=\"center\"
       width=\"10\"><img src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\" height=\"2\"
-      width=\"2\"></td>\n<td align=\"left\">Import Price Index</td>\n<td align=\"left\"><img
-      src=\"gfx/calendar/impact_1.gif\" width=\"10\" height=\"10\" alt=\"\" border=\"0\"></td>\n<td
-      align=\"left\">Dec</td>\n<td align=\"right\">-</td>\n<td align=\"right\">NA</td>\n<td
-      align=\"right\">0.7%</td>\n<td><img src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\"
-      height=\"2\" width=\"2\"></td>\n</tr>\n<tr class=\"calendar-future\">\n<td align=\"right\">8:30
-      AM</td>\n<td align=\"center\" width=\"10\"><img src=\"gfx/nic2x2.gif\" alt=\"\"
-      border=\"0\" height=\"2\" width=\"2\"></td>\n<td align=\"left\">Import Prices
-      ex-oil</td>\n<td align=\"left\"><img src=\"gfx/calendar/impact_2.gif\" width=\"10\"
-      height=\"10\" alt=\"\" border=\"0\"></td>\n<td align=\"left\">Dec</td>\n<td
-      align=\"right\">-</td>\n<td align=\"right\">NA</td>\n<td align=\"right\">0.5%</td>\n<td><img
-      src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\" height=\"2\" width=\"2\"></td>\n</tr>\n<tr
-      class=\"calendar-future\">\n<td align=\"right\">8:30 AM</td>\n<td align=\"center\"
-      width=\"10\"><img src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\" height=\"2\"
-      width=\"2\"></td>\n<td align=\"left\">Export Price Index</td>\n<td align=\"left\"><img
-      src=\"gfx/calendar/impact_1.gif\" width=\"10\" height=\"10\" alt=\"\" border=\"0\"></td>\n<td
-      align=\"left\">Dec</td>\n<td align=\"right\">-</td>\n<td align=\"right\">NA</td>\n<td
-      align=\"right\">1.0%</td>\n<td><img src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\"
-      height=\"2\" width=\"2\"></td>\n</tr>\n<tr class=\"calendar-future\">\n<td align=\"right\">8:30
-      AM</td>\n<td align=\"center\" width=\"10\"><img src=\"gfx/nic2x2.gif\" alt=\"\"
-      border=\"0\" height=\"2\" width=\"2\"></td>\n<td align=\"left\">Export Prices
-      ex-ag.</td>\n<td align=\"left\"><img src=\"gfx/calendar/impact_2.gif\" width=\"10\"
-      height=\"10\" alt=\"\" border=\"0\"></td>\n<td align=\"left\">Dec</td>\n<td
-      align=\"right\">-</td>\n<td align=\"right\">NA</td>\n<td align=\"right\">1.0%</td>\n<td><img
-      src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\" height=\"2\" width=\"2\"></td>\n</tr>\n<tr
-      class=\"calendar-future\">\n<td align=\"right\">9:15 AM</td>\n<td align=\"center\"
-      width=\"10\"><img src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\" height=\"2\"
-      width=\"2\"></td>\n<td align=\"left\">Industrial Production</td>\n<td align=\"left\"><img
+      width=\"2\"></td>\n<td align=\"left\">Initial Claims</td>\n<td align=\"left\"><img
       src=\"gfx/calendar/impact_2.gif\" width=\"10\" height=\"10\" alt=\"\" border=\"0\"></td>\n<td
-      align=\"left\">Dec</td>\n<td align=\"right\">-</td>\n<td align=\"right\">0.3%</td>\n<td
-      align=\"right\">0.5%</td>\n<td><img src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\"
-      height=\"2\" width=\"2\"></td>\n</tr>\n<tr class=\"calendar-future\">\n<td align=\"right\">9:15
+      align=\"left\">01/15</td>\n<td align=\"right\"><span style=\"color:#aa0000;\">286K</span></td>\n<td
+      align=\"right\">211K</td>\n<td align=\"right\">231K</td>\n<td><img src=\"gfx/nic2x2.gif\"
+      alt=\"\" border=\"0\" height=\"2\" width=\"2\"></td>\n</tr>\n<tr>\n<td align=\"right\">8:30
       AM</td>\n<td align=\"center\" width=\"10\"><img src=\"gfx/nic2x2.gif\" alt=\"\"
-      border=\"0\" height=\"2\" width=\"2\"></td>\n<td align=\"left\">Capacity Utilization</td>\n<td
+      border=\"0\" height=\"2\" width=\"2\"></td>\n<td align=\"left\">Continuing Claims</td>\n<td
       align=\"left\"><img src=\"gfx/calendar/impact_2.gif\" width=\"10\" height=\"10\"
-      alt=\"\" border=\"0\"></td>\n<td align=\"left\">Dec</td>\n<td align=\"right\">-</td>\n<td
-      align=\"right\">77.1%</td>\n<td align=\"right\">76.8%</td>\n<td><img src=\"gfx/nic2x2.gif\"
-      alt=\"\" border=\"0\" height=\"2\" width=\"2\"></td>\n</tr>\n<tr class=\"calendar-future\">\n<td
-      align=\"right\">10:00 AM</td>\n<td align=\"center\" width=\"10\"><img src=\"gfx/nic2x2.gif\"
-      alt=\"\" border=\"0\" height=\"2\" width=\"2\"></td>\n<td align=\"left\">Business
-      Inventories</td>\n<td align=\"left\"><img src=\"gfx/calendar/impact_2.gif\"
-      width=\"10\" height=\"10\" alt=\"\" border=\"0\"></td>\n<td align=\"left\">Nov</td>\n<td
-      align=\"right\">-</td>\n<td align=\"right\">1.0%</td>\n<td align=\"right\">1.2%</td>\n<td><img
-      src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\" height=\"2\" width=\"2\"></td>\n</tr>\n<tr
-      class=\"calendar-future\">\n<td align=\"right\">10:00 AM</td>\n<td align=\"center\"
-      width=\"10\"><img src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\" height=\"2\"
-      width=\"2\"></td>\n<td align=\"left\">Univ. of Michigan Consumer Sentiment -
-      Prelim</td>\n<td align=\"left\"><img src=\"gfx/calendar/impact_2.gif\" width=\"10\"
+      alt=\"\" border=\"0\"></td>\n<td align=\"left\">01/08</td>\n<td align=\"right\">1.635M</td>\n<td
+      align=\"right\">NA</td>\n<td align=\"right\">1.551M</td>\n<td><img src=\"gfx/nic2x2.gif\"
+      alt=\"\" border=\"0\" height=\"2\" width=\"2\"></td>\n</tr>\n<tr>\n<td align=\"right\">8:30
+      AM</td>\n<td align=\"center\" width=\"10\"><img src=\"gfx/nic2x2.gif\" alt=\"\"
+      border=\"0\" height=\"2\" width=\"2\"></td>\n<td align=\"left\">Philadelphia
+      Fed Index</td>\n<td align=\"left\"><img src=\"gfx/calendar/impact_1.gif\" width=\"10\"
       height=\"10\" alt=\"\" border=\"0\"></td>\n<td align=\"left\">Jan</td>\n<td
-      align=\"right\">-</td>\n<td align=\"right\">68.5</td>\n<td align=\"right\">70.6</td>\n<td><img
+      align=\"right\"><span style=\"color:#008800;\">23.2</span></td>\n<td align=\"right\">20.0</td>\n<td
+      align=\"right\">15.4</td>\n<td><img src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\"
+      height=\"2\" width=\"2\"></td>\n</tr>\n<tr>\n<td align=\"right\">10:00 AM</td>\n<td
+      align=\"center\" width=\"10\"><img src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\"
+      height=\"2\" width=\"2\"></td>\n<td align=\"left\">Existing Home Sales</td>\n<td
+      align=\"left\"><img src=\"gfx/calendar/impact_2.gif\" width=\"10\" height=\"10\"
+      alt=\"\" border=\"0\"></td>\n<td align=\"left\">Dec</td>\n<td align=\"right\"><span
+      style=\"color:#aa0000;\">6.18M</span></td>\n<td align=\"right\">6.42M</td>\n<td
+      align=\"right\">6.48M</td>\n<td><img src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\"
+      height=\"2\" width=\"2\"></td>\n</tr>\n<tr>\n<td align=\"right\">10:30 AM</td>\n<td
+      align=\"center\" width=\"10\"><img src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\"
+      height=\"2\" width=\"2\"></td>\n<td align=\"left\">EIA Natural Gas Inventories</td>\n<td
+      align=\"left\"><img src=\"gfx/calendar/impact_1.gif\" width=\"10\" height=\"10\"
+      alt=\"\" border=\"0\"></td>\n<td align=\"left\">01/15</td>\n<td align=\"right\">-206
+      bcf</td>\n<td align=\"right\">NA</td>\n<td align=\"right\">-179 bcf</td>\n<td><img
+      src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\" height=\"2\" width=\"2\"></td>\n</tr>\n<tr>\n<td
+      align=\"right\">11:00 AM</td>\n<td align=\"center\" width=\"10\"><img src=\"gfx/nic2x2.gif\"
+      alt=\"\" border=\"0\" height=\"2\" width=\"2\"></td>\n<td align=\"left\">EIA
+      Crude Oil Inventories</td>\n<td align=\"left\"><img src=\"gfx/calendar/impact_3.gif\"
+      width=\"10\" height=\"10\" alt=\"\" border=\"0\"></td>\n<td align=\"left\">01/15</td>\n<td
+      align=\"right\">+515K</td>\n<td align=\"right\">NA</td>\n<td align=\"right\">-4.55M</td>\n<td><img
+      src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\" height=\"2\" width=\"2\"></td>\n</tr>\n</table><img
+      src=\"gfx/nic2x2.gif\" width=\"10\" height=\"20\" alt=\"\" border=\"0\"><br>\n<table
+      class=\"calendar\" border=\"0\" cellpadding=\"1\" cellspacing=\"0\" width=\"100%\">\n<tr
+      class=\"calendar-header\">\n<td width=\"10%\" align=\"right\"><b>Fri</b> Jan
+      21</td>\n<td width=\"2%\" align=\"center\"><img src=\"gfx/nic2x2.gif\" alt=\"\"
+      border=\"0\" height=\"2\" width=\"2\"></td>\n<td width=\"20%\" align=\"left\">Release</td>\n<td
+      width=\"10%\" align=\"left\">Impact</td>\n<td width=\"5%\" align=\"left\">For</td>\n<td
+      width=\"10%\" align=\"right\">Actual</td>\n<td width=\"10%\" align=\"right\">Expected</td>\n<td
+      width=\"10%\" align=\"right\">Prior</td>\n<td width=\"3%\"><img src=\"gfx/nic2x2.gif\"
+      alt=\"\" border=\"0\" height=\"2\" width=\"2\"></td>\n</tr>\n<tr>\n<td align=\"right\">10:00
+      AM</td>\n<td align=\"center\" width=\"10\"><img src=\"gfx/nic2x2.gif\" alt=\"\"
+      border=\"0\" height=\"2\" width=\"2\"></td>\n<td align=\"left\">Leading Economic
+      Index</td>\n<td align=\"left\"><img src=\"gfx/calendar/impact_1.gif\" width=\"10\"
+      height=\"10\" alt=\"\" border=\"0\"></td>\n<td align=\"left\">Dec</td>\n<td
+      align=\"right\">0.8%</td>\n<td align=\"right\">0.8%</td>\n<td align=\"right\">0.7%</td>\n<td><img
       src=\"gfx/nic2x2.gif\" alt=\"\" border=\"0\" height=\"2\" width=\"2\"></td>\n</tr>\n</table><img
       src=\"gfx/nic2x2.gif\" width=\"10\" height=\"20\" alt=\"\" border=\"0\"><br>\n</td>\n</tr>\n</table>\n</td>\n</tr>\n<tr>\n<td><img
       src=\"/gfx/nic2x2.gif\" width=\"10\" style=\"height:20px\" alt=\"\" border=\"0\"></td>\n</tr>\n<tr>\n<td
@@ -352,25 +290,24 @@ interactions:
       \                                   <a href=\"/elite.ashx?utm_source=finviz&utm_medium=banner&utm_campaign=modal-1\"
       id=\"modal-elite-ad-btn-1\" class=\"modal-elite_button\" target=\"_blank\">Learn
       more about FINVIZ*Elite</a>\r\n                                </div>\r\n                            </div>\r\n
-      \                        </div><script src=\"/js/pv.js?rev=289\" async></script><script
+      \                        </div><script src=\"/script/pv.js?rev=291\" async></script><script
       defer src=\"https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194\"
       integrity=\"sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==\"
-      data-cf-beacon='{\"rayId\":\"6cd2d466de1f0cd5\",\"token\":\"e53f08f6c9e04bfd9760701085ec93b4\",\"version\":\"2021.12.0\",\"si\":100}'
+      data-cf-beacon='{\"rayId\":\"6d152b286b6f8c65\",\"token\":\"e53f08f6c9e04bfd9760701085ec93b4\",\"version\":\"2021.12.0\",\"si\":100}'
       crossorigin=\"anonymous\"></script>\n</body>\n</html>\n"
     headers:
       Alt-Svc:
-      - h3=":443"; ma=86400, h3-29=":443"; ma=86400, h3-28=":443"; ma=86400, h3-27=":443";
-        ma=86400
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400
       Cache-Control:
       - no-cache
       Cf-Cache-Status:
       - DYNAMIC
       Cf-Ray:
-      - 6cd2d466de1f0cd5-EWR
+      - 6d152b286b6f8c65-EWR
       Content-Type:
       - text/html; charset=utf-8
       Date:
-      - Fri, 14 Jan 2022 00:43:22 GMT
+      - Sat, 22 Jan 2022 01:56:55 GMT
       Expect-Ct:
       - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
       Request-Context:
@@ -378,7 +315,7 @@ interactions:
       Server:
       - cloudflare
       Set-Cookie:
-      - preventRedirectLoop=false; expires=Thu, 13 Jan 2022 00:43:22 GMT; domain=.finviz.com;
+      - preventRedirectLoop=false; expires=Fri, 21 Jan 2022 01:56:55 GMT; domain=.finviz.com;
         path=/
       Vary:
       - Accept-Encoding

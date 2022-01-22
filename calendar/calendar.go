@@ -123,7 +123,7 @@ func Scrape(doc *goquery.Document) ([][]string, error) {
 		dow = day.Children().Eq(0).Text()
 
 		day.Parent().Children().Each(func(j int, event *goquery.Selection) {
-			if j == 0 {
+			if j == 0 || len(event.Children().Nodes) < 9 {
 				return
 			}
 			var calendarEvent = make(map[string]interface{})
@@ -133,6 +133,7 @@ func Scrape(doc *goquery.Document) ([][]string, error) {
 					date, err := time.Parse("Mon Jan 02 2006 3:04 PM MST", fmt.Sprintf("%s %d %s EST", dow, year, eventDetails.Text()))
 					if err != nil {
 						calendarEvent["Date"] = eventDetails.Text()
+						return
 					}
 					calendarEvent["Date"] = date.Format(time.RFC3339)
 				case 1:
