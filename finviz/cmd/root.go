@@ -11,6 +11,8 @@ import (
 
 	"github.com/spf13/cobra"
 
+	"github.com/d3an/finviz/finviz/cmd/calendar"
+	"github.com/d3an/finviz/finviz/cmd/earnings"
 	"github.com/d3an/finviz/finviz/cmd/news"
 	"github.com/d3an/finviz/finviz/cmd/quote"
 	"github.com/d3an/finviz/finviz/cmd/screener"
@@ -36,4 +38,6 @@ func init() {
 	rootCmd.AddCommand(screener.Cmd)
 	rootCmd.AddCommand(news.Cmd)
 	rootCmd.AddCommand(quote.Cmd)
+	rootCmd.AddCommand(calendar.Cmd)
+	rootCmd.AddCommand(earnings.Cmd)
 }
