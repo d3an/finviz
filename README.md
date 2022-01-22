@@ -1,4 +1,4 @@
-# Unofficial Go API & CLI for Finviz
+# Finviz Go API & CLI (Unofficial)
 
 **WARNING:** This package is undergoing heavy development. Breaking changes may occur in upcoming releases.
 
