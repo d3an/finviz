@@ -92,11 +92,11 @@ linters:
     - rowserrcheck
     - exportloopref
     - staticcheck
-    - structcheck
+    # - structcheck
     - typecheck
     - unconvert
     - unparam
-    - unused
+    # - unused
     - varcheck
     - whitespace
 

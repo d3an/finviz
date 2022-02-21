@@ -20,7 +20,7 @@ import (
 
 var rootCmd = &cobra.Command{
 	Use:   "finviz",
-	Short: "This is an unofficial CLI for FinViz.com",
+	Short: "This is an unofficial CLI for Finviz.com",
 	Run: func(cmd *cobra.Command, args []string) {
 		if err := cmd.Help(); err != nil {
 			fmt.Println("Error: ", err)

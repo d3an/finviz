@@ -5,7 +5,7 @@
 fail_fast: true
 repos:
   - repo: git://github.com/dnephin/pre-commit-golang
-    rev: master
+    rev: v0.5.0
     hooks:
       - id: go-fmt
       - id: go-mod-tidy
@@ -14,10 +14,10 @@ repos:
       - id: no-go-testing
       - id: golangci-lint
       # - id: go-critic
-      - id: go-unit-tests
+      # - id: go-unit-tests
       - id: go-build
   - repo: git://github.com/pre-commit/pre-commit-hooks
-    rev: v0.7.1
+    rev: v4.1.0
     hooks:
       - id: check-merge-conflict
       - id: check-yaml

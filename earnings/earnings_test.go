@@ -16,6 +16,7 @@ import (
 	"github.com/stretchr/testify/require"
 
 	"github.com/d3an/finviz/utils"
+	"github.com/d3an/finviz/utils/test"
 )
 
 func newTestClient(config *Config) *Client {
@@ -23,7 +24,7 @@ func newTestClient(config *Config) *Client {
 		return &Client{
 			Client: &http.Client{
 				Timeout:   30 * time.Second,
-				Transport: utils.AddHeaderTransport(config.recorder),
+				Transport: test.AddHeaderTransport(config.recorder),
 			},
 		}
 	}

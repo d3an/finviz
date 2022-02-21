@@ -7,7 +7,7 @@ package earnings
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net"
 	"net/http"
 	"sync"
@@ -81,7 +81,7 @@ func (c *Client) GetEarnings() (*dataframe.DataFrame, error) {
 	}
 	defer resp.Body.Close()
 
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}

@@ -7,7 +7,7 @@ package news
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net"
 	"net/http"
 	"strings"
@@ -88,7 +88,7 @@ func (c *Client) GetNews(view string) (*dataframe.DataFrame, error) {
 	}
 	defer resp.Body.Close()
 
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -113,9 +113,9 @@ func (c *Client) GetNews(view string) (*dataframe.DataFrame, error) {
 
 func GenerateURL(view string) (string, error) {
 	switch view {
-	case "by_time":
+	case "time":
 		return APIURL, nil
-	case "by_source":
+	case "source":
 		return fmt.Sprintf("%s?v=2", APIURL), nil
 	default:
 		return "", fmt.Errorf("error view '%s' not found", view)
@@ -124,9 +124,9 @@ func GenerateURL(view string) (string, error) {
 
 func Scrape(view string, doc *goquery.Document) ([][]string, error) {
 	switch view {
-	case "by_time":
+	case "time":
 		return ByTimeScrape(doc)
-	case "by_source":
+	case "source":
 		return BySourceScrape(doc)
 	default:
 		return nil, fmt.Errorf("error view '%s' not found", view)
@@ -135,6 +135,12 @@ func Scrape(view string, doc *goquery.Document) ([][]string, error) {
 
 func ByTimeScrape(doc *goquery.Document) ([][]string, error) {
 	var newsDataSlice []map[string]interface{}
+
+	location, err := time.LoadLocation("EST5EDT")
+	if err != nil {
+		return nil, err
+	}
+	today := time.Now().In(location)
 
 	doc.Find("#news > div").Children().Eq(1).Find("tbody").Eq(0).Children().Eq(1).Children().Each(func(i int, newsColumn *goquery.Selection) {
 		var newsType string
@@ -149,7 +155,17 @@ func ByTimeScrape(doc *goquery.Document) ([][]string, error) {
 		if i != 1 {
 			newsColumn.Find("tbody").Eq(0).Children().Each(func(j int, newsItem *goquery.Selection) {
 				var rawNewsData = make(map[string]interface{})
-				rawNewsData["Article Date"] = newsItem.Children().Eq(1).Text()
+				var date time.Time
+
+				rawDate := newsItem.Children().Eq(1).Text()
+				if date, err = time.Parse("Jan-02-2006 MST", fmt.Sprintf("%s-%d EST", rawDate, today.Year())); err == nil {
+					rawNewsData["Article Date"] = date.Format(time.RFC3339)
+				} else if date, err = time.Parse("January-02-2006 3:04PM MST", fmt.Sprintf("%s-%d-%d %s EST", today.Month(), today.Day(), today.Year(), rawDate)); err == nil {
+					rawNewsData["Article Date"] = date.Format(time.RFC3339)
+				} else {
+					rawNewsData["Article Date"] = rawDate
+				}
+
 				rawNewsData["Article Title"] = newsItem.Children().Eq(2).Children().Eq(0).Text()
 				rawNewsData["Article URL"] = newsItem.Children().Eq(2).Children().Eq(0).AttrOr("href", "")
 				if classes := newsItem.Children().Eq(0).AttrOr("class", ""); classes != "" {
@@ -171,6 +187,12 @@ func ByTimeScrape(doc *goquery.Document) ([][]string, error) {
 
 func BySourceScrape(doc *goquery.Document) ([][]string, error) {
 	var newsDataSlice []map[string]interface{}
+
+	location, err := time.LoadLocation("EST5EDT")
+	if err != nil {
+		return nil, err
+	}
+	today := time.Now().In(location)
 
 	for tableIndex := 2; tableIndex <= 4; tableIndex++ {
 		var newsType string
@@ -195,7 +217,17 @@ func BySourceScrape(doc *goquery.Document) ([][]string, error) {
 								sourceURL = sourceItem.AttrOr("href", "")
 							} else if k > 1 {
 								var rawNewsData = make(map[string]interface{})
-								rawNewsData["Article Date"] = item.Children().Eq(0).Text()
+								var date time.Time
+
+								rawDate := item.Children().Eq(0).Text()
+								if date, err = time.Parse("Jan-02-2006 MST", fmt.Sprintf("%s-%d EST", rawDate, today.Year())); err == nil {
+									rawNewsData["Article Date"] = date.Format(time.RFC3339)
+								} else if date, err = time.Parse("January-02-2006 3:04PM MST", fmt.Sprintf("%s-%d-%d %s EST", today.Month(), today.Day(), today.Year(), rawDate)); err == nil {
+									rawNewsData["Article Date"] = date.Format(time.RFC3339)
+								} else {
+									rawNewsData["Article Date"] = rawDate
+								}
+
 								rawNewsData["Article Title"] = item.Children().Eq(1).Find("a").Text()
 								rawNewsData["Article URL"] = item.Children().Eq(1).Children().Eq(0).AttrOr("href", "")
 								rawNewsData["Source Name"] = sourceName
