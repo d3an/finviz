@@ -16,7 +16,7 @@ import (
 	"github.com/dnaeon/go-vcr/recorder"
 	"github.com/stretchr/testify/require"
 
-	"github.com/d3an/finviz/utils"
+	"github.com/d3an/finviz/utils/test"
 )
 
 func newTestClient(config *Config) *Client {
@@ -24,7 +24,7 @@ func newTestClient(config *Config) *Client {
 		return &Client{
 			Client: &http.Client{
 				Timeout:   30 * time.Second,
-				Transport: utils.AddHeaderTransport(config.recorder),
+				Transport: test.AddHeaderTransport(config.recorder),
 			},
 		}
 	}
@@ -47,11 +47,11 @@ func TestGenerateURL(t *testing.T) {
 		expected string
 	}{
 		{
-			view:     "by_time",
+			view:     "time",
 			expected: APIURL,
 		},
 		{
-			view:     "by_source",
+			view:     "source",
 			expected: fmt.Sprintf("%s?v=2", APIURL),
 		},
 	}
@@ -72,13 +72,13 @@ func TestGetNews(t *testing.T) {
 	}{
 		{
 			cassettePath:     "cassettes/source_news_view",
-			view:             "by_source",
+			view:             "source",
 			expectedColCount: 6,
 			expectedColNames: []string{"Article Date", "Article Title", "Article URL", "Source Name", "Source URL", "News Type"},
 		},
 		{
 			cassettePath:     "cassettes/time_news_view",
-			view:             "by_time",
+			view:             "time",
 			expectedColCount: 5,
 			expectedColNames: []string{"Article Date", "Article Title", "Article URL", "Source Name", "News Type"},
 		},

@@ -7,7 +7,7 @@ package screener
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net"
 	"net/http"
 	"strconv"
@@ -66,6 +66,10 @@ func New(config *Config) *Client {
 func (c *Client) Do(req *http.Request) (*http.Response, error) {
 	req.Header.Set("User-Agent", c.config.userAgent)
 	return c.Client.Do(req)
+}
+
+func (c *Client) RandomizeUserAgent() {
+	c.config.userAgent = uarand.GetRandom()
 }
 
 type scrapeResult struct {
@@ -178,12 +182,15 @@ func (c *Client) getData(url string, wg *sync.WaitGroup, scr *chan scrapeResult)
 		}
 		defer resp.Body.Close()
 
-		body, err = ioutil.ReadAll(resp.Body)
+		body, err = io.ReadAll(resp.Body)
 		if err != nil {
 			return backoff.Permanent(err)
 		}
 
-		if resp.StatusCode != http.StatusOK {
+		if resp.StatusCode == http.StatusForbidden && string(body) == "error code: 1010" {
+			c.RandomizeUserAgent()
+			return fmt.Errorf("blocked by Cloudflare, status code: '%d', body: '%s'", resp.StatusCode, string(body))
+		} else if resp.StatusCode != http.StatusOK {
 			return fmt.Errorf("failed to get url: '%s', status code: '%d', body: '%s'", url, resp.StatusCode, string(body))
 		}
 

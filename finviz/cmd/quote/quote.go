@@ -13,45 +13,32 @@ import (
 )
 
 var (
-	outputCSVArg  string
-	outputJSONArg string
-	tickerArgs    []string
+	outFile string
+	tickers []string
 
-	// Cmd is the CLI subcommand for FinViz news
+	// Cmd is the CLI subcommand for Finviz news
 	Cmd = &cobra.Command{
 		Use:     "quote",
 		Aliases: []string{"q", "quotes"},
-		Short:   "FinViz Quotes.",
-		Long:    "FinViz Quotes returns the quotes for tickers provided.",
+		Short:   "Finviz Quotes",
+		Long:    "Finviz Quotes returns the quotes for tickers provided.",
 		Run: func(cmd *cobra.Command, args []string) {
-			var err error
-
 			client := quote.New(nil)
-			results, err := client.GetQuotes(tickerArgs)
+			results, err := client.GetQuotes(tickers)
 			if err != nil {
 				utils.Err(err)
 			}
 
-			if outputCSVArg != "" {
-				if err := utils.ExportCSV(results.Data, outputCSVArg); err != nil {
-					utils.Err(err)
-				}
-			} else if outputJSONArg != "" {
-				if err := utils.ExportJSON(results.Data, outputJSONArg); err != nil {
-					utils.Err(err)
-				}
-			} else {
-				utils.PrintFullDataFrame(results.Data)
+			if err = utils.ExportData(results.Data, outFile); err != nil {
+				utils.Err(err)
 			}
 		},
 	}
 )
 
 func init() {
-	// -v 1
-	// --output-csv data.csv
-	// --output-json data.json
-	Cmd.Flags().StringSliceVarP(&tickerArgs, "tickers", "t", nil, "AAPL,GS,amzn")
-	Cmd.Flags().StringVar(&outputCSVArg, "output-csv", "", "outputFileName.csv")
-	Cmd.Flags().StringVar(&outputJSONArg, "output-json", "", "outputFileName.json")
+	// -t aapl,amzn,tsla
+	// -o <filename>
+	Cmd.Flags().StringSliceVarP(&tickers, "tickers", "t", nil, "AAPL,GS,amzn")
+	Cmd.Flags().StringVarP(&outFile, "outfile", "o", "", "output.(csv|json)")
 }

@@ -13,47 +13,33 @@ import (
 )
 
 var (
-	url           string
-	outputCSVArg  string
-	outputJSONArg string
+	outFile string
 
 	// Cmd is the CLI subcommand for the Screener app
 	Cmd = &cobra.Command{
 		Use:     "screener <url>",
 		Aliases: []string{"screen", "scr"},
-		Short:   "FinViz Stock Screener.",
-		Long: "FinViz Stock Screener searches through large amounts of stock data and returns a list " +
+		Short:   "Finviz Stock Screener",
+		Long: "Finviz Stock Screener searches through large amounts of stock data and returns a list " +
 			"of stocks that match one or more selected criteria.",
 		Run: func(cmd *cobra.Command, args []string) {
-			if url == "" {
+			if len(args) == 0 {
 				utils.Err("URL not provided")
 			}
 
 			client := New(nil)
-			df, err := client.GetScreenerResults(url)
+			df, err := client.GetScreenerResults(args[0])
 			if err != nil {
 				utils.Err(err)
 			}
 
-			if outputCSVArg != "" {
-				if err := utils.ExportCSV(df, outputCSVArg); err != nil {
-					utils.Err(err)
-				}
-			} else if outputJSONArg != "" {
-				if err := utils.ExportJSON(df, outputJSONArg); err != nil {
-					utils.Err(err)
-				}
-			} else {
-				utils.PrintFullDataFrame(df)
+			if err = utils.ExportData(df, outFile); err != nil {
+				utils.Err(err)
 			}
 		},
 	}
 )
 
 func init() {
-	// --output-csv data.csv
-	// --output-json data.json
-	Cmd.Flags().StringVar(&outputCSVArg, "output-csv", "", "outputFileName.csv")
-	Cmd.Flags().StringVar(&outputJSONArg, "output-json", "", "outputFileName.json")
-	Cmd.Flags().StringVar(&url, "url", "", "https://finviz.com/screener.ashx?v=110&f=exch_nyse")
+	Cmd.Flags().StringVarP(&outFile, "outfile", "o", "", "output.(csv|json)")
 }

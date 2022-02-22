@@ -13,45 +13,33 @@ import (
 )
 
 var (
-	outputCSVArg  string
-	outputJSONArg string
-	viewArg       string
+	outFile string
+	view    *utils.Enum
 
-	// Cmd is the CLI subcommand for FinViz news
+	// Cmd is the CLI subcommand for Finviz news
 	Cmd = &cobra.Command{
 		Use:     "news",
 		Aliases: []string{"ns"},
-		Short:   "FinViz News.",
-		Long:    "FinViz News returns the latest news.",
+		Short:   "Finviz News",
+		Long:    "Finviz News returns the latest news.",
 		Run: func(cmd *cobra.Command, args []string) {
-			var err error
-
 			client := news.New(nil)
-			df, err := client.GetNews(viewArg)
+			df, err := client.GetNews(view.Value)
 			if err != nil {
 				utils.Err(err)
 			}
 
-			if outputCSVArg != "" {
-				if err := utils.ExportCSV(df, outputCSVArg); err != nil {
-					utils.Err(err)
-				}
-			} else if outputJSONArg != "" {
-				if err := utils.ExportJSON(df, outputJSONArg); err != nil {
-					utils.Err(err)
-				}
-			} else {
-				utils.PrintFullDataFrame(df)
+			if err = utils.ExportData(df, outFile); err != nil {
+				utils.Err(err)
 			}
 		},
 	}
 )
 
 func init() {
-	// -v 1
-	// --output-csv data.csv
-	// --output-json data.json
-	Cmd.Flags().StringVarP(&viewArg, "view", "v", "1", "2")
-	Cmd.Flags().StringVar(&outputCSVArg, "output-csv", "", "outputFileName.csv")
-	Cmd.Flags().StringVar(&outputJSONArg, "output-json", "", "outputFileName.json")
+	// -v time|source
+	// -o <filename>
+	view = utils.NewEnum([]string{"time", "source"}, "time")
+	Cmd.Flags().VarP(view, "view", "v", "time|source")
+	Cmd.Flags().StringVarP(&outFile, "outfile", "o", "", "output.(csv|json)")
 }

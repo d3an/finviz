@@ -10,7 +10,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"os"
 	"strconv"
 	"strings"
@@ -95,7 +94,7 @@ func GenerateDocument(html interface{}) (doc *goquery.Document, err error) {
 		}
 
 	case io.ReadCloser:
-		byteArray, err := ioutil.ReadAll(html)
+		byteArray, err := io.ReadAll(html)
 		if err != nil {
 			return nil, err
 		}
